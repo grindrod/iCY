@@ -1,0 +1,232 @@
+<mockup version="1.0" skin="sketch" measuredW="1107" measuredH="1096" mockupW="988" mockupH="1047">
+  <controls>
+    <control controlID="51" controlTypeID="__group__" x="825" y="51" w="282" h="510" measuredW="282" measuredH="510" zOrder="5" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::iPhone" x="0" y="0" w="-1" h="-1" measuredW="282" measuredH="510" zOrder="0" locked="false" isInGroup="51"/>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Title" x="74" y="112" w="-1" h="-1" measuredW="126" measuredH="34" zOrder="1" locked="false" isInGroup="51">
+          <controlProperties>
+            <bold>true</bold>
+            <size>24</size>
+            <text>Advice%20for</text>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::Title" x="50" y="135" w="-1" h="-1" measuredW="188" measuredH="34" zOrder="2" locked="false" isInGroup="51">
+          <controlProperties>
+            <bold>true</bold>
+            <size>24</size>
+            <text>Pharmacy%20Staff</text>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::ButtonBar" x="80" y="391" w="-1" h="-1" measuredW="112" measuredH="29" zOrder="3" locked="false" isInGroup="51">
+          <controlProperties>
+            <text>3%2C%204%2C%205</text>
+          </controlProperties>
+        </control>
+        <control controlID="4" controlTypeID="com.balsamiq.mockups::iPhoneMenu" x="33" y="178" w="-1" h="-1" measuredW="215" measuredH="184" zOrder="4" locked="false" isInGroup="51">
+          <controlProperties>
+            <text>*%20Use%20the%20standard%20label%0A*%20Print%20second%20label%20%2818%20pt%29%0A*%20Colour/number%20code%0A*%20Do%20not%20tape%0A*%20Refer%20to%20optometrist%0A+%20Add%20other%2C</text>
+          </controlProperties>
+        </control>
+        <control controlID="5" controlTypeID="com.balsamiq.mockups::Icon" x="33" y="394" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="5" locked="false" isInGroup="51">
+          <controlProperties>
+            <icon>RewindIcon%7Csmall</icon>
+          </controlProperties>
+        </control>
+        <control controlID="6" controlTypeID="com.balsamiq.mockups::Icon" x="224" y="394" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="6" locked="false" isInGroup="51">
+          <controlProperties>
+            <icon>ForwardIcon%7Csmall</icon>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="52" controlTypeID="__group__" x="128" y="586" w="282" h="510" measuredW="282" measuredH="510" zOrder="6" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::iPhone" x="0" y="0" w="-1" h="-1" measuredW="282" measuredH="510" zOrder="0" locked="false" isInGroup="52"/>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::VerticalScrollBar" x="232" y="175" w="-1" h="211" measuredW="16" measuredH="100" zOrder="1" locked="false" isInGroup="52"/>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::Title" x="59" y="115" w="-1" h="-1" measuredW="163" measuredH="34" zOrder="2" locked="false" isInGroup="52">
+          <controlProperties>
+            <bold>true</bold>
+            <size>24</size>
+            <text>Drug%20Therapy</text>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::Title" x="84" y="138" w="-1" h="-1" measuredW="115" measuredH="34" zOrder="3" locked="false" isInGroup="52">
+          <controlProperties>
+            <bold>true</bold>
+            <size>24</size>
+            <text>Problems</text>
+          </controlProperties>
+        </control>
+        <control controlID="4" controlTypeID="com.balsamiq.mockups::CheckBoxGroup" x="42" y="170" w="203" h="220" measuredW="135" measuredH="264" zOrder="4" locked="false" isInGroup="52">
+          <controlProperties>
+            <bold>true</bold>
+            <size>14</size>
+            <text>Select%20all%20that%20apply%0A%5Bx%5D%20Corticosteroids%0A%5B%20%5D%20Anticholinergics%0A%5B%20%5D%20Eye%20drops%0A%5Bx%5D%20Diabetes%0A%5Bx%5D%20Hypertension%0A%5B%20%5D%20Glaucoma%0A%5B%20%5D%20Cataracts%0A%5Bx%5D%20Other%0A%5Bx%5D%20Other%0A%5Bx%5D%20Other%0A%5Bx%5D%20Other</text>
+          </controlProperties>
+        </control>
+        <control controlID="5" controlTypeID="com.balsamiq.mockups::Alert" x="37" y="203" w="-1" h="-1" measuredW="200" measuredH="127" zOrder="5" locked="false" isInGroup="52">
+          <controlProperties>
+            <text>Alert%0ADoes%20the%20client%20have%20an%20optometrist%3F%0ANo%2C%20Yes</text>
+          </controlProperties>
+        </control>
+        <control controlID="6" controlTypeID="com.balsamiq.mockups::ButtonBar" x="105" y="394" w="-1" h="-1" measuredW="75" measuredH="29" zOrder="6" locked="false" isInGroup="52">
+          <controlProperties>
+            <text>4%2C%205</text>
+          </controlProperties>
+        </control>
+        <control controlID="7" controlTypeID="com.balsamiq.mockups::Icon" x="35" y="397" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="7" locked="false" isInGroup="52">
+          <controlProperties>
+            <icon>RewindIcon%7Csmall</icon>
+          </controlProperties>
+        </control>
+        <control controlID="8" controlTypeID="com.balsamiq.mockups::Icon" x="222" y="397" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="8" locked="false" isInGroup="52">
+          <controlProperties>
+            <icon>ForwardIcon%7Csmall</icon>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="53" controlTypeID="__group__" x="487" y="586" w="282" h="510" measuredW="282" measuredH="510" zOrder="4" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::iPhone" x="0" y="0" w="-1" h="-1" measuredW="282" measuredH="510" zOrder="0" locked="false" isInGroup="53">
+          <controlProperties>
+            <bgPattern>allWhite</bgPattern>
+            <orientation>portrait</orientation>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Title" x="42" y="117" w="-1" h="-1" measuredW="180" measuredH="34" zOrder="1" locked="false" isInGroup="53">
+          <controlProperties>
+            <bold>true</bold>
+            <size>24</size>
+            <text>Referral%20Letter</text>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::VerticalTabBar" x="32" y="143" w="-1" h="-1" measuredW="200" measuredH="178" zOrder="2" locked="false" isInGroup="53">
+          <controlProperties>
+            <text>Optometrist%20Name%0AClient%20Name%0APharmacist%20Name%0AComments</text>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::iPhoneKeyboard" x="27" y="266" w="229" h="160" measuredW="227" measuredH="160" zOrder="3" locked="false" isInGroup="53"/>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::iPhone" x="825" y="586" w="-1" h="-1" measuredW="282" measuredH="510" zOrder="14" locked="false" isInGroup="-1"/>
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::Title" x="868" y="701" w="-1" h="-1" measuredW="195" measuredH="34" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <size>24</size>
+        <text>No%20Optometrist%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="64" controlTypeID="com.balsamiq.mockups::Paragraph" x="863" y="744" w="-1" h="-1" measuredW="200" measuredH="140" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>center</align>
+        <text>Optometrists%20accepting%20patients%20within%20a%2025km%20radius%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="65" controlTypeID="com.balsamiq.mockups::Button" x="888" y="787" w="-1" h="-1" measuredW="52" measuredH="28" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Print</text>
+      </controlProperties>
+    </control>
+    <control controlID="66" controlTypeID="com.balsamiq.mockups::Button" x="981" y="787" w="-1" h="-1" measuredW="58" measuredH="28" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Email</text>
+      </controlProperties>
+    </control>
+    <control controlID="67" controlTypeID="com.balsamiq.mockups::Map" x="852" y="823" w="226" h="188" measuredW="252" measuredH="222" zOrder="17" locked="false" isInGroup="-1"/>
+    <control controlID="69" controlTypeID="com.balsamiq.mockups::Icon" x="878" y="843" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>EyeIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="70" controlTypeID="com.balsamiq.mockups::Icon" x="972" y="858" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>EyeIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="71" controlTypeID="com.balsamiq.mockups::Icon" x="902" y="969" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>EyeIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="72" controlTypeID="com.balsamiq.mockups::Icon" x="1054" y="969" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>EyeIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="73" controlTypeID="com.balsamiq.mockups::iPhone" x="119" y="49" w="314" h="518" measuredW="282" measuredH="510" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bgPattern>allWhite</bgPattern>
+        <orientation>portrait</orientation>
+      </controlProperties>
+    </control>
+    <control controlID="74" controlTypeID="com.balsamiq.mockups::ButtonBar" x="177" y="443" w="-1" h="-1" measuredW="185" measuredH="29" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>1%2C%202%2C%203%2C%204%2C%205</text>
+      </controlProperties>
+    </control>
+    <control controlID="75" controlTypeID="com.balsamiq.mockups::CheckBoxGroup" x="171" y="191" w="-1" h="-1" measuredW="210" measuredH="220" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <size>14</size>
+        <text>Do%20you%20use%0A%5Bx%5D%20Glasses%20or%20contact%20lenses%0A%5B%20%5D%20Bifocals%20or%20reading%20glasses%0A%5Bx%5D%20Large%20print%20materials%0A%20%0ADo%20you%20have%20difficulty%20reading%0A%5Bx%5D%20Prescription%20labels%0A%5Bx%5D%20Non-prescription%20labels%0A%5Bx%5D%20Worn%20prescription%20labels%0A%5Bx%5D%20Glossy%20papers%20%28magazines%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="76" controlTypeID="com.balsamiq.mockups::Title" x="170" y="158" w="-1" h="-1" measuredW="210" measuredH="34" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>24</size>
+        <text>Check%20your%20vision</text>
+      </controlProperties>
+    </control>
+    <control controlID="78" controlTypeID="com.balsamiq.mockups::Button" x="223" y="413" w="-1" h="-1" measuredW="46" measuredH="28" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>A+</text>
+      </controlProperties>
+    </control>
+    <control controlID="79" controlTypeID="com.balsamiq.mockups::Button" x="277" y="413" w="-1" h="-1" measuredW="41" measuredH="28" zOrder="25" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>10</size>
+        <text>%20A-%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="82" controlTypeID="com.balsamiq.mockups::iPhone" x="487" y="52" w="-1" h="-1" measuredW="282" measuredH="510" zOrder="7" locked="false" isInGroup="-1"/>
+    <control controlID="83" controlTypeID="com.balsamiq.mockups::Image" x="516" y="211" w="221" h="219" measuredW="189" measuredH="179" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/contrasttest.png</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="84" controlTypeID="com.balsamiq.mockups::Title" x="524" y="163" w="205" h="-1" measuredW="372" measuredH="34" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <size>24</size>
+        <text>Touch%20the%20last%20line%20you%20can%20read</text>
+      </controlProperties>
+    </control>
+    <control controlID="85" controlTypeID="com.balsamiq.mockups::Title" x="524" y="187" w="205" h="-1" measuredW="203" measuredH="34" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <size>24</size>
+        <text>line%20you%20can%20read</text>
+      </controlProperties>
+    </control>
+    <control controlID="86" controlTypeID="com.balsamiq.mockups::ButtonBar" x="552" y="442" w="-1" h="-1" measuredW="150" measuredH="29" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>2%2C%203%2C%204%2C%205</text>
+      </controlProperties>
+    </control>
+    <control controlID="87" controlTypeID="com.balsamiq.mockups::Icon" x="520" y="445" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>RewindIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="88" controlTypeID="com.balsamiq.mockups::Icon" x="713" y="445" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>ForwardIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
