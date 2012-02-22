@@ -1,0 +1,20 @@
+.center-wrapper{
+text-align: center;
+}
+.center-wrapper * {
+margin: 0 auto;
+}
+
+.limitedAccess * {
+	/*background-color: red;*/
+	background-color: #CE1F1D;
+	color: white;
+}
+
+.general-button *{
+	background-color: green;
+	color: white;
+	text-align: center;
+	/*height: 70px;*/
+	font-size: 25px;
+}
