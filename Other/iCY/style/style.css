@@ -1,0 +1,80 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,td,th {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color:#555;
+}
+body {
+	position:relative;
+	margin: 0px;
+	padding: 0px;
+}
+.notes{
+	text-align:center;
+	padding:5px;
+	font-size:14px;
+	font-weight:bold;
+}
+h1{
+	margin:5px 0;
+}
+#touchme1, #touchme2, #touchme3, #touchme4, #touchme5, #touchme6 {
+	cursor: move;
+	position:relative;
+	z-index:50;
+}
+
+.droppedBox
+{
+    width: 50px;
+	height:50px;
+	margin: 10px;
+	background-color: green;
+	font-weight: bold;
+	font-size: 14px;
+	color: #FFF;
+	opacity: .75;
+	filter: alpha(opacity = 75);
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius:10px;
+	text-align: center;   
+}
+
+.touchBox {
+	width: 100px;
+	height:100px;
+	margin: 10px;
+	background-color:#999;
+	font-weight: bold;
+	font-size: 14px;
+	color: #FFF;
+	opacity: .75;
+	filter: alpha(opacity = 75);
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius:10px;
+	text-align: center;
+}
+.largetouchbox b, .dropArea b{
+	line-height: 40px;
+}
+.largetouchbox span{
+	display:block;
+	text-align:center;
+	font-size: 10px;
+	line-height:40px;
+}
+.dropArea{
+	position:relative;
+	width:200px;
+	height:200px;
+	background:#eee;
+	border:#777 dashed 3px;
+	text-align:center;
+}
+.dhover{
+	border:#f66 dotted 3px;
+}
