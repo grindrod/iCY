@@ -9,11 +9,13 @@
         xmlns:rim="http://www.blackberry.com/ns/widgets"
 	version="1.0.0.0">
 
-  <name>PhoneGap Sample</name>
+  <name>ClereMed</name>
 
   <description>
-      A sample application written with PhoneGap.
+    A screen of people's ability to read prescritpion labels
   </description>
+
+  <author href = "http://appsfactory.ca">The Communitech Apps Factory</author>
 
   <license href="http://opensource.org/licenses/alphabetical">
   </license>
@@ -51,7 +53,7 @@
     <rim:transitionEffect type="fadeOut" />
   </rim:loadingScreen>
 
-  <content src="index.html" />
+  <content src="html/index.html" />
 
   <rim:permissions>
     <rim:permit>use_camera</rim:permit>

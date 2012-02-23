@@ -9,10 +9,10 @@
         xmlns:rim="http://www.blackberry.com/ns/widgets"
 	version="1.0.0.0">
 
-  <name>Food At The Hub?</name>
+  <name>ClereMed</name>
 
   <description>
-    Is there food at Communitech Hub? 
+    A screen of people's ability to read prescritpion labels
   </description>
 
   <author href = "http://appsfactory.ca">The Communitech Apps Factory</author>
@@ -53,7 +53,7 @@
     <rim:transitionEffect type="fadeOut" />
   </rim:loadingScreen>
 
-  <content src="index.html" />
+  <content src="html/index.html" />
 
   <rim:permissions>
     <rim:permit>use_camera</rim:permit>
