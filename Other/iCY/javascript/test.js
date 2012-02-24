@@ -14,11 +14,76 @@ $(document).ready(function() {
         			window.location = "patientfinished.html"
     };
     
-    //generateInstruction();
+    generateInstruction();
 });
 
+var boundedRandomNumber = function(from, to){
+	return Math.floor(Math.random() * (to - from + 1) + from);
+}
+
 var generateInstruction = function() {
-	var randomnumber=Math.floor(Math.random()*11);
+	var timeslots = new Array ( "breakfast", "lunch", "dinner", "bedtime" );
+	var numTimeslots = boundedRandomNumber(1, 2);
+	var instructionString;
+	var numTablets;
+	var randomSlot;
+	var tablet;
+	
+	/*
+	if (numTimeslots === 1) {
+		numTablets = boundedRandomNumber(1, 3);
+		randomSlot = Math.floor(Math.random() * timeslots.length);
+		tabletTimeslot = timeslots[randomSlot];
+		tablet = (numTablets === 1)? "tablet" : "tablets";
+		instructionString = "Take " + numTablets + " " + tablet + " at " + tabletTimeslot + ".";
+	}
+	else {
+		instructionString = "Take ";
+		var first = true;
+		for (var i=0; i < numTimeslots; i++){
+			numTablets = boundedRandomNumber(1,2);
+			tablet = (numTablets === 1)? "tablet" : "tablets";
+			randomSlot = Math.floor(Math.random() * timeslots.length);
+			tabletTimeslot = timeslots[randomSlot];
+			instructionString = instructionString + numTablets + " " + tablet + " at " + tabletTimeslot;
+			if (first === true) {
+				instructionString = instructionString + " and ";
+				first = false;
+			}
+			else {
+				instructionString = instructionString + ".";
+			}
+		}	
+	}*/
+	
+	
+	instructionString = "Take ";
+	var first = true;
+	var previousTime = -1;
+	for (var i=0; i < numTimeslots; i++){
+		if (numTimeslots === 1) { 
+			numTablets = boundedRandomNumber(1,3);
+			first = false;
+		}
+		else { numTablets = boundedRandomNumber(1,2); }
+		
+		do { 
+			randomSlot = Math.floor(Math.random() * timeslots.length); 
+		} while (previousTime === randomSlot)
+		previousTime = randomSlot;
+		tabletTimeslot = timeslots[randomSlot];
+		
+		tablet = (numTablets === 1)? "tablet" : "tablets";
+		
+		instructionString = instructionString + numTablets + " " + tablet + " at " + tabletTimeslot;
+		
+		if (first === true) {
+			instructionString = instructionString + " and ";
+			first = false;
+		}
+		else { instructionString = instructionString + "."; }
+	}
+	
 	document.getElementById('instructionLabel').innerHTML=instructionString;
 }
 
