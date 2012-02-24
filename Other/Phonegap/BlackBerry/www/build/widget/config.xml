@@ -47,11 +47,11 @@
   <icon rim:hover="false" src="resources/icon.png" />
   <icon rim:hover="true" src="resources/icon_hover.png" />
 
-  <rim:loadingScreen backgroundColor="#000000"
+  <!--rim:loadingScreen backgroundColor="#000000"
                      foregroundImage="resources/loading_foreground.png"
 		     onFirstLaunch="true">
     <rim:transitionEffect type="fadeOut" />
-  </rim:loadingScreen>
+  </rim:loadingScreen-->
 
   <content src="html/index.html" />
 
