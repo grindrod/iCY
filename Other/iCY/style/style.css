@@ -20,7 +20,8 @@ body {
 h1{
 	margin:5px 0;
 }
-#touchme1, #touchme2, #touchme3, #touchme4, #touchme5, #touchme6 {
+
+#pill1, #pill2, #pill3, #pill4, #pill5, #pill6 {
 	cursor: move;
 	position:relative;
 	z-index:50;
@@ -39,7 +40,8 @@ h1{
 	filter: alpha(opacity = 75);
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
-	border-radius:10px;
+	/*border-radius:10px;*/
+	border-radius:50%;
 	text-align: center;   
 }
 
@@ -55,7 +57,8 @@ h1{
 	filter: alpha(opacity = 75);
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
-	border-radius:10px;
+	/*border-radius:10px;*/
+	border-radius: 50%;
 	text-align: center;
 }
 .largetouchbox b, .dropArea b{

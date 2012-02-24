@@ -71,8 +71,8 @@ var generateInstruction = function() {
 }
 
 head.js("https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js","../javascript/ui.js","../javascript/touch.js", function (){
-	$("#touchme1, #touchme2, #touchme3, #touchme4, #touchme5, #touchme6").draggable({revert:true});
-	$("#drop1, #drop2, #drop3, #drop4").droppable({
+	$(".touchBox").draggable({revert:true});
+	$(".dropArea").droppable({
     	drop: function( event, ui ) {
         	checkContents(this.id);
         	$(ui.draggable).remove();
