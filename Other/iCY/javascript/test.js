@@ -1,3 +1,9 @@
+var expectedResult = new Array(); 
+expectedResult['breakfast'] = 0;
+expectedResult['lunch'] = 0;
+expectedResult['dinner'] = 0;
+expectedResult['bedtime'] = 0;
+
 $(document).ready(function() {
 	document.getElementById('start').ontouchend=function(){ window.location = "index.html"};
 	
@@ -15,6 +21,10 @@ $(document).ready(function() {
     };
     
     generateInstruction();
+    
+    for (var i in expectedResult) {
+		console.log('key is: ' + i + ', value is: ' + expectedResult[i]);
+	}
 });
 
 var boundedRandomNumber = function(from, to){
@@ -44,6 +54,7 @@ var generateInstruction = function() {
 		} while (previousTime === randomSlot)
 		previousTime = randomSlot;
 		tabletTimeslot = timeslots[randomSlot];
+		expectedResult[tabletTimeslot] = numTablets;
 		
 		tablet = (numTablets === 1)? "tablet" : "tablets";
 		
