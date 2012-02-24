@@ -28,8 +28,8 @@ h1{
 
 .droppedBox
 {
-    width: 50px;
-	height:50px;
+    width: 25px;
+	height:25px;
 	margin: 10px;
 	background-color: green;
 	font-weight: bold;
@@ -69,8 +69,8 @@ h1{
 }
 .dropArea{
 	position:relative;
-	width:200px;
-	height:200px;
+	width:125px;
+	height:125px;
 	background:#eee;
 	border:#777 dashed 3px;
 	text-align:center;

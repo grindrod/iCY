@@ -74,7 +74,7 @@ head.js("https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js","../j
 	$("#touchme1, #touchme2, #touchme3, #touchme4, #touchme5, #touchme6").draggable({revert:true});
 	$("#drop1, #drop2, #drop3, #drop4").droppable({
     	drop: function( event, ui ) {
-        	show(this.id);
+        	checkContents(this.id);
         	$(ui.draggable).remove();
         	$(this).css({'border':'#777 dashed 3px','background':'#eee'});
     	},
@@ -90,8 +90,28 @@ head.js("https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js","../j
 function show(id){
 	var gen_box = document.getElementById(id);
     var gen_box_new = document.createElement('div');
-        
+    
+    //START WORK FROM HERE!!!
+    
     gen_box_new.setAttribute('class', 'droppedBox');
-        
-    gen_box.appendChild(gen_box_new);
+    
+    tabcell.appendChild(gen_box_new);
+    tabrow.appendChild(tabcell);
+	tab.appendChild(tabrow);
+    gen_box.appendChild(tab);
+    
+}
+
+function checkContents(id)
+{
+	var box = document.getElementById(id);
+	console.log(box.childElementCount);
+	if(box.childElementCount > 2)
+	{
+		alert('STOPP YOUUU!!!');
+	}
+	else
+	{
+		show(id);
+	}
 }
