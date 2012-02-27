@@ -157,7 +157,7 @@ function checkContents()
 				}
 				else
 				{
-					console.log(pillTimes[count1] + ' Wrong!');
+					console.log(pillTimes[count1] + ' Wrong! ');
 				}
 			}
 			
@@ -166,6 +166,7 @@ function checkContents()
 		}
 	}
 	return success; 
+
 
 }
 
