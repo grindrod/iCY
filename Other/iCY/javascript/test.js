@@ -11,11 +11,14 @@ $(document).ready(function() {
 		window.location = "index.html"
 	};
 	
-	makeItBig();
+	document.getElementById('largerFontBtn').ontouchend = makeItBig;
 		
 	document.getElementById('done').ontouchend = function(){ 
-        alert("still needs validation. Continuing..."); 
-        window.location = "patientfinished.html"
+		if (checkContents() === true){ window.location = "patientfinished.html"; }
+		else { 
+			storage.setItem('instructionSize', $('#instructionLabel').css('font-size'));
+			window.location.reload();
+		}
     };
     
     document.getElementById('restart').ontouchend = function(){
@@ -27,6 +30,11 @@ $(document).ready(function() {
     var storageInstruction = storage.getItem('instructionString');
     if (storageInstruction === null){ generateInstruction(); } 
 	else { document.getElementById('instructionLabel').innerHTML = storageInstruction; }
+	
+	var instructionSize = storage.getItem('instructionSize');
+	if (instructionSize != null){
+		$('#instructionLabel').css("font-size", instructionSize + "pt");
+	}
     
     for (var i in expectedResult) {
 		console.log('key is: ' + i + ', value is: ' + expectedResult[i]);
@@ -129,6 +137,7 @@ function checkContents()
 	var count1 = 0;
 	var count2;
 	var total = 0;
+	var success = false;
 	
 	for(count2 = 1; count2 < boxes.length +1; count2++)
 	{
@@ -144,6 +153,7 @@ function checkContents()
 				if(total == expectedResult[pillTimes[count1]])
 				{
 					console.log(pillTimes[count1] + ' Correct!');
+					success = true;
 				}
 				else
 				{
@@ -155,16 +165,15 @@ function checkContents()
 			count1 = count1+1;
 		}
 	}
+	return success; 
 
 }
 
 function makeItBig()
 {
-	document.getElementById('largerFontBtn').ontouchend = function(){
-		var labelSize = parseInt($('#instructionLabel').css('font-size'));
-		console.log ("original Label size: " + labelSize);
-		labelSize++; 
-		console.log ("modified Label size: " + labelSize);
-		$('#instructionLabel').css("font-size", labelSize + "pt");
-	};
+	var labelSize = parseInt($('#instructionLabel').css('font-size'));
+	console.log ("original Label size: " + labelSize);
+	labelSize++; 
+	console.log ("modified Label size: " + labelSize);
+	$('#instructionLabel').css("font-size", labelSize + "px");
 }
