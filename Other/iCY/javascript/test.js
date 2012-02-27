@@ -86,7 +86,9 @@ head.js("https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js","../j
 	$(".touchBox").draggable({revert:true});
 	$(".dropArea").droppable({
     	drop: function( event, ui ) {
-        	checkContents(this.id);
+        	//checkContents(this.id);
+        	show($(this).attr("data-row1"), $(this).attr("data-row2"));
+        	
         	$(ui.draggable).remove();
         	$(this).css({'border':'#777 dashed 3px','background':'#eee'});
     	},
@@ -99,25 +101,36 @@ head.js("https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js","../j
 	});
 });
 
-function show(id){
-	var gen_box = document.getElementById(id);
-    var gen_box_new = document.createElement('div');
+function show(row1, row2){
+	var row1 = document.getElementById(row1);
+	var row2 = document.getElementById(row2);
+	
+	if(row1.childElementCount < 3)
+	{	var cell = document.createElement('td');
+		var obj = document.createElement('div');
+	
+    	obj.setAttribute('class', 'droppedBox');
     
-    //START WORK FROM HERE!!!
+    	cell.appendChild(obj);
+    	row1.appendChild(cell);
+    }
+    else
+    {
+		var cell = document.createElement('td');
+		var obj = document.createElement('div');
+	
+    	obj.setAttribute('class', 'droppedBox');
     
-    gen_box_new.setAttribute('class', 'droppedBox');
-    
-    tabcell.appendChild(gen_box_new);
-    tabrow.appendChild(tabcell);
-	tab.appendChild(tabrow);
-    gen_box.appendChild(tab);
+    	cell.appendChild(obj);
+    	row2.appendChild(cell);
+    }
+	
     
 }
 
 function checkContents(id)
 {
 	var box = document.getElementById(id);
-	console.log(box.childElementCount);
 	if(box.childElementCount > 2)
 	{
 		alert('STOPP YOUUU!!!');
