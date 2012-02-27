@@ -11,13 +11,7 @@ $(document).ready(function() {
 		window.location = "index.html"
 	};
 	
-	document.getElementById('largerFontBtn').ontouchend = function(){
-		var labelSize = parseInt($('#instructionLabel').css('font-size'));
-		console.log ("original Label size: " + labelSize);
-		labelSize++; 
-		console.log ("modified Label size: " + labelSize);
-		$('#instructionLabel').css("font-size", labelSize + "pt");
-	};
+	makeItBig();
 		
 	document.getElementById('done').ontouchend = function(){ 
         alert("still needs validation. Continuing..."); 
@@ -128,15 +122,49 @@ function show(row1, row2){
     
 }
 
-function checkContents(id)
+function checkContents()
 {
-	var box = document.getElementById(id);
-	if(box.childElementCount > 2)
+	var boxes = ['drop1row1','drop1row2','drop2row1','drop2row2','drop3row1','drop3row2','drop4row1','drop4row2'];
+	var pillTimes = ['breakfast', 'lunch', 'dinner', 'bedtime'];
+	var count1 = 0;
+	var count2;
+	var total = 0;
+	
+	for(count2 = 1; count2 < boxes.length +1; count2++)
 	{
-		alert('STOPP YOUUU!!!');
+		var tmpElement = document.getElementById(boxes[count2 - 1]);
+				
+		total += tmpElement.childElementCount;
+		
+		if(count2 % 2 == 0)
+		{
+			if(expectedResult[pillTimes[count1]] != 0)
+			{
+				
+				if(total == expectedResult[pillTimes[count1]])
+				{
+					console.log(pillTimes[count1] + ' Correct!');
+				}
+				else
+				{
+					console.log(pillTimes[count1] + ' Wrong!');
+				}
+			}
+			
+			total = 0;
+			count1 = count1+1;
+		}
 	}
-	else
-	{
-		show(id);
-	}
+
+}
+
+function makeItBig()
+{
+	document.getElementById('largerFontBtn').ontouchend = function(){
+		var labelSize = parseInt($('#instructionLabel').css('font-size'));
+		console.log ("original Label size: " + labelSize);
+		labelSize++; 
+		console.log ("modified Label size: " + labelSize);
+		$('#instructionLabel').css("font-size", labelSize + "pt");
+	};
 }
