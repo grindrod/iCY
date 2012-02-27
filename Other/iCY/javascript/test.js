@@ -4,10 +4,14 @@ expectedResult['lunch'] = 0;
 expectedResult['dinner'] = 0;
 expectedResult['bedtime'] = 0;
 
+var storage = window.localStorage;
+
 $(document).ready(function() {
-	document.getElementById('start').ontouchend=function(){ window.location = "index.html"};
+	document.getElementById('start').ontouchend = function(){ 
+		window.location = "index.html"
+	};
 	
-	document.getElementById('largerFontBtn').ontouchend=function(){
+	document.getElementById('largerFontBtn').ontouchend = function(){
 		var labelSize = parseInt($('#instructionLabel').css('font-size'));
 		console.log ("original Label size: " + labelSize);
 		labelSize++; 
@@ -15,12 +19,20 @@ $(document).ready(function() {
 		$('#instructionLabel').css("font-size", labelSize + "pt");
 	};
 		
-	document.getElementById('done').ontouchend=function(){ 
-        			alert("still needs validation. Continuing..."); 
-        			window.location = "patientfinished.html"
+	document.getElementById('done').ontouchend = function(){ 
+        alert("still needs validation. Continuing..."); 
+        window.location = "patientfinished.html"
     };
     
-    generateInstruction();
+    document.getElementById('restart').ontouchend = function(){
+    	var currentString = document.getElementById('instructionLabel').innerHTML;
+		storage.setItem("instructionString", currentString);
+		window.location.reload();
+    };
+    
+    var storageInstruction = storage.getItem('instructionString');
+    if (storageInstruction === null){ generateInstruction(); } 
+	else { document.getElementById('instructionLabel').innerHTML = storageInstruction; }
     
     for (var i in expectedResult) {
 		console.log('key is: ' + i + ', value is: ' + expectedResult[i]);
