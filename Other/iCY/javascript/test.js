@@ -143,11 +143,11 @@ function checkContents()
 				
 				if(total == expectedResult[pillTimes[count1]])
 				{
-					console.log(pillTimes[count1] + ' Correct!');
+					console.log(pillTimes[count1] + ' Correct! ');
 				}
 				else
 				{
-					console.log(pillTimes[count1] + ' Wrong!');
+					console.log(pillTimes[count1] + ' Wrong! ');
 				}
 			}
 			
@@ -155,6 +155,7 @@ function checkContents()
 			count1 = count1+1;
 		}
 	}
+
 
 }
 
