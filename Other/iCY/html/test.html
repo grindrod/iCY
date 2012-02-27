@@ -17,6 +17,7 @@
 </head>
 
 <body>
+	<br />
 	<div align=right><button id="start" class="button">Start over</button></div>
     <h2 align="center">Follow the instructions on the drug label below by dragging the tablets into the correct boxes.</h2>
     
@@ -49,17 +50,17 @@
     
     <table id="tableOfTimeslots" align="center">
         <tr>
-            <td><div id="drop1" data-table="breakfast_table" class="dropArea"><b>Breakfast</b></div>
-            <table id="breakfast_table"></table>
+            <td><div id="drop1" data-row1="drop1row1" data-row2="drop1row2" class="dropArea"><b>Breakfast</b><table id="hello">
+            <tr id="drop1row1"></tr><tr id="drop1row2"></tr></table></div>
             </td>
-            <td><div id="drop2" data-table="lunch_table" class="dropArea"><b>Lunch</b></div>
-            <table id="lunch_table"></table>
+            <td><div id="drop2" data-row1="drop2row1" data-row2="drop2row2" class="dropArea"><b>Lunch</b><table>
+            <tr id="drop2row1"></tr><tr id="drop2row2"></tr></table></div>
             </td>
-            <td><div id="drop3" class="dropArea" data-table="dinner_table"><b>Dinner</b></div>
-            <table id="dinner_table"></table>
+            <td><div id="drop3" data-row1="drop3row1" data-row2="drop3row2" class="dropArea" ><b>Dinner</b><table>
+            <tr id="drop3row1"></tr><tr id="drop3row2"></tr></table></div>
             </td>
-            <td><div id="drop4" class="dropArea" data-table="bedtime_table"><b>Bedtime</b></div>
-            <table id="bedtime_table"></table>
+            <td><div id="drop4" data-row1="drop4row1" data-row2="drop4row2"class="dropArea"><b>Bedtime</b><table>
+            <tr id="drop4row1"></tr><tr id="drop4row2"></tr></table></div>
             </td>
         </tr>
     </table>

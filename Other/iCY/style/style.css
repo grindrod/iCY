@@ -29,8 +29,8 @@ h1{
 
 .droppedBox
 {
-    width: 25px;
-	height:25px;
+    width: 15px;
+	height:15px;
 	margin: 10px;
 	background-color: green;
 	font-weight: bold;
