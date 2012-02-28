@@ -12,6 +12,7 @@ $(document).ready(function() {
 	};
 	
 	document.getElementById('largerFontBtn').ontouchend = makeItBig;
+	document.getElementById('largerFontBtn').onclick = makeItBig;
 		
 	document.getElementById('done').ontouchend = function(){ 
 		if (checkContents() === true){ window.location = "patientfinished.html"; }
@@ -174,7 +175,8 @@ function makeItBig()
 {
 	var labelSize = parseInt($('#instructionLabel').css('font-size'));
 	console.log ("original Label size: " + labelSize);
-	labelSize++; 
+	if (labelSize < 30) { labelSize++; }
+	else { alert("Max font size reached"); }
 	console.log ("modified Label size: " + labelSize);
 	$('#instructionLabel').css("font-size", labelSize + "px");
 }

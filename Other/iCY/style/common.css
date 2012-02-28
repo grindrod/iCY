@@ -9,6 +9,10 @@ margin: 0 auto;
 	font-size:12px;
 }
 
+body {
+	font-size:18px;
+}
+
 .button {
             -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
             -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
