@@ -7,7 +7,7 @@ expectedResult['bedtime'] = 0;
 var storage = window.localStorage;
 
 $(document).ready(function() {
-	document.getElementById('start').ontouchend = function(){ 
+	document.getElementById('cancel').ontouchend = function(){ 
 		window.location = "index.html"
 	};
 	
@@ -15,18 +15,19 @@ $(document).ready(function() {
 	document.getElementById('largerFontBtn').onclick = makeItBig;
 		
 	document.getElementById('done').ontouchend = function(){ 
-		if (checkContents() === true){ window.location = "patientfinished.html"; }
+		window.location="patientfinished.html";
+		/*if (checkContents() === true){ window.location = "patientfinished.html"; }
 		else { 
 			storage.setItem('instructionSize', $('#instructionLabel').css('font-size'));
 			window.location.reload();
-		}
+		}*/
     };
     
-    document.getElementById('restart').ontouchend = function(){
+    /*document.getElementById('restart').ontouchend = function(){
     	var currentString = document.getElementById('instructionLabel').innerHTML;
 		storage.setItem("instructionString", currentString);
 		window.location.reload();
-    };
+    };*/
     
     var storageInstruction = storage.getItem('instructionString');
     if (storageInstruction === null){ generateInstruction(); } 

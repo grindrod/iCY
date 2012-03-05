@@ -6,11 +6,29 @@ margin: 0 auto;
 }
 
 #instructionLabel {
-	font-size:12px;
+	font-size:12pt;
 }
 
 body {
-	font-size:18px;
+	font-size:18pt;
+}
+
+/*.centreMargin{
+	margin-right:20%;
+	margin-left: 20%;
+}*/
+
+.cancelBtn{
+	position:absolute;
+    bottom:0;
+    left:0;
+}
+
+.doneBtn{
+	position:absolute;
+    bottom:0;
+    right:0;
+    width: 70%;
 }
 
 .button {

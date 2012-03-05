@@ -13,27 +13,30 @@
 		<script src="../javascript/jquery.mobile-1.0.1.min.js"></script></script-->
 		<link rel="stylesheet" href="../style/common.css" />
 		<link rel="stylesheet" href="../style/cleremed.min.css" />
+		<script src="../javascript/zepto.min.js"></script>
     
 	</head>
 	
 	<body><div data-role="page" data-theme="a">
-		<div align=right><a href="index.html" data-ajax=false data-role="button" data-inline="true" data-icon="home">Start over</a></div>
+		<!--div align=right><a href="index.html" data-ajax=false data-role="button" data-inline="true" data-icon="home">Start over</a></div-->
 		
-		<div data-role="content">
+		<div data-role="content" class="centreMargin">
+			<!--h5 align="center">Touch any box to check it.</h5-->
+			
 			Do you use...
 			<div data-role="fieldcontain">
     			<fieldset data-role="controlgroup">
 				   <input type="checkbox" name="glasses" id="glasses" class="custom" />
 				   <label for="glasses" data-iconpos="right">Glasses or contact lenses</label>
 				   
-				   <input type="checkbox" name="glassesnow" id="glassesnow" class="custom" disabled="true" />
-				   <label for="glassesnow" data-iconpos="right">Are you wearing your glasses or contact lenses right now?</label>
+				   <!--input type="checkbox" name="glassesnow" id="glassesnow" class="custom" disabled="true" style="display='none'"/>
+				   <label for="glassesnow" data-iconpos="right">Are you wearing your glasses or contact lenses right now?</label-->
 				   
 				   <input type="checkbox" name="bifocals" id="bifocals" class="custom" />
 				   <label for="bifocals" data-iconpos="right">Bifocals or reading glasses</label>
 				   
-				   <input type="checkbox" name="bifocalsnow" id="bifocalsnow" class="custom" disabled="true" />
-				   <label for="bifocalsnow" data-iconpos="right">Are you wearing your bifocals or reading glasses right now?</label>
+				   <!--input type="checkbox" name="bifocalsnow" id="bifocalsnow" class="custom" disabled="true" />
+				   <label for="bifocalsnow" data-iconpos="right">Are you wearing your bifocals or reading glasses right now?</label-->
 				   
 				   <input type="checkbox" name="largeprint" id="largeprint" class="custom" />
 				   <label for="largeprint" data-iconpos="right">Large print materials</label>
@@ -41,8 +44,8 @@
 				   <input type="checkbox" name="magnifier" id="magnifier" class="custom" />
 				   <label for="magnifier" data-iconpos="right">A magnifier</label>
 
-				   <input type="checkbox" name="magnifiernow" id="magnifiernow" class="custom" disabled="true" />
-				   <label for="magnifiernow" data-iconpos="right">Are you using your magnifier right now?</label>
+				   <!--input type="checkbox" name="magnifiernow" id="magnifiernow" class="custom" disabled="true" />
+				   <label for="magnifiernow" data-iconpos="right">Are you using your magnifier right now?</label-->
 				</fieldset>
 			</div>
 			
@@ -67,7 +70,9 @@
 			
 		</div>
 		
-		<a href="test.html" data-ajax=false data-role="button" data-theme="b">Touch here when done</a>		
+		<a href="test.html" data-ajax=false data-role="button" data-theme="b" class="doneBtn">Touch here when done</a>
+		
+		<div align=left class="cancelBtn"><a href="index.html" data-ajax=false data-role="button" data-inline="true">Cancel</a></div>
 	</div></body>
 	
 </htm>
