@@ -15,12 +15,11 @@ $(document).ready(function() {
 	document.getElementById('largerFontBtn').onclick = makeItBig;
 		
 	document.getElementById('done').ontouchend = function(){ 
-		window.location="patientfinished.html";
-		/*if (checkContents() === true){ window.location = "patientfinished.html"; }
+		if (checkContents() === true){ window.location = "patientfinished.html"; }
 		else { 
 			storage.setItem('instructionSize', $('#instructionLabel').css('font-size'));
 			window.location.reload();
-		}*/
+		}
     };
     
     /*document.getElementById('restart').ontouchend = function(){
