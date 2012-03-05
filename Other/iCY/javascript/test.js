@@ -7,7 +7,7 @@ expectedResult['bedtime'] = 0;
 var storage = window.localStorage;
 
 $(document).ready(function() {
-	document.getElementById('start').ontouchend = function(){ 
+	document.getElementById('cancel').ontouchend = function(){ 
 		window.location = "index.html"
 	};
 	
@@ -22,11 +22,11 @@ $(document).ready(function() {
 		}
     };
     
-    document.getElementById('restart').ontouchend = function(){
+    /*document.getElementById('restart').ontouchend = function(){
     	var currentString = document.getElementById('instructionLabel').innerHTML;
 		storage.setItem("instructionString", currentString);
 		window.location.reload();
-    };
+    };*/
     
     var storageInstruction = storage.getItem('instructionString');
     if (storageInstruction === null){ generateInstruction(); } 
