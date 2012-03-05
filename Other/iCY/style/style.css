@@ -81,3 +81,8 @@ h1{
 .dhover{
 	border:#f66 dotted 3px;
 }
+
+#tableOfTablets td {
+	width: 16.667%; 
+	height: 140px;
+}
