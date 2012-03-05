@@ -17,12 +17,10 @@
 </head>
 
 <body><h2 align="center">Follow the instructions on the drug label below by dragging the tablets into the correct boxes.</h2>
-    
-    
     <table border="0px" cellspacing="4" cellpadding="10" width="800em" align="center">
     	<tr>
         	<td align="center">
-        		<table border="2px" cellspacing="4" cellpadding="10" width="500em" align="center">
+        		<table border="2px" cellspacing="1" cellpadding="10" width="500em" align="center">
         			<tr>
         				<td align="center"><div id="instructionLabel">Take two tablets at lunch.</div></td>
     				</tr>
@@ -33,7 +31,7 @@
         	</td>
         </tr>
     </tables>
-
+    
     <table id="tableOfTablets" align="center">
         <tr>
             <td><div id="pill1" class="touchBox"><span>Pill 1</span></div></td>
@@ -45,6 +43,7 @@
         </tr>
     </table>
     
+    <div id="boxAroundTimeBoxes">
     <table id="tableOfTimeslots" align="center" border="0px" height="175px">
         <tr>
 			<td class="alignTimeBox"><div id="breakfast" data-row1="drop1row1" data-row2="drop1row2" class="dropArea"><b>Breakfast</b><table>
@@ -61,11 +60,10 @@
             </td>
         </tr>
     </table>
-    <br />
+    </div>
 
     <table width=100% align="center"><tr>
-    	<td><div align=left><button id="cancel" class="button" href="index.html">Cancel</a></div></td>
-    	<!--td><button id="restart" class="button">Restart</button></td-->
+    	<td><div align=left><button id="cancel" class="button" href="index.html">Cancel</button></div></td>
     	<td align="right"><button id="done" class="button" >Touch here when done</button></td>
     </tr></table>
 

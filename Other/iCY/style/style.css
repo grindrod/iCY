@@ -75,7 +75,7 @@ h1{
 	width:125px;
 	height:125px;
 	background:#eee;
-	border:#777 dashed 3px;
+	border:#777 solid 3px;
 	text-align:center;
 }
 .dhover{
@@ -91,4 +91,12 @@ h1{
 {
 	align: center;
 	width: 200px;
+}
+
+#boxAroundTimeBoxes
+{
+	margin-left: 200px;
+	margin-right: 200px;
+	border-style: dashed;
+	border-color: #000000
 }
