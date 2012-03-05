@@ -180,3 +180,8 @@ function makeItBig()
 	console.log ("modified Label size: " + labelSize);
 	$('#instructionLabel').css("font-size", labelSize + "px");
 }
+
+function dragOutPill()
+{
+	
+}
