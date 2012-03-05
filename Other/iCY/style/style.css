@@ -86,3 +86,9 @@ h1{
 	width: 16.667%; 
 	height: 140px;
 }
+
+.alignTimeBox
+{
+	align: center;
+	width: 200px;
+}
