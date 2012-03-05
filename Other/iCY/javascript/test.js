@@ -93,13 +93,13 @@ head.js("../javascript/lib/jquery.min.js","../javascript/ui.js","../javascript/t
         	show($(this).attr("data-row1"), $(this).attr("data-row2"));
         	
         	$(ui.draggable).remove();
-        	$(this).css({'border':'#777 dashed 3px','background':'#eee'});
+        	$(this).css({'border':'#777 dashed 3px','background':'#eee', 'width':'125px', 'height':'125px'});
     	},
     	over: function(event, ui) {
-        	$(this).css({'border':'#a33 dashed 3px','background':'#faa'});
+        	$(this).css({'border':'#a33 dashed 3px','background':'#faa', 'width':'140px', 'height':'140px'});
     	},
     	out: function (event, ui){
-        	$(this).css({'border':'#777 dashed 3px','background':'#eee'});
+        	$(this).css({'border':'#777 dashed 3px','background':'#eee', 'width':'125px', 'height':'125px'});
     	}
 	});
 });
