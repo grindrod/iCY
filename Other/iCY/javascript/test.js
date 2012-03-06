@@ -15,6 +15,7 @@ $(document).ready(function() {
 	document.getElementById('largerFontBtn').onclick = makeItBig;
 		
 	document.getElementById('done').ontouchend = function(){ 
+	//document.getElementById('done').onclick = function(){ 
 		if (checkContents() === true){ window.location = "patientfinished.html"; }
 		else { 
 			storage.setItem('instructionSize', $('#instructionLabel').css('font-size'));
@@ -22,15 +23,7 @@ $(document).ready(function() {
 		}
     };
     
-    /*document.getElementById('restart').ontouchend = function(){
-    	var currentString = document.getElementById('instructionLabel').innerHTML;
-		storage.setItem("instructionString", currentString);
-		window.location.reload();
-    };*/
-    
-    var storageInstruction = storage.getItem('instructionString');
-    if (storageInstruction === null){ generateInstruction(); } 
-	else { document.getElementById('instructionLabel').innerHTML = storageInstruction; }
+    generateInstruction();
 	
 	var instructionSize = storage.getItem('instructionSize');
 	if (instructionSize != null){
