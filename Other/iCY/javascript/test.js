@@ -14,8 +14,8 @@ $(document).ready(function() {
 	document.getElementById('largerFontBtn').ontouchend = makeItBig;
 	document.getElementById('largerFontBtn').onclick = makeItBig;
 		
-	//document.getElementById('done').ontouchend = function(){ 
-	document.getElementById('done').onclick = function(){ 
+	document.getElementById('done').ontouchend = function(){ 
+	//document.getElementById('done').onclick = function(){ 
 		if (checkContents() === true){ window.location = "patientfinished.html"; }
 		else { 
 			makeItBig();
@@ -24,7 +24,7 @@ $(document).ready(function() {
 		}
     };
     
-    generateInstruction();
+    $('#instructionLabel').text( generateInstruction() );
 	
 	var instructionSize = storage.getItem('instructionSize');
 	$('#instructionLabel').css('font-size', instructionSize)
@@ -39,43 +39,51 @@ var boundedRandomNumber = function(from, to){
 	return Math.floor(Math.random() * (to - from + 1) + from);
 }
 
+var descendingTime = function(a, b){ 
+	var sortOrder = new Array ( "breakfast", "lunch", "dinner", "bedtime");
+	return (sortOrder.indexOf(a) < sortOrder.indexOf(b) ? -1 : 1);
+}
+
 var generateInstruction = function() {
-	var timeslots = new Array ( "breakfast", "lunch", "dinner", "bedtime" );
-	var numTimeslots = boundedRandomNumber(1, 2);
-	var instructionString;
-	var numTablets;
-	var randomSlot;
-	var tablet;
+	var timeslots = new Array ( "breakfast", "lunch", "dinner", "bedtime"),
+		wordArray = new Array ("no", "one", "two", "three"),
+		selectedTimeslots = new Array(),
+		tabletArray = new Array(), 
+		numTimeslots = boundedRandomNumber(1, 2),
+		instructionString = "Take ", 
+		randomSlot, 
+		numTablets, 
+		singular,
+		and;
 	
-	instructionString = "Take ";
-	var first = true;
-	var previousTime = -1;
 	for (var i=0; i < numTimeslots; i++){
-		if (numTimeslots === 1) { 
-			numTablets = boundedRandomNumber(1,3);
-			first = false;
+		if (numTimeslots === 1) {
+			numTablets = boundedRandomNumber(1, 3);
+			and = "";
 		}
-		else { numTablets = boundedRandomNumber(1,2); }
-		
-		do { 
-			randomSlot = Math.floor(Math.random() * timeslots.length); 
-		} while (previousTime === randomSlot)
-		previousTime = randomSlot;
-		tabletTimeslot = timeslots[randomSlot];
-		expectedResult[tabletTimeslot] = numTablets;
-		
-		tablet = (numTablets === 1)? "tablet" : "tablets";
-		
-		instructionString = instructionString + numTablets + " " + tablet + " at " + tabletTimeslot;
-		
-		if (first === true) {
-			instructionString = instructionString + " and ";
-			first = false;
+		else {
+			numTablets = boundedRandomNumber(1, 2);
+			and = " and ";
 		}
-		else { instructionString = instructionString + "."; }
+		tabletArray.push(numTablets);
+		
+		randomSlot = Math.floor(Math.random() * timeslots.length); 
+		selectedTimeslots.push( timeslots[randomSlot] ); 
+		timeslots.splice(randomSlot, 1);
 	}
 	
-	document.getElementById('instructionLabel').innerHTML=instructionString;
+	selectedTimeslots.sort( descendingTime );
+	
+	for (var i=0; i < numTimeslots; i++){
+		singular = tabletArray[i] === 1? "tablet" : "tablets";
+		
+		expectedResult[ selectedTimeslots[i] ] = tabletArray[i];
+		instructionString += wordArray[ tabletArray[i]] + " " 
+						  + singular + " at " + selectedTimeslots[i];
+		instructionString += i===0? and : "";
+	}
+	instructionString += "."
+	return instructionString;
 }
 
 head.js("../javascript/lib/jquery.min.js","../javascript/ui.js","../javascript/touch.js", function (){
