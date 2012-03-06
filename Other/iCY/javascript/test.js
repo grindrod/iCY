@@ -4,7 +4,10 @@ expectedResult['lunch'] = 0;
 expectedResult['dinner'] = 0;
 expectedResult['bedtime'] = 0;
 
+var labelOrder = new Array ( "9pt", "12pt", "15pt", "18pt");
+
 var storage = window.localStorage;
+var instructionSizeLevel = storage.getItem('instructionSizeLevel');
 
 $(document).ready(function() {
 	document.getElementById('cancel').ontouchend = function(){ 
@@ -14,21 +17,22 @@ $(document).ready(function() {
 	document.getElementById('largerFontBtn').ontouchend = makeItBig;
 	document.getElementById('largerFontBtn').onclick = makeItBig;
 		
-	document.getElementById('done').ontouchend = function(){ 
-	//document.getElementById('done').onclick = function(){ 
+	//document.getElementById('done').ontouchend = function(){ 
+	document.getElementById('done').onclick = function(){ 
 		if (checkContents() === true){ window.location = "patientfinished.html"; }
 		else { 
-			makeItBig();
-			storage.setItem('instructionSize', $('#instructionLabel').css('font-size'));
-			window.location.reload();
+			if ( makeItBig() === 0 ) {
+				storage.setItem('instructionSizeLevel', instructionSizeLevel);
+				window.location.reload();
+			}
 		}
     };
     
     $('#instructionLabel').text( generateInstruction() );
 	
-	var instructionSize = storage.getItem('instructionSize');
-	$('#instructionLabel').css('font-size', instructionSize)
-	console.log("instructionSize: " + instructionSize);
+	if (instructionSizeLevel === null){ instructionSizeLevel = 1; } 
+	$('#instructionLabel').css('font-size', labelOrder[instructionSizeLevel] )
+	console.log("instructionSize: " + labelOrder[instructionSizeLevel]);
     
     for (var i in expectedResult) {
 		console.log('key is: ' + i + ', value is: ' + expectedResult[i]);
@@ -173,13 +177,20 @@ function checkContents()
 }
 
 function makeItBig()
-{
-	var labelSize = parseInt($('#instructionLabel').css('font-size'));
-	console.log ("original Label size: " + labelSize);
-	if (labelSize < 30) { labelSize++; }
-	else { alert("Max font size reached"); }
-	console.log ("modified Label size: " + labelSize);
-	$('#instructionLabel').css("font-size", labelSize + "px");
+{	
+	console.log("instructionSizeLevel: " + instructionSizeLevel);
+	if ( instructionSizeLevel < 3) {		// since there are 4 levels of font sizes
+		instructionSizeLevel++;
+		$('#instructionLabel').css("font-size", labelOrder[instructionSizeLevel] );
+	
+		//alert ( "font size: " + labelOrder[instructionSizeLevel] + ", " +  $('#instructionLabel').css('font-size'));
+		return 0;
+	}
+	else {
+		//alert ("Max font size reached");
+		window.location = "patientfinished.html"; 
+		return 1; 
+	}
 }
 
 function dragOutPill()
