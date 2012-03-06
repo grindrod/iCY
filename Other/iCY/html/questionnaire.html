@@ -13,7 +13,8 @@
 		<script src="../javascript/jquery.mobile-1.0.1.min.js"></script></script-->
 		<link rel="stylesheet" href="../style/common.css" />
 		<link rel="stylesheet" href="../style/cleremed.min.css" />
-		<script src="../javascript/zepto.min.js"></script>
+		<!--script src="../javascript/zepto.min.js"></script-->
+		<script src="../javascript/questionnaire.js"></script>
     
 	</head>
 	
@@ -23,34 +24,52 @@
 		<div data-role="content" class="centreMargin">
 			<!--h5 align="center">Touch any box to check it.</h5-->
 			
-			Do you use...
-			<div data-role="fieldcontain">
+			<table width=100%><tr>
+			<tr><td width=60%>Do you use...</td>
+				<td width=40%>Do you have difficulty reading...</td>
+			</tr>
+			
+			<td>
+			<div data-role="fieldcontain" id="aidsUsed">
     			<fieldset data-role="controlgroup">
-				   <input type="checkbox" name="glasses" id="glasses" class="custom" />
-				   <label for="glasses" data-iconpos="right">Glasses or contact lenses</label>
+    			
+    			   <div id="glassesContainer">
+				   		<input type="checkbox" name="glasses" id="glasses" class="custom" value="glasses or contact lenses" />
+				   		<label for="glasses" data-iconpos="right" id="glassesLabel" value="glasses or contact lenses">Glasses or contact lenses</label>
 				   
-				   <!--input type="checkbox" name="glassesnow" id="glassesnow" class="custom" disabled="true" style="display='none'"/>
-				   <label for="glassesnow" data-iconpos="right">Are you wearing your glasses or contact lenses right now?</label-->
+				   		<div id="glassesnowContainer">
+				   		<input type="checkbox" name="glassesnow" id="glassesnow" class="custom" value="glassesnow" />
+				   		<label for="glassesnow" data-iconpos="right">Are you wearing your glasses or contact lenses right now? </label>
+				   		</div>
+				   </div>
 				   
-				   <input type="checkbox" name="bifocals" id="bifocals" class="custom" />
-				   <label for="bifocals" data-iconpos="right">Bifocals or reading glasses</label>
+				   <div id="bifocalsContainer">
+				   		<input type="checkbox" name="bifocals" id="bifocals" class="custom" value="bifocals or reading glasses" />
+				   		<label for="bifocals" data-iconpos="right" id="bifocalsLabel">Bifocals or reading glasses</label>
 				   
-				   <!--input type="checkbox" name="bifocalsnow" id="bifocalsnow" class="custom" disabled="true" />
-				   <label for="bifocalsnow" data-iconpos="right">Are you wearing your bifocals or reading glasses right now?</label-->
+				   		<div id="bifocalsnowContainer">
+				   		<input type="checkbox" name="bifocalsnow" id="bifocalsnow" class="custom" />
+				   		<label for="bifocalsnow" data-iconpos="right">Are you wearing your bifocals or reading glasses right now? </label>
+				   		</div>
+				   </div>
+				   
+				   <div id="magnifierContainer">
+				   		<input type="checkbox" name="magnifier" id="magnifier" class="custom" value="magnifier" />
+				   		<label for="magnifier" data-iconpos="right" id="magnifierLabel">A magnifier</label>
+				   
+				   		<div id="magnifiernowContainer">
+				   		<input type="checkbox" name="magnifiernow" id="magnifiernow" class="custom" value="magnifiernow" />
+				   		<label for="magnifiernow" data-iconpos="right">Are you using your magnifier right now? </label>
+				   		</div>
+				   </div>
 				   
 				   <input type="checkbox" name="largeprint" id="largeprint" class="custom" />
 				   <label for="largeprint" data-iconpos="right">Large print materials</label>
-				   
-				   <input type="checkbox" name="magnifier" id="magnifier" class="custom" />
-				   <label for="magnifier" data-iconpos="right">A magnifier</label>
-
-				   <!--input type="checkbox" name="magnifiernow" id="magnifiernow" class="custom" disabled="true" />
-				   <label for="magnifiernow" data-iconpos="right">Are you using your magnifier right now?</label-->
 				</fieldset>
 			</div>
+			</td>
 			
-			
-			Do you have difficulty reading...
+			<td valign="top">
 			<div data-role="fieldcontain">
     			<fieldset data-role="controlgroup">
 				   <!--legend>Agree to the terms:</legend-->
@@ -67,6 +86,9 @@
 				   <label for="glossy" data-iconpos="right">Glossy papers (magazines)</label>
 				</fieldset>
 			</div>
+			</td>
+			</tr>
+			</table>
 			
 		</div>
 		
