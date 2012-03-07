@@ -25,6 +25,9 @@ h1{
 	cursor: move;
 	position:relative;
 	z-index:50;
+	border-width: .2em; 
+	border-style: solid; 
+	border-color: #000; 
 }
 
 .pillLabel {
