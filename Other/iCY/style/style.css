@@ -27,6 +27,11 @@ h1{
 	z-index:50;
 }
 
+.pillLabel {
+	position: relative;
+	top: 40%;
+}
+
 .droppedBox
 {
     width: 15px;
