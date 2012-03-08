@@ -6,13 +6,14 @@
     <meta name="viewport" 
   content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>ClereMed</title>
+    <link rel="stylesheet" type="text/css" href="../style/common.css" />
+    
     <script type="text/javascript" src="../javascript/head.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../style/style.css" />
     
     <!--Temporarily using zepto for document.read() since it's similar to jquery-->
     <script src="../javascript/zepto.min.js"></script>
     <script type="text/javascript" src="../javascript/test.js"></script>
-    <link rel="stylesheet" type="text/css" href="../style/common.css" />
     
 </head>
 
@@ -20,13 +21,9 @@
     <table border="0px" cellspacing="4" cellpadding="10" width="800em" align="center">
     	<tr>
         	<td align="center">
-        		<table border="2px" cellspacing="1" cellpadding="10" width="500em" align="center">
-        			<tr>
-        				<td align="center"><div id="instructionLabel">Take two tablets at lunch.</div></td>
-    				</tr>
-    			</table>
+    			<div id="instructionLabel" class="border">Take two tablets at lunch.</div>
     		</td>
-        	<td align=left>
+        	<td align="right" width=30%>
             	<button id="largerFontBtn" class="buttonOrange">Touch here if you cannot read label</button>
         	</td>
         </tr>
@@ -34,12 +31,12 @@
     
     <table id="tableOfTablets" align="center">
         <tr>
-            <td><div id="pill1" class="touchBox"><span>Pill 1</span></div></td>
-            <td><div id="pill1" class="touchBox"><span>Pill 2</span></div></td>
-            <td><div id="pill2" class="touchBox"><span>Pill 3</span></div></td>
-            <td><div id="pill3" class="touchBox"><span>Pill 4</span></div></td>
-            <td><div id="pill4" class="touchBox"><span>Pill 5</span></div></td>
-            <td><div id="pill5" class="touchBox"><span>Pill 6</span></div></td>
+            <td><div id="pill1" class="touchBox"><div class="pillLabel">Pill</div></div></td>
+            <td><div id="pill1" class="touchBox"><div class="pillLabel">Pill</div></div></td>
+            <td><div id="pill2" class="touchBox"><div class="pillLabel">Pill</div></div></td>
+            <td><div id="pill3" class="touchBox"><div class="pillLabel">Pill</div></div></td>
+            <td><div id="pill4" class="touchBox"><div class="pillLabel">Pill</div></div></td>
+            <td><div id="pill5" class="touchBox"><div class="pillLabel">Pill</div></div></td>
         </tr>
     </table>
     

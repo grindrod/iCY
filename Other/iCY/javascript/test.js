@@ -4,7 +4,10 @@ expectedResult['lunch'] = 0;
 expectedResult['dinner'] = 0;
 expectedResult['bedtime'] = 0;
 
+var labelOrder = new Array ( "9pt", "12pt", "15pt", "18pt");
+
 var storage = window.localStorage;
+var instructionSizeLevel = storage.getItem('instructionSizeLevel');
 
 var objectRef1, objectRef2;
 
@@ -19,28 +22,22 @@ $(document).ready(function() {
 	document.getElementById('largerFontBtn').ontouchend = makeItBig;
 	document.getElementById('largerFontBtn').onclick = makeItBig;
 		
-	document.getElementById('done').ontouchend = function(){ 
+	//document.getElementById('done').ontouchend = function(){ 
+	document.getElementById('done').onclick = function(){ 
 		if (checkContents() === true){ window.location = "patientfinished.html"; }
 		else { 
-			storage.setItem('instructionSize', $('#instructionLabel').css('font-size'));
-			window.location.reload();
+			if ( makeItBig() === 0 ) {
+				storage.setItem('instructionSizeLevel', instructionSizeLevel);
+				window.location.reload();
+			}
 		}
     };
     
-    /*document.getElementById('restart').ontouchend = function(){
-    	var currentString = document.getElementById('instructionLabel').innerHTML;
-		storage.setItem("instructionString", currentString);
-		window.location.reload();
-    };*/
-    
-    var storageInstruction = storage.getItem('instructionString');
-    if (storageInstruction === null){ generateInstruction(); } 
-	else { document.getElementById('instructionLabel').innerHTML = storageInstruction; }
+    $('#instructionLabel').text( generateInstruction() );
 	
-	var instructionSize = storage.getItem('instructionSize');
-	if (instructionSize != null){
-		$('#instructionLabel').css("font-size", instructionSize + "pt");
-	}
+	if (instructionSizeLevel === null){ instructionSizeLevel = 1; } 
+	$('#instructionLabel').css('font-size', labelOrder[instructionSizeLevel] )
+	console.log("instructionSize: " + labelOrder[instructionSizeLevel]);
     
     for (var i in expectedResult) {
 		console.log('key is: ' + i + ', value is: ' + expectedResult[i]);
@@ -51,43 +48,51 @@ var boundedRandomNumber = function(from, to){
 	return Math.floor(Math.random() * (to - from + 1) + from);
 }
 
+var descendingTime = function(a, b){ 
+	var sortOrder = new Array ( "breakfast", "lunch", "dinner", "bedtime");
+	return (sortOrder.indexOf(a) < sortOrder.indexOf(b) ? -1 : 1);
+}
+
 var generateInstruction = function() {
-	var timeslots = new Array ( "breakfast", "lunch", "dinner", "bedtime" );
-	var numTimeslots = boundedRandomNumber(1, 2);
-	var instructionString;
-	var numTablets;
-	var randomSlot;
-	var tablet;
+	var timeslots = new Array ( "breakfast", "lunch", "dinner", "bedtime"),
+		wordArray = new Array ("no", "one", "two", "three"),
+		selectedTimeslots = new Array(),
+		tabletArray = new Array(), 
+		numTimeslots = boundedRandomNumber(1, 2),
+		instructionString = "Take ", 
+		randomSlot, 
+		numTablets, 
+		singular,
+		and;
 	
-	instructionString = "Take ";
-	var first = true;
-	var previousTime = -1;
 	for (var i=0; i < numTimeslots; i++){
-		if (numTimeslots === 1) { 
-			numTablets = boundedRandomNumber(1,3);
-			first = false;
+		if (numTimeslots === 1) {
+			numTablets = boundedRandomNumber(1, 3);
+			and = "";
 		}
-		else { numTablets = boundedRandomNumber(1,2); }
-		
-		do { 
-			randomSlot = Math.floor(Math.random() * timeslots.length); 
-		} while (previousTime === randomSlot)
-		previousTime = randomSlot;
-		tabletTimeslot = timeslots[randomSlot];
-		expectedResult[tabletTimeslot] = numTablets;
-		
-		tablet = (numTablets === 1)? "tablet" : "tablets";
-		
-		instructionString = instructionString + numTablets + " " + tablet + " at " + tabletTimeslot;
-		
-		if (first === true) {
-			instructionString = instructionString + " and ";
-			first = false;
+		else {
+			numTablets = boundedRandomNumber(1, 2);
+			and = " and ";
 		}
-		else { instructionString = instructionString + "."; }
+		tabletArray.push(numTablets);
+		
+		randomSlot = Math.floor(Math.random() * timeslots.length); 
+		selectedTimeslots.push( timeslots[randomSlot] ); 
+		timeslots.splice(randomSlot, 1);
 	}
 	
-	document.getElementById('instructionLabel').innerHTML=instructionString;
+	selectedTimeslots.sort( descendingTime );
+	
+	for (var i=0; i < numTimeslots; i++){
+		singular = tabletArray[i] === 1? "tablet" : "tablets";
+		
+		expectedResult[ selectedTimeslots[i] ] = tabletArray[i];
+		instructionString += wordArray[ tabletArray[i]] + " " 
+						  + singular + " at " + selectedTimeslots[i];
+		instructionString += i===0? and : "";
+	}
+	instructionString += "."
+	return instructionString;
 }
 
 var anotherArray = ['breakfast', 'lunch', 'dinner', 'bedtime'];
@@ -255,13 +260,20 @@ function checkContents()
 }
 
 function makeItBig()
-{
-	var labelSize = parseInt($('#instructionLabel').css('font-size'));
-	console.log ("original Label size: " + labelSize);
-	if (labelSize < 30) { labelSize++; }
-	else { alert("Max font size reached"); }
-	console.log ("modified Label size: " + labelSize);
-	$('#instructionLabel').css("font-size", labelSize + "px");
+{	
+	console.log("instructionSizeLevel: " + instructionSizeLevel);
+	if ( instructionSizeLevel < 3) {		// since there are 4 levels of font sizes
+		instructionSizeLevel++;
+		$('#instructionLabel').css("font-size", labelOrder[instructionSizeLevel] );
+	
+		//alert ( "font size: " + labelOrder[instructionSizeLevel] + ", " +  $('#instructionLabel').css('font-size'));
+		return 0;
+	}
+	else {
+		//alert ("Max font size reached");
+		window.location = "patientfinished.html"; 
+		return 1; 
+	}
 }
 
 function dragOutDroppedPill()

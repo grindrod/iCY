@@ -46,6 +46,7 @@
 
   <icon rim:hover="false" src="resources/icon.png" />
   <icon rim:hover="true" src="resources/icon_hover.png" />
+  <rim:orientation mode="landscape" />
 
   <!--rim:loadingScreen backgroundColor="#000000"
                      foregroundImage="resources/loading_foreground.png"
