@@ -5,6 +5,7 @@ expectedResult['dinner'] = 0;
 expectedResult['bedtime'] = 0;
 
 var labelOrder = new Array ( "9pt", "12pt", "15pt", "18pt");
+var boxes = ['drop1row1','drop1row2','drop2row1','drop2row2','drop3row1','drop3row2','drop4row1','drop4row2'];
 
 var storage = window.localStorage;
 var instructionSizeLevel = storage.getItem('instructionSizeLevel');
@@ -222,8 +223,6 @@ function revivePill()
 	
 }
 
-var boxes = ['drop1row1','drop1row2','drop2row1','drop2row2','drop3row1','drop3row2','drop4row1','drop4row2'];
-
 function checkContents()
 {
 	var pillTimes = ['breakfast', 'lunch', 'dinner', 'bedtime'];
@@ -353,4 +352,15 @@ function reDrawPills(parentCell)
 		
 	};
 	
+}
+
+//Function that removes everything.
+function refresh()
+{
+	for(var i = 0; i<boxes.length; i++)
+	{
+		$('#'+boxes[i]).empty();
+	}
+	
+	$('.touchBox').css('opacity','0.75');
 }
