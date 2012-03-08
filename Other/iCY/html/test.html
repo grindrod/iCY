@@ -11,25 +11,28 @@
     <script type="text/javascript" src="../javascript/head.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../style/style.css" />
     
-    <!--Temporarily using zepto for document.read() since it's similar to jquery-->
+    <!--Temporarily using zepto for document.ready() since it's similar to jquery-->
     <script src="../javascript/zepto.min.js"></script>
     <script type="text/javascript" src="../javascript/test.js"></script>
-    
 </head>
 
-<body><h2 align="center">Follow the instructions on the drug label below by dragging the tablets into the correct boxes.</h2>
-    <table border="0px" cellspacing="4" cellpadding="10" width="800em" align="center">
+<body>
+<h2 align="center">Follow the instructions on the drug label below by dragging the tablets into the correct boxes.</h2>
+    
+    <table id="labelButtonArea" border="0px">
     	<tr>
-        	<td align="center">
-    			<div id="instructionLabel" class="border">Take two tablets at lunch.</div>
+        	<td id="labelSection" align="center">
+        		<div id="labelWrapper">
+	    			<div id="instructionLabel" class="border">Take two tablets at lunch.</div>
+	    		</div>
     		</td>
-        	<td align="right" width=30%>
+        	<td id="labelButtonSection" align="right" width=30%>
             	<button id="largerFontBtn" class="buttonOrange">Touch here if you cannot read label</button>
         	</td>
         </tr>
     </tables>
     
-    <table id="tableOfTablets" align="center">
+    <table id="tableOfTablets" align="center" border="0px">
         <tr>
             <td><div id="pill1" class="touchBox"><div class="pillLabel">Pill</div></div></td>
             <td><div id="pill1" class="touchBox"><div class="pillLabel">Pill</div></div></td>
@@ -63,6 +66,5 @@
     	<td><div align=left><button id="cancel" class="button" href="index.html">Cancel</button></div></td>
     	<td align="right"><button id="done" class="button" >Touch here when done</button></td>
     </tr></table>
-
 </body>
 </html>

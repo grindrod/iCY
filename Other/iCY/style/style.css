@@ -92,7 +92,7 @@ h1{
 
 #tableOfTablets td {
 	width: 16.667%; 
-	height: 140px;
+	height: 130px;
 }
 
 .alignTimeBox
@@ -106,5 +106,6 @@ h1{
 	margin-left: 200px;
 	margin-right: 200px;
 	border-style: dashed;
-	border-color: #000000
+	border-color: #000000;
+	border-spacing: 30px;
 }
