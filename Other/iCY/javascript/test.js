@@ -14,8 +14,12 @@ $(document).ready(function() {
 		window.location = "index.html"
 	};
 	
-	document.getElementById('largerFontBtn').ontouchend = makeItBig;
-	document.getElementById('largerFontBtn').onclick = makeItBig;
+	//document.getElementById('largerFontBtn').ontouchend = function(){
+	document.getElementById('largerFontBtn').onclick = function(){
+		console.log('largerFontBtn clicked');
+		$('#largerFontBtn').attr('disabled', true);
+		newLabelAnimation();
+	};
 		
 	//document.getElementById('done').ontouchend = function(){ 
 	document.getElementById('done').onclick = function(){ 
@@ -34,9 +38,9 @@ $(document).ready(function() {
 	$('#instructionLabel').css('font-size', labelOrder[instructionSizeLevel] )
 	console.log("instructionSize: " + labelOrder[instructionSizeLevel]);
     
-    for (var i in expectedResult) {
+    /*for (var i in expectedResult) {
 		console.log('key is: ' + i + ', value is: ' + expectedResult[i]);
-	}
+	}*/
 });
 
 var boundedRandomNumber = function(from, to){
@@ -178,8 +182,7 @@ function checkContents()
 
 function makeItBig()
 {	
-	console.log("instructionSizeLevel: " + instructionSizeLevel);
-	if ( instructionSizeLevel < 3) {		// since there are 4 levels of font sizes
+	if ( instructionSizeLevel < (labelOrder.length - 1) ) {
 		instructionSizeLevel++;
 		$('#instructionLabel').css("font-size", labelOrder[instructionSizeLevel] );
 	
@@ -191,6 +194,23 @@ function makeItBig()
 		window.location = "patientfinished.html"; 
 		return 1; 
 	}
+}
+
+var newLabelAnimation = function(){
+	$('#instructionLabel').hide(
+		"slide", {direction: "right"}, 5000, function(){ 
+			$('#instructionLabel').css('right', 0);
+			makeItBig();
+			console.log("instructionSize: " + labelOrder[instructionSizeLevel]);
+			storage.setItem('instructionSizeLevel', instructionSizeLevel);
+		}
+	);
+	
+	$('#instructionLabel').show(
+		"slide", {direction: "left"}, 5000, function() {
+			$('#largerFontBtn').attr('disabled', false);
+		}
+	);
 }
 
 function dragOutPill()
