@@ -8,7 +8,7 @@ var labelOrder = new Array ( "9pt", "12pt", "15pt", "18pt");
 var boxes = ['drop1row1','drop1row2','drop2row1','drop2row2','drop3row1','drop3row2','drop4row1','drop4row2'];
 
 var storage = window.localStorage;
-var instructionSizeLevel = storage.getItem('instructionSizeLevel');
+var instructionSizeLevel = storage.getItem('instructionSizeLevel');		// from options menu
 
 var objectRef1, objectRef2;
 
@@ -20,21 +20,18 @@ $(document).ready(function() {
 		window.location = "index.html"
 	};
 	
-	document.getElementById('largerFontBtn').ontouchend = function(){
-	//document.getElementById('largerFontBtn').onclick = function(){
+	//document.getElementById('largerFontBtn').ontouchend = function(){
+	document.getElementById('largerFontBtn').onclick = function(){
 		console.log('largerFontBtn clicked');
-		$('#largerFontBtn').attr('disabled', true);
 		newLabelAnimation();
 	};
 		
-	document.getElementById('done').ontouchend = function(){ 
-	//document.getElementById('done').onclick = function(){ 
+	//document.getElementById('done').ontouchend = function(){ 
+	document.getElementById('done').onclick = function(){ 
 		if (checkContents() === true){ window.location = "patientfinished.html"; }
 		else { 
-			if ( makeItBig() === 0 ) {
-				storage.setItem('instructionSizeLevel', instructionSizeLevel);
-				window.location.reload();
-			}
+			newLabelAnimation();
+			reset();
 		}
     };
     
@@ -268,43 +265,27 @@ function makeItBig()
 		instructionSizeLevel++;
 		$('#instructionLabel').css("font-size", labelOrder[instructionSizeLevel] );
 	
-		//alert ( "font size: " + labelOrder[instructionSizeLevel] + ", " +  $('#instructionLabel').css('font-size'));
-		return 0;
+		console.log ( "font size: " + labelOrder[instructionSizeLevel] + ", " +  $('#instructionLabel').css('font-size'));
 	}
 	else {
-		//alert ("Max font size reached");
+		console.log ("Max font size reached");
 		window.location = "patientfinished.html"; 
-		return 1; 
 	}
 }
 
 var newLabelAnimation = function(){
 	var labelWidth = $('#instructionLabel').outerWidth();
-
+	
+	$('#largerFontBtn').attr('disabled', true);
+	$('#done').attr('disabled', true);
 	$('#instructionLabel').animate( {left: labelWidth }, 3000, function() { 
 		makeItBig();
 		$('#instructionLabel').css('left', -labelWidth);
 		$('#instructionLabel').animate( {left: "0px" }, 3000, function() {
 			$('#largerFontBtn').attr('disabled', false);
+			$('#done').attr('disabled', false);
 		});
-		//storage.setItem('instructionSizeLevel', instructionSizeLevel); //unnecessary if no refresh
 	});
-
-	//works with query effects library, but dragging no longer works
-	/*$('#instructionLabel').hide(
-		"slide", {direction: "right"}, 5000, function(){ 
-			$('#instructionLabel').css('right', 0);
-			makeItBig();
-			console.log("instructionSize: " + labelOrder[instructionSizeLevel]);
-			storage.setItem('instructionSizeLevel', instructionSizeLevel);
-		}
-	);
-	
-	$('#instructionLabel').show(
-		"slide", {direction: "left"}, 5000, function() {
-			$('#largerFontBtn').attr('disabled', false);
-		}
-	);*/
 }
 
 
@@ -356,7 +337,7 @@ function reDrawPills(parentCell)
 }
 
 //Function that removes everything.
-function refresh()
+function reset()
 {
 	for(var i = 0; i<boxes.length; i++)
 	{
