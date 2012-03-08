@@ -37,9 +37,8 @@ h1{
 
 .droppedBox
 {
-    width: 15px;
-	height:15px;
-	margin: 10px;
+
+	
 	background-color: green;
 	font-weight: bold;
 	font-size: 14px;
@@ -86,6 +85,7 @@ h1{
 	border:#777 solid 3px;
 	text-align:center;
 }
+
 .dhover{
 	border:#f66 dotted 3px;
 }
