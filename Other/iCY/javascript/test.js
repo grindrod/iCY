@@ -20,15 +20,15 @@ $(document).ready(function() {
 		window.location = "index.html"
 	};
 	
-	//document.getElementById('largerFontBtn').ontouchend = function(){
-	document.getElementById('largerFontBtn').onclick = function(){
+	document.getElementById('largerFontBtn').ontouchend = function(){
+	//document.getElementById('largerFontBtn').onclick = function(){
 		console.log('largerFontBtn clicked');
 		$('#largerFontBtn').attr('disabled', true);
 		newLabelAnimation();
 	};
 		
-	//document.getElementById('done').ontouchend = function(){ 
-	document.getElementById('done').onclick = function(){ 
+	document.getElementById('done').ontouchend = function(){ 
+	//document.getElementById('done').onclick = function(){ 
 		if (checkContents() === true){ window.location = "patientfinished.html"; }
 		else { 
 			if ( makeItBig() === 0 ) {
@@ -284,8 +284,9 @@ var newLabelAnimation = function(){
 	$('#instructionLabel').animate( {left: labelWidth }, 3000, function() { 
 		makeItBig();
 		$('#instructionLabel').css('left', -labelWidth);
-		$('#instructionLabel').animate( {left: "0px" }, 3000);
-		$('#largerFontBtn').attr('disabled', false);
+		$('#instructionLabel').animate( {left: "0px" }, 3000, function() {
+			$('#largerFontBtn').attr('disabled', false);
+		});
 		//storage.setItem('instructionSizeLevel', instructionSizeLevel); //unnecessary if no refresh
 	});
 
