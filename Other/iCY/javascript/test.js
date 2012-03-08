@@ -280,7 +280,18 @@ function makeItBig()
 }
 
 var newLabelAnimation = function(){
-	$('#instructionLabel').hide(
+	var labelWidth = $('#instructionLabel').outerWidth();
+
+	$('#instructionLabel').animate( {left: labelWidth }, 3000, function() { 
+		makeItBig();
+		$('#instructionLabel').css('left', -labelWidth);
+		$('#instructionLabel').animate( {left: "0px" }, 3000);
+		$('#largerFontBtn').attr('disabled', false);
+		//storage.setItem('instructionSizeLevel', instructionSizeLevel); //unnecessary if no refresh
+	});
+
+	//works with query effects library, but dragging no longer works
+	/*$('#instructionLabel').hide(
 		"slide", {direction: "right"}, 5000, function(){ 
 			$('#instructionLabel').css('right', 0);
 			makeItBig();
@@ -293,8 +304,9 @@ var newLabelAnimation = function(){
 		"slide", {direction: "left"}, 5000, function() {
 			$('#largerFontBtn').attr('disabled', false);
 		}
-	);
+	);*/
 }
+
 
 function dragOutDroppedPill()
 {

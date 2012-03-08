@@ -36,42 +36,31 @@ body, html {
 
 .border { 
 	position: relative;
+	display: table-cell;
+	vertical-align: middle;
+	width: 100%;
 	border-width: .2em; 
 	border-style: solid; 
 	border-color: #000;
 	padding: 5%;
 	left: 0px;
-	/*height: 50px;
-	width: 600px; */
 } 
 
-#labelSection {
-	border-width: .2em; 
-	border-style: solid; 
-	border-color: blue;
-	margin-left: 10%;
-	margin-right: 10%;
-	top: 0;
-	margin-top: 0;
+#labelButtonArea{
+	height: 150px;
 }
 
-#labelInstructionArea {
-	position: relative;
-	border-width: .2em; 
-	border-style: dotted; 
-	border-color: red;
-	width: 60%;
+#labelWrapper{
+	background-color: transparent;
+	overflow: hidden;
 	height: 100%;
-	margin-left: 0px;
+	width: 100%;
+	display: table;
 }
 
-#labelBigger {
-	/*position: relative;*/
-	width: 25%;
-	/*border-width: .1em; 
-	border-style: dotted; 
-	border-color: orange;*/
-}
+
+
+
 
 .button {
             -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
