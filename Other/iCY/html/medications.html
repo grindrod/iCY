@@ -3,6 +3,7 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
             <title>ClereMed</title>
+            <link rel="stylesheet" href="../style/common.css" />
             
             <!--to change later-->
             
@@ -19,8 +20,8 @@
 	<body>
 	<div id="main" data-role="page">
 		<div data-role="content">
-			<h1>Medications</h1>
-			<h2>Select any of the patient's medications/medical conditions that could contribute to poor vision</h2>
+			<div id="checkboxPage"><h2>Medications</h2>
+			Select any of the patient's medications/medical conditions that could contribute to poor vision
                     
             <fieldset id="choices" class="ui-grid-a">
                 <div class="ui-block-a">
@@ -61,13 +62,17 @@
 				</div>
 			</fieldset>
 			
+			
 		</div>
 
 		
 		<a href="advice.html" data-ajax="false" data-role="button" data-theme="b">Done</a>
 		<a href="advice.html" data-ajax="false" data-role="button">Skip</a>
 		
-		<div align=left class="cancelBtn"><a href="index.html" data-ajax=false data-role="button" data-inline="true">Cancel</a></div>
+		<button data-role="none" id="cancel" class="pinkBtn cancelBtn"
+			onclick="window.location.href='index.html'" 
+    		ontouchend="window.location.href='index.html'">Cancel</button>
+    	</div>
 	</div>
 	
 	

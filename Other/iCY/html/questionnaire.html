@@ -4,6 +4,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
     	<title>ClereMed</title>
     	
+    	<link rel="stylesheet" href="../style/common.css" />
+    	
     	<!--to change later-->
     	<link rel="stylesheet" href="../style/lib/jquery.mobile-1.0.1.min.css" />
 		<script src="../javascript/lib/jquery-1.6.4.min.js"></script>
@@ -11,7 +13,6 @@
 		
 		<!--link type="text/css" rel="stylesheet" href="../style/jquery.mobile-1.0.1.min.css" />
 		<script src="../javascript/jquery.mobile-1.0.1.min.js"></script></script-->
-		<link rel="stylesheet" href="../style/common.css" />
 		<link rel="stylesheet" href="../style/cleremed.min.css" />
 		<!--script src="../javascript/zepto.min.js"></script-->
 		<script src="../javascript/questionnaire.js"></script>
@@ -91,10 +92,13 @@
 			</table>
 			
 		</div>
-		
-		<a href="test.html" data-ajax=false data-role="button" data-theme="b" class="doneBtn">Touch here when done</a>
-		
-		<div align=left class="cancelBtn"><a href="index.html" data-ajax=false data-role="button" data-inline="true">Cancel</a></div>
+    
+    	<button data-role="none" id="cancel" class="pinkBtn cancelBtn" onclick="window.location.href='index.html'" 
+    		ontouchend="window.location.href='index.html'">Cancel</button>
+	    <button data-role="none" id="done" class="greenBtn doneBtn" 
+	    	onclick="window.location.href='test.html'" 
+    		ontouchend="window.location.href='test.html'">Touch here when done</button>
+	    
 	</div></body>
 	
 </htm>
