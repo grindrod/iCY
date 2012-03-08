@@ -16,6 +16,8 @@ var objectRef1, objectRef2;
 var pillCount=100;
 var pillIdCount = 200;
 
+var currentObj;
+
 $(document).ready(function() {
 	document.getElementById('cancel').ontouchend = function(){ 
 		window.location = "index.html"
@@ -185,6 +187,7 @@ head.js("../javascript/lib/jquery.min.js","../javascript/ui.js","../javascript/t
         	show($(this).attr("data-row1"), $(this).attr("data-row2"));
         	
         	//$(ui.draggable).remove();
+        	resizePills($(this).attr("data-row1"), $(this).attr("data-row2"));
         	$(ui.draggable).css({'opacity':'0'});
         	
         	$(this).css({'border':'#777 solid 3px','background':'#eee', 'width':'125px', 'height':'125px'});
@@ -199,8 +202,9 @@ head.js("../javascript/lib/jquery.min.js","../javascript/ui.js","../javascript/t
 	});
 });
 
-var currentObj;
 
+
+//Generates the dropped pills
 function show(row1, row2){
 	var row1 = document.getElementById(row1);
 	var row2 = document.getElementById(row2);
@@ -220,13 +224,15 @@ function show(row1, row2){
     	
     	cell.setAttribute('id', pillCount);
     	
+    	
     	if(row1.childElementCount == 0)
     	{
     		$(obj).css({'width':'80px', 'height':'80px'});
     		$(obj).css({'margin-left':'20px'});
 
-    		objectRef1 = obj;
+    		//objectRef1 = obj;
     	}
+    	
     	if(row1.childElementCount == 1)
     	{
     		$(objectRef1).css({'width':'50px', 'height':'50px', 'margin-left':'5px'});
@@ -234,10 +240,13 @@ function show(row1, row2){
     		objectRef2 = obj;
     	}
     	
+    	
     
     	cell.appendChild(obj);
     	row1.appendChild(cell);
+    	
     }
+
     else
     {
 		var cell = document.createElement('td');
@@ -251,33 +260,48 @@ function show(row1, row2){
     	
     	cell.setAttribute('id', pillCount);
     
-    if(row1.childElementCount == 2)
+    /*
+    	if(row1.childElementCount == 2)
     	{
     		$(objectRef1).css({'width':'35px', 'height':'35px','margin-left':'20px'});
     		$(objectRef2).css({'width':'35px', 'height':'35px','margin-left':'5px'});
     		$(obj).css({'width':'35px', 'height':'35px','margin-left':'20px'});
     	}
-    
+    */
     	cell.appendChild(obj);
     	row2.appendChild(cell);
+    	
     }
 	
 	pillCount++;
 	pillIdCount++;
 	dragOutDroppedPill();
-	reDrawPills(parentCell)
 }
+
+//Makes the pills droppable objects. Also, handles the functionality of dropping the pills back 
+//from the dropped boxes.
 
 function revivePill()
 {
 	head.js("../javascript/lib/jquery.min.js","../javascript/ui.js","../javascript/touch.js", function (){
 	$('.touchBox').droppable({
+		
 		accept: ".droppedBox",
 		drop: function( event, ui ) {
+        	var get1 = $(currentObj).parent().parent().parent().children().first().attr('id');
+        	var get2 = $(currentObj).parent().parent().parent().children().last().attr('id');
+        	
+        	if($(this).css('opacity') != 0)
+    		{
+				$(".touchBox").draggable({disable:true});
+    		}
+        	else
+        	{
+        		$(currentObj).remove();
+        		deleteCell();
+        	}
+        	resizePills(get1, get2);
         	$(this).css({'opacity':'0.75'});
-        	console.log($(currentObj).attr('data-pillCount'));
-        	$(currentObj).remove();
-        	deleteCell();
         	
     	},
     	
@@ -296,7 +320,8 @@ function revivePill()
 }
 
 
-function dragOutDroppedPill()
+//Enabling the dropped pills to become draggable.
+function dragOutDroppedPill(e)
 {
 	head.js("../javascript/lib/jquery.min.js","../javascript/ui.js","../javascript/touch.js", function (){
 	$(".droppedBox").draggable({revert:true, handle: function(){ 
@@ -307,38 +332,56 @@ function dragOutDroppedPill()
 	});
 }
 
-var parentCell;
-
+//Deletes the cell from which the current pill is taken.
 function deleteCell()
 {
 	var cell = document.getElementById($(currentObj).attr('data-pillCount'));
-	parentCell = $(cell).parent().attr('id');
+	var	parentCell = $(cell).parent().attr('id');
 	
 	$(cell).remove();
-	reDrawPills(parentCell);
 }
 
-function reDrawPills(parentCell)
-{
-	console.log('hello');
-	var pCell = $('#' + parentCell);
+//Function responsible for resizing pills as they are dragged out.
+function resizePills(id1, id2)
+{	
+	var one = document.getElementById(id1);
+	var two = document.getElementById(id2);
 	
+	var total = one.childElementCount + two.childElementCount;
 	
-	if(pCell.parent().children().first().length === 1 && pCell.parent().children().last().length === 1)
+	if(total == 1)
 	{
-		var urgh = pCell.parent().children().first().children().attr('id');
-		$('#'+urgh).css({'width':'50px', 'height':'50px', 'margin-left':'20px'});
+		$('#'+id1).children().children().first().css({'width':'80px', 'height':'80px', 'margin-left':'20px'});
+		$('#'+id1).children().children().last().css({'width':'80px', 'height':'80px', 'margin-left':'20px'});
 		
-		var urgh1 = pCell.parent().children().last().children().attr('id');
-		$('#'+urgh1).css({'width':'50px', 'height':'50px', 'margin-left':'20px'});
-		
-	};
+		$('#'+id2).children().children().first().css({'width':'80px', 'height':'80px', 'margin-left':'20px'});
+		$('#'+id2).children().children().last().css({'width':'80px', 'height':'80px', 'margin-left':'20px'});
+	}
 	
-	if(pCell.children().length === 1)
+	if(total == 2)
 	{
-		var urgh = pCell.children().children().attr('id');
-		$('#'+urgh).css({'width':'80px', 'height':'80px', 'margin-left':'20px'});
+		$('#'+id1).children().children().first().css({'width':'40px', 'height':'40px', 'margin-left':'20px','margin-top':'-5px'});
+		$('#'+id1).children().children().last().css({'width':'40px', 'height':'40px', 'margin-left':'2px','margin-top':'-5px'});
 		
-	};
+		$('#'+id2).children().children().first().css({'width':'40px', 'height':'40px', 'margin-left':'20px'});
+		$('#'+id2).children().children().last().css({'width':'40px', 'height':'40px', 'margin-left':'2px'});
+	}
 	
+	if(total == 3)
+	{
+		$('#'+id1).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
+		$('#'+id1).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
+		
+		$('#'+id2).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
+		$('#'+id2).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
+	}
+	
+	if(total == 4)
+	{
+		$('#'+id1).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
+		$('#'+id1).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
+		
+		$('#'+id2).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
+		$('#'+id2).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
+	}
 }
