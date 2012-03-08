@@ -3,6 +3,7 @@ expectedResult['breakfast'] = 0;
 expectedResult['lunch'] = 0;
 expectedResult['dinner'] = 0;
 expectedResult['bedtime'] = 0;
+var TIMESLOTS = new Array ("breakfast", "lunch", "dinner", "bedtime" );
 
 var labelOrder = new Array ( "9pt", "12pt", "15pt", "18pt");
 var boxes = ['drop1row1','drop1row2','drop2row1','drop2row2','drop3row1','drop3row2','drop4row1','drop4row2'];
@@ -28,7 +29,7 @@ $(document).ready(function() {
 		
 	//document.getElementById('done').ontouchend = function(){ 
 	document.getElementById('done').onclick = function(){ 
-		if (checkContents() === true){ window.location = "patientfinished.html"; }
+		if (validateContents() === true){ window.location = "patientfinished.html"; }
 		else { 
 			newLabelAnimation();
 			reset();
@@ -46,6 +47,10 @@ $(document).ready(function() {
 	}*/
 });
 
+
+//////////////////////////////////////////////
+//		PRESCRIPTION LABEL GENERATION		//
+//////////////////////////////////////////////
 var boundedRandomNumber = function(from, to){
 	return Math.floor(Math.random() * (to - from + 1) + from);
 }
@@ -56,7 +61,7 @@ var descendingTime = function(a, b){
 }
 
 var generateInstruction = function() {
-	var timeslots = new Array ( "breakfast", "lunch", "dinner", "bedtime"),
+	var originalTimeslots = TIMESLOTS.slice(),
 		wordArray = new Array ("no", "one", "two", "three"),
 		selectedTimeslots = new Array(),
 		tabletArray = new Array(), 
@@ -78,9 +83,9 @@ var generateInstruction = function() {
 		}
 		tabletArray.push(numTablets);
 		
-		randomSlot = Math.floor(Math.random() * timeslots.length); 
-		selectedTimeslots.push( timeslots[randomSlot] ); 
-		timeslots.splice(randomSlot, 1);
+		randomSlot = Math.floor(Math.random() * originalTimeslots.length); 
+		selectedTimeslots.push( originalTimeslots[randomSlot] ); 
+		originalTimeslots.splice(randomSlot, 1);
 	}
 	
 	selectedTimeslots.sort( descendingTime );
@@ -97,6 +102,76 @@ var generateInstruction = function() {
 	return instructionString;
 }
 
+//////////////////////////////////////////////
+//			  TEST VALIDATION  				//
+//////////////////////////////////////////////
+var validateContents = function(){
+	var result = new Array(), 
+		box;
+
+	for (var i=0; i < TIMESLOTS.length; i++){
+		box = document.getElementById( TIMESLOTS[i] );
+		result[ TIMESLOTS[i] ] = box.getElementsByTagName('div').length;
+	}
+	
+	for (var i in result){
+		console.log('timeslot ' + i + ': ' + result[i]);
+		if ( result[i] != expectedResult[i] ) {
+			return false;
+		}
+	}
+	return true;
+}
+
+//////////////////////////////////////////////
+//				ACTION ON FAILURE			//
+//////////////////////////////////////////////
+function makeItBig()
+{	
+	if ( instructionSizeLevel < (labelOrder.length - 1) ) {
+		instructionSizeLevel++;
+		$('#instructionLabel').css("font-size", labelOrder[instructionSizeLevel] );
+	
+		console.log ( "font size: " + labelOrder[instructionSizeLevel] + ", " +  $('#instructionLabel').css('font-size'));
+	}
+	else {
+		console.log ("Max font size reached");
+		window.location = "patientfinished.html"; 
+	}
+}
+
+// Originally from JQuery UI Effects - Slide
+var newLabelAnimation = function(){
+	var labelWidth = $('#instructionLabel').outerWidth();
+	
+	$('#largerFontBtn').attr('disabled', true);
+	$('#done').attr('disabled', true);
+	$('#instructionLabel').animate( {left: labelWidth }, 3000, function() { 
+		makeItBig();
+		$('#instructionLabel').css('left', -labelWidth);
+		$('#instructionLabel').animate( {left: "0px" }, 3000, function() {
+			$('#largerFontBtn').attr('disabled', false);
+			$('#done').attr('disabled', false);
+		});
+	});
+}
+
+//Function that removes everything.
+function reset()
+{
+	for(var i = 0; i<boxes.length; i++)
+	{
+		$('#'+boxes[i]).empty();
+	}
+	
+	$('.touchBox').css('opacity','0.75');
+}
+
+
+
+//////////////////////////////////////////////
+//			  DRAGGING PILLS  				//
+//////////////////////////////////////////////
 var anotherArray = ['breakfast', 'lunch', 'dinner', 'bedtime'];
 
 
@@ -220,74 +295,6 @@ function revivePill()
 	
 }
 
-function checkContents()
-{
-	var pillTimes = ['breakfast', 'lunch', 'dinner', 'bedtime'];
-	var count1 = 0;
-	var count2;
-	var total = 0;
-	var success = false;
-	
-	for(count2 = 1; count2 < boxes.length +1; count2++)
-	{
-		var tmpElement = document.getElementById(boxes[count2 - 1]);
-				
-		total += tmpElement.childElementCount;
-		
-		if(count2 % 2 == 0)
-		{
-			if(expectedResult[pillTimes[count1]] != 0)
-			{
-				
-				if(total == expectedResult[pillTimes[count1]])
-				{
-					console.log(pillTimes[count1] + ' Correct!');
-					success = true;
-				}
-				else
-				{
-					console.log(pillTimes[count1] + ' Wrong! ');
-				}
-			}
-			
-			total = 0;
-			count1 = count1+1;
-		}
-	}
-	return success; 
-
-
-}
-
-function makeItBig()
-{	
-	if ( instructionSizeLevel < (labelOrder.length - 1) ) {
-		instructionSizeLevel++;
-		$('#instructionLabel').css("font-size", labelOrder[instructionSizeLevel] );
-	
-		console.log ( "font size: " + labelOrder[instructionSizeLevel] + ", " +  $('#instructionLabel').css('font-size'));
-	}
-	else {
-		console.log ("Max font size reached");
-		window.location = "patientfinished.html"; 
-	}
-}
-
-var newLabelAnimation = function(){
-	var labelWidth = $('#instructionLabel').outerWidth();
-	
-	$('#largerFontBtn').attr('disabled', true);
-	$('#done').attr('disabled', true);
-	$('#instructionLabel').animate( {left: labelWidth }, 3000, function() { 
-		makeItBig();
-		$('#instructionLabel').css('left', -labelWidth);
-		$('#instructionLabel').animate( {left: "0px" }, 3000, function() {
-			$('#largerFontBtn').attr('disabled', false);
-			$('#done').attr('disabled', false);
-		});
-	});
-}
-
 
 function dragOutDroppedPill()
 {
@@ -334,15 +341,4 @@ function reDrawPills(parentCell)
 		
 	};
 	
-}
-
-//Function that removes everything.
-function reset()
-{
-	for(var i = 0; i<boxes.length; i++)
-	{
-		$('#'+boxes[i]).empty();
-	}
-	
-	$('.touchBox').css('opacity','0.75');
 }
