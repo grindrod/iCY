@@ -6,17 +6,25 @@
     	
 		<link rel="stylesheet" href="../style/common.css" />
 		<link rel="stylesheet" href="../style/cleremed.min.css" />
+		
+		<style>
+		#marginAdjust {
+			margin-top: 10%;
+		}
+		</style>
     
 	</head>
 	
 	<body><div data-role="page" data-theme="a">
 		
 		<div data-role="content" class="center-wrapper">
-			<h1>You are done! <br /><br />
+			<h1 id="marginAdjust">You are done! <br /><br />
 			Show this screen to the pharmacist.</h1>
 		</div>
 		<br />
-		<button href="medications.html" id="pharmacistBtn" name="pharmacistBtn" class="redBtn">Pharmacist access</button>		
+		<button id="pharmacistBtn" name="pharmacistBtn" class="redBtn" 
+			onclick="window.location.href='medications.html'"
+			ontouchend="window.location.href='medications.html'">Pharmacist access</button>
 		
 		<button data-role="none" id="cancel" class="pinkBtn cancelBtn"
 			onclick="window.location.href='index.html'" 

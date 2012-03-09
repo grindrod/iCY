@@ -11,21 +11,29 @@
     		
     		window.localStorage.clear();
     		
-    		localStorage.setItem('instructionSizeLevel', JSON.parse(retrievedObject));
+    		localStorage.setItem('instructionSizeLevel', retrievedObject);
+    		console.log("retrievedObject" + retrievedObject);
     		
     		document.ontouchmove = function(e){ e.preventDefault(); }
     	</script>
 		<link rel="stylesheet" href="../style/common.css" />
 		<link rel="stylesheet" href="../style/cleremed.min.css" />
+		
+		<style>
+			#indexText {
+				position: absolute;
+				top: 35%;
+			}
+		</style>
     
 	</head>
 
-	<body>
+	<body class="center-wrapper">
 		<br /><h1>ClereMed</h1>
 
-		<br /><h1>Welcome! This is a quick screen of your ability to read medication labels.</h1>	
+		<h1 id="indexText">Welcome! This is a quick screen of your ability to read medication labels.</h1>
 		
-		<button id="indexNext" class="greenBtn indexBtn" ontouchend="window.location.href='questionnaire.html'" onclick="window.location.href='questionnaire.html'">Touch here to start -></button>
+		<button id="indexNext" class="greenBtn indexBtn" ontouchend="window.location.href='questionnaire1.html'" onclick="window.location.href='questionnaire1.html'">Touch here to start -></button>
 	</body>
 
 </html>
