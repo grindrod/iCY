@@ -6,13 +6,15 @@
             
             <!--to change later-->
             <link rel="stylesheet" href="../style/lib/jquery.mobile-1.0.1.min.css" />
+            <link rel="stylesheet" href="../style/advice.css"></link>
             <script src="../javascript/lib/jquery-1.6.4.min.js"></script>
             <script src="../javascript/lib/jquery.mobile-1.0.1.min.js"></script>
+            <script src="../javascript/advice.js"></script>
             
             </head>
 	
 	<body><div data-role="page">
-		<div data-role="content">
+		<div data-role="content"  onclick="closeOptions();">
 			<h1 align="center">Advice for Pharmacy Staff</h1>
 			<table border="0px" cellspacing="4" cellpadding="10" width="500em" align="center"><tr>
             <td></td>
@@ -27,8 +29,21 @@
             </td>
             <td></td>
             </tr></table>
-            
-        <div align=left><a href="index.html" data-ajax=false data-role="button" data-inline="true" data-icon="home">Start over</a></div></div>
+        
+        <div id="popupOptionsForPharmacy">
+        	<fieldset data-role="controlgroup">
+				<h3>What is the smallest level font size printed at your pharmacy?</h3>
+					<input type="radio" name="radio-choice-1" id="radio-choice-1" value="font9pt" onclick="fontOption(this.value);"/>
+					<label for="radio-choice-1"><div id="advice_9point">9pt font (this text is 9-point font)</div></label>
+			
+					<input type="radio" name="radio-choice-1" id="radio-choice-2" value="font12pt" onclick="fontOption(this.value);"/>
+					<label for="radio-choice-2"><div id="advice_12point">12pt font (this text is 12-point font)</div></label>
+			</fieldset>
+        </div>
+        
+        <div align=left id="advice_startOver"><a href="index.html" data-ajax=false data-role="button" data-inline="true" data-icon="home">Start over</a></div></div>
+        <div align=center id="advice_options" ><a data-ajax=false data-role="button" data-inline="true" data-icon="arrow-u" onclick="popOptions();">options</a></div></div>
+
 	</div></body>
 	
 </htm>
