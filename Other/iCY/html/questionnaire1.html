@@ -23,17 +23,11 @@
 		<!--div align=right><a href="index.html" data-ajax=false data-role="button" data-inline="true" data-icon="home">Start over</a></div-->
 		
 		<div data-role="content" class="centreMargin">
-			<!--h5 align="center">Touch any box to check it.</h5-->
+			<h2 class="center-wrapper titleSqueeze">Touch any box to check it.</h2>
 			
-			<table width=100%><tr>
-			<tr><td width=60%>Do you use...</td>
-				<td width=40%>Do you have difficulty reading...</td>
-			</tr>
-			
-			<td valign="top">
-			<div data-role="fieldcontain" id="aidsUsed">
+			<h5 class="checkboxSqueeze">Do you use...</h5>
+			<div data-role="fieldcontain" id="aidsUsed" class="checkboxSqueeze">
     			<fieldset data-role="controlgroup">
-    			
     			   <div id="glassesContainer">
 				   		<input type="checkbox" name="glasses" id="glasses" class="custom" value="glasses or contact lenses" />
 				   		<label for="glasses" data-iconpos="right" id="glassesLabel" value="glasses or contact lenses">Glasses or contact lenses</label>
@@ -68,36 +62,13 @@
 				   <label for="largeprint" data-iconpos="right">Large print materials</label>
 				</fieldset>
 			</div>
-			</td>
-			
-			<td valign="top">
-			<div data-role="fieldcontain">
-    			<fieldset data-role="controlgroup">
-				   <!--legend>Agree to the terms:</legend-->
-				   <input type="checkbox" name="prescription" id="prescription" class="custom" />
-				   <label for="prescription" data-iconpos="right">Prescription labels</label>
-				   
-				   <input type="checkbox" name="nonprescription" id="nonprescription" class="custom" />
-				   <label for="nonprescription" data-iconpos="right">Non-prescription labels</label>
-				   
-				   <input type="checkbox" name="worn" id="worn" class="custom" />
-				   <label for="worn" data-iconpos="right">Worn prescription labels</label>
-				   
-				   <input type="checkbox" name="glossy" id="glossy" class="custom" />
-				   <label for="glossy" data-iconpos="right">Glossy papers (magazines)</label>
-				</fieldset>
-			</div>
-			</td>
-			</tr>
-			</table>
-			
 		</div>
     
     	<button data-role="none" id="cancel" class="pinkBtn cancelBtn" onclick="window.location.href='index.html'" 
     		ontouchend="window.location.href='index.html'">Cancel</button>
 	    <button data-role="none" id="done" class="greenBtn doneBtn" 
-	    	onclick="window.location.href='test.html'" 
-    		ontouchend="window.location.href='test.html'">Touch here when done</button>
+	    	onclick="window.location.href='questionnaire2.html'" 
+    		ontouchend="window.location.href='questionnaire2.html'">Touch here when done</button>
 	    
 	</div></body>
 	
