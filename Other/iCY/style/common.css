@@ -32,15 +32,22 @@ body, html {
 	position: fixed;
     bottom: 2%;
     left: 1%;
-    width: 80px;
+    width: 100px;
+    height: 40px;
 }
 
 .startBtn{
 	position: fixed;
     bottom: 2%;
     left: 1%;
-    width: 110px;
+    width: 140px;
+    height: 40px;
 }
+
+.modalCancelBtn{
+	width: 100px; 
+}
+
 
 .doneBtn{
 	position: fixed;
@@ -50,6 +57,18 @@ body, html {
     height: 10%;
     font-size: 25pt;
     font-weight: 700;
+}
+
+.longBtn {
+	width: 94%;
+	height: 40px;
+	margin-top: 7px;
+	margin-bottom: 7px;
+	font-size: 18pt; 
+}
+
+.modalDoneBtn{
+	width: 100px;
 }
 
 .border { 
@@ -172,6 +191,7 @@ body, html {
     border-style: solid;
     text-align: center;
     color: #ffffff;
+    font-size: 18pt;
 }
 
 .pinkBtn {
@@ -182,9 +202,8 @@ body, html {
     -moz-box-shadow: 2px 2px 1px 1px #141313;
     box-shadow: 2px 2px 1px 1px #141313;*/
     text-align: center;
-    font-size: 18px;
+    font-size: 18pt;
     color: #000000 !important;
-    height: 40px;
 }
 
 .indexBtn {
