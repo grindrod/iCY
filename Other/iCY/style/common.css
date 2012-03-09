@@ -227,14 +227,17 @@ body, html {
 	padding:15px 76px;
 	text-decoration:none;
 	text-shadow:1px 1px 0px #fa4949;
+	width: 75%;
 }.redBtn:hover {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff0000), color-stop(1, #f79e9e) );
 	background:-moz-linear-gradient( center top, #ff0000 5%, #f79e9e 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0000', endColorstr='#f79e9e');
 	background-color:#ff0000;
+	width: 75%;
 }.redBtn:active {
 	position:relative;
 	top:1px;
+	width: 75%;
 }
 
 .indexBtn {
