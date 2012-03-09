@@ -210,10 +210,10 @@ body, html {
     color: #000000 !important;
 }
 
-<<<<<<< HEAD
 .pinkBtn:disabled{	/*TEMPORARY!*/
 	color: #686868;
-=======
+}
+
 .redBtn
 {
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -246,7 +246,6 @@ body, html {
 	position:relative;
 	top:1px;
 	width: 75%;
->>>>>>> 5290882d10baa1422f36c6c60bbc9eda55904b15
 }
 
 .indexBtn {
