@@ -6,7 +6,13 @@
     	<title>ClereMed</title>
     	
     	<script>
+    		
+    		var retrievedObject = localStorage.getItem('instructionSizeLevel');
+    		
     		window.localStorage.clear();
+    		
+    		localStorage.setItem('instructionSizeLevel', JSON.parse(retrievedObject));
+    		
     		document.ontouchmove = function(e){ e.preventDefault(); }
     	</script>
 		<link rel="stylesheet" href="../style/common.css" />
