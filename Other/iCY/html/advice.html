@@ -6,15 +6,17 @@
             
             <!--to change later-->
             <link rel="stylesheet" href="../style/lib/jquery.mobile-1.0.1.min.css" />
+            <link rel="stylesheet" href="../style/advice.css"></link>
             <script src="../javascript/lib/jquery-1.6.4.min.js"></script>
             <script src="../javascript/lib/jquery.mobile-1.0.1.min.js"></script>
+            <script src="../javascript/advice.js"></script>
             
             <link rel="stylesheet" href="../style/common.css" />
             
             </head>
 	
 	<body><div data-role="page">
-		<div data-role="content">
+		<div data-role="content"  ontouchend="closeOptions();">
 			<h1 align="center">Advice for Pharmacy Staff</h1>
 			<table border="1px" cellspacing="4" cellpadding="10" width="700em" align="center"><tr>
             <td>
@@ -27,6 +29,19 @@
             </h2>
             </td>
             </tr></table>
+        
+        <div id="popupOptionsForPharmacy">
+        	<fieldset data-role="controlgroup">
+				<h3>What is the smallest level font size printed at your pharmacy?</h3>
+					<input type="radio" name="radio-choice-1" id="radio-choice-1" value="font9pt" onclick="fontOption(this.value);"/>
+					<label for="radio-choice-1"><div id="advice_9point">9pt font (this text is 9-point font)</div></label>
+			
+					<input type="radio" name="radio-choice-1" id="radio-choice-2" value="font12pt" onclick="fontOption(this.value);"/>
+					<label for="radio-choice-2"><div id="advice_12point">12pt font (this text is 12-point font)</div></label>
+			</fieldset>
+        </div>
+        
+        <div align=center id="advice_options" ><a data-ajax=false data-role="button" data-inline="true" data-icon="arrow-u" ontouchend="popOptions();">options</a></div></div>
             
         <button data-role="none" id="cancel" class="pinkBtn startBtn" onclick="window.location.href='index.html'" 
     		ontouchend="window.location.href='index.html'">Start over</button>
