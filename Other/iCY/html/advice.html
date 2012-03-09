@@ -57,14 +57,14 @@
 			
 		<div data-role="content">
     		<fieldset data-role="controlgroup">
-				<input type="radio" name="radio-choice-1" id="radio-choice-1" value="font9pt" ontouchend="fontOption(this.value);"/>
+				<input type="radio" name="radio-choice-1" id="radio-choice-1" value="0" onclick="fontOption(this.value);"/>
 				<label for="radio-choice-1"><div id="advice_9point">9pt font (this text is 9-point font)</div></label>
 		
-				<input type="radio" name="radio-choice-1" id="radio-choice-2" value="font12pt" ontouchend="fontOption(this.value);"/>
+				<input type="radio" name="radio-choice-1" id="radio-choice-2" value="1" onclick="fontOption(this.value);"/>
 				<label for="radio-choice-2"><div id="advice_12point">12pt font (this text is 12-point font)</div></label>
 			</fieldset>
-			<button data-role="none" id="submitAdd" class="greenBtn modalDoneBtn" ontouchend="window.location.href='advice.html'">Done</button>
-		<button data-role="none" id="cancel" class="pinkBtn modalCancelBtn" ontouchend="window.location.href='advice.html'"
+			<button data-role="none" id="submitAdd" class="greenBtn modalDoneBtn" onclick="window.location.href='advice.html'">Done</button>
+		<button data-role="none" id="cancel" class="pinkBtn modalCancelBtn" onclick="window.location.href='advice.html'"
 		data-rel="back">Cancel</button>
 		</div>
 	</div>

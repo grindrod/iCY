@@ -26,6 +26,6 @@ function closeOptions()
 */
 function fontOption(e)
 {
-	localStorage.setItem('fontSizeOption', JSON.stringify(e));
-	//var retrievedObject = localStorage.getItem('fontSizeOption');
+	localStorage.setItem('instructionSizeLevel', JSON.stringify(e));
+	//var retrievedObject = localStorage.getItem('instructionSizeLevel');
 }
