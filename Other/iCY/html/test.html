@@ -17,6 +17,7 @@
 </head>
 
 <body>
+<div id="mainTestBody">
 <h2 align="center">Follow the instructions on the drug label below by dragging the tablets into the correct boxes.</h2>
     
     <table id="labelButtonArea" border="0px">
@@ -63,6 +64,17 @@
     </div>
 
     <button id="cancel" class="pinkBtn cancelBtn" onclick="window.location.href='index.html'" ontouchend="window.location.href='index.html'">Cancel</button>
-    <button id="done" class="greenBtn doneBtn">Touch here when done</button>
-</body>
+	<button id="done" class="greenBtn doneBtn">Touch here when done</button>
+	
+    </div>
+    
+    <div id="repeatTest">
+    	<div id="repeatTest_box">
+    		<div id="repeatTest_message">Please Repeat the Test
+    			<br />
+    		    <button id="repeatTest_done" class="greenBtn" onclick="repeatTest();">OK</button>
+    		</div>
+    	</div>
+    </div>
+	</body>
 </html>

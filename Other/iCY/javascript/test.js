@@ -21,6 +21,8 @@ var pillIdCount = 200;
 var currentObj;
 
 $(document).ready(function() {
+	$('#repeatTest').hide();
+	
 	
 	document.getElementById('breakfast').addEventListener('DOMNodeInserted', onDropAreaChange, true);
 	document.getElementById('lunch').addEventListener('DOMNodeInserted', onDropAreaChange, true);
@@ -434,5 +436,27 @@ function resizePills(id1, id2)
 		
 		$('#'+id2).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
 		$('#'+id2).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
+	}
+}
+
+function repeatTest()
+{
+	if($('#repeatTest').css('display') == "none")
+	{
+		$('#mainTestBody').hide();
+		var body = document.body;
+		$(body).css('background-color','#696969');
+		$(body).css('opacity','0.5');
+		$('#repeatTest').fadeIn('fast', function(){ $('#repeatTest').show();});
+	}
+	else
+	{
+		$('#repeatTest').fadeOut('fast', function(){ $('#repeatTest').hide();});
+		$('#mainTestBody').fadeIn('fast', function(){ $('#mainTestBody').show();});
+		var body = document.body;
+		$(body).css('background-color','#FFFFFF');
+		$(body).css('opacity','1');
+		newLabelAnimation();
+
 	}
 }
