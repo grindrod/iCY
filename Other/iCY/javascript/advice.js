@@ -1,3 +1,4 @@
+/*Waiting for Behzad's response.
 $(document).ready(function() {
 	$('#popupOptionsForPharmacy').hide();   
 
@@ -22,7 +23,7 @@ function closeOptions()
 		$('#popupOptionsForPharmacy').fadeOut('fast', function(){ $('#popupOptionsForPharmacy').hide(); });
 	}
 }
-
+*/
 function fontOption(e)
 {
 	localStorage.setItem('fontSizeOption', JSON.stringify(e));
