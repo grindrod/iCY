@@ -21,6 +21,18 @@ var currentObj;
 $(document).ready(function() {
 	$('#repeatTest').hide();
 	
+	
+	document.getElementById('breakfast').addEventListener('DOMNodeInserted', onDropAreaChange, true);
+	document.getElementById('lunch').addEventListener('DOMNodeInserted', onDropAreaChange, true);
+	document.getElementById('dinner').addEventListener('DOMNodeInserted', onDropAreaChange, true);
+	document.getElementById('bedtime').addEventListener('DOMNodeInserted', onDropAreaChange, true);
+	
+	document.getElementById('breakfast').addEventListener('DOMNodeRemoved', onDropAreaChange, true);
+	document.getElementById('lunch').addEventListener('DOMNodeRemoved', onDropAreaChange, true);
+	document.getElementById('dinner').addEventListener('DOMNodeRemoved', onDropAreaChange, true);
+	document.getElementById('bedtime').addEventListener('DOMNodeRemoved', onDropAreaChange, true);
+
+
 	document.getElementById('cancel').ontouchend = function(){ 
 		window.location = "index.html"
 	};
@@ -49,7 +61,21 @@ $(document).ready(function() {
     /*for (var i in expectedResult) {
 		console.log('key is: ' + i + ', value is: ' + expectedResult[i]);
 	}*/
+	
 });
+
+
+function onDropAreaChange(event) {
+	var total = 0;
+	
+	for (var i=0; i < TIMESLOTS.length; i++){
+		box = document.getElementById( TIMESLOTS[i] );
+		total += box.getElementsByTagName('div').length;
+	}
+	
+	$('#done').attr('disabled', !(total > 0) );
+	
+}
 
 
 //////////////////////////////////////////////

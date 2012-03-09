@@ -194,6 +194,10 @@ body, html {
     font-size: 18pt;
 }
 
+.greenBtn:disabled{	/*TEMPORARY!*/
+	color: #686868;
+}
+
 .pinkBtn {
     background: #EFC0C0 !important;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5e2e2), color-stop(100%,#d6a3a3));
@@ -204,6 +208,10 @@ body, html {
     text-align: center;
     font-size: 18pt;
     color: #000000 !important;
+}
+
+.pinkBtn:disabled{	/*TEMPORARY!*/
+	color: #686868;
 }
 
 .redBtn
