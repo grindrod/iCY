@@ -17,22 +17,58 @@ body, html {
 	font-family: Tahoma, Arial, Helvetica, sans-serif;
 }
 
+#checkboxPage {
+	text-align: left;
+	margin-left: 3%;
+	margin-right: 3%;
+}
+
 /*.centreMargin{
 	margin-right:20%;
 	margin-left: 20%;
 }*/
 
 .cancelBtn{
-	position:absolute;
-    bottom:0;
-    left:0;
+	position: fixed;
+    bottom: 2%;
+    left: 1%;
+    width: 100px;
+    height: 40px;
 }
 
+.startBtn{
+	position: fixed;
+    bottom: 2%;
+    left: 1%;
+    width: 140px;
+    height: 40px;
+}
+
+.modalCancelBtn{
+	width: 100px; 
+}
+
+
 .doneBtn{
-	position:absolute;
-    bottom:0;
-    right:0;
-    width: 70%;
+	position: fixed;
+    bottom: 2%;
+    right: 1%;
+    width: 60%;
+    height: 10%;
+    font-size: 25pt;
+    font-weight: 700;
+}
+
+.longBtn {
+	width: 94%;
+	height: 40px;
+	margin-top: 7px;
+	margin-bottom: 7px;
+	font-size: 18pt; 
+}
+
+.modalDoneBtn{
+	width: 100px;
 }
 
 .border { 
@@ -139,11 +175,8 @@ body, html {
 
 
 
-
-
-
-.indexBtn {
-    background: #3a7900;
+.greenBtn {
+	background: #3a7900;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6ba360), color-stop(100%,#358029));
     background: -moz-linear-gradient(center top, #6ba360 0%, #358029 100%);
     -webkit-box-shadow: 2px 2px 2px 2px ;
@@ -153,14 +186,29 @@ body, html {
     -moz-border-radius: 5px;
     border-radius: 5px;
     text-shadow: 1px 1px 0px #000000;
-    display: block;
     border-color: #000000;
     border-width: 1px;
     border-style: solid;
     text-align: center;
+    color: #ffffff;
+    font-size: 18pt;
+}
+
+.pinkBtn {
+    background: #EFC0C0 !important;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5e2e2), color-stop(100%,#d6a3a3));
+    background: -moz-linear-gradient(center top, #f5e2e2 0%, #d6a3a3 100%);
+    /*-webkit-box-shadow: 2px 2px 1px 1px #141313;
+    -moz-box-shadow: 2px 2px 1px 1px #141313;
+    box-shadow: 2px 2px 1px 1px #141313;*/
+    text-align: center;
+    font-size: 18pt;
+    color: #000000 !important;
+}
+
+.indexBtn {
     font-size: 30pt;
     line-height: 150px;
-    color: #ffffff;
     font-weight: 700;
     width: 600px;
     margin-right: auto;

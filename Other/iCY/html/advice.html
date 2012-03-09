@@ -11,13 +11,14 @@
             <script src="../javascript/lib/jquery.mobile-1.0.1.min.js"></script>
             <script src="../javascript/advice.js"></script>
             
+            <link rel="stylesheet" href="../style/common.css" />
+            
             </head>
 	
 	<body><div data-role="page">
-		<div data-role="content"  onclick="closeOptions();">
+		<div data-role="content"  ontouchend="closeOptions();">
 			<h1 align="center">Advice for Pharmacy Staff</h1>
-			<table border="0px" cellspacing="4" cellpadding="10" width="500em" align="center"><tr>
-            <td></td>
+			<table border="1px" cellspacing="4" cellpadding="10" width="700em" align="center"><tr>
             <td>
             <h2>
                 <li>Use the Standard Label</li>
@@ -27,7 +28,6 @@
                 <li>Recommend patient to follow-up with an optometrist</li>
             </h2>
             </td>
-            <td></td>
             </tr></table>
         
         <div id="popupOptionsForPharmacy">
@@ -41,9 +41,10 @@
 			</fieldset>
         </div>
         
-        <div align=left id="advice_startOver"><a href="index.html" data-ajax=false data-role="button" data-inline="true" data-icon="home">Start over</a></div></div>
-        <div align=center id="advice_options" ><a data-ajax=false data-role="button" data-inline="true" data-icon="arrow-u" onclick="popOptions();">options</a></div></div>
-
+        <div align=center id="advice_options" ><a data-ajax=false data-role="button" data-inline="true" data-icon="arrow-u" ontouchend="popOptions();">options</a></div></div>
+            
+        <button data-role="none" id="cancel" class="pinkBtn startBtn" onclick="window.location.href='index.html'" 
+    		ontouchend="window.location.href='index.html'">Start over</button>
 	</div></body>
 	
 </htm>
