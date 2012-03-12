@@ -1,4 +1,4 @@
-var eventType = 'touchend';
+//var eventType = 'touchend';
 
 var expectedResult = new Array(); 
 expectedResult['breakfast'] = 0;
@@ -34,8 +34,9 @@ $(document).ready(function() {
 	document.getElementById('dinner').addEventListener('DOMNodeRemoved', onDropAreaChange, true);
 	document.getElementById('bedtime').addEventListener('DOMNodeRemoved', onDropAreaChange, true);
 
-	$('#cancel').bind(eventType, onCancel);
-	$('#largerFontBtn').bind(eventType, onLargerFontBtn);
+	//$('#cancel').bind(eventType, onCancel);
+    disableBtn('cancel', false);
+    disableBtn('largerFontBtn', false);
     disableBtn('done', true);
     
     $('#instructionLabel').text( generateInstruction() );
@@ -64,11 +65,13 @@ function onCancel(event){
 }
 
 function onLargerFontBtn(event) {
+	//alert('largerFontBtn clicked');
 	console.log('largerFontBtn clicked');
 	newLabelAnimation();
 }
 
 function onDone(event){
+	//alert('done button clicked');
 	console.log('done button clicked');
 	if (validateContents() === true){ window.location = "patientfinished.html"; }
 	else { 
@@ -88,16 +91,27 @@ function onDropAreaChange(event) {
 	disableBtn('done', !(total > 0) );
 }
 
-function disableBtn(btn, state){
-	var $btn = $('#'+btn);
-	$btn.attr('disabled', state);
+function disableBtn(name, state){
+	var btn = $('#'+name);
 	
 	if (state === true){ 
-		$btn.unbind('toggle').unbind(eventType); 
+		//btn.unbind();
+		btn.attr('disabled', state);
+		document.getElementById(name).ontouchend = null;
 	}
 	else {
-		if (btn === 'largerFontBtn') { $btn.bind(eventType, onLargerFontBtn) } 
-		else if (btn === 'done'){ $btn.bind(eventType, onDone); }
+		btn.removeAttr('disabled');
+		if (name === 'largerFontBtn') { 
+			//btn.bind(eventType, onLargerFontBtn); 
+			document.getElementById(name).ontouchend = onLargerFontBtn;
+		} 
+		else if (name === 'done'){
+			//btn.bind(eventType, onDone);
+			document.getElementById(name).ontouchend = onDone;
+		}
+		else if (name === 'cancel'){
+			document.getElementById(name).ontouchend = onCancel;
+		}
 	}
 }
 
@@ -206,7 +220,6 @@ var newLabelAnimation = function(){
 		$('#instructionLabel').css('left', -labelWidth);
 		$('#instructionLabel').animate( {left: "0px" }, 3000, function() {
 			disableBtn('largerFontBtn', false);
-			/*disableBtn('done', false);*/
 			onDropAreaChange();
 		});
 	});
