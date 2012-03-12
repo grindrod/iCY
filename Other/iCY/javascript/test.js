@@ -93,7 +93,7 @@ function disableBtn(btn, state){
 	$btn.attr('disabled', state);
 	
 	if (state === true){ 
-		$btn.unbind(eventType); 
+		$btn.unbind('toggle').unbind(eventType); 
 	}
 	else {
 		if (btn === 'largerFontBtn') { $btn.bind(eventType, onLargerFontBtn) } 

@@ -197,7 +197,7 @@ body, html {
     font-size: 18pt;
 }
 
-.greenBtn:disabled{	/*TEMPORARY!*/
+.greenBtn:disabled, .btnDisabled {	/*TEMPORARY!*/
 	color: #686868;
 }
 
