@@ -206,7 +206,8 @@ var newLabelAnimation = function(){
 		$('#instructionLabel').css('left', -labelWidth);
 		$('#instructionLabel').animate( {left: "0px" }, 3000, function() {
 			disableBtn('largerFontBtn', false);
-			disableBtn('done', false);
+			/*disableBtn('done', false);*/
+			onDropAreaChange();
 		});
 	});
 }
