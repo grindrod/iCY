@@ -12,7 +12,11 @@
     		window.localStorage.clear();
     		
     		localStorage.setItem('instructionSizeLevel', retrievedObject);
-    		console.log("retrievedObject" + retrievedObject);
+    		console.log("retrievedObject: " + retrievedObject);
+    		
+			var adviceToUse = new Array(false, false, false, false, false, false, false);
+			//console.log(JSON.stringify(adviceToUse) );
+			localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );
     		
     		document.ontouchmove = function(e){ e.preventDefault(); }
     	</script>

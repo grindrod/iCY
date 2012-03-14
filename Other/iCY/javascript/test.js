@@ -12,6 +12,7 @@ var boxes = ['drop1row1','drop1row2','drop2row1','drop2row2','drop3row1','drop3r
 
 var storage = window.localStorage;
 var instructionSizeLevel = storage.getItem('instructionSizeLevel');		// from options menu
+var userLevel;
 
 var objectRef1, objectRef2;
 
@@ -23,7 +24,6 @@ var currentObj;
 $(document).ready(function() {
 	$('#repeatTest').hide();
 	
-	
 	document.getElementById('breakfast').addEventListener('DOMNodeInserted', onDropAreaChange, true);
 	document.getElementById('lunch').addEventListener('DOMNodeInserted', onDropAreaChange, true);
 	document.getElementById('dinner').addEventListener('DOMNodeInserted', onDropAreaChange, true);
@@ -33,8 +33,7 @@ $(document).ready(function() {
 	document.getElementById('lunch').addEventListener('DOMNodeRemoved', onDropAreaChange, true);
 	document.getElementById('dinner').addEventListener('DOMNodeRemoved', onDropAreaChange, true);
 	document.getElementById('bedtime').addEventListener('DOMNodeRemoved', onDropAreaChange, true);
-
-	//$('#cancel').bind(eventType, onCancel);
+	
     disableBtn('cancel', false);
     disableBtn('largerFontBtn', false);
     disableBtn('done', true);
@@ -46,7 +45,11 @@ $(document).ready(function() {
 		console.log('changed to something else');
 		instructionSizeLevel = 1; 
 	} 
-	$('#instructionLabel').css('font-size', labelOrder[instructionSizeLevel] )
+	
+	var fontSize = labelOrder[instructionSizeLevel];
+	$('#instructionLabel').css('font-size', fontSize)
+	userLevel = fontSize;
+	localStorage.setItem('userLevel', userLevel);
 	console.log("instructionSize: " + labelOrder[instructionSizeLevel]);
     
     /*for (var i in expectedResult) {
@@ -74,8 +77,8 @@ function onDone(event){
 	//alert('done button clicked');
 	console.log('done button clicked');
 	if (validateContents() === true){ window.location = "patientfinished.html"; }
-	else { 
-		newLabelAnimation();
+	else {
+		repeatTest();
 		reset();
 	}
 }
@@ -104,13 +107,16 @@ function disableBtn(name, state){
 		if (name === 'largerFontBtn') { 
 			//btn.bind(eventType, onLargerFontBtn); 
 			document.getElementById(name).ontouchend = onLargerFontBtn;
+			document.getElementById(name).onclick = onLargerFontBtn;
 		} 
 		else if (name === 'done'){
 			//btn.bind(eventType, onDone);
 			document.getElementById(name).ontouchend = onDone;
+			document.getElementById(name).onclick = onDone;
 		}
 		else if (name === 'cancel'){
 			document.getElementById(name).ontouchend = onCancel;
+			document.getElementById(name).onclick = onCancel;
 		}
 	}
 }
@@ -198,12 +204,19 @@ function makeItBig()
 {	
 	if ( instructionSizeLevel < (labelOrder.length - 1) ) {
 		instructionSizeLevel++;
-		$('#instructionLabel').css("font-size", labelOrder[instructionSizeLevel] );
+		
+		var fontSize = labelOrder[instructionSizeLevel];
+		$('#instructionLabel').css("font-size", fontSize );
+		userLevel = fontSize;
+		localStorage.setItem('userLevel', userLevel);
+		
 	
 		console.log ( "font size: " + labelOrder[instructionSizeLevel] + ", " +  $('#instructionLabel').css('font-size'));
 	}
 	else {
 		console.log ("Max font size reached");
+		userLevel = "failed";
+		localStorage.setItem('userLevel', userLevel);
 		window.location = "patientfinished.html"; 
 	}
 }
@@ -224,6 +237,28 @@ var newLabelAnimation = function(){
 		});
 	});
 }
+
+function repeatTest()
+{
+	if($('#repeatTest').css('display') == "none")
+	{
+		$('#mainTestBody').hide();
+		var body = document.body;
+		$(body).css('background-color','#696969');
+		$(body).css('opacity','0.5');
+		$('#repeatTest').fadeIn('fast', function(){ $('#repeatTest').show();});
+	}
+	else
+	{
+		$('#repeatTest').fadeOut('fast', function(){ $('#repeatTest').hide();});
+		$('#mainTestBody').fadeIn('fast', function(){ $('#mainTestBody').show();});
+		var body = document.body;
+		$(body).css('background-color','#FFFFFF');
+		$(body).css('opacity','1');
+		newLabelAnimation();
+	}
+}
+
 
 //Function that removes everything.
 function reset()
@@ -450,27 +485,5 @@ function resizePills(id1, id2)
 		
 		$('#'+id2).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
 		$('#'+id2).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
-	}
-}
-
-function repeatTest()
-{
-	if($('#repeatTest').css('display') == "none")
-	{
-		$('#mainTestBody').hide();
-		var body = document.body;
-		$(body).css('background-color','#696969');
-		$(body).css('opacity','0.5');
-		$('#repeatTest').fadeIn('fast', function(){ $('#repeatTest').show();});
-	}
-	else
-	{
-		$('#repeatTest').fadeOut('fast', function(){ $('#repeatTest').hide();});
-		$('#mainTestBody').fadeIn('fast', function(){ $('#mainTestBody').show();});
-		var body = document.body;
-		$(body).css('background-color','#FFFFFF');
-		$(body).css('opacity','1');
-		newLabelAnimation();
-
 	}
 }

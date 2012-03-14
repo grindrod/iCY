@@ -26,14 +26,15 @@
 			<h2 class="center-wrapper titleSqueeze">Touch any box to check it.</h2>
 			
 			<h5 class="checkboxSqueeze">Do you use...</h5>
+			<form>
 			<div data-role="fieldcontain" id="aidsUsed" class="checkboxSqueeze">
     			<fieldset data-role="controlgroup">
     			   <div id="glassesContainer">
-				   		<input type="checkbox" name="glasses" id="glasses" class="custom" value="glasses or contact lenses" />
+				   		<input type="checkbox" name="glasses" id="glasses" class="custom" />
 				   		<label for="glasses" data-iconpos="right" id="glassesLabel" value="glasses or contact lenses">Glasses or contact lenses</label>
 				   
 				   		<div id="glassesnowContainer">
-				   		<input type="checkbox" name="glassesnow" id="glassesnow" class="custom" value="glassesnow" />
+				   		<input type="checkbox" name="glassesnow" id="glassesnow" class="custom" />
 				   		<label for="glassesnow" data-iconpos="right">Are you wearing your glasses or contact lenses right now? </label>
 				   		</div>
 				   </div>
@@ -49,11 +50,11 @@
 				   </div>
 				   
 				   <div id="magnifierContainer">
-				   		<input type="checkbox" name="magnifier" id="magnifier" class="custom" value="magnifier" />
+				   		<input type="checkbox" name="magnifier" id="magnifier" class="custom" />
 				   		<label for="magnifier" data-iconpos="right" id="magnifierLabel">A magnifier</label>
 				   
 				   		<div id="magnifiernowContainer">
-				   		<input type="checkbox" name="magnifiernow" id="magnifiernow" class="custom" value="magnifiernow" />
+				   		<input type="checkbox" name="magnifiernow" id="magnifiernow" class="custom" />
 				   		<label for="magnifiernow" data-iconpos="right">Are you using your magnifier right now? </label>
 				   		</div>
 				   </div>
@@ -63,12 +64,13 @@
 				</fieldset>
 			</div>
 		</div>
+		</form>
     
     	<button data-role="none" id="cancel" class="pinkBtn cancelBtn" onclick="window.location.href='index.html'" 
     		ontouchend="window.location.href='index.html'">Cancel</button>
 	    <button data-role="none" id="done" class="greenBtn doneBtn" 
-	    	onclick="window.location.href='questionnaire2.html'" 
-    		ontouchend="window.location.href='questionnaire2.html'">Touch here when done</button>
+	    	onclickold="window.location.href='questionnaire2.html'" 
+    		ontouchendold="window.location.href='questionnaire2.html'">Touch here when done</button>
 	    
 	</div></body>
 	

@@ -2,34 +2,38 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
     	<title>ClereMed</title>
     	
     	<script>
+    		
+    		var retrievedObject = localStorage.getItem('instructionSizeLevel');
+    		
     		window.localStorage.clear();
-    		//alert("localStorage cleared");
+    		
+    		localStorage.setItem('instructionSizeLevel', retrievedObject);
+    		console.log("retrievedObject" + retrievedObject);
+    		
+    		document.ontouchmove = function(e){ e.preventDefault(); }
     	</script>
-    	
-    	<!--to change later-->
-    	<link rel="stylesheet" href="../style/lib/jquery.mobile-1.0.1.min.css" />
-		<script src="../javascript/lib/jquery-1.6.4.min.js"></script>
-		<script src="../javascript/lib/jquery.mobile-1.0.1.min.js"></script>
-
-		<!--link type="text/css" rel="stylesheet" href="../style/jquery.mobile-1.0.1.min.css" />
-		<script src="../js/jquery.mobile-1.0.1.min.js"></script>
-		<script src="../js/index.js" type="text/javascript"></script-->
 		<link rel="stylesheet" href="../style/common.css" />
 		<link rel="stylesheet" href="../style/cleremed.min.css" />
+		
+		<style>
+			#indexText {
+				position: absolute;
+				top: 35%;
+			}
+		</style>
     
 	</head>
 
-	<body><div data-role="page" class="center-wrapper" data-theme="a">
-		<br /><br /><h1>ClereMed</h1>
+	<body class="center-wrapper">
+		<br /><h1>ClereMed</h1>
 
-		<div data-role="content">
-			<br /><br /><h1>Welcome! This is a quick screen of your ability to read medication labels.</h1>
-		</div>
-
-		<a href="questionnaire.html" data-ajax=false data-role="button" data-theme="b">Touch here to start -></a>		
-	</div></body>
+		<h1 id="indexText">Welcome! This is a quick screen of your ability to read medication labels.</h1>
+		
+		<button id="indexNext" class="greenBtn indexBtn" ontouchend="window.location.href='questionnaire1.html'" onclick="window.location.href='questionnaire1.html'">Touch here to start -></button>
+	</body>
 
 </html>
