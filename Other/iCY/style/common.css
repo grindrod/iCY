@@ -288,3 +288,26 @@ body, html {
 	margin-top: -1%;
 	/*margin-bottom: -2%;*/
 }
+
+#repeatTest
+{
+	position: fixed;
+	margin-top: 35%;
+	margin-left: 30%;
+	background-color: #FFFFFF;
+}
+
+#repeatTest_box
+{
+	border-style: solid;
+	border-color: #000000;
+	width: 500px;
+	height: 100px;
+}
+
+#repeatTest_message
+{
+	font-size: 3em;
+	color: red;
+	text-align: center;
+}
