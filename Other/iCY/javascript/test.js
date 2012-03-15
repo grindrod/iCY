@@ -301,7 +301,9 @@ head.js("../javascript/lib/jquery.min.js","../javascript/ui.js","../javascript/t
         	
         	//$(ui.draggable).remove();
         	resizePills($(this).attr("data-row1"), $(this).attr("data-row2"));
-        	$(ui.draggable).css({'opacity':'0'});
+        	//$(ui.draggable).css({'opacity':'0'});
+        	//$(ui.draggable).hide();
+        	$(ui.draggable).draggable;
         	
         	$(this).css({'border':'#777 solid 3px','background':'#eee', 'width':'125px', 'height':'125px'});
     	},
@@ -315,7 +317,13 @@ head.js("../javascript/lib/jquery.min.js","../javascript/ui.js","../javascript/t
 	});
 });
 
-
+function doubleDrop(e)
+{
+	if(e.css('opacity') == '0')
+	{
+		
+	}
+}
 
 //Generates the dropped pills
 function show(row1, row2){
@@ -350,7 +358,7 @@ function show(row1, row2){
     	{
     		$(objectRef1).css({'width':'50px', 'height':'50px', 'margin-left':'5px'});
     		$(obj).css({'width':'50px', 'height':'50px','margin-left':'5px'});
-    		objectRef2 = obj;
+    		//objectRef2 = obj;
     	}
     	
     	
@@ -404,7 +412,7 @@ function revivePill()
         	var get1 = $(currentObj).parent().parent().parent().children().first().attr('id');
         	var get2 = $(currentObj).parent().parent().parent().children().last().attr('id');
         	
-        	if($(this).css('opacity') != 0)
+        	/*if($(this).css('opacity') != 0)
     		{
 				$(".touchBox").draggable({disable:true});
     		}
@@ -412,9 +420,13 @@ function revivePill()
         	{
         		$(currentObj).remove();
         		deleteCell();
+        		$(this).show();
         	}
         	resizePills(get1, get2);
         	$(this).css({'opacity':'0.75'});
+        	*/
+			alert('hey');
+        	
         	
     	},
     	
@@ -494,7 +506,7 @@ function resizePills(id1, id2)
 		$('#'+id1).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
 		$('#'+id1).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
 		
-		$('#'+id2).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
-		$('#'+id2).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
+		$('#'+id2).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
+		$('#'+id2).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
 	}
 }
