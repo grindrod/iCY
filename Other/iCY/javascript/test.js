@@ -94,6 +94,12 @@ function onDropAreaChange(event) {
 	disableBtn('done', !(total > 0) );
 }
 
+function closeRepeatDone(event) {
+	$('#repeatTest').fadeOut('slow', function(){ $('#repeatTest').hide();});
+	$('#mainTestBody').fadeIn('slow', function(){ $('#mainTestBody').show();});
+	newLabelAnimation();
+}
+
 function disableBtn(name, state){
 	var btn = $('#'+name);
 	
@@ -243,22 +249,13 @@ function repeatTest()
 	if($('#repeatTest').css('display') == "none")
 	{
 		$('#mainTestBody').hide();
-		var body = document.body;
-		$(body).css('background-color','#696969');
-		$(body).css('opacity','0.5');
+		var docHeight = $(document).height();
+		$('#repeatTest').height(docHeight);
 		$('#repeatTest').fadeIn('fast', function(){ $('#repeatTest').show();});
-	}
-	else
-	{
-		$('#repeatTest').fadeOut('fast', function(){ $('#repeatTest').hide();});
-		$('#mainTestBody').fadeIn('fast', function(){ $('#mainTestBody').show();});
-		var body = document.body;
-		$(body).css('background-color','#FFFFFF');
-		$(body).css('opacity','1');
-		newLabelAnimation();
+		$('#repeatTest_done').bind('click', closeRepeatDone);
+		$('#repeatTest_done').bind('touchend', closeRepeatDone);
 	}
 }
-
 
 //Function that removes everything.
 function reset()

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	$('.modalMessage').hide();
 	$('#glassesnowContainer').hide();
 	$('#bifocalsnowContainer').hide();
 	$('#magnifiernowContainer').hide();
@@ -11,6 +12,15 @@ $(document).ready(function() {
   		if (state === true) { 
   			nowNameContainer.slideDown();
 			$('#aidsUsed').trigger( 'updatelayout' );
+			
+			var text;
+			if ( $(this).name === 'magnifier') {
+				text = "If you have it with you, you may use it.";
+			} 
+			else { // glasses or bifocals
+				text = "If you have them with you, please put them on.";
+			}
+			showMessage(text); 
   		}
   		else {
   			nowNameContainer.slideUp();
@@ -41,11 +51,30 @@ $(document).ready(function() {
   			}
   		}
   		console.log (  JSON.stringify(adviceToUse));
-  		
   		localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );
   		
+  		if (window.location.href.search(/questionnaire1.html/) > 0){
+  			window.location.href = 'questionnaire2.html';
+  		}
+  		else {
+  			window.location.href= 'test.html';
+  		}
   		return false;
 	});
-
-	
 });
+
+var showMessage = function(text) {
+	if($('.modalMessage').css('display') == "none")
+	{
+		$('#mainSection').hide();
+		var docHeight = $(document).height();
+		$('.modalMessage').height(docHeight);
+		$('#modalMessage_text').html(text); 
+		$('.modalMessage').fadeIn('slow', function(){ $('.modalMessage').show();});
+	}
+}
+
+var closeMessage = function() {
+	$('.modalMessage').fadeOut('slow', function(){ $('.modalMessage').hide();});
+	$('#mainSection').fadeIn('slow', function(){ $('#mainSection').show();});
+}

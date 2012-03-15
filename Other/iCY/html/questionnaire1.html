@@ -22,7 +22,7 @@
 	<body><div data-role="page" data-theme="a">
 		<!--div align=right><a href="index.html" data-ajax=false data-role="button" data-inline="true" data-icon="home">Start over</a></div-->
 		
-		<div data-role="content" class="centreMargin">
+		<div data-role="content" id="mainSection" class="centreMargin">
 			<h2 class="center-wrapper titleSqueeze">Touch any box to check it.</h2>
 			
 			<h5 class="checkboxSqueeze">Do you use...</h5>
@@ -63,15 +63,22 @@
 				   <label for="largeprint" data-iconpos="right">Large print materials</label>
 				</fieldset>
 			</div>
-		</div>
-		</form>
-    
-    	<button data-role="none" id="cancel" class="pinkBtn cancelBtn" onclick="window.location.href='index.html'" 
+			</form>
+			
+		<button data-role="none" id="cancel" class="pinkBtn cancelBtn" onclick="window.location.href='index.html'" 
     		ontouchend="window.location.href='index.html'">Cancel</button>
 	    <button data-role="none" id="done" class="greenBtn doneBtn" 
 	    	onclickold="window.location.href='questionnaire2.html'" 
     		ontouchendold="window.location.href='questionnaire2.html'">Touch here when done</button>
+		</div>
 	    
+	    
+	<div class="modalMessage">
+    	<div id="messageBox" class="modalMessage_box">
+    		<div id="modalMessage_text"><br /></div>
+    		<button id="modalMessage_done" data-role="none" class="greenBtn" onclick="closeMessage();">OK</button>
+    	</div>
+    </div>
 	</div></body>
 	
 </htm>
