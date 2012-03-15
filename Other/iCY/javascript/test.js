@@ -78,6 +78,7 @@ function onDone(event){
 	console.log('done button clicked');
 	if (validateContents() === true){ window.location = "patientfinished.html"; }
 	else {
+		//console.log("=====START ROLLOVER PROCESS [" + labelOrder[instructionSizeLevel] + "] =====");
 		repeatTest();
 		reset();
 	}
@@ -95,6 +96,7 @@ function onDropAreaChange(event) {
 }
 
 function closeRepeatDone(event) {
+	//console.log("close repeat done button [" + labelOrder[instructionSizeLevel] + "]");
 	$('#repeatTest').fadeOut('slow', function(){ $('#repeatTest').hide();});
 	$('#mainTestBody').fadeIn('slow', function(){ $('#mainTestBody').show();});
 	newLabelAnimation();
@@ -195,7 +197,7 @@ var validateContents = function(){
 	}
 	
 	for (var i in result){
-		console.log('timeslot ' + i + ': ' + result[i]);
+		//console.log('timeslot ' + i + ': ' + result[i]);
 		if ( result[i] != expectedResult[i] ) {
 			return false;
 		}
@@ -208,8 +210,11 @@ var validateContents = function(){
 //////////////////////////////////////////////
 function makeItBig()
 {	
+	//console.log("Make it big function [" + labelOrder[instructionSizeLevel] + "]");
 	if ( instructionSizeLevel < (labelOrder.length - 1) ) {
+		//console.log("changing font size... from " + labelOrder[instructionSizeLevel]);
 		instructionSizeLevel++;
+		//console.log("changing font size... to " + labelOrder[instructionSizeLevel]);
 		
 		var fontSize = labelOrder[instructionSizeLevel];
 		$('#instructionLabel').css("font-size", fontSize );
@@ -217,18 +222,20 @@ function makeItBig()
 		localStorage.setItem('userLevel', userLevel);
 		
 	
-		console.log ( "font size: " + labelOrder[instructionSizeLevel] + ", " +  $('#instructionLabel').css('font-size'));
+		//console.log ( "font size: " + labelOrder[instructionSizeLevel] + ", " +  $('#instructionLabel').css('font-size'));
 	}
 	else {
-		console.log ("Max font size reached");
+		//console.log ("--MAX-- font size reached");
 		userLevel = "failed";
 		localStorage.setItem('userLevel', userLevel);
 		window.location = "patientfinished.html"; 
+		//console.log("GO TO NEXT PAGE!");
 	}
 }
 
 // Originally from JQuery UI Effects - Slide
 var newLabelAnimation = function(){
+	//console.log("new label animation [" + labelOrder[instructionSizeLevel] + "]");
 	var labelWidth = $('#instructionLabel').outerWidth();
 	
 	disableBtn('largerFontBtn', true);
@@ -240,23 +247,27 @@ var newLabelAnimation = function(){
 		$('#instructionLabel').animate( {left: "0px" }, 3000, function() {
 			disableBtn('largerFontBtn', false);
 			onDropAreaChange();
+			//console.log("=====END ROLLOVER PROCESS [" + labelOrder[instructionSizeLevel] + "]=====");
 		});
 	});
 }
 
 function repeatTest()
 {
-	if( instructionSizeLevel < labelOrder.length-1 && $('#repeatTest').css('display') == "none" )
+	if ( instructionSizeLevel === labelOrder.length-1) {				// max size reached
+		//console.log("ANIMATION only. [" + labelOrder[instructionSizeLevel] + "]");
+		newLabelAnimation();
+	}
+	else 
 	{
+		//console.log("REPEAT TEST MESSAGE [" + labelOrder[instructionSizeLevel] + "]");
 		$('#mainTestBody').hide();
 		var docHeight = $(document).height();
 		$('#repeatTest').height(docHeight);
 		$('#repeatTest').fadeIn('fast', function(){ $('#repeatTest').show();});
-		$('#repeatTest_done').bind('click', closeRepeatDone);
-		$('#repeatTest_done').bind('touchend', closeRepeatDone);
-	}
-	else {				// max size reached
-		newLabelAnimation();
+		//$('#repeatTest_done').bind('click', closeRepeatDone);
+		//$('#repeatTest_done').bind('touchend', closeRepeatDone);
+		document.getElementById('repeatTest_done').ontouchend = closeRepeatDone;
 	}
 }
 
