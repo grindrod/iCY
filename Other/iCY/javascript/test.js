@@ -246,7 +246,7 @@ var newLabelAnimation = function(){
 
 function repeatTest()
 {
-	if($('#repeatTest').css('display') == "none")
+	if( instructionSizeLevel < labelOrder.length-1 && $('#repeatTest').css('display') == "none" )
 	{
 		$('#mainTestBody').hide();
 		var docHeight = $(document).height();
@@ -254,6 +254,9 @@ function repeatTest()
 		$('#repeatTest').fadeIn('fast', function(){ $('#repeatTest').show();});
 		$('#repeatTest_done').bind('click', closeRepeatDone);
 		$('#repeatTest_done').bind('touchend', closeRepeatDone);
+	}
+	else {				// max size reached
+		newLabelAnimation();
 	}
 }
 
