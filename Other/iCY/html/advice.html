@@ -13,18 +13,26 @@
             
             <link rel="stylesheet" href="../style/common.css" />
             
+            <style>
+            	#adviceBox{
+            		border-style: solid;
+					border-color: #000000;
+					margin-left: 15%;
+					margin-right: 15%;
+					padding-left: 2%;
+					padding-right: 2%;
+            	}
+            </style>
+            
             </head>
 	
 	<body><div data-role="page">
 		<div data-role="content"  ontouchend="closeOptions();">
 			<h1 align="center">Advice for Pharmacy Staff</h1>
-			<table border="1px" cellspacing="4" cellpadding="10" width="700em" align="center"><tr>
-            <td>
-            <h2>
-            	<ul id="adviceList"></ul>
-            </h2>
-            </td>
-            </tr></table>
+			<div id="adviceBox">
+				<h4><ul id="adviceList"></ul></h4>
+			</div>
+			
     <!--
         <div id="popupOptionsForPharmacy">
         	<fieldset data-role="controlgroup">
