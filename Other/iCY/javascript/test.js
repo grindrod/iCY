@@ -292,18 +292,21 @@ var anotherArray = ['breakfast', 'lunch', 'dinner', 'bedtime'];
 
 head.js("../javascript/lib/jquery.min.js","../javascript/ui.js","../javascript/touch.js", function (){
 	$(".touchBox").draggable({revert:true, handle: function(){ 
+
 	$(".dropArea").droppable({accept: ".touchBox"});}});
 	$(".dropArea").droppable({
     	
     	drop: function( event, ui ) {
         	//checkContents(this.id);
-        	show($(this).attr("data-row1"), $(this).attr("data-row2"));
         	
-        	//$(ui.draggable).remove();
+			var g = $(ui.draggable).attr('id');
+			console.log(g);
+			show($(this).attr("data-row1"), $(this).attr("data-row2"), $('#'+g).parent().attr('id'));
+			
+        	$(ui.draggable).remove();
+        	
         	resizePills($(this).attr("data-row1"), $(this).attr("data-row2"));
-        	//$(ui.draggable).css({'opacity':'0'});
-        	//$(ui.draggable).hide();
-        	$(ui.draggable).draggable;
+
         	
         	$(this).css({'border':'#777 solid 3px','background':'#eee', 'width':'125px', 'height':'125px'});
     	},
@@ -317,16 +320,35 @@ head.js("../javascript/lib/jquery.min.js","../javascript/ui.js","../javascript/t
 	});
 });
 
-function doubleDrop(e)
+function regeratePill(id)
 {
-	if(e.css('opacity') == '0')
+	var pillContainer = document.getElementById(id);
+	
+	var newPill = document.createElement('div');
+	var newPillLabel = document.createElement('div');
+	
+	if($('#'+id).children().length == 0)
 	{
+		$(newPill).attr('id', 'pill'+id[4]);
+		$(newPill).attr('class', 'touchBox');
 		
-	}
+		$(newPillLabel).attr('class','pillLabel');
+		$(newPillLabel).text('Pill');
+		
+		pillContainer.appendChild(newPill);
+		newPill.appendChild(newPillLabel);
+		
+		head.js("../javascript/lib/jquery.min.js","../javascript/ui.js","../javascript/touch.js", function (){
+		$(".touchBox").draggable({revert:true	})
+		});
+		
+		$(currentObj).remove();
+	}	
+
 }
 
 //Generates the dropped pills
-function show(row1, row2){
+function show(row1, row2, id){
 	var row1 = document.getElementById(row1);
 	var row2 = document.getElementById(row2);
 	
@@ -339,6 +361,7 @@ function show(row1, row2){
     	obj.setAttribute('class', 'droppedBox');
     	obj.setAttribute('data-pillCount', pillCount);
     	obj.setAttribute('id',pillIdCount);
+    	obj.setAttribute('data-origin',id);
     	
     	obj.setAttribute('onclick','currentObj = this;');
     	obj.setAttribute('ontouchstart','currentObj = this;');
@@ -379,6 +402,8 @@ function show(row1, row2){
     	obj.setAttribute('onclick','currentObj = this;');
     	obj.setAttribute('ontouchstart','currentObj = this;');
     	
+    	obj.setAttribute('data-origin',id);
+    	
     	cell.setAttribute('id', pillCount);
     
     /*
@@ -405,7 +430,7 @@ function show(row1, row2){
 function revivePill()
 {
 	head.js("../javascript/lib/jquery.min.js","../javascript/ui.js","../javascript/touch.js", function (){
-	$('.touchBox').droppable({
+	$('.pillOrigin').droppable({
 		
 		accept: ".droppedBox",
 		drop: function( event, ui ) {
@@ -418,14 +443,15 @@ function revivePill()
     		}
         	else
         	{
-        		$(currentObj).remove();
-        		deleteCell();
-        		$(this).show();
+        		
         	}
         	resizePills(get1, get2);
         	$(this).css({'opacity':'0.75'});
-        	*/
-			alert('hey');
+        	*/	
+        	
+        		deleteCell();
+        		$(this).show();
+        	regeratePill($(currentObj).attr('data-origin'));
         	
         	
     	},
@@ -433,10 +459,7 @@ function revivePill()
     	over: function(event, ui) {
     	},
     	out: function (event, ui){
-    		if($(this).css('opacity') != 0)
-    		{
-    			$(this).css({'opacity':'0.75'});
-    		}
+    		
     	}
 	
 	});
