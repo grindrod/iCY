@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+    	<title>ClereMed</title>
+    	
+    	<script>
+    		
+    		var retrievedObject = localStorage.getItem('instructionSizeLevel');
+    		
+    		window.localStorage.clear();
+    		
+    		localStorage.setItem('instructionSizeLevel', retrievedObject);
+    		console.log("retrievedObject: " + retrievedObject);
+    		
+			var adviceToUse = new Array(false, false, false, false, false, false, false);
+			//console.log(JSON.stringify(adviceToUse) );
+			localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );
+    		
+    		document.ontouchmove = function(e){ e.preventDefault(); }
+    	</script>
+		<link rel="stylesheet" href="../style/common.css" />
+		<link rel="stylesheet" href="../style/cleremed.min.css" />
+		
+		<style>
+			#indexText {
+				position: absolute;
+				top: 35%;
+			}
+		</style>
+    
+	</head>
+
+	<body class="center-wrapper">
+		<br /><h1>ClereMed</h1>
+
+		<h1 id="indexText">Welcome! This is a quick screen of your ability to read medication labels.</h1>
+		
+		<button id="indexNext" class="greenBtn indexBtn" ontouchend="window.location.href='questionnaire1.html'" onclick="window.location.href='questionnaire1.html'">Touch here to start -></button>
+	</body>
+
+</html>
