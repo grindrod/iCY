@@ -274,12 +274,20 @@ function repeatTest()
 //Function that removes everything.
 function reset()
 {
+	var pillContainers = ['pill1Container','pill2Container','pill3Container','pill4Container','pill5Container','pill6Container']
+	
 	for(var i = 0; i<boxes.length; i++)
 	{
 		$('#'+boxes[i]).empty();
 	}
 	
-	$('.touchBox').css('opacity','0.75');
+	for(var i = 0; i< pillContainers.length; i++)
+	{
+		$('#'+pillContainers[i]).empty();
+		regeratePill(pillContainers[i]);
+	}
+	
+	
 }
 
 
