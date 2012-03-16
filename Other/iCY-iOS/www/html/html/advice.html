@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+            <title>ClereMed</title>
+            
+            <!--to change later-->
+            <link rel="stylesheet" href="../style/lib/jquery.mobile-1.0.1.min.css" />
+            <link rel="stylesheet" href="../style/advice.css"></link>
+            <script src="../javascript/lib/jquery-1.6.4.min.js"></script>
+            <script src="../javascript/lib/jquery.mobile-1.0.1.min.js"></script>
+            <script src="../javascript/advice.js"></script>
+            
+            <link rel="stylesheet" href="../style/common.css" />
+            
+            <style>
+            	#adviceBox{
+            		border-style: solid;
+					border-color: #000000;
+					margin-left: 15%;
+					margin-right: 15%;
+					padding-left: 2%;
+					padding-right: 2%;
+            	}
+            </style>
+            
+            </head>
+	
+	<body><div data-role="page">
+		<div data-role="content"  ontouchend="closeOptions();">
+			<h1 align="center">Advice for Pharmacy Staff</h1>
+			<div id="adviceBox">
+				<h4><ul id="adviceList"></ul></h4>
+			</div>
+			
+    <!--
+        <div id="popupOptionsForPharmacy">
+        	<fieldset data-role="controlgroup">
+				<h3>What is the smallest level font size printed at your pharmacy?</h3>
+					<input type="radio" name="radio-choice-1" id="radio-choice-1" value="font9pt" onclick="fontOption(this.value);"/>
+					<label for="radio-choice-1"><div id="advice_9point">9pt font (this text is 9-point font)</div></label>
+			
+					<input type="radio" name="radio-choice-1" id="radio-choice-2" value="font12pt" onclick="fontOption(this.value);"/>
+					<label for="radio-choice-2"><div id="advice_12point">12pt font (this text is 12-point font)</div></label>
+			</fieldset>
+        </div>
+    -->
+        <div id="advice_options" ><a data-ajax=false data-role="button" data-inline="true" data-icon="arrow-u" ontouchend="popOptions();" data-rel="dialog" href="#pharmacy_options">options</a></div></div>
+            
+        <button data-role="none" id="cancel" class="pinkBtn startBtn" onclick="window.location.href='index.html'" 
+    		ontouchend="window.location.href='index.html'">Start over</button>
+    		
+   
+	</div>
+	
+	 <!--OPTIONS-->
+		<div data-role="dialog" id="pharmacy_options" data-theme="d" data-position="inline">
+		<div data-role="header">
+			<h1>Add Medication/Medical Condition</h1>
+		</div>
+			
+		<div data-role="content" class="center-wrapper">
+    		<fieldset data-role="controlgroup">
+				<input type="radio" name="radio-choice-1" id="radio-choice-1" value="0" onclick="fontOption(this.value);"/>
+				<label for="radio-choice-1"><div id="advice_9point">9pt font (this text is 9-point font)</div></label>
+		
+				<input type="radio" name="radio-choice-1" id="radio-choice-2" value="1" onclick="fontOption(this.value);"/>
+				<label for="radio-choice-2"><div id="advice_12point">12pt font (this text is 12-point font)</div></label>
+			</fieldset>
+			<button data-role="none" id="submitAdd" class="greenBtn modalDoneBtn" onclick="window.location.href='advice.html'">Done</button>
+		<button data-role="none" id="cancel" class="pinkBtn modalCancelBtn" onclick="window.location.href='advice.html'"
+		data-rel="back">Cancel</button>
+		</div>
+	</div>
+	</body>
+	
+</htm>

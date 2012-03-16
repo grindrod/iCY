@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'iCY-iOS' target in the 'iCY-iOS' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+#endif

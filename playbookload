@@ -1,0 +1,15 @@
+
+#!/bin/bash
+# builds and loads the app onto the blackberry
+
+
+cd $HOME/Factory/iCY/Other/Phonegap/BlackBerry/www
+ant playbook build
+
+if [ $? -eq 0 ]
+then
+	ant playbook load-device
+fi
+
+exit $?
+
