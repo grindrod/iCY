@@ -297,7 +297,6 @@ head.js("../javascript/lib/jquery.min.js","../javascript/ui.js","../javascript/t
 	$(".dropArea").droppable({
     	
     	drop: function( event, ui ) {
-        	//checkContents(this.id);
         	
 			var g = $(ui.draggable).attr('id');
 			console.log(g);
@@ -374,14 +373,13 @@ function show(row1, row2, id){
     		$(obj).css({'width':'80px', 'height':'80px'});
     		$(obj).css({'margin-left':'20px'});
 
-    		//objectRef1 = obj;
     	}
     	
     	if(row1.childElementCount == 1)
     	{
     		$(objectRef1).css({'width':'50px', 'height':'50px', 'margin-left':'5px'});
     		$(obj).css({'width':'50px', 'height':'50px','margin-left':'5px'});
-    		//objectRef2 = obj;
+
     	}
     	
     	
@@ -406,14 +404,6 @@ function show(row1, row2, id){
     	
     	cell.setAttribute('id', pillCount);
     
-    /*
-    	if(row1.childElementCount == 2)
-    	{
-    		$(objectRef1).css({'width':'35px', 'height':'35px','margin-left':'20px'});
-    		$(objectRef2).css({'width':'35px', 'height':'35px','margin-left':'5px'});
-    		$(obj).css({'width':'35px', 'height':'35px','margin-left':'20px'});
-    	}
-    */
     	cell.appendChild(obj);
     	row2.appendChild(cell);
     	
@@ -437,21 +427,11 @@ function revivePill()
         	var get1 = $(currentObj).parent().parent().parent().children().first().attr('id');
         	var get2 = $(currentObj).parent().parent().parent().children().last().attr('id');
         	
-        	/*if($(this).css('opacity') != 0)
-    		{
-				$(".touchBox").draggable({disable:true});
-    		}
-        	else
-        	{
-        		
-        	}
-        	resizePills(get1, get2);
-        	$(this).css({'opacity':'0.75'});
-        	*/	
-        	
-        		deleteCell();
-        		$(this).show();
+			deleteCell();
+			resizePills(get1, get2);
+			$(this).show();
         	regeratePill($(currentObj).attr('data-origin'));
+        	
         	
         	
     	},
