@@ -307,16 +307,17 @@ head.js("../javascript/lib/jquery.min.js","../javascript/ui.js","../javascript/t
     	drop: function( event, ui ) {
         	
 			var g = $(ui.draggable).attr('id');
-			console.log(g);
 			show($(this).attr("data-row1"), $(this).attr("data-row2"), $('#'+g).parent().attr('id'));
 			
-			console.log($(this).last().children().length);
-        	//if($(this).children
-        	$(ui.draggable).remove();
         	
-        	resizePills($(this).attr("data-row1"), $(this).attr("data-row2"));
-
+        	if($(this).children().last().children().children().first().children().length +
+			$(this).children().last().children().children().last().children().length < 5)
+			{
+        		$(ui.draggable).remove();
         	
+        		resizePills($(this).attr("data-row1"), $(this).attr("data-row2"));
+        		
+        	}
         	$(this).css({'border':'#777 solid 3px','background':'#eee', 'width':'125px', 'height':'125px'});
     	},
     	
