@@ -274,12 +274,20 @@ function repeatTest()
 //Function that removes everything.
 function reset()
 {
+	var pillContainers = ['pill1Container','pill2Container','pill3Container','pill4Container','pill5Container','pill6Container']
+	
 	for(var i = 0; i<boxes.length; i++)
 	{
 		$('#'+boxes[i]).empty();
 	}
 	
-	$('.touchBox').css('opacity','0.75');
+	for(var i = 0; i< pillContainers.length; i++)
+	{
+		$('#'+pillContainers[i]).empty();
+		regeratePill(pillContainers[i]);
+	}
+	
+	
 }
 
 
@@ -299,14 +307,17 @@ head.js("../javascript/lib/jquery.min.js","../javascript/ui.js","../javascript/t
     	drop: function( event, ui ) {
         	
 			var g = $(ui.draggable).attr('id');
-			console.log(g);
 			show($(this).attr("data-row1"), $(this).attr("data-row2"), $('#'+g).parent().attr('id'));
 			
-        	$(ui.draggable).remove();
         	
-        	resizePills($(this).attr("data-row1"), $(this).attr("data-row2"));
-
+        	if($(this).children().last().children().children().first().children().length +
+			$(this).children().last().children().children().last().children().length < 5)
+			{
+        		$(ui.draggable).remove();
         	
+        		resizePills($(this).attr("data-row1"), $(this).attr("data-row2"));
+        		
+        	}
         	$(this).css({'border':'#777 solid 3px','background':'#eee', 'width':'125px', 'height':'125px'});
     	},
     	
@@ -477,39 +488,51 @@ function resizePills(id1, id2)
 	
 	var total = one.childElementCount + two.childElementCount;
 	
-	if(total == 1)
-	{
-		$('#'+id1).children().children().first().css({'width':'80px', 'height':'80px', 'margin-left':'20px'});
-		$('#'+id1).children().children().last().css({'width':'80px', 'height':'80px', 'margin-left':'20px'});
-		
-		$('#'+id2).children().children().first().css({'width':'80px', 'height':'80px', 'margin-left':'20px'});
-		$('#'+id2).children().children().last().css({'width':'80px', 'height':'80px', 'margin-left':'20px'});
-	}
-	
-	if(total == 2)
+	if(one.childElementCount == 1 && two.childElementCount == 1)
 	{
 		$('#'+id1).children().children().first().css({'width':'40px', 'height':'40px', 'margin-left':'20px','margin-top':'-5px'});
-		$('#'+id1).children().children().last().css({'width':'40px', 'height':'40px', 'margin-left':'2px','margin-top':'-5px'});
+		$('#'+id1).children().children().last().css({'width':'40px', 'height':'40px', 'margin-left':'40px','margin-top':'-5px'});
 		
 		$('#'+id2).children().children().first().css({'width':'40px', 'height':'40px', 'margin-left':'20px'});
-		$('#'+id2).children().children().last().css({'width':'40px', 'height':'40px', 'margin-left':'2px'});
+		$('#'+id2).children().children().last().css({'width':'40px', 'height':'40px', 'margin-left':'40px'});
 	}
-	
-	if(total == 3)
+	else
 	{
-		$('#'+id1).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
-		$('#'+id1).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
-		
-		$('#'+id2).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
-		$('#'+id2).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
-	}
 	
-	if(total == 4)
-	{
-		$('#'+id1).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
-		$('#'+id1).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
+		if(total == 1)
+		{
+			$('#'+id1).children().children().first().css({'width':'80px', 'height':'80px', 'margin-left':'20px'});
+			$('#'+id1).children().children().last().css({'width':'80px', 'height':'80px', 'margin-left':'20px'});
+			
+			$('#'+id2).children().children().first().css({'width':'80px', 'height':'80px', 'margin-left':'20px'});
+			$('#'+id2).children().children().last().css({'width':'80px', 'height':'80px', 'margin-left':'20px'});
+		}
 		
-		$('#'+id2).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
-		$('#'+id2).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
+		if(total == 2)
+		{
+			$('#'+id1).children().children().first().css({'width':'40px', 'height':'40px', 'margin-left':'20px','margin-top':'-5px'});
+			$('#'+id1).children().children().last().css({'width':'40px', 'height':'40px', 'margin-left':'2px','margin-top':'-5px'});
+			
+			$('#'+id2).children().children().first().css({'width':'40px', 'height':'40px', 'margin-left':'20px'});
+			$('#'+id2).children().children().last().css({'width':'40px', 'height':'40px', 'margin-left':'2px'});
+		}
+		
+		if(total == 3)
+		{
+			$('#'+id1).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
+			$('#'+id1).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
+			
+			$('#'+id2).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
+			$('#'+id2).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
+		}
+		
+		if(total == 4)
+		{
+			$('#'+id1).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
+			$('#'+id1).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
+			
+			$('#'+id2).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
+			$('#'+id2).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
+		}
 	}
 }
