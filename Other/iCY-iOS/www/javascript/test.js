@@ -490,6 +490,7 @@ function resizePills(id1, id2)
 	
 	if(one.childElementCount == 1 && two.childElementCount == 1)
 	{
+		console.log("0");
 		$('#'+id1).children().children().first().css({'width':'40px', 'height':'40px', 'margin-left':'20px','margin-top':'-5px'});
 		$('#'+id1).children().children().last().css({'width':'40px', 'height':'40px', 'margin-left':'40px','margin-top':'-5px'});
 		
@@ -501,6 +502,7 @@ function resizePills(id1, id2)
 	
 		if(total == 1)
 		{
+			console.log("1");
 			$('#'+id1).children().children().first().css({'width':'80px', 'height':'80px', 'margin-left':'20px'});
 			$('#'+id1).children().children().last().css({'width':'80px', 'height':'80px', 'margin-left':'20px'});
 			
@@ -510,6 +512,7 @@ function resizePills(id1, id2)
 		
 		if(total == 2)
 		{
+			console.log("2");
 			$('#'+id1).children().children().first().css({'width':'40px', 'height':'40px', 'margin-left':'20px','margin-top':'-5px'});
 			$('#'+id1).children().children().last().css({'width':'40px', 'height':'40px', 'margin-left':'2px','margin-top':'-5px'});
 			
@@ -519,17 +522,30 @@ function resizePills(id1, id2)
 		
 		if(total == 3)
 		{
-			$('#'+id1).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
-			$('#'+id1).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
-			
-			$('#'+id2).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
-			$('#'+id2).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
+			console.log("3");
+			if($('#'+id1).children().children().first().attr('id') != $('#'+id1).children().children().last().attr('id'))
+			{
+				$('#'+id1).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
+				$('#'+id1).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
+				
+				$('#'+id2).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
+				$('#'+id2).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
+			}
+			else
+			{
+				$('#'+id1).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
+				$('#'+id1).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
+				
+				$('#'+id2).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
+				$('#'+id2).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
+			}
 		}
 		
 		if(total == 4)
 		{
+			console.log("4");
 			$('#'+id1).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
-			$('#'+id1).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
+			$('#'+id1).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'5px', 'margin-top':'-5px'});
 			
 			$('#'+id2).children().children().first().css({'width':'35px', 'height':'35px', 'margin-left':'20px'});
 			$('#'+id2).children().children().last().css({'width':'35px', 'height':'35px', 'margin-left':'5px'});
