@@ -33,7 +33,7 @@ body, html {
 	position: fixed;
     bottom: 2%;
     left: 1%;
-    width: 100px;
+    width: 125px;
     height: 40px;
 }
 
@@ -46,7 +46,9 @@ body, html {
 }
 
 .modalCancelBtn{
-	width: 100px; 
+	width: 125px; 
+    height: 50px;
+    margin: 1%;
 }
 
 
@@ -72,6 +74,8 @@ body, html {
 
 .modalDoneBtn{
 	width: 100px;
+    height: 50px; 
+    margin: 1%;
 }
 
 .border { 
@@ -195,6 +199,7 @@ body, html {
     text-align: center;
     color: #ffffff;
     font-size: 18pt;
+    /*font-weight: bold;*/
 }
 
 .greenBtn:disabled, .btnDisabled {	/*TEMPORARY!*/
@@ -228,8 +233,8 @@ body, html {
 	display:inline-block;
 	color:#ffffff;
 	font-family:arial;
-	font-size:18px;
-	font-weight:bold;
+	font-size:18pt;
+	/*font-weight:bold;*/
 	padding:6px 24px;
 	text-decoration:none;
 	text-shadow:1px 1px 0px #b23e35;
