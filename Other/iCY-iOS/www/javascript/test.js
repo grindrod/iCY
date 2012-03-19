@@ -305,20 +305,20 @@ head.js("../javascript/lib/jquery.min.js","../javascript/ui.js","../javascript/t
 	$(".dropArea").droppable({
     	
     	drop: function( event, ui ) {
-        	
-			var g = $(ui.draggable).attr('id');
-			show($(this).attr("data-row1"), $(this).attr("data-row2"), $('#'+g).parent().attr('id'));
+			    	
 			
-        	
+			
         	if($(this).children().last().children().children().first().children().length +
-			$(this).children().last().children().children().last().children().length < 5)
-			{
+			$(this).children().last().children().children().last().children().length < 4)
+			{	
+				var g = $(ui.draggable).attr('id');    		
+        		show($(this).attr("data-row1"), $(this).attr("data-row2"), $('#'+g).parent().attr('id'));
         		$(ui.draggable).remove();
-        	
         		resizePills($(this).attr("data-row1"), $(this).attr("data-row2"));
         		
         	}
         	$(this).css({'border':'#777 solid 3px','background':'#eee', 'width':'125px', 'height':'125px'});
+        	
     	},
     	
     	over: function(event, ui) {
@@ -443,8 +443,6 @@ function revivePill()
 			$(this).show();
         	regeratePill($(currentObj).attr('data-origin'));
         	
-        	
-        	
     	},
     	
     	over: function(event, ui) {
@@ -523,10 +521,10 @@ function resizePills(id1, id2)
 		if(total == 2)
 		{
 			console.log("2");
-			$('#'+id1).children().children().first().css({'width':'40px', 'height':'40px', 'margin-left':'20px','margin-top':'-5px'});
+			$('#'+id1).children().children().first().css({'width':'40px', 'height':'40px', 'margin-left':'15px','margin-top':'-5px'});
 			$('#'+id1).children().children().last().css({'width':'40px', 'height':'40px', 'margin-left':'2px','margin-top':'-5px'});
 			
-			$('#'+id2).children().children().first().css({'width':'40px', 'height':'40px', 'margin-left':'20px'});
+			$('#'+id2).children().children().first().css({'width':'40px', 'height':'40px', 'margin-left':'15px'});
 			$('#'+id2).children().children().last().css({'width':'40px', 'height':'40px', 'margin-left':'2px'});
 		}
 		
