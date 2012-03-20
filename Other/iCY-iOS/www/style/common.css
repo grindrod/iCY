@@ -50,71 +50,6 @@ body, html {
 	background-color: #FFFFFF;
 }
 
-
-
-/****************************/
-/*          BUTTONS         */
-/****************************/
-.indexBtn {
-    font-size: 30pt;
-    line-height: 150px;
-    font-weight: 700;
-    width: 50%;
-    position: fixed;
-    margin-right: 25%;
-    margin-left: 25%;
-    margin-top: 45%;
-}
-
-.cancelBtn{
-	position: fixed;
-    bottom: 2%;
-    left: 1%;
-    width: 125px;
-    height: 40px;
-}
-
-.startBtn{
-	position: fixed;
-    bottom: 2%;
-    left: 1%;
-    width: 140px;
-    height: 40px;
-}
-
-.modalCancelBtn{
-	width: 125px; 
-    height: 50px;
-    margin: 1%;
-}
-
-
-.doneBtn{
-	position: fixed;
-    bottom: 2%;
-    right: 1%;
-    width: 60%;
-    height: 10%;
-    font-size: 25pt;
-    font-weight: 700;
-}
-
-.longBtn {
-	width: 94%;
-	height: 40px;
-	margin-top: 7px;
-	margin-bottom: 7px;
-	font-size: 18pt; 
-	margin-left: 3%;
-	margin-right: 3%;
-}
-
-.modalDoneBtn{
-	width: 100px;
-    height: 50px; 
-    margin: 1%;
-}
-
 .border { 
 	position: relative;
 	display: table-cell;
@@ -127,6 +62,9 @@ body, html {
 	left: 0px;
 } 
 
+/****************************/
+/*          BUTTONS         */
+/****************************/
 .button {
             -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
             -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -302,4 +240,64 @@ body, html {
 	position:relative;
 	top:1px;
 	width: 75%;
+}
+
+.indexBtn {
+    font-size: 30pt;
+    line-height: 150px;
+    font-weight: 700;
+    width: 50%;
+    position: fixed;
+    margin-right: 25%;
+    margin-left: 25%;
+    margin-top: 45%;
+}
+
+.cancelBtn{
+	position: fixed;
+    bottom: 2%;
+    left: 1%;
+    width: 125px;
+    height: 40px;
+}
+
+.startBtn{
+	position: fixed;
+    bottom: 2%;
+    left: 1%;
+    width: 140px;
+    height: 40px;
+}
+
+.modalCancelBtn{
+	width: 125px; 
+    height: 50px;
+    margin: 1%;
+}
+
+
+.doneBtn{
+	position: fixed;
+    bottom: 2%;
+    right: 1%;
+    width: 60%;
+    height: 10%;
+    font-size: 25pt;
+    font-weight: 700;
+}
+
+.longBtn {
+	width: 94%;
+	height: 40px;
+	margin-top: 7px;
+	margin-bottom: 7px;
+	font-size: 18pt; 
+	margin-left: 3%;
+	margin-right: 3%;
+}
+
+.modalDoneBtn{
+	width: 100px;
+    height: 50px; 
+    margin: 1%;
 }
