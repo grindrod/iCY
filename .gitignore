@@ -1,5 +1,6 @@
 # ignores build files
 Other/Phonegap/BlackBerry/www/build/*
+Other/Phonegap/BlackBerry/www/www/*
 
 #ignore DS_Store files
 .DS_Store
