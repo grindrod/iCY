@@ -28,12 +28,9 @@ $(document).ready(function() {
 	document.getElementById('lunch').addEventListener('DOMNodeInserted', onDropAreaChange, true);
 	document.getElementById('dinner').addEventListener('DOMNodeInserted', onDropAreaChange, true);
 	document.getElementById('bedtime').addEventListener('DOMNodeInserted', onDropAreaChange, true);
-	
-	document.getElementById('breakfast').addEventListener('DOMNodeRemoved', onDropAreaChange, true);
-	document.getElementById('lunch').addEventListener('DOMNodeRemoved', onDropAreaChange, true);
-	document.getElementById('dinner').addEventListener('DOMNodeRemoved', onDropAreaChange, true);
-	document.getElementById('bedtime').addEventListener('DOMNodeRemoved', onDropAreaChange, true);
-	
+    
+    document.getElementById('tableOfTablets').addEventListener('DOMNodeInserted', onDropAreaChange, true);
+                  
     disableBtn('cancel', false);
     disableBtn('largerFontBtn', false);
     disableBtn('done', true);
@@ -91,7 +88,7 @@ function onDropAreaChange(event) {
 		box = document.getElementById( TIMESLOTS[i] );
 		total += box.getElementsByTagName('div').length;
 	}
-	
+    
 	disableBtn('done', !(total > 0) );
 }
 
