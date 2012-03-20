@@ -36,6 +36,7 @@ function closeOptions()
 */
 
 $(document).ready(function() {
+    document.ontouchmove = function(event){ event.preventDefault(); }
 	var results = analyseResults();
 	displayResults(results);
 });

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    document.ontouchmove = function(event){ event.preventDefault(); }
 	$('.modalMessage').hide();
 	$('#glassesnowContainer').hide();
 	$('#bifocalsnowContainer').hide();
