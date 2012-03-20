@@ -5,23 +5,12 @@
 	margin: 0 auto;
 }
 
-#instructionLabel {
-	font-size:12pt;
-}
-
 body, html {
 	font-size:18pt;
 	height: 100%;
 	width: 100%;
 	/*text-align: center;*/
 	font-family: Tahoma, Arial, Helvetica, sans-serif;
-}
-
-#checkboxPage {
-	text-align: left;
-	margin-left: 3%;
-	margin-right: 3%;
-	margin-top: -2%;
 }
 
 .centreMargin{
@@ -89,30 +78,6 @@ body, html {
 	padding: 5%;
 	left: 0px;
 } 
-
-#labelButtonArea{
-	height: 150px;
-	width: 800px;
-	/*border-spacing: 10px;*/
-	/*padding: 10px;*/
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#labelWrapper{
-	background-color: transparent;
-	overflow: hidden;
-	height: 100%;
-	width: 100%;
-	display: table;
-}
-
-#labelButtonSection {
-	padding-left: 7%;
-}
-
-
-
 
 .button {
             -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -300,20 +265,6 @@ body, html {
     margin-right: 25%;
     margin-left: 25%;
     margin-top: 45%;
-}
-
-#advice_9point
-{
-	font-size: 9pt;
-}
-
-#advice_12point
-{
-	font-size: 12pt;
-}
-
-#popupOptionsForPharmacy
-{
 }
 
 .checkboxSqueeze{
