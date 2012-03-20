@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" /> 
     	<title>ClereMed</title>
     	
     	<link rel="stylesheet" href="../style/common.css" />
@@ -12,11 +12,11 @@
 		<script src="../javascript/lib/jquery.mobile-1.0.1.min.js"></script>
 		
 		<!--link type="text/css" rel="stylesheet" href="../style/jquery.mobile-1.0.1.min.css" />
-		<script src="../javascript/jquery.mobile-1.0.1.min.js"></script></script-->
+         <script src="../javascript/jquery.mobile-1.0.1.min.js"></script></script-->
 		<link rel="stylesheet" href="../style/cleremed.min.css" />
 		<!--script src="../javascript/zepto.min.js"></script-->
 		<script src="../javascript/questionnaire.js"></script>
-    
+        
 	</head>
 	
 	<body><div data-role="page" data-theme="a">
@@ -27,58 +27,58 @@
 			
 			<h5 class="checkboxSqueeze">Do you use...</h5>
 			<form>
-			<div data-role="fieldcontain" id="aidsUsed" class="checkboxSqueeze">
-    			<fieldset data-role="controlgroup">
-    			   <div id="glassesContainer">
-				   		<input type="checkbox" name="glasses" id="glasses" class="custom" />
-				   		<label for="glasses" data-iconpos="right" id="glassesLabel" value="glasses or contact lenses">Glasses or contact lenses</label>
-				   
-				   		<div id="glassesnowContainer">
-				   		<input type="checkbox" name="glassesnow" id="glassesnow" class="custom" />
-				   		<label for="glassesnow" data-iconpos="right">Are you wearing your glasses or contact lenses right now? </label>
-				   		</div>
-				   </div>
-				   
-				   <div id="bifocalsContainer">
-				   		<input type="checkbox" name="bifocals" id="bifocals" class="custom" value="bifocals or reading glasses" />
-				   		<label for="bifocals" data-iconpos="right" id="bifocalsLabel">Bifocals or reading glasses</label>
-				   
-				   		<div id="bifocalsnowContainer">
-				   		<input type="checkbox" name="bifocalsnow" id="bifocalsnow" class="custom" />
-				   		<label for="bifocalsnow" data-iconpos="right">Are you wearing your bifocals or reading glasses right now? </label>
-				   		</div>
-				   </div>
-				   
-				   <div id="magnifierContainer">
-				   		<input type="checkbox" name="magnifier" id="magnifier" class="custom" />
-				   		<label for="magnifier" data-iconpos="right" id="magnifierLabel">A magnifier</label>
-				   
-				   		<div id="magnifiernowContainer">
-				   		<input type="checkbox" name="magnifiernow" id="magnifiernow" class="custom" />
-				   		<label for="magnifiernow" data-iconpos="right">Are you using your magnifier right now? </label>
-				   		</div>
-				   </div>
-				   
-				   <input type="checkbox" name="largeprint" id="largeprint" class="custom" />
-				   <label for="largeprint" data-iconpos="right">Large print materials</label>
-				</fieldset>
-			</div>
+                <div data-role="fieldcontain" id="aidsUsed" class="checkboxSqueeze">
+                    <fieldset data-role="controlgroup">
+                        <div id="glassesContainer">
+                            <input type="checkbox" name="glasses" id="glasses" class="custom" />
+                            <label for="glasses" data-iconpos="right" id="glassesLabel" value="glasses or contact lenses">Glasses or contact lenses</label>
+                            
+                            <div id="glassesnowContainer">
+                                <input type="checkbox" name="glassesnow" id="glassesnow" class="custom" />
+                                <label for="glassesnow" data-iconpos="right">Are you wearing your glasses or contact lenses right now? </label>
+                            </div>
+                        </div>
+                        
+                        <div id="bifocalsContainer">
+                            <input type="checkbox" name="bifocals" id="bifocals" class="custom" value="bifocals or reading glasses" />
+                            <label for="bifocals" data-iconpos="right" id="bifocalsLabel">Bifocals or reading glasses</label>
+                            
+                            <div id="bifocalsnowContainer">
+                                <input type="checkbox" name="bifocalsnow" id="bifocalsnow" class="custom" />
+                                <label for="bifocalsnow" data-iconpos="right">Are you wearing your bifocals or reading glasses right now? </label>
+                            </div>
+                        </div>
+                        
+                        <div id="magnifierContainer">
+                            <input type="checkbox" name="magnifier" id="magnifier" class="custom" />
+                            <label for="magnifier" data-iconpos="right" id="magnifierLabel">A magnifier</label>
+                            
+                            <div id="magnifiernowContainer">
+                                <input type="checkbox" name="magnifiernow" id="magnifiernow" class="custom" />
+                                <label for="magnifiernow" data-iconpos="right">Are you using your magnifier right now? </label>
+                            </div>
+                        </div>
+                        
+                        <input type="checkbox" name="largeprint" id="largeprint" class="custom" />
+                        <label for="largeprint" data-iconpos="right">Large print materials</label>
+                    </fieldset>
+                </div>
 			</form>
 			
-		<button data-role="none" id="cancel" class="pinkBtn cancelBtn" onclick="window.location.href='index.html'" 
-    		ontouchend="window.location.href='index.html'">Cancel</button>
-	    <button data-role="none" id="done" class="greenBtn doneBtn" 
-	    	onclickold="window.location.href='questionnaire2.html'" 
-    		ontouchendold="window.location.href='questionnaire2.html'">Touch here when done</button>
+            <button data-role="none" id="cancel" class="pinkBtn cancelBtn" onclick="window.location.href='index.html'" 
+                ontouchend="window.location.href='index.html'">Cancel</button>
+            <button data-role="none" id="done" class="greenBtn doneBtn" 
+                onclickold="window.location.href='questionnaire2.html'" 
+                ontouchendold="window.location.href='questionnaire2.html'">Touch here when done</button>
 		</div>
 	    
 	    
-	<div class="modalMessage">
-    	<div id="messageBox" class="modalMessage_box">
-    		<div id="modalMessage_text"><br /></div>
-    		<button id="modalMessage_done" data-role="none" class="greenBtn" onclick="closeMessage();">OK</button>
-    	</div>
-    </div>
+        <div class="modalMessage">
+            <div id="messageBox" class="modalMessage_box">
+                <div id="modalMessage_text"><br /></div>
+                <button id="modalMessage_done" data-role="none" class="greenBtn" onclick="closeMessage();">OK</button>
+            </div>
+        </div>
 	</div></body>
 	
 </htm>
