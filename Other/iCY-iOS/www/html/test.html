@@ -16,11 +16,21 @@
         <script type="text/javascript" src="../javascript/test.js"></script>
         
         <style>
+            #mainTestBody{
+                display: table;
+                height: 88%;
+            }
+            
+            #testSection{
+                position: relative;
+                display: table-cell;
+                vertical-align: middle;
+            }
+            
             #topInstruction{
                 font-size: 18pt;
                 font-weight: bold;
                 text-align: center;
-                color: blue;
                 margin-left: 8%;
                 margin-right: 8%;
                 margin-bottom: 0.5%;
@@ -68,6 +78,7 @@
     
     <body>
         <div id="mainTestBody">
+            <div id="testSection">
             <div id="topInstruction">Follow the instructions on the drug label below by dragging the tablets into the correct boxes.</div>
             
             <table id="labelButtonArea" border="0px">
@@ -112,7 +123,8 @@
                         </tr>
                     </table>
                 </div>
-                
+                </div>
+
                 <button id="cancel" class="pinkBtn cancelBtn">Cancel</button>
                 <button id="done" class="greenBtn doneBtn">Touch here when done</button>
         </div>
