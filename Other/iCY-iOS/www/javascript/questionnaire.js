@@ -15,7 +15,7 @@ $(document).ready(function() {
 			$('#aidsUsed').trigger( 'updatelayout' );
 			
 			var text;
-			if ( $(this).name === 'magnifier') {
+			if ( $(this)[0].name === 'magnifier') {
 				text = "If you have it with you, you may use it.";
 			} 
 			else { // glasses or bifocals
