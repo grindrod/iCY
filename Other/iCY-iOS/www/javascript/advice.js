@@ -14,8 +14,21 @@ $(document).ready(function() {
 
 });*/
 
+//////////////////////////////////////////////
+//				iOS POPOUT MENU				//
+//////////////////////////////////////////////
+
+function fontOption(e)
+{
+	localStorage.setItem('instructionSizeLevel', e);
+    console.log(e);
+	var retrievedObject = localStorage.getItem('instructionSizeLevel');
+    console.log(retrievedObject);
+}
+
 function popOptions(event) {
     console.log('popOptions');
+    
     var popupSection = $('#popupOptionsForPharmacy');
     popupSection.slideToggle();
     
@@ -32,40 +45,41 @@ function closeOptions() {
     console.log('closeOptions!');
     var popupSection = $('#popupOptionsForPharmacy');
 	if(popupSection.css('display') != 'none'){
-        console.log('apparently not displayed none?');
+        //console.log('apparently not displayed none?');
         popupSection.slideToggle();
 	}
-    else {
-        console.log('display none!');
-    }
 }
 
-var deviceOptions = function() {
-    if ( navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) ){
-        console.log('iPad!');
-        document.getElementById('fontOptionsBtn').onclick = popOptions;
-    }
-    else {
-        console.log('Playbook!');
-        $('#fontOptionsBtn').attr('data-rel', 'dialog');
-        $('#fontOptionsBtn').attr('href', '#pharmacy_options');
-        
-    }
-}
-
-$(document).ready(function() {
-    deviceOptions();
-    document.ontouchmove = function(event){ event.preventDefault(); }
+var loadCurrentDefaultFont = function(device) {
+    var currentDefaultFont, 
+        currentLevel = localStorage.getItem('instructionSizeLevel');
     
-    $('#popupOptionsForPharmacy').hide();   
-	var results = analyseResults();
-	displayResults(results);
-});
+    console.log('currentLevel: ' + currentLevel);
+
+    if ( currentLevel === '0' ){ currentDefaultFont = '9point'; }
+    else if (currentLevel === '1' ){ currentDefaultFont = '12point'; }
+    
+    console.log (currentDefaultFont);
+    
+    if (device === 'ipad') {
+        
+        $('#' + currentDefaultFont + '_popup').prop("checked", true).checkboxradio("refresh");
+    }
+    else {
+        $('#' + currentDefaultFont + '_dialog').prop("checked", true);
+    }
+    
+}
+
+
+//////////////////////////////////////////////
+//				ADVICE LOGIC				//
+//////////////////////////////////////////////
 
 var analyseResults = function() {
 	var adviceToUse = JSON.parse( localStorage.getItem('adviceToUse') );
 	var userLevel = localStorage.getItem('userLevel');
-	console.log(userLevel);
+	//console.log(userLevel);
 	
 	if ( userLevel === "9pt" || userLevel === "12pt" ) {
 		adviceToUse[0] = true;
@@ -105,9 +119,31 @@ var displayResults = function (adviceToUse){
 	}
 }
 
-function fontOption(e)
-{
-	localStorage.setItem('instructionSizeLevel', JSON.stringify(e));
-	var retrievedObject = localStorage.getItem('instructionSizeLevel');
-    console.log(retrievedObject);
+//////////////////////////////////////////////
+//				INITIALIZE                  //
+//////////////////////////////////////////////
+
+var deviceOptions = function() {
+    var iPadTest = false; 
+    
+    if ( iPadTest || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) ){
+        console.log('iPad!');
+        document.getElementById('fontOptionsBtn').onclick = popOptions;
+        loadCurrentDefaultFont('ipad');
+    }
+    else {
+        console.log('Playbook!');
+        $('#fontOptionsBtn').attr('data-rel', 'dialog');
+        $('#fontOptionsBtn').attr('href', '#pharmacyOptions_playbook');
+        loadCurrentDefaultFont('playbook');
+    }
 }
+
+$(document).ready(function() {
+    deviceOptions();
+    document.ontouchmove = function(event){ event.preventDefault(); }
+      
+    $('#popupOptionsForPharmacy').hide();   
+    var results = analyseResults();
+    displayResults(results);
+});

@@ -30,30 +30,21 @@
                 font-size: 12pt;
             }
             
-            #popupSlideWrapper {
+            #popupSlideWrapper_ios {
                 position: absolute;
                 bottom: 12%;
                 width: 100%%;
                 left: 0;
                 height: 23%;
                 padding: 0;
-                
-                /*border-width: .1em; 
-                 border-style: solid; 
-                 border-color: blue;*/
             }
             
             #popupWrapper {
                 position: relative;
                 width: 40%;
                 height: 100%;
-                
                 margin-right: 30%;
                 margin-left: 30%;
-                
-                /*border-width: .1em; 
-                 border-style: solid; 
-                 border-color: red;*/
             }
             
             #popupOptionsForPharmacy {
@@ -83,13 +74,9 @@
             
             #fontOptionsBtn {
                 z-index: 100;
-                position: fixed;
+                position: absolute;
                 margin-left: 40%;
                 bottom: 0;
-            }
-            
-            body{
-                background-color:green;
             }
             </style>
         
@@ -103,16 +90,16 @@
                     <h4><ul id="adviceList"></ul></h4>
                 </div>
                 
-                <div id="popupSlideWrapper">
+                <div id="popupSlideWrapper_ios">
                     <div id="popupWrapper">
                         <div id="popupOptionsForPharmacy">
-                            <fieldset data-role="controlgroup">
+                            <fieldset data-role="controlgroup" id="popupFieldset">
                                 <div id="popupText">What is the smallest level font size printed at your pharmacy?</div>
-                                <input type="radio" name="radio-choice-1" id="radio-choice-1" value="font9pt" onclick="fontOption(this.value);"/>
-                                <label for="radio-choice-1"><div id="advice_9point">9pt font (this text is 9-point font)</div></label>
+                                <input type="radio" name="radio_popup" id="9point_popup" value="0" onclickold="fontOption(this.value);"/>
+                                <label for="9point_popup"><div id="advice_9point">9pt font (this text is 9-point font)</div></label>
                                 
-                                <input type="radio" name="radio-choice-1" id="radio-choice-2" value="font12pt" onclick="fontOption(this.value);"/>
-                                <label for="radio-choice-2"><div id="advice_12point">12pt font (this text is 12-point font)</div></label>
+                                <input type="radio" name="radio_popup" id="12point_popup" value="1" onclickold="fontOption(this.value);"/>
+                                <label for="12point_popup"><div id="advice_12point">12pt font (this text is 12-point font)</div></label>
                             </fieldset>
                         </div>
                     </div>
@@ -126,18 +113,19 @@
         </div>
         
         <!--OPTIONS-->
-		<div data-role="dialog" id="pharmacy_options" data-theme="d" data-position="inline">
+		<div data-role="dialog" id="pharmacyOptions_playbook" data-theme="d" data-position="inline">
             <div data-role="header"><h1>Default font size</h1></div>
             
             <div data-role="content" class="center-wrapper">
                 <legend>What is the smallest level font size printed at your pharmacy?</legend>
                 <fieldset data-role="controlgroup">
-                    <input type="radio" name="radio-choice-1" id="radio-choice-1" value="0" onclick="fontOption(this.value);"/>
-                    <label for="radio-choice-1"><div id="advice_9point">9pt font (this text is 9-point font)</div></label>
+                    <input type="radio" name="radio_dialog" id="9point_dialog" value="0" onclick="fontOption(this.value);"/>
+                    <label for="9point_dialog"><div id="advice_9point">9pt font (this text is 9-point font)</div></label>
                     
-                    <input type="radio" name="radio-choice-1" id="radio-choice-2" value="1" onclick="fontOption(this.value);"/>
-                    <label for="radio-choice-2"><div id="advice_12point">12pt font (this text is 12-point font)</div></label>
+                    <input type="radio" name="radio_dialog" id="12point_dialog" value="1" onclick="fontOption(this.value);"/>
+                    <label for="12point_dialog"><div id="advice_12point">12pt font (this text is 12-point font)</div></label>
                 </fieldset>
+                
                 <button data-role="none" id="submitAdd" class="greenBtn modalDoneBtn" onclick="window.location.href='advice.html'">Done</button>
                 <button data-role="none" id="cancel" class="pinkBtn modalCancelBtn" onclick="window.location.href='advice.html'"
                     data-rel="back">Cancel</button>
