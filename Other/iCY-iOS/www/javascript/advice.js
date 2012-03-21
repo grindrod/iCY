@@ -7,28 +7,18 @@ var ADVICE = new Array (/*0*/ "Use the standard label (9-12pt font)",
 						/*6*/ "Discuss; decision based on judgment of pharmacist", 
 						/*7*/ "If custom label does not fit on vial, use standard label on vial and use colour or number coding for the large print label.");
 
-
-/*Waiting for Behzad's response.
-$(document).ready(function() {
-	$('#popupOptionsForPharmacy').hide();   
-
-});*/
-
 //////////////////////////////////////////////
 //				iOS POPOUT MENU				//
 //////////////////////////////////////////////
 
-function fontOption(e)
-{
+function fontOption(e) {
 	localStorage.setItem('instructionSizeLevel', e);
-    console.log(e);
-	var retrievedObject = localStorage.getItem('instructionSizeLevel');
-    console.log(retrievedObject);
+	//var retrievedObject = localStorage.getItem('instructionSizeLevel');
+    //console.log(retrievedObject);
 }
 
 function popOptions(event) {
-    console.log('popOptions');
-    
+    //console.log('popOptions');
     var popupSection = $('#popupOptionsForPharmacy');
     popupSection.slideToggle();
     
@@ -42,10 +32,9 @@ function popOptions(event) {
 }
 
 function closeOptions() {
-    console.log('closeOptions!');
+    //console.log('closeOptions!');
     var popupSection = $('#popupOptionsForPharmacy');
 	if(popupSection.css('display') != 'none'){
-        //console.log('apparently not displayed none?');
         popupSection.slideToggle();
 	}
 }
@@ -124,7 +113,7 @@ var displayResults = function (adviceToUse){
 //////////////////////////////////////////////
 
 var deviceOptions = function() {
-    var iPadTest = false; 
+    var iPadTest = true; 
     
     if ( iPadTest || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) ){
         console.log('iPad!');
