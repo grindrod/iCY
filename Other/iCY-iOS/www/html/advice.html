@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="../style/common.css" />
         
         <style>
-            #adviceBox{
+            #adviceBox {
                 border-style: solid;
                 border-color: #000000;
                 margin-left: 15%;
@@ -22,77 +22,115 @@
                 padding-right: 2%;
             }
             
-            #advice_9point
-            {
+            #advice_9point {
                 font-size: 9pt;
             }
             
-            #advice_12point
-            {
+            #advice_12point {
                 font-size: 12pt;
             }
             
-            #popupOptionsForPharmacy
-            {
-                text-align: center;
-                margin-left: 25%;
-                margin-right: 25%;
-                margin-top: 10%;
+            #popupSlideWrapper {
+                position: absolute;
+                bottom: 12%;
+                width: 100%%;
+                left: 0;
+                height: 23%;
+                padding: 0;
+                
+                /*border-width: .1em; 
+                 border-style: solid; 
+                 border-color: blue;*/
             }
             
-            #advice_options
-            {
+            #popupWrapper {
+                position: relative;
+                width: 40%;
+                height: 100%;
+                
+                margin-right: 30%;
+                margin-left: 30%;
+                
+                /*border-width: .1em; 
+                 border-style: solid; 
+                 border-color: red;*/
+            }
+            
+            #popupOptionsForPharmacy {
+                position: absolute;
+                bottom: 0;
+                text-align: center;
+                background-color: #B3B3B3;
+                height: 100%;
+                border-width: .1em; 
+                border-style: solid; 
+                border-color: #000;
+                padding-left: 1.5%;
+                padding-right: 1.5%;
+                padding-bottom: 1.5%;
+            }
+            
+            #popupText {
+                font-weight: bold;
+                padding-bottom: 1%;
+            }
+            
+            #advice_options {
                 position: fixed;
                 margin-left: 40%;
                 bottom: 0;
             }
             
-            #advice_startOver
-            {
+            #fontOptionsBtn {
+                z-index: 100;
                 position: fixed;
-                left: 0;
+                margin-left: 40%;
                 bottom: 0;
             }
             
-
-        </style>
+            body{
+                background-color:green;
+            }
+            </style>
         
     </head>
 	
-	<body><div data-role="page">
-		<div data-role="content"  ontouchend="closeOptions();">
-			<h1 align="center">Advice for Pharmacy Staff</h1>
-			<div id="adviceBox">
-				<h4><ul id="adviceList"></ul></h4>
-			</div>
-			
-            <!--
-             <div id="popupOptionsForPharmacy">
-             <fieldset data-role="controlgroup">
-             <h3>What is the smallest level font size printed at your pharmacy?</h3>
-             <input type="radio" name="radio-choice-1" id="radio-choice-1" value="font9pt" onclick="fontOption(this.value);"/>
-             <label for="radio-choice-1"><div id="advice_9point">9pt font (this text is 9-point font)</div></label>
-             
-             <input type="radio" name="radio-choice-1" id="radio-choice-2" value="font12pt" onclick="fontOption(this.value);"/>
-             <label for="radio-choice-2"><div id="advice_12point">12pt font (this text is 12-point font)</div></label>
-             </fieldset>
-             </div>
-             -->
-            <div id="advice_options" ><a data-ajax=false data-role="button" data-inline="true" data-icon="arrow-u" ontouchend="popOptions();" data-rel="dialog" href="#pharmacy_options">options</a></div></div>
-        
-        <button data-role="none" id="cancel" class="pinkBtn startBtn" onclick="window.location.href='index.html'" 
-    		ontouchend="window.location.href='index.html'">Start over</button>
-        
-        
-	</div>
+	<body>
+        <div data-role="page" id="advicePage">
+            <div data-role="content">
+                <h1 align="center">Advice for Pharmacy Staff</h1>
+                <div id="adviceBox">
+                    <h4><ul id="adviceList"></ul></h4>
+                </div>
+                
+                <div id="popupSlideWrapper">
+                    <div id="popupWrapper">
+                        <div id="popupOptionsForPharmacy">
+                            <fieldset data-role="controlgroup">
+                                <div id="popupText">What is the smallest level font size printed at your pharmacy?</div>
+                                <input type="radio" name="radio-choice-1" id="radio-choice-1" value="font9pt" onclick="fontOption(this.value);"/>
+                                <label for="radio-choice-1"><div id="advice_9point">9pt font (this text is 9-point font)</div></label>
+                                
+                                <input type="radio" name="radio-choice-1" id="radio-choice-2" value="font12pt" onclick="fontOption(this.value);"/>
+                                <label for="radio-choice-2"><div id="advice_12point">12pt font (this text is 12-point font)</div></label>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                
+                <a id="fontOptionsBtn" data-ajax="false" data-role="button" data-inline="true" data-icon="arrow-u">options</a>
+                
+                <button data-role="none" id="cancel" class="pinkBtn startBtn" onclick="window.location.href='index.html'" 
+                    ontouchend="window.location.href='index.html'">Start over</button>
+            </div>
+        </div>
         
         <!--OPTIONS-->
 		<div data-role="dialog" id="pharmacy_options" data-theme="d" data-position="inline">
-            <div data-role="header">
-                <h1>Add Medication/Medical Condition</h1>
-            </div>
-			
+            <div data-role="header"><h1>Default font size</h1></div>
+            
             <div data-role="content" class="center-wrapper">
+                <legend>What is the smallest level font size printed at your pharmacy?</legend>
                 <fieldset data-role="controlgroup">
                     <input type="radio" name="radio-choice-1" id="radio-choice-1" value="0" onclick="fontOption(this.value);"/>
                     <label for="radio-choice-1"><div id="advice_9point">9pt font (this text is 9-point font)</div></label>
