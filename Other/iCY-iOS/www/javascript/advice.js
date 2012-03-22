@@ -11,10 +11,15 @@ var ADVICE = new Array (/*0*/ "Use the standard label (9-12pt font)",
 //				iOS POPOUT MENU				//
 //////////////////////////////////////////////
 
-function fontOption(e) {
-	localStorage.setItem('instructionSizeLevel', e);
+function fontOption() {
+    var newFontLevel = this.value;
+    console.log('newFontLevel: ' + newFontLevel);
+    localStorage.setItem('instructionSizeLevel', newFontLevel);
+    
 	//var retrievedObject = localStorage.getItem('instructionSizeLevel');
     //console.log(retrievedObject);
+    //alert('retrieved: ' + retrievedObject);*/
+
 }
 
 function popOptions(event) {
@@ -44,6 +49,7 @@ var loadCurrentDefaultFont = function(device) {
         currentLevel = localStorage.getItem('instructionSizeLevel');
     
     console.log('currentLevel: ' + currentLevel);
+    //alert('currentLevel: ' + currentLevel);
 
     if ( currentLevel === '0' ){ currentDefaultFont = '9point'; }
     else if (currentLevel === '1' ){ currentDefaultFont = '12point'; }
@@ -51,7 +57,6 @@ var loadCurrentDefaultFont = function(device) {
     console.log (currentDefaultFont);
     
     if (device === 'ipad') {
-        
         $('#' + currentDefaultFont + '_popup').prop("checked", true).checkboxradio("refresh");
     }
     else {
@@ -113,7 +118,7 @@ var displayResults = function (adviceToUse){
 //////////////////////////////////////////////
 
 var deviceOptions = function() {
-    var iPadTest = true; 
+    var iPadTest = false; 
     
     if ( iPadTest || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) ){
         console.log('iPad!');
@@ -131,8 +136,10 @@ var deviceOptions = function() {
 $(document).ready(function() {
     deviceOptions();
     document.ontouchmove = function(event){ event.preventDefault(); }
-      
-    $('#popupOptionsForPharmacy').hide();   
+  
+    $('#popupOptionsForPharmacy').hide();
+    $('.fontRadio').change(fontOption);
+
     var results = analyseResults();
     displayResults(results);
 });
