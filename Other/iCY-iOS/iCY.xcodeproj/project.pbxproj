@@ -37,7 +37,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9241927D1518C393002AD8FC /* ClereMed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ClereMed.entitlements; sourceTree = "<group>"; };
 		92D6D96A151292B0006AE9AE /* ClereMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClereMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D6D96E151292B0006AE9AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		92D6D970151292B0006AE9AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -107,7 +106,6 @@
 		92D6D95C151292B0006AE9AE = {
 			isa = PBXGroup;
 			children = (
-				9241927D1518C393002AD8FC /* ClereMed.entitlements */,
 				92D6D9B715129439006AE9AE /* www */,
 				92D6D988151292B0006AE9AE /* iCY-iOS */,
 				92D6D96D151292B0006AE9AE /* Frameworks */,
@@ -386,6 +384,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = /Users/Shared/PhoneGap/Frameworks;
@@ -405,6 +405,7 @@
 					/usr/lib/libSystem.B.dylib,
 				);
 				PRODUCT_NAME = ClereMed;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
