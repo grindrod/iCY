@@ -13,8 +13,17 @@
             localStorage.setItem('instructionSizeLevel', retrievedObject);
             console.log("retrievedObject: " + retrievedObject);
             
-            var adviceToUse = new Array(false, false, false, false, false, false, false, false);
-            //console.log(JSON.stringify(adviceToUse) );
+           	var adviceToUse = {};
+   			adviceToUse['standardLabel'] = false;
+	    	adviceToUse['min15pt'] = false;
+    		adviceToUse['min18pt'] = false;
+    		adviceToUse['followup'] = false;
+    		adviceToUse['compliancePackaging'] = false;
+    		adviceToUse['noTape'] = false;
+    		adviceToUse['discuss'] = false;
+    		//adviceToUse['customCaveat'] = false;
+            
+            console.log(JSON.stringify(adviceToUse) );
             localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );
             
             document.ontouchmove = function(e){ e.preventDefault(); }

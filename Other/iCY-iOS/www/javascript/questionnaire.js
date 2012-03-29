@@ -41,14 +41,14 @@ $(document).ready(function() {
   		for (var i in formData){
   			console.log(formData[i].name);
   			
-  			if (adviceToUse[6] === false &&  formData[i].value === "on" && 
+  			if (adviceToUse['discuss'] === false &&  formData[i].value === "on" && 
   				(formData[i].name === "largeprint" || formData[i].name === "prescription" || 
   				formData[i].name === "nonprescription" || formData[i].name === "worn") ){
-  				adviceToUse[6] = true;
+  				adviceToUse['discuss'] = true;
   			}
   			
   			else if (formData[i].name === "glossy" && formData[i].value === "on") {
-  				adviceToUse[5] = true;
+  				adviceToUse['noTape'] = true;
   			}
   		}
   		console.log (  JSON.stringify(adviceToUse));

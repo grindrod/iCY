@@ -1,11 +1,12 @@
-var ADVICE = new Array (/*0*/ "Use the standard label (9-12pt font)", 
-						/*1*/ "Print custom label (15pt font minimum)", 
-						/*2*/ "Print custom label (18pt font minimum)", 
-						/*3*/ "Recommend a follow-up with an optometrist",
-						/*4*/ "Use compliance packaging", 
-						/*5*/ "Do not tape", 
-						/*6*/ "Discuss; decision based on judgment of pharmacist", 
-						/*7*/ "If custom label does not fit on vial, use standard label on vial and use colour or number coding for the large print label.");
+var ADVICE = {};
+ADVICE['standardLabel'] = "Use the standard label (9-12pt font)";
+ADVICE['min15pt'] = "Print custom label (15pt font minimum)";
+ADVICE['min18pt'] = "Print custom label (18pt font minimum)";
+ADVICE['followup'] = "Recommend a follow-up with an optometrist";
+ADVICE['compliancePackaging'] = "Use compliance packaging";
+ADVICE['noTape'] = "Do not tape";
+ADVICE['discuss'] = "Discuss; decision based on judgment of pharmacist";
+ADVICE['customCaveat'] = "If custom label does not fit on vial, use standard label on vial and use colour or number coding for the large print label.";
 
 //////////////////////////////////////////////
 //				iOS POPOUT MENU				//
@@ -76,20 +77,18 @@ var analyseResults = function() {
 	//console.log(userLevel);
 	
 	if ( userLevel === "9pt" || userLevel === "12pt" ) {
-		adviceToUse[0] = true;
+		adviceToUse['standardLabel'] = true;
 	} 
 	else if (userLevel === "15pt"){
-		adviceToUse[1] = true;
-		adviceToUse[7] = true;
+		adviceToUse['min15pt'] = true;
 	}
 	else if (userLevel === "18pt"){
-		adviceToUse[2] = true;
-		adviceToUse[3] = true;
-		adviceToUse[7] = true;
+		adviceToUse['min18pt'] = true;
+		adviceToUse['followup'] = true;
 	}
 	else if (userLevel === "failed") {
-		adviceToUse[3] = true;
-		adviceToUse[4] = true;
+		adviceToUse['followup'] = true;
+		adviceToUse['compliancePackaging'] = true;
 	}
 	
 	console.log(adviceToUse);
@@ -99,18 +98,18 @@ var analyseResults = function() {
 var displayResults = function (adviceToUse){
 	console.log(adviceToUse);
 	var item;
-	
-	for (var i=0; i < adviceToUse.length - 1; i++){
-		if (adviceToUse[i] === true) {
-			item = '<li>' + ADVICE[i] + '</li>';
-			
-			if (i == 1 || i === 2) { //custom label caveat
-				item += '<ul>' + ADVICE[7] + '</ul>';
+    
+    for (var i in adviceToUse){
+        if (adviceToUse[i] === true){
+            item = '<li>' + ADVICE[i] + '</li>';
+            
+			if (i == 'min15pt' || i === 'min18pt') { //custom label caveat
+				item += '<ul>' + ADVICE['customCaveat'] + '</ul>';
 			}
 			
 			$('#adviceList').append(item);
-		}
-	}
+        }
+    }
 }
 
 //////////////////////////////////////////////
