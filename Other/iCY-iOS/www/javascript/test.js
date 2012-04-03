@@ -38,7 +38,7 @@ $(document).ready(function() {
     $('#instructionLabel').text( generateInstruction() );
 	
 	console.log("instructionSizeLevel: " + instructionSizeLevel);
-	if (instructionSizeLevel=== "null"){ 
+	if (instructionSizeLevel == "null"){ 
 		console.log('changed to something else');
 		instructionSizeLevel = 1; 
 	} 
@@ -47,7 +47,7 @@ $(document).ready(function() {
 	$('#instructionLabel').css('font-size', fontSize)
 	userLevel = fontSize;
 	localStorage.setItem('userLevel', userLevel);
-	console.log("instructionSize: " + labelOrder[instructionSizeLevel]);
+	console.log("instructionSize: " + fontSize);
     
     /*for (var i in expectedResult) {
 		console.log('key is: ' + i + ', value is: ' + expectedResult[i]);
@@ -214,7 +214,10 @@ function makeItBig()
 		//console.log("changing font size... to " + labelOrder[instructionSizeLevel]);
 		
 		var fontSize = labelOrder[instructionSizeLevel];
+        console.log("New font size: " + fontSize);
 		$('#instructionLabel').css("font-size", fontSize );
+        $('.dropArea').css("font-size", fontSize); 
+        $('.pillLabel').css("font-size", fontSize);
 		userLevel = fontSize;
 		localStorage.setItem('userLevel', userLevel);
 		
@@ -340,7 +343,8 @@ function regeratePill(id)
 		$(newPill).attr('class', 'touchBox');
 		
 		$(newPillLabel).attr('class','pillLabel');
-		$(newPillLabel).text('Pill');
+        $(newPillLabel).css('font-size', labelOrder[instructionSizeLevel]);
+		$(newPillLabel).text('Tablet');
 		
 		pillContainer.appendChild(newPill);
 		newPill.appendChild(newPillLabel);

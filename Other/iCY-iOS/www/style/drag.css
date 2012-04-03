@@ -29,11 +29,14 @@ h1{
 	border-width: .2em; 
 	border-style: solid; 
 	border-color: #000; 
+    display: table;
 }
 
 .pillLabel {
 	position: relative;
-	top: 40%;
+	/*top: 35%;*/
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .droppedBox
