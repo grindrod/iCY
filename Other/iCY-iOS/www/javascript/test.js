@@ -238,10 +238,10 @@ var newLabelAnimation = function(){
 	disableBtn('largerFontBtn', true);
 	disableBtn('done', true);
 	
-	$('#instructionLabel').animate( {left: labelWidth }, 3000, function() { 
+	$('#instructionLabel').animate( {left: labelWidth }, 750, function() { 
 		makeItBig();
 		$('#instructionLabel').css('left', -labelWidth);
-		$('#instructionLabel').animate( {left: "0px" }, 3000, function() {
+		$('#instructionLabel').animate( {left: "0px" }, 750, function() {
 			disableBtn('largerFontBtn', false);
 			onDropAreaChange();
 			//console.log("=====END ROLLOVER PROCESS [" + labelOrder[instructionSizeLevel] + "]=====");
