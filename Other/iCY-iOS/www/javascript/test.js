@@ -23,6 +23,8 @@ var currentObj;
 
 $(document).ready(function() {
 	$('#repeatTest').hide();
+    
+    //flashInstructions();
 	
 	document.getElementById('breakfast').addEventListener('DOMNodeInserted', onDropAreaChange, true);
 	document.getElementById('lunch').addEventListener('DOMNodeInserted', onDropAreaChange, true);
@@ -59,6 +61,19 @@ $(document).ready(function() {
 //////////////////////////////////////////////
 //				EVENT HANDLERS				//
 //////////////////////////////////////////////
+
+/* FLASHING INSTRUCTION CODE
+var flashCounter = 3;
+function flashInstructions(){
+    console.log('flashing... ' + flashCounter);
+    $('#topInstruction').fadeOut('slow', function() { 
+        $('#topInstruction').fadeIn('slow', function(){
+            flashCounter--;
+            if (flashCounter === 0) { return; }
+            flashInstructions();
+        });
+    });
+}*/
 
 function onCancel(event){ 
 	window.location = "index.html";
@@ -298,7 +313,8 @@ function reset()
 var anotherArray = ['breakfast', 'lunch', 'dinner', 'bedtime'];
 
 
-head.js("../javascript/lib/jquery.min.js","../javascript/ui.js","../javascript/touch.js", function (){
+//head.js("../javascript/lib/jquery.min.js","../javascript/ui.js","../javascript/touch.js", function (){
+head.js("../javascript/ui.js","../javascript/touch.js", function (){
 	$(".touchBox").draggable({revert:true, handle: function(){ 
 
 	$(".dropArea").droppable({accept: ".touchBox"});}});

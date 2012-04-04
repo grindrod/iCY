@@ -58,7 +58,7 @@ $(document).ready(function() {
   			window.location.href = 'questionnaire2.html';
   		}
   		else {
-  			window.location.href= 'test.html';
+  			window.location.href= 'instructions.html';
   		}
   		return false;
 	});
