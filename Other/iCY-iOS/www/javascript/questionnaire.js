@@ -14,14 +14,14 @@ $(document).ready(function() {
   			nowNameContainer.slideDown();
 			$('#aidsUsed').trigger( 'updatelayout' );
 			
-			var text;
+			/*var text;
 			if ( $(this)[0].name === 'magnifier') {
 				text = "If you have it with you, you may use it.";
 			} 
 			else { // glasses or bifocals
 				text = "If you have them with you, please put them on.";
 			}
-			showMessage(text); 
+			showMessage(text); */
   		}
   		else {
   			nowNameContainer.slideUp();
