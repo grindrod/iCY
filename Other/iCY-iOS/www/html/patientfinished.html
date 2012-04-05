@@ -11,10 +11,6 @@
                 margin-top: 10%;
             }
         </style>
-        <script>
-            document.ontouchmove = function(event){ event.preventDefault(); }
-        </script>
-        
     </head>
 	
 	<body><div data-role="page" data-theme="a">
@@ -24,13 +20,22 @@
                 Show this screen to the pharmacist.</h1>
 		</div>
 		<br />
-		<button id="pharmacistBtn" name="pharmacistBtn" class="redBtn" 
-			onclick="window.location.href='medications.html'"
-			ontouchend="window.location.href='medications.html'">Pharmacist access</button>
+		<button id="pharmacistBtn" name="pharmacistBtn" class="redBtn">Pharmacist access</button>
 		
 		<button data-role="none" id="cancel" class="pinkBtn cancelBtn"
 			onclick="window.location.href='index.html'" 
     		ontouchend="window.location.href='index.html'">Cancel</button>
 	</div></body>
+    
+    <script type="text/javascript">
+        document.ontouchmove = function(event){ event.preventDefault(); }
+        
+        document.getElementById('pharmacistBtn').ontouchend = onContinue;
+        document.getElementById('pharmacistBtn').onclick = onContinue;
+        
+        function onContinue () {
+            var t = setTimeout( "window.location.href='medications.html'" , 100);
+        }
+        </script>
 	
 </htm>

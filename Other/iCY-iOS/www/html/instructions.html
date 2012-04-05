@@ -45,6 +45,7 @@
     <script src="../javascript/lib/jquery-1.6.4.min.js"></script>
     <script>
         var t = setTimeout("$('#nextPage').fadeIn('slow')", 1000);
+        document.ontouchmove = function(event){ event.preventDefault(); }
     </script>
     
 </html>
