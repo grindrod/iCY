@@ -39,13 +39,23 @@
         <button data-role="none" id="cancel" class="pinkBtn cancelBtn"
 			onclick="window.location.href='index.html'" 
     		ontouchend="window.location.href='index.html'">Cancel</button>
-		<button id="nextPage" class="greenBtn doneBtn" ontouchend="window.location.href='test.html'" onclick="window.location.href='test.html'">Touch here to start -></button>
+		<button id="nextPage" class="greenBtn doneBtn">Touch here to start -></button>
 	</body>
     
     <script src="../javascript/lib/jquery-1.6.4.min.js"></script>
     <script>
-        var t = setTimeout("$('#nextPage').fadeIn('slow')", 1000);
+        $('#nextPage').hide();
+        var t = setTimeout( "nextButtonFade()", 1000);
+        
         document.ontouchmove = function(event){ event.preventDefault(); }
+        
+        function nextButtonFade(){
+            $('#nextPage').fadeIn('slow', function(){ 
+                $('#nextPage').bind('touchend click', function() {
+                    window.location.href='test.html';
+                });
+            });
+        }
     </script>
     
 </html>
