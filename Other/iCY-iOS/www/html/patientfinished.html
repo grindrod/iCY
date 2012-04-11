@@ -34,7 +34,17 @@
         document.getElementById('pharmacistBtn').onclick = onContinue;
         
         function onContinue () {
-            var t = setTimeout( "window.location.href='medications.html'" , 300);
+            console.log("ON CONTINUE");
+            var t = setTimeout( "moveUrl()" , 300);
+        }
+        
+        var moveUrl = function (){
+            console.log("MOVE URL");
+            var url;
+            var optionsSetting = JSON.parse(localStorage.getItem('optionsSetting') );
+                        
+            url = optionsSetting['medPage']? 'medications.html' : 'advice.html';
+            window.location.href=url;
         }
     </script>
 	

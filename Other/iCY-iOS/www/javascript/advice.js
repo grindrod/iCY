@@ -76,7 +76,7 @@ var loadDefaultOptions = function() {
     
     
     $('#' + currentDefaultFont + '_popup').prop("checked", true).checkboxradio("refresh");
-    $('#medPage').prop("checked", medPage).checkboxradio("refresh");
+    $('#medPage').prop("checked", medPage);
 }
 
 
