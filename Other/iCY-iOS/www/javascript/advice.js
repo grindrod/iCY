@@ -24,25 +24,30 @@ function fontOption() {
 }
 
 function popOptions(event) {
-    //console.log('popOptions');
     var popupSection = $('#popupOptionsForPharmacy');
-    popupSection.slideToggle();
     
-    if ( popupSection.css('display') === 'none' ){
-        document.getElementById('advicePage').onclick=null;
-    }
-    else {
+    if ( popupSection.css('display') === 'none' ) {
+        $('#popupOverlay').css('display', 'block');	
+        popupSection.slideToggle();
         event.stopImmediatePropagation();
-        document.getElementById('advicePage').onclick=closeOptions;
+        document.getElementById('popupOptionsForPharmacy').onclick=null;
+        document.getElementById('popupOverlay').onclick=closeOptions;
     }
+    else {      // popup current being displayed
+        closeOptions();
+    }
+     
+     
+     
 }
 
 function closeOptions() {
-    //console.log('closeOptions!');
     var popupSection = $('#popupOptionsForPharmacy');
 	if(popupSection.css('display') != 'none'){
         popupSection.slideToggle();
-	}
+        $('#popupOverlay').css('display', 'none');
+        document.getElementById('popupOverlay').onclick=null;
+    }
 }
 
 var loadCurrentDefaultFont = function(device) {
@@ -54,16 +59,13 @@ var loadCurrentDefaultFont = function(device) {
 
     if ( currentLevel === '0' ){ currentDefaultFont = '9point'; }
     else if (currentLevel === '1' ){ currentDefaultFont = '12point'; }
+    else if (currentLevel === '2' ){ currentDefaultFont = '15point'; }
     
     console.log (currentDefaultFont);
     
-    if (device === 'ipad') {
-        $('#' + currentDefaultFont + '_popup').prop("checked", true).checkboxradio("refresh");
-    }
-    else {
-        $('#' + currentDefaultFont + '_dialog').prop("checked", true);
-    }
     
+    $('#' + currentDefaultFont + '_popup').prop("checked", true).checkboxradio("refresh");
+    $('#medPage').prop("checked", includeMed).checkboxradio("refresh");
 }
 
 
@@ -112,12 +114,15 @@ var displayResults = function (adviceToUse){
     }
 }
 
+
 //////////////////////////////////////////////
 //				INITIALIZE                  //
 //////////////////////////////////////////////
 
 var deviceOptions = function() {
-    var iPadTest = false; 
+    var iPadTest = true; 
+    
+    //document.getElementById('fontOptionsBtn').onclick = popOptions;
     
     if ( iPadTest || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) ){
         console.log('iPad!');
