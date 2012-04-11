@@ -11,7 +11,7 @@ var labelOrder = new Array ( "9pt", "12pt", "15pt", "18pt");
 var boxes = ['drop1row1','drop1row2','drop2row1','drop2row2','drop3row1','drop3row2','drop4row1','drop4row2'];
 
 var storage = window.localStorage;
-var instructionSizeLevel = storage.getItem('instructionSizeLevel');		// from options menu
+var instructionSizeLevel = JSON.parse(storage.getItem('optionsSetting'))['instructionSizeLevel'];		// from options menu
 var userLevel;
 
 var objectRef1, objectRef2;
@@ -38,7 +38,7 @@ $(document).ready(function() {
     $('#instructionLabel').text( generateInstruction() );
 	
 	console.log("instructionSizeLevel: " + instructionSizeLevel);
-	if (instructionSizeLevel == "null"){ 
+	if (instructionSizeLevel == null || instructionSizeLevel == undefined){ 
 		console.log('changed to something else');
 		instructionSizeLevel = 1; 
 	} 
@@ -125,7 +125,6 @@ function disableBtn(name, state){
 		}
 	}
 }
-
 
 //////////////////////////////////////////////
 //		PRESCRIPTION LABEL GENERATION		//

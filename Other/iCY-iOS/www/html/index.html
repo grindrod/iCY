@@ -2,16 +2,21 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" /> 
-        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
         <title>ClereMed</title>
         
         <script>
-            var retrievedObject = localStorage.getItem('instructionSizeLevel');
+            var optionsSetting = JSON.parse(localStorage.getItem('optionsSetting'));
             
             window.localStorage.clear();
             
-            localStorage.setItem('instructionSizeLevel', retrievedObject);
-            console.log("retrievedObject: " + retrievedObject);
+            if (optionsSetting == null){ optionsSetting = {}; }
+            
+            // By default, show the Medications page
+            if (optionsSetting['medPage'] == null){ optionsSetting['medPage'] = true; }
+                                            
+            console.log(optionsSetting);
+            localStorage.setItem('optionsSetting', JSON.stringify(optionsSetting));
             
            	var adviceToUse = {};
    			adviceToUse['standardLabel'] = false;

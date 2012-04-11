@@ -12,15 +12,22 @@ ADVICE['customCaveat'] = "If custom label does not fit on vial, use standard lab
 //				iOS POPOUT MENU				//
 //////////////////////////////////////////////
 
-function fontOption() {
-    var newFontLevel = this.value;
-    console.log('newFontLevel: ' + newFontLevel);
-    localStorage.setItem('instructionSizeLevel', newFontLevel);
+var updateOptions = function (el) {
+    var id, state;
+    id = el.name;
     
-	//var retrievedObject = localStorage.getItem('instructionSizeLevel');
-    //console.log(retrievedObject);
-    //alert('retrieved: ' + retrievedObject);*/
-
+    if ( el.value === "on" ) {          // for checkboxes
+        state = $(el).is(':checked');
+    }
+    else {
+        state = el.value;
+    }
+    //console.log(id + " : " + state);
+    
+    var optionsSetting = JSON.parse(localStorage.getItem('optionsSetting') );
+    optionsSetting[id] = state;
+    //console.log(optionsSetting);
+    localStorage.setItem('optionsSetting', JSON.stringify(optionsSetting));
 }
 
 function popOptions(event) {
@@ -50,11 +57,15 @@ function closeOptions() {
     }
 }
 
-var loadCurrentDefaultFont = function(device) {
+var loadDefaultOptions = function() {
     var currentDefaultFont, 
-        currentLevel = localStorage.getItem('instructionSizeLevel');
-    
-    console.log('currentLevel: ' + currentLevel);
+        optionsSetting = JSON.parse(localStorage.getItem('optionsSetting') ),
+        currentLevel = optionsSetting['instructionSizeLevel'], 
+        medPage = optionsSetting['medPage'];
+
+    //console.log(optionsSetting);
+    //console.log("medPage: " + medPage);
+    //console.log("currentLevel: " + currentLevel);
     //alert('currentLevel: ' + currentLevel);
 
     if ( currentLevel === '0' ){ currentDefaultFont = '9point'; }
@@ -65,7 +76,7 @@ var loadCurrentDefaultFont = function(device) {
     
     
     $('#' + currentDefaultFont + '_popup').prop("checked", true).checkboxradio("refresh");
-    $('#medPage').prop("checked", includeMed).checkboxradio("refresh");
+    $('#medPage').prop("checked", medPage).checkboxradio("refresh");
 }
 
 
@@ -98,7 +109,7 @@ var analyseResults = function() {
 }
 
 var displayResults = function (adviceToUse){
-	console.log(adviceToUse);
+	//console.log(adviceToUse);
 	var item;
     
     for (var i in adviceToUse){
@@ -119,31 +130,19 @@ var displayResults = function (adviceToUse){
 //				INITIALIZE                  //
 //////////////////////////////////////////////
 
-var deviceOptions = function() {
-    var iPadTest = true; 
-    
-    //document.getElementById('fontOptionsBtn').onclick = popOptions;
-    
-    if ( iPadTest || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) ){
-        console.log('iPad!');
-        document.getElementById('fontOptionsBtn').onclick = popOptions;
-        loadCurrentDefaultFont('ipad');
-    }
-    else {
-        console.log('Playbook!');
-        $('#fontOptionsBtn').attr('data-rel', 'dialog');
-        $('#fontOptionsBtn').attr('href', '#pharmacyOptions_playbook');
-        loadCurrentDefaultFont('playbook');
-    }
-}
-
 $(document).ready(function() {
-    deviceOptions();
+    document.getElementById('fontOptionsBtn').onclick = popOptions;
     document.ontouchmove = function(event){ event.preventDefault(); }
   
+    loadDefaultOptions();
     $('#popupOptionsForPharmacy').hide();
-    $('.fontRadio').change(fontOption);
+    //$('.fontRadio').change(fontOption);
 
     var results = analyseResults();
     displayResults(results);
+    
+    // POP-UP
+    $("input").change( function() {
+       updateOptions(this);
+    });     
 });
