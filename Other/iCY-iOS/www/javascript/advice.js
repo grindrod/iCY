@@ -125,7 +125,6 @@ var displayResults = function (adviceToUse){
     }
 }
 
-
 //////////////////////////////////////////////
 //				INITIALIZE                  //
 //////////////////////////////////////////////
@@ -133,7 +132,17 @@ var displayResults = function (adviceToUse){
 $(document).ready(function() {
     document.getElementById('fontOptionsBtn').onclick = popOptions;
     document.ontouchmove = function(event){ event.preventDefault(); }
+    
+    // POPUP UI SETUP
+    var popupHeight = parseInt($('#optionsForm').css('height'), 10);
+    popupHeight = popupHeight + popupHeight*0.05 + "px";
+    $('#popupSlideWrapper_ios').css('height', popupHeight);
+                  
+    var popupBottom = parseInt( $('#fontOptionsBtn').css('height') , 10);
+    popupBottom = popupBottom + popupBottom*0.3 + "px";
+    $('#popupSlideWrapper_ios').css('bottom', popupBottom);
   
+    
     loadDefaultOptions();
     $('#popupOptionsForPharmacy').hide();
     //$('.fontRadio').change(fontOption);

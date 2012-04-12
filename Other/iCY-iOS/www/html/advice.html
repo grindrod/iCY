@@ -34,36 +34,17 @@
                 font-size: 15pt;
             }
             
-            /*#popupSlideWrapper_ios {
-                position: absolute;
-                bottom: 11%;
-                width: 100%%;
-                left: 0;
-                height: 23%;
-                padding: 0;
-            }
-            
-            #popupWrapper {
-                position: relative;
-                width: 40%;
-                height: 100%;
-                margin-right: 30%;
-                margin-left: 30%;
-            }*/
-            
-            /* WITH 15-PT FONT AND MEDICATIONS OPTION*/
             #popupSlideWrapper_ios {
                 position: absolute;
-                bottom: 11%;
                 width: 100%;
                 left: 0; 
-                height: 42%;
+                /* bottom and height are set in the javascript */
                 padding: 0;
             }
             
             #popupWrapper {
                 position: relative;
-                width: 45%;
+                width: 47%;
                 height: 100%;
                 margin-left: 25%;
                 margin-right: 25%;
@@ -78,9 +59,9 @@
                 border-width: .1em; 
                 border-style: solid; 
                 border-color: #000;
-                padding-left: 1.5%;
-                padding-right: 1.5%;
-                padding-bottom: 1.5%;
+                padding-left: 4%;
+                padding-right: 4%;
+                padding-bottom: 2%;
                 z-index: 10000;
             }
             
@@ -136,7 +117,8 @@
                 <div id="popupSlideWrapper_ios">
                     <div id="popupWrapper">
                         <div id="popupOptionsForPharmacy">
-                            <fieldset data-role="controlgroup" id="popupFieldset">
+                            <form id="optionsForm">
+                            <fieldset data-role="controlgroup" id="fontFieldset">
                                 <div id="popupText">What is the smallest level font size printed at your pharmacy?</div>
                                 <input type="radio" name="instructionSizeLevel" id="9point_popup" class="fontRadio" value="0" />
                                 <label for="9point_popup"><div class="advice_9point">9pt font (this text is 9-point font)</div></label>
@@ -152,6 +134,7 @@
                                 <input type="checkbox" name="medPage" id="medPage" />
                                 <label for="medPage"><div class="advice_12point">Include Medications page?</div></label>
                             </fieldset>
+                                </form>
                         </div>
                     </div>
                 </div>
