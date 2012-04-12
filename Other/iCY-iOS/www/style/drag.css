@@ -37,13 +37,25 @@ h1{
 	/*top: 35%;*/
     display: table-cell;
     vertical-align: middle;
+    color: black;
 }
 
 .droppedBox
 {
-
-	
-	background-color: green;
+	/*background-color: green;*/
+    background: rgb(252,234,187); /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(252,234,187,1) 17%, rgba(252,205,77,1) 43%, rgba(248,181,0,1) 81%, rgba(251,223,147,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(17%,rgba(252,234,187,1)), color-stop(43%,rgba(252,205,77,1)), color-stop(81%,rgba(248,181,0,1)), color-stop(100%,rgba(251,223,147,1))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(252,234,187,1) 17%,rgba(252,205,77,1) 43%,rgba(248,181,0,1) 81%,rgba(251,223,147,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  rgba(252,234,187,1) 17%,rgba(252,205,77,1) 43%,rgba(248,181,0,1) 81%,rgba(251,223,147,1) 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  rgba(252,234,187,1) 17%,rgba(252,205,77,1) 43%,rgba(248,181,0,1) 81%,rgba(251,223,147,1) 100%); /* IE10+ */
+    background: radial-gradient(center, ellipse cover,  rgba(252,234,187,1) 17%,rgba(252,205,77,1) 43%,rgba(248,181,0,1) 81%,rgba(251,223,147,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    
+	border-width: .2em; 
+	border-style: solid; 
+	border-color: #000;
+    
 	font-weight: bold;
 	font-size: 14px;
 	color: #FFF;
@@ -60,7 +72,17 @@ h1{
 	width: 100px;
 	height:100px;
 	margin: 10px;
-	background-color:#999;
+    background: rgb(254,252,234); /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(254,252,234,1) 22%, rgba(241,218,54,1) 80%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(22%,rgba(254,252,234,1)), color-stop(80%,rgba(241,218,54,1))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(254,252,234,1) 22%,rgba(241,218,54,1) 80%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  rgba(254,252,234,1) 22%,rgba(241,218,54,1) 80%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  rgba(254,252,234,1) 22%,rgba(241,218,54,1) 80%); /* IE10+ */
+    background: radial-gradient(center, ellipse cover,  rgba(254,252,234,1) 22%,rgba(241,218,54,1) 80%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', endColorstr='#f1da36',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    -webkit-box-shadow: 1px 0px 15px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    1px 0px 15px rgba(50, 50, 50, 0.75);
+    box-shadow:         1px 0px 15px rgba(50, 50, 50, 0.75);
 	font-weight: bold;
 	font-size: 14px;
 	color: #FFF;
@@ -72,6 +94,7 @@ h1{
 	border-radius: 50%;
 	text-align: center;
 }
+
 .largetouchbox b, .dropArea b{
 	line-height: 40px;
 }
