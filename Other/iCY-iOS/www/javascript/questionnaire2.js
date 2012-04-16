@@ -23,6 +23,7 @@ function onDone(e) {
         else if (current.name === "worn"){
             adviceToUse['difficultyReadWorn'] = true;
             adviceToUse['difficultyDiscuss'] = "qYes";
+            adviceToUse['noTape'] = false; 
         }
         else if (current.name === "glossy"){
             adviceToUse['difficultyReadGlossy'] = true;
