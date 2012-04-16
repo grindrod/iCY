@@ -26,6 +26,12 @@ function onDone(e) {
         }
         else if (current.name === "glossy"){
             adviceToUse['difficultyReadGlossy'] = true;
+            if (adviceToUse['difficultyDiscuss'] === "qYes"){
+                adviceToUse['difficultyDiscuss'] = true;
+            }
+            else {
+                adviceToUse['difficultyDiscuss'] = false;
+            }
         }
     }
     
