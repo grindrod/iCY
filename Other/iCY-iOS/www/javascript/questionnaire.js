@@ -57,18 +57,12 @@ $(document).ready(function() {
             // VISUAL AID CHECK
             var aidUsed;
             if (formData[i].name === "glasses" || formData[i].name === "magnifier"){
-                console.log("formData length: " + formData.length);
                 increment = i+1 < formData.length? i+1 : i;
-                console.log("increment: " + increment);
-                console.log("increment OBJECT: " + formData[increment].name);
                 if (formData[increment].name === "glassesnow" || formData[increment].name === "magnifiernow"){
-                     console.log("User has visual aid now");
                      onContinue();
                 }
                 else {
-                     console.log("has visual aid but does not have them now: " + current);
                      aidUsed = $('#' + formData[i].name + 'Label').attr('value');
-                     //aidUsed = $('#' + current);
                      console.log(aidUsed);
                      showMessage(aidUsed);
                 }
@@ -76,15 +70,8 @@ $(document).ready(function() {
         }
                      
         
-         //console.log (  JSON.stringify(adviceToUse));
-         localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );
-                     
-  		/*if (window.location.href.search(/questionnaire1.html/) > 0){
-  			window.location.href = 'questionnaire2.html';
-  		}
-  		else {
-  			window.location.href= 'instructions.html';
-  		}*/
+        //console.log (  JSON.stringify(adviceToUse));
+        localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );
   		return false;
 	});
 });
