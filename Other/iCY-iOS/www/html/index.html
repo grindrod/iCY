@@ -19,15 +19,30 @@
             localStorage.setItem('optionsSetting', JSON.stringify(optionsSetting));
             
            	var adviceToUse = {};
-   			adviceToUse['standardLabel'] = false;
-	    	adviceToUse['min15pt'] = false;
-    		adviceToUse['min18pt'] = false;
-    		adviceToUse['followup'] = false;
-    		adviceToUse['compliancePackaging'] = false;
-    		adviceToUse['noTape'] = false;
-    		adviceToUse['discuss'] = false;
-    		//adviceToUse['customCaveat'] = false;
+            adviceToUse['standardLabel'] = true;        // everyone
+            adviceToUse['numbers'] = true;              // everyone
+            adviceToUse['simpleLang'] = true;           // everyone
+            adviceToUse['notAllCaps'] = true;           // everyone
+            adviceToUse['noTape'] = true;               // exception cases in questionnaire
+            adviceToUse['ableReadStandard'] = false;
+            adviceToUse['notAbleReadStandard'] = false;
+            adviceToUse['notAbleReadLarge'] = false;
+            adviceToUse['printDuplicate'] = false;
+            adviceToUse['matchDuplicate'] = false;
+            adviceToUse['routineAssess'] = false;
+            adviceToUse['compliancePackaging'] = false;
+            adviceToUse['usesLargePrint'] = false;
+            adviceToUse['difficultyReadLabels'] = false;
+            adviceToUse['difficultyReadNonPrescription'] = false;
+            adviceToUse['difficultyReadWorn'] = false;
+            adviceToUse['difficultyReadGlossy'] = false;
+            adviceToUse['difficultyDiscuss'] = false;
+            adviceToUse['discussCompliance'] = false;
+            adviceToUse['counsel'] = false;
+            adviceToUse['discussMagnifying'] = false;
+            adviceToUse['discussGlassLargePrint'] = false;
             
+            console.log(adviceToUse);
             console.log(JSON.stringify(adviceToUse) );
             localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );
             

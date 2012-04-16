@@ -1,12 +1,77 @@
+/*1.  Use standard label on vial.
+2.  Use numbers instead of text
+3.  Use simple language: e.g., “Take 1 tablet in the morning and in the evening” NOT “Take 1 tablet twice daily”
+4.  Use upper and lower case, NOT ALL CAPS
+5.  Do NOT tape label.
+
+6.  Patient was able to read standard labels.
+7.  Patient was NOT able to read standard label.
+8.  Patient was NOT able to read large print label.
+
+9.  Print a duplicate (15/18 point font) label on paper stock using Arial or Verdana font
+10. Match duplicate label to vial using a large-print number or colored sticker on both duplicate label and corresponding vial.
+
+11. Patient should be routinely assessed by a family physician or vision specialist
+
+12. Recommend compliance packaging
+
+13. Patient uses large print reading materials at home. 
+14. Patient expressed difficulty reading prescription labels.
+15. Patient has difficulty reading non-prescription labels.
+16. Patient has difficulty reading worn prescription labels. Consider taping label.
+17. Patient has difficulty reading glossy papers.
+18. Patient has difficulty reading worn prescription labels and glossy papers. Discuss importance of protecting label from wear (e.g., use a weekly pill box).
+
+19. Discuss need for compliance packaging. Decision based pharmacist judgment.
+
+20. Counsel patient on role of medications in low vision.
+21. Discuss need for a magnifying glass.
+22. Discuss need for a magnifying glass or large print label.*/
+
+
 var ADVICE = {};
-ADVICE['standardLabel'] = "Use the standard label (9-12pt font)";
+/*ADVICE['standardLabel'] = "Use the standard label (9-12pt font)";
 ADVICE['min15pt'] = "Print custom label (15pt font minimum)";
 ADVICE['min18pt'] = "Print custom label (18pt font minimum)";
 ADVICE['followup'] = "Recommend a follow-up with an optometrist";
 ADVICE['compliancePackaging'] = "Use compliance packaging";
 ADVICE['noTape'] = "Do not tape";
 ADVICE['discuss'] = "Discuss; decision based on judgment of pharmacist";
-ADVICE['customCaveat'] = "If custom label does not fit on vial, use standard label on vial and use colour or number coding for the large print label.";
+ADVICE['customCaveat'] = "If custom label does not fit on vial, use standard label on vial and use colour or number coding for the large print label.";*/
+
+
+ADVICE['standardLabel'] = "Use standard label on vial.";
+ADVICE['numbers'] = "Use numbers instead of text";
+ADVICE['simpleLang'] = 'Use simple language: e.g., "Take 1 tablet in the morning and in the evening" NOT "Take 1 tablet twice daily"';
+ADVICE['notAllCaps'] = "Use upper and lower case, NOT ALL CAPS";
+ADVICE['noTape'] = "Do NOT tape label.";
+ 
+ADVICE['ableReadStandard'] = "Patient was able to read standard labels.";
+ADVICE['notAbleReadStandard'] = "Patient was NOT able to read standard label.";
+ADVICE['notAbleReadLarge'] = "Patient was NOT able to read large print label.";
+ 
+ADVICE['printDuplicate'] = "Print a duplicate (15/18 point font) label on paper stock using Arial or Verdana font.";
+ADVICE['matchDuplicate'] = "Match duplicate label to vial using a large-print number or colored sticker on both duplicate label and corresponding vial.";
+ 
+ADVICE['routineAssess'] = "Patient should be routinely assessed by a family physician or vision specialist";
+ 
+ADVICE['compliancePackaging'] = "Recommend compliance packaging";
+ 
+ADVICE['usesLargePrint'] = "Patient uses large print reading materials at home.";
+ADVICE['difficultyReadLabels'] = "Patient expressed difficulty reading prescription labels.";
+ADVICE['difficultyReadNonPrescription'] = "Patient has difficulty reading non-prescription labels.";
+ADVICE['difficultyReadWorn'] = "Patient has difficulty reading worn prescription labels. Consider taping label.";
+ADVICE['difficultyReadGlossy'] = "Patient has difficulty reading glossy papers.";
+ADVICE['difficultyDiscuss'] = "Patient has difficulty reading worn prescription labels and glossy papers. Discuss importance of protecting label from wear (e.g., use a weekly pill box).";
+ 
+ADVICE['discussCompliance'] = "Discuss need for compliance packaging. Decision based pharmacist judgment.";
+ 
+ADVICE['counsel'] = "Counsel patient on role of medications in low vision.";
+ADVICE['discussMagnifying'] = "Discuss need for a magnifying glass.";
+ADVICE['discussGlassLargePrint'] = "Discuss need for a magnifying glass or large print label.";
+
+
+
 
 //////////////////////////////////////////////
 //				iOS POPOUT MENU				//
