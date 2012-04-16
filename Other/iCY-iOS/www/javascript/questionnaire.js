@@ -5,6 +5,13 @@ $(document).ready(function() {
 	$('#bifocalsnowContainer').hide();
 	$('#magnifiernowContainer').hide();
     
+    //Centering questionnaire pages
+      if($(document).height() >= 748)
+      {
+            $('#whiteSpace').css('margin-top','10%');
+      }
+                  
+                  
      $("#glasses, #bifocals, #magnifier").bind( "change", function(event, ui) {
      	var state = $(this).is(':checked');
   		var nowName = this.name + "now";
