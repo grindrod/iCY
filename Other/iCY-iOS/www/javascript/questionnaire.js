@@ -67,6 +67,9 @@ $(document).ready(function() {
                      showMessage(aidUsed);
                 }
             }
+            else {
+                onContinue();
+            }
         }
                      
         
