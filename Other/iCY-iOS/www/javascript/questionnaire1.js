@@ -145,6 +145,10 @@ function closeModalDialog(){
     $('#modalMessage_cancel').hide();
     $('#modalMessage_done').hide();
     $('#modalMessage_ok').hide();
+    
+    $('#modalMessage_cancel').removeClass('glassesCheck');
+    $('#modalMessage_cancel').removeClass('magnifierCheck');
+    $('#modalMessage_cancel').removeClass('helpCheck');
 }
 
 function noVisualAid(){
