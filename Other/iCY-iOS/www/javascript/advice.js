@@ -155,12 +155,22 @@ var analyseResults = function() {
 	//console.log(userLevel);
 	
 	if ( userLevel === "9pt" || userLevel === "12pt" ) {
-		//adviceToUse['standardLabel'] = true;
         adviceToUse['ableReadStandard'] = true;
         if (adviceToUse['difficultyReadLabels'] === "qYes" && 
             adviceToUse['discussGlassLargePrint'] === "qYes"){
             adviceToUse['difficultyReadLabels'] = true;
             adviceToUse['discussGlassLargePrint'] = true;
+        }
+        else {
+            adviceToUse['difficultyReadLabels'] = false;
+            adviceToUse['discussGlassLargePrint'] = false;
+        }
+        
+        if (adviceToUse['usesLargePrint'] === "qYes"){
+            adviceToUse['usesLargePrint'] = true;
+        }
+        else {
+            adviceToUse['usesLargePrint'] = false;
         }
 	} 
 	else if (userLevel === "15pt" || userLevel === "18pt"){
