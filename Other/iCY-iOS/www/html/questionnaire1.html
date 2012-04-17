@@ -7,10 +7,10 @@
     	<link rel="stylesheet" href="../style/common.css" />
         <style>
             #messageBox {
-                width: 70%;
-                height: 275px;
+                width: 57%;
+                height: 225px;
                 padding: 1%;
-                margin-left: 14%;
+                margin-left: 19%;
                 margin-top: 15%;
                 position: relative;
             }
@@ -20,22 +20,30 @@
                 color: black;
                 text-align: center;
                 margin-bottom:2%;
-            }
-            
-            #modalMessage_done {
-                height: 43px;
-                width: 20%;
-                margin-left: 47%;
+                z-index: 10000;
             }
             
             #modalMessage_cancel {
                 height: 43px;
+                /*width: 20%;*/
+                margin-left: 47%;
+            }
+            
+            #modalMessage_done {
+                height: 43px;
                 margin-left: 27%;
             }
             
-            #modalMessage_done, #modalMessage_cancel {
+            #modalMessage_ok {
+                margin-left: 40%;
+            }
+            
+            #modalMessage_done, #modalMessage_cancel, #modalMessage_ok {
                 position: absolute;
                 bottom: 7%;
+                z-index: 10001;
+                padding-left: 3%;
+                padding-right: 3%;
             }
         </style>
     	
@@ -65,25 +73,13 @@
 			<form>
                 <div data-role="fieldcontain" id="aidsUsed" class="checkboxSqueeze">
                     <fieldset data-role="controlgroup">
-                        <div id="glassesContainer">
-                            <input type="checkbox" name="glasses" id="glasses" class="custom" />
-                            <label for="glasses" data-iconpos="right" id="glassesLabel" value="glasses, contact lenses, bifocals, or reading glasses">Glasses, contact lenses, bifocals, or reading glasses</label>
-                            
-                            <div id="glassesnowContainer">
-                                <input type="checkbox" name="glassesnow" id="glassesnow" class="custom" />
-                                <label for="glassesnow" data-iconpos="right">Are you wearing them right now? </label>
-                            </div>
-                        </div>
                         
-                        <div id="magnifierContainer">
-                            <input type="checkbox" name="magnifier" id="magnifier" class="custom" />
-                            <label for="magnifier" data-iconpos="right" id="magnifierLabel" value="magnifier">A magnifier</label>
-                            
-                            <div id="magnifiernowContainer">
-                                <input type="checkbox" name="magnifiernow" id="magnifiernow" class="custom" />
-                                <label for="magnifiernow" data-iconpos="right">Are you using your magnifier right now? </label>
-                            </div>
-                        </div>
+                        <input type="checkbox" name="glasses" id="glasses" class="custom" />
+                        <label for="glasses" data-iconpos="right" id="glassesLabel" value="glasses or contacts">Glasses, contact lenses, bifocals, or reading glasses</label>
+                        
+                        <input type="checkbox" name="magnifier" id="magnifier" class="custom" />
+                        <label for="magnifier" data-iconpos="right" id="magnifierLabel" value="magnifier">A magnifier</label>
+                        
                         
                         <input type="checkbox" name="largeprint" id="largeprint" class="custom" />
                         <label for="largeprint" data-iconpos="right">Large print materials</label>
@@ -104,8 +100,9 @@
         <div class="modalMessage">
             <div id="messageBox" class="modalMessage_box">
                 <div id="modalMessage_text"><br /></div>
-                <button id="modalMessage_cancel" data-role="none" class="pinkBtn">Cancel</button>
-                <button id="modalMessage_done" data-role="none" class="greenBtn">Continue</button>
+                <button id="modalMessage_done" data-role="none" class="greenBtn"></button>
+                <button id="modalMessage_cancel" data-role="none" class="pinkBtn"></button>
+                <button id="modalMessage_ok" data-role="none" class="greenBtn"></button>
             </div>
         </div>
 	</div></body>
