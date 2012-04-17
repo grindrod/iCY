@@ -74,6 +74,8 @@
 		NSString* jsString = [NSString stringWithFormat:@"var invokeString = \"%@\";", self.invokeString];
 		[theWebView stringByEvaluatingJavaScriptFromString:jsString];
 	}
+    
+    [[theWebView.subviews objectAtIndex:0] setBounces:NO]; 
 	
 	 // Black base color for background matches the native apps
    	theWebView.backgroundColor = [UIColor blackColor];

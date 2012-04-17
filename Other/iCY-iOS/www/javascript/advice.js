@@ -212,7 +212,7 @@ var displayResults = function (adviceToUse){
 
 $(document).ready(function() {
     document.getElementById('fontOptionsBtn').onclick = popOptions;
-    document.ontouchmove = function(event){ event.preventDefault(); }
+    //document.ontouchmove = function(event){ event.preventDefault(); }
     
     // POPUP UI SETUP
     var popupHeight = parseInt($('#optionsForm').css('height'), 10);
