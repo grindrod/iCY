@@ -48,7 +48,7 @@ function onDone() {
         }
         else if (current.name === "Diabetes" || current.name === "Hypertension" ||
                  current.name === "Glaucoma" || current.name === "Cataracts" ||
-                 current.name.search(/MacularDegeneration/i) >= 0 ){
+                 current.name === "MacularDegeneration" ){
             adviceToUse['routineAssess'] = true;
         }
     }
