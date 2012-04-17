@@ -155,18 +155,24 @@ var analyseResults = function() {
 	//console.log(userLevel);
 	
 	if ( userLevel === "9pt" || userLevel === "12pt" ) {
-		adviceToUse['standardLabel'] = true;
+		//adviceToUse['standardLabel'] = true;
+        adviceToUse['ableReadStandard'] = true;
+        if (adviceToUse['difficultyReadLabels'] === "qYes" && 
+            adviceToUse['discussGlassLargePrint'] === "qYes"){
+            adviceToUse['difficultyReadLabels'] = true;
+            adviceToUse['discussGlassLargePrint'] = true;
+        }
 	} 
-	else if (userLevel === "15pt"){
-		adviceToUse['min15pt'] = true;
-	}
-	else if (userLevel === "18pt"){
-		adviceToUse['min18pt'] = true;
-		adviceToUse['followup'] = true;
+	else if (userLevel === "15pt" || userLevel === "18pt"){
+        adviceToUse['notAbleReadStandard'] = true;
+        adviceToUse['printDuplicate'] = true;
+        adviceToUse['matchDuplicate'] = true;
+        adviceToUse['routineAssess'] = true;
 	}
 	else if (userLevel === "failed") {
-		adviceToUse['followup'] = true;
-		adviceToUse['compliancePackaging'] = true;
+		adviceToUse['notAbleReadLarge'] = true;
+        adviceToUse['compliancePackaging'] = true;
+        adviceToUse['routineAssess'] = true;
 	}
 	
 	console.log(adviceToUse);
