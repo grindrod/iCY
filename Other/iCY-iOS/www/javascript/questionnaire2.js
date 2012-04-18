@@ -6,11 +6,13 @@ $(document).ready(function() {
 function onDone(e) {
     var formData = $('form').serializeArray();
     var adviceToUse = JSON.parse( localStorage.getItem('adviceToUse') );
+    var results = JSON.parse( localStorage.getItem('results') );
     var current;
     
     for (var i in formData){
         current = formData[i];
-        console.log(current);
+        //console.log(current);
+        results['questionnaire'].push(current);
         
         if (current.name === "prescription"){
             adviceToUse['difficultyReadLabels'] = "qYes";
@@ -36,7 +38,16 @@ function onDone(e) {
         }
     }
     
-    console.log (  adviceToUse );
+    var checkBoxSerialized = $('input:checkbox').map(function() {
+                                                     return { name: this.name, value: $(this).is(':checked') };
+                                                     });
+    console.log(checkBoxSerialized);
+    
+    console.log (adviceToUse);
     localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );
+    
+    console.log(results);
+    localStorage.setItem ('results', JSON.stringify(results) );
+    
     window.location.href= 'instructions.html';
 }

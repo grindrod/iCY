@@ -21,11 +21,11 @@ $(document).ready(function() {
 	});
 	
 	$('#done').click(function() {
-	  	console.log("done clicked");
+	  	//console.log("done clicked");
         var formData = $('form').serializeArray(); 
         console.log( formData );
                      
-        console.log("COLLECT ADVICE DATA");
+        //console.log("COLLECT ADVICE DATA");
         var adviceToUse = JSON.parse( localStorage.getItem('adviceToUse') );
         //console.log(adviceToUse);
         var current;
@@ -43,11 +43,17 @@ $(document).ready(function() {
                      adviceToUse['noTape'] = true;
             }
         }
-                     
         
         //console.log (  JSON.stringify(adviceToUse));
         localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );
-        window.location.href = 'questionnaire2.html';
+                     
+        var results = JSON.parse( localStorage.getItem('results') );
+        results['questionnaire'] = formData;
+        //results['questionnaire'] = checkboxSerialized;
+        localStorage.setItem ('results', JSON.stringify(results) );
+        console.log(results);
+                     
+        //window.location.href = 'questionnaire2.html';
         
   		return false;
 	});
@@ -86,7 +92,7 @@ var aidsCheck = function (aid){
 //////////////////////////////////
 
 var showMessage = function(text, messageClass, yesHandler, noHandler) {
-    console.log("SHOW MESSAGE");
+    //console.log("SHOW MESSAGE");
     
     $('#mainSection').hide();
 	var docHeight = $(document).height();

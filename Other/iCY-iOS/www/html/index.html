@@ -43,8 +43,12 @@
             adviceToUse['discussGlassLargePrint'] = false;
             
             console.log(adviceToUse);
-            console.log(JSON.stringify(adviceToUse) );
+            //console.log(JSON.stringify(adviceToUse) );
             localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );
+            
+            var results = {};
+            console.log(results);
+            localStorage.setItem ('results', JSON.stringify(results) );
             
             document.ontouchmove = function(e){ e.preventDefault(); }
         </script>

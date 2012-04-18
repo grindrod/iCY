@@ -35,6 +35,7 @@ $(document).ready(function() {
 function onDone() {
     var formData = $('form').serializeArray();
     var adviceToUse = JSON.parse( localStorage.getItem('adviceToUse') );
+    var results = JSON.parse( localStorage.getItem('results') );
     var current;
     
     console.log(formData);
@@ -55,6 +56,11 @@ function onDone() {
     
     console.log(adviceToUse);
     localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );
+    
+    results['medications'] = formData;
+    localStorage.setItem ('results', JSON.stringify(results) );
+    console.log(results);
+    
 	window.location.href='advice.html';
 }
 

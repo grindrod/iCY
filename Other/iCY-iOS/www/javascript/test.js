@@ -12,7 +12,8 @@ var boxes = ['drop1row1','drop1row2','drop2row1','drop2row2','drop3row1','drop3r
 
 var storage = window.localStorage;
 var instructionSizeLevel = JSON.parse(storage.getItem('optionsSetting'))['instructionSizeLevel'];		// from options menu
-var userLevel;
+var results = JSON.parse( localStorage.getItem('results') );
+results['test'] = {};
 
 var objectRef1, objectRef2;
 
@@ -21,7 +22,11 @@ var pillIdCount = 200;
 
 var currentObj;
 
+var start;
+
 $(document).ready(function() {
+                  start = new Date();
+                  console.log("start: " + start);
 	$('#repeatTest').hide();
 	
 	document.getElementById('breakfast').addEventListener('DOMNodeInserted', onDropAreaChange, true);
@@ -44,9 +49,10 @@ $(document).ready(function() {
 	} 
 	
 	var fontSize = labelOrder[instructionSizeLevel];
-	$('#instructionLabel').css('font-size', fontSize)
-	userLevel = fontSize;
-	localStorage.setItem('userLevel', userLevel);
+    $('#instructionLabel').css('font-size', fontSize);
+    results['test']['userFont'] = fontSize;
+    localStorage.setItem ('results', JSON.stringify(results) );
+    
 	console.log("instructionSize: " + fontSize);
     
     /*for (var i in expectedResult) {
@@ -73,7 +79,9 @@ function onLargerFontBtn(event) {
 function onDone(event){
 	//alert('done button clicked');
 	console.log('done button clicked');
-	if (validateContents() === true){ window.location = "patientfinished.html"; }
+	if (validateContents() === true){ 
+        finishTest();
+    }
 	else {
 		//console.log("=====START ROLLOVER PROCESS [" + labelOrder[instructionSizeLevel] + "] =====");
 		repeatTest();
@@ -124,6 +132,18 @@ function disableBtn(name, state){
 			document.getElementById(name).onclick = onCancel;
 		}
 	}
+}
+
+function finishTest(){
+    var end = new Date();
+    console.log("end: " + end);
+    
+    var results = JSON.parse( localStorage.getItem('results') );
+    results['test']['time'] = end - start;
+    localStorage.setItem ('results', JSON.stringify(results) );
+    console.log(results);
+    
+    window.location = "patientfinished.html"; 
 }
 
 //////////////////////////////////////////////
@@ -217,18 +237,18 @@ function makeItBig()
 		$('#instructionLabel').css("font-size", fontSize );
         $('.dropArea').css("font-size", fontSize); 
         $('.pillLabel').css("font-size", fontSize);
-		userLevel = fontSize;
-		localStorage.setItem('userLevel', userLevel);
+        
+		results['test']['userFont'] = fontSize;
+        localStorage.setItem ('results', JSON.stringify(results) );
 		
-	
 		//console.log ( "font size: " + labelOrder[instructionSizeLevel] + ", " +  $('#instructionLabel').css('font-size'));
 	}
 	else {
 		//console.log ("--MAX-- font size reached");
-		userLevel = "failed";
-		localStorage.setItem('userLevel', userLevel);
-		window.location = "patientfinished.html"; 
-		//console.log("GO TO NEXT PAGE!");
+		results['test']['userFont'] = "failed";
+        localStorage.setItem ('results', JSON.stringify(results) );
+		
+        finishTest();
 	}
 }
 
