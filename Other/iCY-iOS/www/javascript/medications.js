@@ -57,7 +57,9 @@ function onDone() {
     console.log(adviceToUse);
     localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );
     
-    results['medications'] = formData;
+    results['medications'] = new Array();
+    $('input:checkbox').map(function() {
+                            results['medications'].push({ name: this.name, value: $(this).is(':checked') } )});
     localStorage.setItem ('results', JSON.stringify(results) );
     console.log(results);
     

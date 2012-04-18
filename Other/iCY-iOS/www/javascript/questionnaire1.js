@@ -23,16 +23,17 @@ $(document).ready(function() {
 	$('#done').click(function() {
 	  	//console.log("done clicked");
         var formData = $('form').serializeArray(); 
-        console.log( formData );
-                     
-        //console.log("COLLECT ADVICE DATA");
+        var results = JSON.parse( localStorage.getItem('results') );
+                     results['questionnaire'] = new Array();
+        $('input:checkbox').map(function() {
+                                results['questionnaire'].push({ name: this.name, value: $(this).is(':checked') } )});
+
         var adviceToUse = JSON.parse( localStorage.getItem('adviceToUse') );
         //console.log(adviceToUse);
         var current;
          
         for (var i=0; i < formData.length; i++){
             current = formData[i].name;
-            console.log("current[" +i + "]: " + current);
          
             // COLLECT ADVICE DATA
             if (current.name === "largeprint"){
@@ -46,14 +47,9 @@ $(document).ready(function() {
         
         //console.log (  JSON.stringify(adviceToUse));
         localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );
-                     
-        var results = JSON.parse( localStorage.getItem('results') );
-        results['questionnaire'] = formData;
-        //results['questionnaire'] = checkboxSerialized;
         localStorage.setItem ('results', JSON.stringify(results) );
-        console.log(results);
                      
-        //window.location.href = 'questionnaire2.html';
+        window.location.href = 'questionnaire2.html';
         
   		return false;
 	});

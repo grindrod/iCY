@@ -9,10 +9,13 @@ function onDone(e) {
     var results = JSON.parse( localStorage.getItem('results') );
     var current;
     
+    $('input:checkbox').map(function() {
+                            results['questionnaire'].push( { name: this.name, value: $(this).is(':checked')});
+                            });
+    
     for (var i in formData){
         current = formData[i];
-        //console.log(current);
-        results['questionnaire'].push(current);
+        //results['questionnaire'].push(current);
         
         if (current.name === "prescription"){
             adviceToUse['difficultyReadLabels'] = "qYes";
