@@ -7,17 +7,24 @@
         
         <script>
             var optionsSetting = JSON.parse(localStorage.getItem('optionsSetting'));
+            var prevResults = JSON.parse(localStorage.getItem('results'));
             
             window.localStorage.clear();
             
             if (optionsSetting == null){ optionsSetting = {}; }
+            if (prevResults == null){ 
+                console.log("PREV RESULTS DIDNT EXIST!");
+                prevResults = {}; 
+                prevResults['userID'] = 0;
+            } 
             
             // By default, show the Medications page
             if (optionsSetting['medPage'] == null){ optionsSetting['medPage'] = true; }
-                                            
+
             console.log(optionsSetting);
             localStorage.setItem('optionsSetting', JSON.stringify(optionsSetting));
             
+            // ADVICE 
            	var adviceToUse = {};
             adviceToUse['standardLabel'] = true;        // everyone
             adviceToUse['numbers'] = true;              // everyone
@@ -46,7 +53,12 @@
             //console.log(JSON.stringify(adviceToUse) );
             localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );
             
+            // RESULTS TO SEND TO SERVER
             var results = {};
+            results['datetime'] = new Date();
+            var prevUserID = prevResults['userID'] + 1;
+            console.log("prevUserID: " + prevUserID);
+            results['userID'] = prevResults['userID'] + 1;
             console.log(results);
             localStorage.setItem ('results', JSON.stringify(results) );
             

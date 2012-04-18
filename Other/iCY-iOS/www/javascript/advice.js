@@ -1,5 +1,4 @@
 var ADVICE = {};
-
 ADVICE['standardLabel'] = "Use standard label on vial.";
 ADVICE['numbers'] = "Use numbers instead of text";
 ADVICE['simpleLang'] = 'Use simple language: e.g., "Take 1 tablet in the morning and in the evening" NOT "Take 1 tablet twice daily"';
@@ -29,9 +28,6 @@ ADVICE['discussCompliance'] = "Discuss need for compliance packaging. Decision b
 ADVICE['counsel'] = "Counsel patient on role of medications in low vision.";
 ADVICE['discussMagnifying'] = "Discuss need for a magnifying glass.";
 ADVICE['discussGlassLargePrint'] = "Discuss need for a magnifying glass or large print label.";
-
-
-
 
 //////////////////////////////////////////////
 //				iOS POPOUT MENU				//
@@ -97,7 +93,7 @@ var loadDefaultOptions = function() {
     else if (currentLevel === '1' ){ currentDefaultFont = '12point'; }
     else if (currentLevel === '2' ){ currentDefaultFont = '15point'; }
     
-    console.log (currentDefaultFont);
+    console.log ("currentDefaultFont: " + currentDefaultFont);
     
     
     $('#' + currentDefaultFont + '_popup').prop("checked", true).checkboxradio("refresh");
@@ -111,8 +107,9 @@ var loadDefaultOptions = function() {
 
 var analyseResults = function() {
 	var adviceToUse = JSON.parse( localStorage.getItem('adviceToUse') );
-	var userLevel = localStorage.getItem('userLevel');
-	//console.log(userLevel);
+    var results = JSON.parse( localStorage.getItem('results') );
+	var userLevel = results['test']['userFont'];
+	console.log("userLevel: " + userLevel);
 	
 	if ( userLevel === "9pt" || userLevel === "12pt" ) {
         adviceToUse['ableReadStandard'] = true;
@@ -166,11 +163,25 @@ var displayResults = function (adviceToUse){
     }
 }
 
+function zeroPad(num, numZeros) {
+    var n = Math.abs(num);
+    var zeros = Math.max(0, numZeros - Math.floor(n).toString().length );
+    var zeroString = Math.pow(10,zeros).toString().substr(1);
+    if( num < 0 ) {
+        zeroString = '-' + zeroString;
+    }
+    
+    return zeroString+n;
+}
+
 //////////////////////////////////////////////
 //				INITIALIZE                  //
 //////////////////////////////////////////////
 
 $(document).ready(function() {
+                  var results = JSON.parse( localStorage.getItem('results') );
+                  document.getElementById('userSection').innerHTML = "User ID: " + zeroPad(results['userID'], 5);
+                  
     document.getElementById('fontOptionsBtn').onclick = popOptions;
     //document.ontouchmove = function(event){ event.preventDefault(); }
     
