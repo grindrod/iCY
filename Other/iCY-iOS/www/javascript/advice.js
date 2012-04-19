@@ -179,8 +179,9 @@ function zeroPad(num, numZeros) {
 //////////////////////////////////////////////
 
 $(document).ready(function() {
-                  var results = JSON.parse( localStorage.getItem('results') );
-                  document.getElementById('userSection').innerHTML = "User ID: " + zeroPad(results['userID'], 5);
+    var results = JSON.parse( localStorage.getItem('results') );
+    var userID = results['userID'] + 1
+    document.getElementById('userSection').innerHTML = "User ID: " + zeroPad(userID, 5);
                   
     document.getElementById('fontOptionsBtn').onclick = popOptions;
     //document.ontouchmove = function(event){ event.preventDefault(); }
