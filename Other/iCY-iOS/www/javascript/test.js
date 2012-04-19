@@ -160,7 +160,6 @@ var descendingTime = function(a, b){
 
 var generateInstruction = function() {
 	var originalTimeslots = TIMESLOTS.slice(),
-		wordArray = new Array ("no", "one", "two", "three"),
 		selectedTimeslots = new Array(),
 		tabletArray = new Array(), 
 		numTimeslots = boundedRandomNumber(1, 2),
@@ -192,7 +191,7 @@ var generateInstruction = function() {
 		singular = tabletArray[i] === 1? "tablet" : "tablets";
 		
 		expectedResult[ selectedTimeslots[i] ] = tabletArray[i];
-		instructionString += wordArray[ tabletArray[i]] + " " 
+		instructionString += tabletArray[i] + " " 
 						  + singular + " at " + selectedTimeslots[i];
 		instructionString += i===0? and : "";
 	}
