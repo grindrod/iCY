@@ -180,8 +180,9 @@ function zeroPad(num, numZeros) {
 
 $(document).ready(function() {
     var results = JSON.parse( localStorage.getItem('results') );
-    var userID = results['userID'] + 1
-    document.getElementById('userSection').innerHTML = "User ID: " + zeroPad(userID, 5);
+    results['userID'] = results['userID'] + 1;
+    document.getElementById('userSection').innerHTML = "User ID: " + zeroPad(results['userID'], 5);
+    localStorage.setItem ('results', JSON.stringify(results) );
                   
     document.getElementById('fontOptionsBtn').onclick = popOptions;
     //document.ontouchmove = function(event){ event.preventDefault(); }
