@@ -1,6 +1,12 @@
 $(document).ready(function() {
     document.ontouchmove = function(event){ event.preventDefault(); }
     document.getElementById('done').onclick = onDone;
+    
+    //Centering questionnaire pages
+    if($(document).height() >= 748)
+    {
+        $('#whiteSpace').css('margin-top','10%');
+    }
 });
 
 function onDone(e) {
