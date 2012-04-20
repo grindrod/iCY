@@ -152,12 +152,13 @@ var displayResults = function (adviceToUse){
     
     for (var i in adviceToUse){
         if (adviceToUse[i] === true){
-            item = '<li>' + ADVICE[i] + '</li>';
+            console.log(i);
             
-			if (i == 'min15pt' || i === 'min18pt') { //custom label caveat
-				item += '<ul>' + ADVICE['customCaveat'] + '</ul>';
-			}
-			
+            if (i === "routineAssess" && adviceToUse['routineAssessDisease'] != ""){
+                ADVICE[i] = ADVICE[i] + " for " + adviceToUse['routineAssessDisease'];
+            }
+            
+            item = '<li>' + ADVICE[i] + '</li>';
 			$('#adviceList').append(item);
         }
     }

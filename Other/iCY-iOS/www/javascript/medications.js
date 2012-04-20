@@ -44,13 +44,17 @@ function onDone() {
         current = formData[i];
         console.log("current: " + formData[i].name);
         
-        if (current.name === "Corticosteriods" || current.name === "Anticholinergics"){
+        if (current.name === "corticosteriods" || current.name === "anticholinergics"){
             adviceToUse['counsel'] = true; 
         }
-        else if (current.name === "Diabetes" || current.name === "Hypertension" ||
-                 current.name === "Glaucoma" || current.name === "Cataracts" ||
-                 current.name === "MacularDegeneration" ){
+        else if (current.name === "hypertension" || current.name === "glaucoma" || 
+                 current.name === "cataracts"){
             adviceToUse['routineAssess'] = true;
+        }
+        else if (current.name === "diabetes" || current.name === "macular degeneration"){
+            adviceToUse['routineAssess'] = true;
+            adviceToUse['routineAssessDisease'] = current.name;
+            
         }
     }
     
@@ -63,7 +67,7 @@ function onDone() {
     localStorage.setItem ('results', JSON.stringify(results) );
     console.log(results);
     
-	window.location.href='advice.html';
+	//window.location.href='advice.html';
 }
 
 var listenerForCheckbox = function() {
