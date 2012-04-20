@@ -15,6 +15,8 @@ var instructionSizeLevel = JSON.parse(storage.getItem('optionsSetting'))['instru
 var results = JSON.parse( localStorage.getItem('results') );
 results['test'] = {};
 
+var lowestLevelRepeat = true;
+
 var objectRef1, objectRef2;
 
 var pillCount=100;
@@ -104,7 +106,13 @@ function closeRepeatDone(event) {
 	//console.log("close repeat done button [" + labelOrder[instructionSizeLevel] + "]");
 	$('#repeatTest').fadeOut('slow', function(){ $('#repeatTest').hide();});
 	$('#mainTestBody').fadeIn('slow', function(){ $('#mainTestBody').show();});
-	newLabelAnimation();
+    
+    if (lowestLevelRepeat){
+        lowestLevelRepeat = false;
+    }
+    else {
+        newLabelAnimation();
+    }
 }
 
 function disableBtn(name, state){
@@ -286,6 +294,7 @@ function repeatTest()
 		//$('#repeatTest_done').bind('click', closeRepeatDone);
 		//$('#repeatTest_done').bind('touchend', closeRepeatDone);
 		document.getElementById('repeatTest_done').ontouchend = closeRepeatDone;
+        document.getElementById('repeatTest_done').onclick = closeRepeatDone;
 	}
 }
 
