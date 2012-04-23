@@ -75,6 +75,7 @@ function onCancel(event){
 function onLargerFontBtn(event) {
 	//alert('largerFontBtn clicked');
 	console.log('largerFontBtn clicked');
+    lowestLevelRepeat = false;
 	newLabelAnimation();
 }
 
