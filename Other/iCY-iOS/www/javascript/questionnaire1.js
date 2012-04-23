@@ -10,7 +10,23 @@ $(document).ready(function() {
       {
             $('#whiteSpace').css('margin-top','10%');
       }
-                  
+    
+    
+    
+    
+    //Set ok and cancel buttons on modal dialog
+    //var messageBoxWidth = $('#messageBox').css('width');
+    //console.log("messageBoxWidth: " + messageBoxWidth);
+    
+    //messageBoxWidth = $('#messageBox').width();
+    //console.log("messageBoxWidth: " + messageBoxWidth);
+    /*$('#modalMessage_done').css('left', messageBoxWidth/2);
+    $('#modalMessage_cancel').css('left', messageBoxWidth/2);
+    
+    $('#modalMessage_ok').css('left', messageBoxWidth/2 + "px" );*/
+    
+    
+    
                   
      $("#glasses, #magnifier, #helpWithMed").bind( "change", function(event, ui) {
      	var state = $(this).is(':checked');
@@ -117,8 +133,18 @@ var showMessage = function(text, messageClass, yesHandler, noHandler) {
     }
     
     $('#modalMessage_text').html(text);
+    
+    
+    
 	$('#modalMessage_text').fadeIn('slow', function(){ $('#modalMessage_text').show();});
     $('.modalMessage').fadeIn('slow', function(){ $('.modalMessage').show();});
+    
+    
+    //Set ok and cancel buttons on modal dialog
+    midMessageBoxWidth = $('#messageBox').width()/2;
+    $('#modalMessage_done').css('left', (midMessageBoxWidth - $('#modalMessage_done').outerWidth())*(98/100) );
+    $('#modalMessage_cancel').css('left', midMessageBoxWidth*(102/100));
+    $('#modalMessage_ok').css('left', midMessageBoxWidth - $('#modalMessage_ok').outerWidth()/2);
 }
 
 function appExplain(event) {
