@@ -177,7 +177,7 @@ var displayResults = function (adviceToUse){
 	var item;
     
     for (var i in adviceToUse){
-        //console.log(ADVICE[i]);
+        console.log(ADVICE[i]);
         if (ADVICE[i].type === "read" && adviceToUse[i]){
             $('#colouredRead').css('color', ADVICE[i].color);
             $('#colouredRead').append(ADVICE[i].string);
@@ -188,9 +188,10 @@ var displayResults = function (adviceToUse){
             $('#standardList').append(item);
         }
         
-        else {
-            if (i === "routineAssess" && adviceToUse['routineAssessDisease'] != ""){
-                ADVICE[i] = ADVICE[i].string + " for " + adviceToUse['routineAssessDisease'];
+        else if (ADVICE[i].type === "discussion" && adviceToUse[i]){
+            if (i === "routineAssess" && adviceToUse[i] &&
+                (typeof adviceToUse['routineAssessDisease'] !== "undefined") ){
+                ADVICE[i].string = ADVICE[i].string + " for " + adviceToUse['routineAssessDisease'];
             }
             
             item = '<li>' + ADVICE[i].string + '</li>';

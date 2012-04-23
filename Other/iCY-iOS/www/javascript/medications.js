@@ -53,7 +53,16 @@ function onDone() {
         }
         else if (current.name === "diabetes" || current.name === "macular degeneration"){
             adviceToUse['routineAssess'] = true;
-            adviceToUse['routineAssessDisease'] = current.name;
+            
+            var prefix; 
+            if (typeof adviceToUse['routineAssessDisease'] === "undefined"){
+                prefix = "";
+            }
+            else {
+                prefix = adviceToUse['routineAssessDisease'] + " and ";
+            }
+                
+            adviceToUse['routineAssessDisease'] = prefix + current.name;
             
         }
     }
