@@ -111,7 +111,7 @@ var loadDefaultOptions = function() {
         medPage = optionsSetting['medPage'];
 
     //console.log(optionsSetting);
-    //console.log("medPage: " + medPage);
+    console.log("medPage: " + medPage);
     //console.log("currentLevel: " + currentLevel);
     //alert('currentLevel: ' + currentLevel);
 
@@ -123,7 +123,7 @@ var loadDefaultOptions = function() {
     
     
     $('#' + currentDefaultFont + '_popup').prop("checked", true).checkboxradio("refresh");
-    $('#medPage').prop("checked", medPage);
+    $('#medPage').prop("checked", medPage).checkboxradio("refresh");
 }
 
 
