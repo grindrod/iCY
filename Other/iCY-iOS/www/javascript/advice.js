@@ -177,7 +177,7 @@ var displayResults = function (adviceToUse){
 	var item;
     
     for (var i in adviceToUse){
-        console.log(ADVICE[i]);
+        //console.log(ADVICE[i]);
         if (ADVICE[i].type === "read" && adviceToUse[i]){
             $('#colouredRead').css('color', ADVICE[i].color);
             $('#colouredRead').append(ADVICE[i].string);
@@ -223,10 +223,6 @@ $(document).ready(function() {
     document.getElementById('fontOptionsBtn').onclick = popOptions;
     //document.ontouchmove = function(event){ event.preventDefault(); }
     
-                  var dicussionListHeight = $(document).height() - $('#standardList').height() - $('#colouredRead').height();    
-                  console.log("discussionListHeight: " + dicussionListHeight);
-                  $('#discussionList').css('height', dicussionListHeight*0.4 +"px");
-    
     // POPUP UI SETUP
     var popupHeight = parseInt($('#optionsForm').css('height'), 10);
     popupHeight = popupHeight + popupHeight*0.05 + "px";
@@ -243,7 +239,15 @@ $(document).ready(function() {
 
     var adviceResults = analyseResults();
     displayResults(adviceResults);
+                
+      
+    // SET Discussion list
+    var btnTop = $('#cancel').offset().top;
+    var discussionListTop = $('#discussionList').offset().top;
+    var discussionListHeight = (btnTop - discussionListTop) * (83/100);
+    $('#discussionList').css('height', discussionListHeight +"px");
                   
+    
     var results = JSON.parse( localStorage.getItem('results') );
     results['advice'] = new Array();
     for (var i in adviceResults){
@@ -251,7 +255,7 @@ $(document).ready(function() {
                   results['advice'].push( { name: i, string: ADVICE[i] } );
         }
     }
-                  console.log(results);
+    //console.log(results);
     
     // POP-UP
     $("input").change( function() {
