@@ -13,19 +13,47 @@
         <link rel="stylesheet" href="../style/common.css" />
         
         <style>
+            body {
+                font-size: 15pt;
+            }
+            
+            #colouredRead {
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 1%;
+                text-align: center;
+                font-size: 18pt;
+                font-weight: bold;
+            }
+            
             #userSection {
-                margin-left: 15%;
+                margin-left: 10%;
                 margin-bottom: 1%;
             }
             
-            #adviceBox {
+            .adviceBox {
                 border-style: solid;
                 border-color: #000000;
                 margin-left: 15%;
                 margin-right: 15%;
                 padding-left: 2%;
                 padding-right: 2%;
-                margin-bottom: 8%;
+                padding-top: 1%;
+                padding-bottom: 1%;
+                /*margin-bottom: 8%;*/
+                margin-bottom: 3%;
+            }
+            
+            #discussionHeader{
+                margin-left: 13%;
+                font-weight: bold;
+            }
+            
+            #discussionList{
+                position: relative;
+                z-index: 99;
+                /*height: 320px;*/
+                overflow-y: scroll;
             }
             
             .advice_9point {
@@ -76,11 +104,11 @@
                 padding-bottom: 1%;
             }
             
-            #advice_options {
+            /*#advice_options {
                 position: fixed;
                 margin-left: 40%;
                 bottom: 0;
-            }
+            }*/
             
             #fontOptionsBtn {
                 position: absolute;
@@ -107,10 +135,10 @@
                 display: none;
             }
             
-            #cancel {
+            /*#cancel {
                 cursor: pointer; 
                 position: absolute;
-            }
+            }*/
             </style>
         
     </head>
@@ -119,11 +147,21 @@
         <div data-role="page" id="advicePage">
             <div data-role="content">
                 <div id="popupOverlay"></div>
-                <h1 align="center">Advice for Pharmacy Staff</h1>
+                
+                <!--h1 align="center">Advice for Pharmacy Staff</h1>
                 <div id="userSection" class="advice_15point">User ID:</div>
                 <div id="adviceBox" class="advice_15point">
                     <h4><ul id="adviceList"></ul></h4>
-                </div>
+                </div-->
+                
+                <div id="userSection">User ID:</div>
+                
+                <div id="colouredRead"></div>
+                
+                <div id="standardList" class="adviceBox"></div>
+                
+                <div id="discussionHeader">For discussion:</div>
+                <div id="discussionList" class="adviceBox"></div>
                 
                 <!--POPUP OPTIONS-->
                 <div id="popupSlideWrapper_ios">

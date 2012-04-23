@@ -1,33 +1,59 @@
 var ADVICE = {};
-ADVICE['standardLabel'] = "Use standard label on vial";
-ADVICE['numbers'] = "Use numbers instead of text";
-ADVICE['simpleLang'] = 'Use simple language: e.g., "Take 1 tablet in the morning and in the evening" NOT "Take 1 tablet twice daily"';
-ADVICE['notAllCaps'] = "Use upper and lower case, NOT ALL CAPS";
-ADVICE['noTape'] = "Do NOT tape label";
+
+ADVICE['ableReadStandard'] = { type: "read", 
+                               color: "green", 
+                               string: "Patient was able to read standard labels" };
+ADVICE['notAbleReadStandard'] = {type: "read", 
+                                color: "red", 
+                                string: "Patient was NOT able to read standard label" };
+ADVICE['notAbleReadLarge'] = {type: "read", 
+                            color: "red", 
+                            string: "Patient was NOT able to read large print label" };
+
+ADVICE['standardLabel'] = {type: "standard", 
+                            string: "Use standard label on vial" };
+ADVICE['numbers'] = {type: "standard" , 
+                    string: "Use numbers instead of text" };
+ADVICE['simpleLang'] = {type: "standard", 
+                        string: 'Use simple language: e.g., "Take 1 tablet in the morning and in the evening" NOT "Take 1 tablet twice daily"' };
+ADVICE['notAllCaps'] = {type: "standard", 
+                        string: "Use upper and lower case, NOT ALL CAPS" };
+ADVICE['noTape'] = {type: "discussion", 
+                    string: "Do NOT tape label" };
  
-ADVICE['ableReadStandard'] = "Patient was able to read standard labels";
-ADVICE['notAbleReadStandard'] = "Patient was NOT able to read standard label";
-ADVICE['notAbleReadLarge'] = "Patient was NOT able to read large print label";
+ADVICE['printDuplicate'] = {type: "discussion", 
+                            string: "Print a duplicate (15/18 point font) label on paper stock using Arial or Verdana font" };
+ADVICE['matchDuplicate'] = {type: "discussion", 
+                            string: "Match duplicate label to vial using a large-print number or colored sticker on both duplicate label and corresponding vial" };
  
-ADVICE['printDuplicate'] = "Print a duplicate (15/18 point font) label on paper stock using Arial or Verdana font";
-ADVICE['matchDuplicate'] = "Match duplicate label to vial using a large-print number or colored sticker on both duplicate label and corresponding vial";
+ADVICE['routineAssess'] = {type: "discussion", 
+                            string: "Patient should be routinely assessed by a family physician or vision specialist" };
+ADVICE['routineAssessDisease'] = {type: "none" };
  
-ADVICE['routineAssess'] = "Patient should be routinely assessed by a family physician or vision specialist";
+ADVICE['compliancePackaging'] = {type: "discussion", 
+                                string: "Recommend compliance packaging" };
  
-ADVICE['compliancePackaging'] = "Recommend compliance packaging";
+ADVICE['usesLargePrint'] = {type: "discussion", 
+                            string: "Patient uses large print reading materials at home" };
+ADVICE['difficultyReadLabels'] = {type: "discussion", 
+                                string: "Patient expressed difficulty reading prescription labels" };
+ADVICE['difficultyReadNonPrescription'] = {type: "discussion", 
+                                            string: "Patient has difficulty reading non-prescription labels" };
+ADVICE['difficultyReadWorn'] = {type: "discussion", 
+                                string: "Patient has difficulty reading worn prescription labels. Consider taping label" };
+ADVICE['difficultyReadGlossy'] = {type: "discussion", 
+                                string: "Patient has difficulty reading glossy papers" };
+ADVICE['difficultyDiscuss'] = {type: "discussion", 
+                            string: "Patient has difficulty reading worn prescription labels and glossy papers. Discuss importance of protecting label from wear (e.g., use a weekly pill box)" };
  
-ADVICE['usesLargePrint'] = "Patient uses large print reading materials at home";
-ADVICE['difficultyReadLabels'] = "Patient expressed difficulty reading prescription labels";
-ADVICE['difficultyReadNonPrescription'] = "Patient has difficulty reading non-prescription labels";
-ADVICE['difficultyReadWorn'] = "Patient has difficulty reading worn prescription labels. Consider taping label";
-ADVICE['difficultyReadGlossy'] = "Patient has difficulty reading glossy papers";
-ADVICE['difficultyDiscuss'] = "Patient has difficulty reading worn prescription labels and glossy papers. Discuss importance of protecting label from wear (e.g., use a weekly pill box)";
- 
-ADVICE['discussCompliance'] = "Discuss need for compliance packaging. Decision based pharmacist judgment";
- 
-ADVICE['counsel'] = "Counsel patient on role of medications in low vision";
-ADVICE['discussMagnifying'] = "Discuss need for a magnifying glass";
-ADVICE['discussGlassLargePrint'] = "Discuss need for a magnifying glass or large print label";
+ADVICE['discussCompliance'] = {type: "discussion", 
+                                string: "Discuss need for compliance packaging. Decision based pharmacist judgment" };
+ADVICE['counsel'] = {type: "discussion", 
+                    string: "Counsel patient on role of medications in low vision" };
+ADVICE['discussMagnifying'] = {type: "discussion", 
+                                string: "Discuss need for a magnifying glass" };
+ADVICE['discussGlassLargePrint'] = {type: "discussion", 
+                                    string: "Discuss need for a magnifying glass or large print label" };
 
 //////////////////////////////////////////////
 //				iOS POPOUT MENU				//
@@ -151,15 +177,24 @@ var displayResults = function (adviceToUse){
 	var item;
     
     for (var i in adviceToUse){
-        if (adviceToUse[i] === true){
-            console.log(i);
-            
+        console.log(ADVICE[i]);
+        if (ADVICE[i].type === "read" && adviceToUse[i]){
+            $('#colouredRead').css('color', ADVICE[i].color);
+            $('#colouredRead').append(ADVICE[i].string);
+        }
+        
+        else if (ADVICE[i].type === "standard" && adviceToUse[i]){
+            item = '<li>' + ADVICE[i].string + '</li>';
+            $('#standardList').append(item);
+        }
+        
+        else {
             if (i === "routineAssess" && adviceToUse['routineAssessDisease'] != ""){
-                ADVICE[i] = ADVICE[i] + " for " + adviceToUse['routineAssessDisease'];
+                ADVICE[i] = ADVICE[i].string + " for " + adviceToUse['routineAssessDisease'];
             }
             
-            item = '<li>' + ADVICE[i] + '</li>';
-			$('#adviceList').append(item);
+            item = '<li>' + ADVICE[i].string + '</li>';
+            $('#discussionList').append(item);
         }
     }
 }
@@ -187,6 +222,10 @@ $(document).ready(function() {
                   
     document.getElementById('fontOptionsBtn').onclick = popOptions;
     //document.ontouchmove = function(event){ event.preventDefault(); }
+    
+                  var dicussionListHeight = $(document).height() - $('#standardList').height() - $('#colouredRead').height();    
+                  console.log("discussionListHeight: " + dicussionListHeight);
+                  $('#discussionList').css('height', dicussionListHeight*0.4 +"px");
     
     // POPUP UI SETUP
     var popupHeight = parseInt($('#optionsForm').css('height'), 10);

@@ -67,7 +67,7 @@ function onDone() {
     localStorage.setItem ('results', JSON.stringify(results) );
     console.log(results);
     
-	//window.location.href='advice.html';
+	window.location.href='advice.html';
 }
 
 var listenerForCheckbox = function() {
