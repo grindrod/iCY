@@ -78,7 +78,8 @@ var aidsCheck = function (aid){
     console.log("aid: " + aid);
     if (aid === "glasses"){
         $('#modalMessage_cancel').addClass('glassesCheck');
-        text = "Are you wearing them now?";
+        //text = "Are you wearing them now?";
+        text = "Are you wearing your glasses, contact lenses, bifocals or reading glasses?";
         showMessage(text, "yesNo", closeModalDialog, appExplain);
     }
     else if (aid === "magnifier"){
@@ -88,8 +89,8 @@ var aidsCheck = function (aid){
     }
     else if (aid === "helpWithMed"){
         $('#modalMessage_cancel').addClass('helpCheck');
-        text = "Are they here with you now?";
-        showMessage(text, "yesNo", closeModalDialog, appExplain);
+        text = "Is the person who helps you here now? If yes, they can help you complete the test."
+        showMessage(text, "okOnly", closeModalDialog, null);
     }
     else {
         console.log("wut? 0.o");
@@ -152,16 +153,12 @@ function appExplain(event) {
     var okHandler; 
     
     if (this.className.search(/glassesCheck/) >= 0){
-        text = "This app is checking how you read medication labels. Please wait until you have your glasses or contacts to try the app.";
+        text = "This app is checking how you read medication labels. Please wait until you have your glasses, contact lenses, bifocals or reading glasses to try the app.";
         okHandler = noVisualAid;
     }
     else if (this.className.search(/magnifierCheck/) >= 0){
         text = "This app is checking how you read medication labels. Please ask the pharmacist for a magnifier to complete the test if needed.";
         okHandler = closeModalDialog; 
-    }
-    else if (this.className.search(/helpCheck/) >= 0){
-        text = "This app is checking how you read medication labels. Please repeat the test when your support person is with you.";
-        okHandler = noVisualAid;
     }
     
     showMessage(text, "okOnly", okHandler, null);
