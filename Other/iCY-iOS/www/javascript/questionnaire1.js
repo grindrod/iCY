@@ -10,24 +10,8 @@ $(document).ready(function() {
       {
             $('#whiteSpace').css('margin-top','10%');
       }
+       
     
-    
-    
-    
-    //Set ok and cancel buttons on modal dialog
-    //var messageBoxWidth = $('#messageBox').css('width');
-    //console.log("messageBoxWidth: " + messageBoxWidth);
-    
-    //messageBoxWidth = $('#messageBox').width();
-    //console.log("messageBoxWidth: " + messageBoxWidth);
-    /*$('#modalMessage_done').css('left', messageBoxWidth/2);
-    $('#modalMessage_cancel').css('left', messageBoxWidth/2);
-    
-    $('#modalMessage_ok').css('left', messageBoxWidth/2 + "px" );*/
-    
-    
-    
-                  
      $("#glasses, #magnifier, #helpWithMed").bind( "change", function(event, ui) {
      	var state = $(this).is(':checked');
   		
@@ -47,17 +31,23 @@ $(document).ready(function() {
         var adviceToUse = JSON.parse( localStorage.getItem('adviceToUse') );
         //console.log(adviceToUse);
         var current;
+        var prefix;
          
         for (var i=0; i < formData.length; i++){
             current = formData[i].name;
          
             // COLLECT ADVICE DATA
-            if (current.name === "largeprint"){
-                     adviceToUse['usesLargePrint'] = "qYes";
-            }
-         
-            else if (formData[i].name === "glossy" && formData[i].value === "on") {
-                     adviceToUse['noTape'] = true;
+            if (current.name === "magnifier" || current.name === "largeprint") {
+                adviceToUse['needAid'] = true;
+                
+                if (typeof adviceToUse['needAidType'] === "undefined"){
+                    prefix = "";
+                }
+                else {
+                    prefix = adviceToUse['needAidType'] + " and ";
+                }
+                
+                adviceToUse['needAidType'] = prefix + current.name;
             }
         }
         

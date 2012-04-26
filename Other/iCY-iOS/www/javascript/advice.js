@@ -1,5 +1,6 @@
 var ADVICE = {};
 
+// RESULTS
 ADVICE['ableReadStandard'] = { type: "read", 
                                color: "green", 
                                string: "Patient was able to read standard labels" };
@@ -10,50 +11,34 @@ ADVICE['notAbleReadLarge'] = {type: "read",
                             color: "red", 
                             string: "Patient was NOT able to read large print label" };
 
-ADVICE['standardLabel'] = {type: "standard", 
-                            string: "Use standard label on vial" };
-ADVICE['numbers'] = {type: "standard" , 
-                    string: "Use numbers instead of text" };
-ADVICE['simpleLang'] = {type: "standard", 
-                        string: 'Use simple language: e.g., "Take 1 tablet in the morning and in the evening" NOT "Take 1 tablet twice daily"' };
-ADVICE['notAllCaps'] = {type: "standard", 
-                        string: "Use upper and lower case, NOT ALL CAPS" };
-ADVICE['noTape'] = {type: "discussion", 
-                    string: "Do NOT tape label" };
- 
-ADVICE['printDuplicate'] = {type: "discussion", 
-                            string: "Print a duplicate (15/18 point font) label on paper stock using Arial or Verdana font" };
-ADVICE['matchDuplicate'] = {type: "discussion", 
-                            string: "Match duplicate label to vial using a large-print number or colored sticker on both duplicate label and corresponding vial" };
- 
-ADVICE['routineAssess'] = {type: "discussion", 
-                            string: "Patient should be routinely assessed by a family physician or vision specialist" };
-ADVICE['routineAssessDisease'] = {type: "none" };
- 
-ADVICE['compliancePackaging'] = {type: "discussion", 
-                                string: "Recommend compliance packaging" };
- 
-ADVICE['usesLargePrint'] = {type: "discussion", 
-                            string: "Patient uses large print reading materials at home" };
-ADVICE['difficultyReadLabels'] = {type: "discussion", 
-                                string: "Patient expressed difficulty reading prescription labels" };
-ADVICE['difficultyReadNonPrescription'] = {type: "discussion", 
-                                            string: "Patient has difficulty reading non-prescription labels" };
-ADVICE['difficultyReadWorn'] = {type: "discussion", 
-                                string: "Patient has difficulty reading worn prescription labels. Consider taping label" };
-ADVICE['difficultyReadGlossy'] = {type: "discussion", 
-                                string: "Patient has difficulty reading glossy papers" };
-ADVICE['difficultyDiscuss'] = {type: "discussion", 
-                            string: "Patient has difficulty reading worn prescription labels and glossy papers. Discuss importance of protecting label from wear (e.g., use a weekly pill box)" };
- 
-ADVICE['discussCompliance'] = {type: "discussion", 
-                                string: "Discuss need for compliance packaging. Decision based pharmacist judgment" };
-ADVICE['counsel'] = {type: "discussion", 
-                    string: "Counsel patient on role of medications in low vision" };
-ADVICE['discussMagnifying'] = {type: "discussion", 
-                                string: "Discuss need for a magnifying glass" };
-ADVICE['discussGlassLargePrint'] = {type: "discussion", 
-                                    string: "Discuss need for a magnifying glass or large print label" };
+// LABELLING
+ADVICE['compliancePackaging'] = {type: "labelling", 
+    string: "Compliance packaging recommended" };
+ADVICE['regularLabelling'] = {type: "labelling", string: "Use regular label on vial" };
+ADVICE['duplicate15pt'] = {type: "labellng", string: "Print duplicate paper label in 15-point font (Arial or Verdana)" };
+ADVICE['duplicate18pt'] = {type: "labelling", string: "Print duplicate paper label in 18-point font (Arial or Verdana)" } ;
+ADVICE['matchDuplicate'] = {type: "labelling", string: "Match duplicate label to vial with large-print numbers or colored stickers" };
+ADVICE['noTape'] = {type: "labelling", string: "Do NOT tape labels" };
+ADVICE['numbers'] = {type: "labelling", string: "ALWAYS use numbers instead of text" };
+ADVICE['simpleLang'] = {type: "labelling", string: 'ALWAYS use simple language: e.g., "Take 1 tablet in the morning and in the evening" NOT "Take 1 tablet twice daily"'};
+ADVICE['noAllCaps'] = {type: "labelling", string: "ALWAYS use upper and lower case, NOT ALL CAPS" };
+
+//TALK TO PATIENT ABOUT: DISCUSS
+ADVICE['difficultyReading'] = {type: "discuss", string: "Difficulty reading [types] labels" };
+ADVICE['difficultyReadingType'] = {type: "none" };
+ADVICE['needAid'] = {type: "discuss", string: "When they need [types]" };
+ADVICE['needAidType'] = {type: "none" };
+ADVICE['abilityAffected'] = {type: "discuss", string: "How [types] may affect their ability to read or understand labels" };
+ADVICE['abilityAffectedType'] = {type: "none" };
+
+//PATIENT LIKELY NEEDS 
+ADVICE['complianceAids'] = {type: "needs", string: "Compliance aids (e.g., dosing calendars, diaries, charts, dose reminders)" };
+ADVICE['protectFromWear'] = {type: "needs", string: "To protect labels from wear (e.g., using a daily or weekly pill box)" };
+ADVICE['followUp'] = {type: "needs", string: "Follow-up with a physician for further assessment" };
+ADVICE['regularMonitoring'] = {type: "needs", string: "Regular monitoring by a physician or vision specialist [types]" };
+ADVICE['regularMonitoringType'] = {type: "none" };
+ADVICE['magnifyingGlass'] = {type: "needs", string: "A magnifying glass to read prescription/non-prescription labels." };
+
 
 //////////////////////////////////////////////
 //				iOS POPOUT MENU				//
@@ -137,37 +122,45 @@ var analyseResults = function() {
 	var userLevel = results['test']['userFont'];
 	console.log("userLevel: " + userLevel);
 	
-	if ( userLevel === "9pt" || userLevel === "12pt" ) {
+	if ( userLevel === "9pt" || userLevel === "12pt" ||
+        userLevel === "15pt" || userLevel === "18pt") {
         adviceToUse['ableReadStandard'] = true;
-        if (adviceToUse['difficultyReadLabels'] === "qYes" && 
-            adviceToUse['discussGlassLargePrint'] === "qYes"){
-            adviceToUse['difficultyReadLabels'] = true;
-            adviceToUse['discussGlassLargePrint'] = true;
-        }
-        else {
-            adviceToUse['difficultyReadLabels'] = false;
-            adviceToUse['discussGlassLargePrint'] = false;
-        }
+        adviceToUse['regularLabelling'] = true;
         
-        if (adviceToUse['usesLargePrint'] === "qYes"){
-            adviceToUse['usesLargePrint'] = true;
+        if (userLevel === "15pt") {
+            adviceToUse['notAbleReadStandard'] = true;
+            adviceToUse['duplicate15pt'] = true;
+            adviceToUse['matchDuplicate'] = true;
         }
-        else {
-            adviceToUse['usesLargePrint'] = false;
+        else if (userLevel === "18pt") {
+            adviceToUse['notAbleReadStandard'] = true;
+            adviceToUse['duplicate18pt'] = true;
+            adviceToUse['matchDuplicate'] = true;
         }
 	} 
-	else if (userLevel === "15pt" || userLevel === "18pt"){
-        adviceToUse['notAbleReadStandard'] = true;
-        adviceToUse['printDuplicate'] = true;
-        adviceToUse['matchDuplicate'] = true;
-        adviceToUse['routineAssess'] = true;
-	}
 	else if (userLevel === "failed") {
-		adviceToUse['notAbleReadLarge'] = true;
+        adviceToUse['noTape'] = false;
+        adviceToUse['numbers'] = false;
+        adviceToUse['simpleLang'] = false;
+        adviceToUse['noAllCaps'] = false;
+        
+        adviceToUse['notAbleReadLarge'] = true;
         adviceToUse['compliancePackaging'] = true;
-        adviceToUse['routineAssess'] = true;
+        adviceToUse['followUp'] = true;
 	}
-	
+    
+    if (adviceToUse['difficultyReading'] === "qYes" ||
+        adviceToUse['regularMonitoring'] === "qYes" ){
+        if (userLevel === "9pt" || userLevel === "12pt"){
+            adviceToUse['difficultyReading'] = true;
+            adviceToUse['regularMonitoring'] = true;
+        }
+        else { 
+            adviceToUse['difficultyReading'] = false;
+            adviceToUse['regularMonitoring'] = false;
+        }
+    }
+    
 	console.log(adviceToUse);
 	return adviceToUse;
 }
@@ -183,19 +176,36 @@ var displayResults = function (adviceToUse){
             $('#colouredRead').append(ADVICE[i].string);
         }
         
-        else if (ADVICE[i].type === "standard" && adviceToUse[i]){
+        else if (ADVICE[i].type === "labelling" && adviceToUse[i]){
             item = '<li>' + ADVICE[i].string + '</li>';
-            $('#standardList').append(item);
+            $('#labellingList').append(item);
         }
         
-        else if (ADVICE[i].type === "discussion" && adviceToUse[i]){
-            if (i === "routineAssess" && adviceToUse[i] &&
-                (typeof adviceToUse['routineAssessDisease'] !== "undefined") ){
-                ADVICE[i].string = ADVICE[i].string + " for " + adviceToUse['routineAssessDisease'];
+        else if (ADVICE[i].type === "discuss" && adviceToUse[i]){
+            if ((i === "difficultyReading"  || i === "needAid"  ||
+                i === "abilityAffected") && adviceToUse[i] &&
+                (typeof adviceToUse[i + 'Type'] !== "undefined") ){
+                console.log("NOT EMPTY! " + adviceToUse[i+'Type']);
+                
+                ADVICE[i].string = ADVICE[i].string.replace("[types]", adviceToUse[i+'Type']);
+                console.log(ADVICE[i].string);
             }
             
             item = '<li>' + ADVICE[i].string + '</li>';
-            $('#discussionList').append(item);
+            $('#discussList').append(item);
+        }
+        
+        else if (ADVICE[i].type === "needs" && adviceToUse[i]){
+            if (i === "regularMonitoring" && adviceToUse[i] &&
+                (typeof adviceToUse[i + 'Type'] !== "undefined") ){
+                console.log("NOT EMPTY! " + adviceToUse[i+'Type']);
+                
+                ADVICE[i].string = ADVICE[i].string.replace("[types]", "for " + adviceToUse[i+'Type']);
+                console.log(ADVICE[i].string);
+            }
+            
+            item = '<li>' + ADVICE[i].string + '</li>';
+            $('#needsList').append(item);
         }
     }
 }
@@ -217,6 +227,8 @@ function zeroPad(num, numZeros) {
 
 $(document).ready(function() {
     var results = JSON.parse( localStorage.getItem('results') );
+                  
+    //ONLY FOR PILOT APP, TO BE REMOVED IN FINAL VERSION
     results['userID'] = results['userID'] + 1;
     document.getElementById('userSection').innerHTML = "User ID: " + zeroPad(results['userID'], 5);
     localStorage.setItem ('results', JSON.stringify(results) );
@@ -243,11 +255,11 @@ $(document).ready(function() {
                 
       
     // SET Discussion list
-    var btnTop = $('#cancel').offset().top;
-    var discussionListTop = $('#discussionList').offset().top;
+    /*var btnTop = $('#cancel').offset().top;
+    var discussionListTop = $('#discussList').offset().top;
     var discussionListHeight = (btnTop - discussionListTop) * (83/100);
-    $('#discussionList').css('height', discussionListHeight +"px");
-                  
+    $('#discussList').css('height', discussionListHeight +"px");
+      */            
     
     var results = JSON.parse( localStorage.getItem('results') );
     results['advice'] = new Array();

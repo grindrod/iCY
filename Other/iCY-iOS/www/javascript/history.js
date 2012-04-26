@@ -36,35 +36,54 @@ function onDone() {
     var formData = $('form').serializeArray();
     var adviceToUse = JSON.parse( localStorage.getItem('adviceToUse') );
     var results = JSON.parse( localStorage.getItem('results') );
-    var current;
+    var current, 
+        prefixAll, 
+        prefixSome;
     
     console.log(formData);
     
     for (var i in formData){
         current = formData[i];
-        console.log("current: " + formData[i].name);
+        //console.log("current: " + formData[i].name);
         
-        if (current.name === "corticosteriods" || current.name === "anticholinergics"){
-            adviceToUse['counsel'] = true; 
+        //any conditions
+        adviceToUse['abilityAffected'] = true;
+        
+        if (current.name === "diabetes" || current.name === "hypertension" ||
+            current.name === "cognitive impairment" ||
+            current.name === "corticosteroids"){
+                
+                adviceToUse['regularMonitoring'] = true;
+                
+                if (current.name === "cognitive impairment"){
+                    adviceToUse['complianceAids'] = true;
+                }
         }
-        else if (current.name === "hypertension" || current.name === "glaucoma" || 
-                 current.name === "cataracts"){
-            adviceToUse['routineAssess'] = true;
-        }
-        else if (current.name === "diabetes" || current.name === "macular degeneration"){
-            adviceToUse['routineAssess'] = true;
-            
-            var prefix; 
-            if (typeof adviceToUse['routineAssessDisease'] === "undefined"){
-                prefix = "";
+        
+        if (current.name !== "eyedrops"){
+            if (typeof adviceToUse['abilityAffectedType'] === "undefined"){
+                prefixAll = "";
             }
             else {
-                prefix = adviceToUse['routineAssessDisease'] + " and ";
+                prefixAll = adviceToUse['abilityAffectedType'] + " and ";
             }
-                
-            adviceToUse['routineAssessDisease'] = prefix + current.name;
-            
+        
+            adviceToUse['abilityAffectedType'] = prefixAll + current.name;
         }
+        
+        if (current.name === "diabetes" || current.name === "hypertension" ||
+            current.name === "cognitive impairment"  || 
+            current.name === "corticosteroids" ){
+                if (typeof adviceToUse['regularMonitoringType'] === "undefined"){
+                    prefixSome = "";
+                }
+                else {
+                    prefixSome = adviceToUse['regularMonitoringType'] + " and ";
+                }
+                
+                adviceToUse['regularMonitoringType'] = prefixSome + current.name;
+        }
+        
     }
     
     console.log(adviceToUse);

@@ -19,33 +19,37 @@ function onDone(e) {
                             results['questionnaire'].push( { name: this.name, value: $(this).is(':checked')});
                             });
     
+    var prefix; 
     for (var i in formData){
         current = formData[i];
         //results['questionnaire'].push(current);
         
         if (current.name === "prescription"){
-            adviceToUse['difficultyReadLabels'] = "qYes";
-            adviceToUse['discussGlassLargePrint'] = "qYes";
+            adviceToUse['difficultyReading'] = "qYes";
+            adviceToUse['regularMonitoring'] = "qYes";
         }
-        else if (current.name === "nonprescription") {
-            adviceToUse['difficultyReadNonPrescription'] = true;
-            adviceToUse['discussMagnifying'] = true;
+        else if (current.name === "non-prescription") {
+            adviceToUse['difficultyReading'] = true;
+            adviceToUse['regularMonitoring'] = true;
         }
         else if (current.name === "worn"){
-            adviceToUse['difficultyReadWorn'] = true;
-            adviceToUse['difficultyDiscuss'] = "qYes";
-            adviceToUse['noTape'] = false; 
+            adviceToUse['difficultyReading'] = true;
+            adviceToUse['protectFromWear'] = true;
         }
         else if (current.name === "glossy"){
-            adviceToUse['difficultyReadGlossy'] = true;
-            if (adviceToUse['difficultyDiscuss'] === "qYes"){
-                adviceToUse['difficultyDiscuss'] = true;
-            }
-            else {
-                adviceToUse['difficultyDiscuss'] = false;
-            }
+            adviceToUse['difficultyReading'] = true;
         }
+        
+        if (typeof adviceToUse['difficultyReadingType'] === "undefined"){
+            prefix = "";
+        }
+        else {
+            prefix = adviceToUse['difficultyReadingType'] + " and ";
+        }
+        
+        adviceToUse['difficultyReadingType'] = prefix + current.name;
     }
+    
     
     var checkBoxSerialized = $('input:checkbox').map(function() {
                                                      return { name: this.name, value: $(this).is(':checked') };
