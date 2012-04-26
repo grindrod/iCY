@@ -44,7 +44,7 @@ function onDone(e) {
             prefix = "";
         }
         else {
-            prefix = adviceToUse['difficultyReadingType'] + " and ";
+            prefix = adviceToUse['difficultyReadingType'] + ", ";
         }
         
         adviceToUse['difficultyReadingType'] = prefix + current.name;

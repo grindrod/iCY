@@ -44,7 +44,7 @@ $(document).ready(function() {
                     prefix = "";
                 }
                 else {
-                    prefix = adviceToUse['needAidType'] + " and ";
+                    prefix = adviceToUse['needAidType'] + ", ";
                 }
                 
                 adviceToUse['needAidType'] = prefix + current.name;

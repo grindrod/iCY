@@ -65,7 +65,7 @@ function onDone() {
                 prefixAll = "";
             }
             else {
-                prefixAll = adviceToUse['abilityAffectedType'] + " and ";
+                prefixAll = adviceToUse['abilityAffectedType'] + ", ";
             }
         
             adviceToUse['abilityAffectedType'] = prefixAll + current.name;
