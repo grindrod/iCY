@@ -1,5 +1,3 @@
-//var eventType = 'touchend';
-
 var expectedResult = new Array(); 
 expectedResult['breakfast'] = 0;
 expectedResult['lunch'] = 0;
@@ -26,6 +24,10 @@ var currentObj;
 
 var start;
 
+
+//////////////////////////////////
+//          INITIALIZE          //
+//////////////////////////////////
 $(document).ready(function() {
     start = new Date();
     console.log("start: " + start);
@@ -67,17 +69,19 @@ $(document).ready(function() {
 //////////////////////////////////////////////
 //				EVENT HANDLERS				//
 //////////////////////////////////////////////
-
 function onCancel(event){ 
 	window.location = "index.html";
 }
 
+// called when the orange button/touch here
+// if you cannot read label button is clicked
 function onLargerFontBtn(event) {
 	console.log('largerFontBtn clicked');
     lowestLevelRepeat = false;
 	newLabelAnimation();
 }
 
+// called when the done button is clicked
 function onDone(event){
 	console.log('done button clicked');
 	if (validateContents() === true){ 
@@ -89,6 +93,9 @@ function onDone(event){
 	}
 }
 
+// done button is initiallized disabled
+// it is enabled if there is at least
+// one tablet in one of the the mealtime boxes
 function onDropAreaChange(event) {
 	var total = 0;
 	
@@ -100,6 +107,9 @@ function onDropAreaChange(event) {
 	disableBtn('done', !(total > 0) );
 }
 
+// closing the modal dialog with animation
+// if the current font size is the default font size, 
+// the new label animation should not run (to give the user a second chance)
 function closeRepeatDone(event) {
 	//console.log("close repeat done button [" + labelOrder[instructionSizeLevel] + "]");
 	$('#repeatTest').fadeOut('slow', function(){ $('#repeatTest').hide();});
@@ -113,6 +123,9 @@ function closeRepeatDone(event) {
     }
 }
 
+// general function to disable buttons as needed
+// for example: when label animation is running, 
+// all buttons (except cancel) are disabled
 function disableBtn(name, state){
 	var btn = $('#'+name);
 	
@@ -137,6 +150,8 @@ function disableBtn(name, state){
 	}
 }
 
+// end of test touches
+// store required data to send to server into results object
 function finishTest(){
     var end = new Date();
     console.log("end: " + end);
@@ -152,15 +167,19 @@ function finishTest(){
 //////////////////////////////////////////////
 //		PRESCRIPTION LABEL GENERATION		//
 //////////////////////////////////////////////
+
+// helper: generate a random number
 var boundedRandomNumber = function(from, to){
 	return Math.floor(Math.random() * (to - from + 1) + from);
 }
 
+// helper: sorts meals in chronological order
 var descendingTime = function(a, b){ 
 	var sortOrder = new Array ( "breakfast", "lunch", "dinner", "bedtime");
 	return (sortOrder.indexOf(a) < sortOrder.indexOf(b) ? -1 : 1);
 }
 
+// function to call if need a new label instruction
 var generateInstruction = function() {
 	var originalTimeslots = TIMESLOTS.slice(),
 		selectedTimeslots = new Array(),
@@ -226,6 +245,8 @@ var validateContents = function(){
 //////////////////////////////////////////////
 //				ACTION ON FAILURE			//
 //////////////////////////////////////////////
+
+// helper: make font size larger 
 function makeItBig()
 {	
 	//console.log("Make it big function [" + labelOrder[instructionSizeLevel] + "]");
@@ -255,6 +276,7 @@ function makeItBig()
 }
 
 // Originally from JQuery UI Effects - Slide
+// helper function
 var newLabelAnimation = function(){
 	//console.log("new label animation [" + labelOrder[instructionSizeLevel] + "]");
 	var labelWidth = $('#instructionLabel').outerWidth();
@@ -273,6 +295,7 @@ var newLabelAnimation = function(){
 	});
 }
 
+// show MODAL DIALOG
 function repeatTest()
 {
 	if ( instructionSizeLevel === labelOrder.length-1) {				// max size reached
@@ -291,7 +314,7 @@ function repeatTest()
 	}
 }
 
-//Function that removes everything.
+//Function that removes all tablets from the mealtime boxes
 function reset()
 {
 	var pillContainers = ['pill1Container','pill2Container','pill3Container','pill4Container','pill5Container','pill6Container']

@@ -3,35 +3,11 @@ var eventType ='click';
 
 document.ontouchmove = function(e){ e.preventDefault(); }
 
-
-$(document).ready(function() {
-	disableBtn('done', true);
-	listenerForCheckbox();
-	
-	//////////////////////////////////////////////
-	//				MODAL DIALOG				//
-	//////////////////////////////////////////////
-	$("#submitAdd").live('click', function () {
-		//console.log("submitAdd called!");
-		var med = $("#med", addMedDialog).val();
-	
-		if (med != ""){
-		    addCheckbox(med);
-    		$("#med", addMedDialog).val("");
-	    }
-	    $('.ui-dialog').dialog('close');
-    });
-
-	$("#cancel").live('click', function () {
-    	$('.ui-dialog').dialog('close');
-	});
-	
-});
-
-
 //////////////////////////////////////////////
 //				EVENT HANDLERS				//
 //////////////////////////////////////////////
+
+// collect, update advice, store data to be sent to the server
 function onDone() {
     var formData = $('form').serializeArray();
     var adviceToUse = JSON.parse( localStorage.getItem('adviceToUse') );
@@ -98,13 +74,14 @@ function onDone() {
 	window.location.href='advice.html';
 }
 
+// done button is only active if there is at least one checked checkbox
 var listenerForCheckbox = function() {
 	$("input[type='checkbox']").change(function(){
     	disableBtn('done', $(':checked').length < 1 );
 	});
 }
 
-
+// disables described button
 function disableBtn(btn, state){
 	//console.log('btn disabled: ' + state);
 	var $btn = $('#'+btn);
@@ -122,10 +99,7 @@ function disableBtn(btn, state){
 	}
 }
 
-
-//////////////////////////////////////////////
-//				MODAL DIALOG				//
-//////////////////////////////////////////////
+// once the new item has been inputted, create checkbox
 function addCheckbox(name) {
     var id = name.replace(/\s/g, '');
     
@@ -136,3 +110,31 @@ function addCheckbox(name) {
    	disableBtn('done', false );
    	listenerForCheckbox();
 }
+
+
+//////////////////////////////////////////////
+//				INITIALIZE                  //
+//////////////////////////////////////////////
+$(document).ready(function() {
+	disableBtn('done', true);
+	listenerForCheckbox();
+	
+	//////////////////////////////////////////////
+	//				MODAL DIALOG				//
+	//////////////////////////////////////////////
+	$("#submitAdd").live('click', function () {
+		//console.log("submitAdd called!");
+		var med = $("#med", addMedDialog).val();
+        
+		if (med != ""){
+		    addCheckbox(med);
+    		$("#med", addMedDialog).val("");
+	    }
+	    $('.ui-dialog').dialog('close');
+    });
+    
+	$("#cancel").live('click', function () {
+    	$('.ui-dialog').dialog('close');
+	});
+	
+});

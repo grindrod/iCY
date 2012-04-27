@@ -1,14 +1,6 @@
-$(document).ready(function() {
-    document.ontouchmove = function(event){ event.preventDefault(); }
-    document.getElementById('done').onclick = onDone;
-    
-    //Centering questionnaire pages
-    if($(document).height() >= 748)
-    {
-        $('#whiteSpace').css('margin-top','10%');
-    }
-});
-
+//EVENT HANDLER: when done is clicked
+// stores relevant changes to advice object 
+// and collects all data and stores in results object
 function onDone(e) {
     var formData = $('form').serializeArray();
     var adviceToUse = JSON.parse( localStorage.getItem('adviceToUse') );
@@ -64,3 +56,16 @@ function onDone(e) {
     
     window.location.href= 'instructions.html';
 }
+
+//////////////////////////////////
+//          INITIALIZE          //
+//////////////////////////////////
+$(document).ready(function() {
+    document.ontouchmove = function(event){ event.preventDefault(); }
+    document.getElementById('done').onclick = onDone;
+                  
+    //Centering questionnaire pages
+    if($(document).height() >= 748){
+        $('#whiteSpace').css('margin-top','10%');
+    }
+});

@@ -15,7 +15,6 @@
             if (prevResults == null){ 
                 prevResults = {}; 
                 prevResults['userID'] = 0;
-                console.log("PREV RESULTS DIDNT EXIST! (user: " + prevResults['userID'] + ")");
             } 
             
             // By default, show the History page
@@ -24,7 +23,7 @@
             console.log(optionsSetting);
             localStorage.setItem('optionsSetting', JSON.stringify(optionsSetting));
             
-            // ADVICE 
+            // INITIALIZING ADVICE 
            	var adviceToUse = {};
             adviceToUse['ableReadStandard'] = false;
             adviceToUse['notAbleReadStandard'] = false;
@@ -59,7 +58,7 @@
             //console.log(JSON.stringify(adviceToUse) );
             localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );
             
-            // RESULTS TO SEND TO SERVER
+            // COLLECTING RESULTS TO SEND TO SERVER
             var results = {};
             results['datetime'] = new Date();
             results['userID'] = prevResults['userID'];

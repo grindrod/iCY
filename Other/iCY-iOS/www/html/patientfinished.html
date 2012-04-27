@@ -37,6 +37,7 @@
             var t = setTimeout( "moveUrl()" , 300);
         }
         
+        // Determine where to go based on options setting (in advice page)
         var moveUrl = function (){
             var url;
             var optionsSetting = JSON.parse(localStorage.getItem('optionsSetting') );

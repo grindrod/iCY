@@ -1,3 +1,6 @@
+//////////////////////////////////////////
+//          ALL ADVICE STRINGS          //
+//////////////////////////////////////////
 var ADVICE = {};
 
 // RESULTS
@@ -44,6 +47,7 @@ ADVICE['magnifyingGlass'] = {type: "needs", string: "A magnifying glass to read 
 //				iOS POPOUT MENU				//
 //////////////////////////////////////////////
 
+// values are automatically updated upon selection
 var updateOptions = function (el) {
     var id, state;
     id = el.name;
@@ -62,6 +66,7 @@ var updateOptions = function (el) {
     localStorage.setItem('optionsSetting', JSON.stringify(optionsSetting));
 }
 
+// event handler for the options pane to show and hide it
 function popOptions(event) {
     var popupSection = $('#popupOptionsForPharmacy');
     
@@ -80,6 +85,7 @@ function popOptions(event) {
      
 }
 
+// animates the closing of the options pane
 function closeOptions() {
     var popupSection = $('#popupOptionsForPharmacy');
 	if(popupSection.css('display') != 'none'){
@@ -89,6 +95,7 @@ function closeOptions() {
     }
 }
 
+// pulls settings from local storage and loads it to show current settings
 var loadDefaultOptions = function() {
     var currentDefaultFont, 
         optionsSetting = JSON.parse(localStorage.getItem('optionsSetting') ),
@@ -113,6 +120,7 @@ var loadDefaultOptions = function() {
 //				ADVICE LOGIC				//
 //////////////////////////////////////////////
 
+// based on results of test, fill in the advice that will be displayed
 var analyseResults = function() {
 	var adviceToUse = JSON.parse( localStorage.getItem('adviceToUse') );
     var results = JSON.parse( localStorage.getItem('results') );
@@ -163,6 +171,7 @@ var analyseResults = function() {
 	return adviceToUse;
 }
 
+// display the results in the appropriate boxes
 var displayResults = function (adviceToUse){
 	//console.log(adviceToUse);
 	var item;
@@ -202,6 +211,8 @@ var displayResults = function (adviceToUse){
     }
 }
 
+// ONLY FOR PILOT (NOT FINAL APP)
+// puts zero-padding on userid to make it look prettier
 function zeroPad(num, numZeros) {
     var n = Math.abs(num);
     var zeros = Math.max(0, numZeros - Math.floor(n).toString().length );
