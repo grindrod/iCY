@@ -12,7 +12,10 @@ var boxes = ['drop1row1','drop1row2','drop2row1','drop2row2','drop3row1','drop3r
 
 var storage = window.localStorage;
 var instructionSizeLevel = JSON.parse(storage.getItem('optionsSetting'))['instructionSizeLevel'];		// from options menu
-var userLevel;
+var results = JSON.parse( localStorage.getItem('results') );
+results['test'] = {};
+
+var lowestLevelRepeat = true;
 
 var objectRef1, objectRef2;
 
@@ -21,7 +24,11 @@ var pillIdCount = 200;
 
 var currentObj;
 
+var start;
+
 $(document).ready(function() {
+    start = new Date();
+    console.log("start: " + start);
 	$('#repeatTest').hide();
 	
 	document.getElementById('breakfast').addEventListener('DOMNodeInserted', onDropAreaChange, true);
@@ -44,9 +51,10 @@ $(document).ready(function() {
 	} 
 	
 	var fontSize = labelOrder[instructionSizeLevel];
-	$('#instructionLabel').css('font-size', fontSize)
-	userLevel = fontSize;
-	localStorage.setItem('userLevel', userLevel);
+    $('#instructionLabel').css('font-size', fontSize);
+    results['test']['userFont'] = fontSize;
+    localStorage.setItem ('results', JSON.stringify(results) );
+    
 	console.log("instructionSize: " + fontSize);
     
     /*for (var i in expectedResult) {
@@ -65,17 +73,17 @@ function onCancel(event){
 }
 
 function onLargerFontBtn(event) {
-	//alert('largerFontBtn clicked');
 	console.log('largerFontBtn clicked');
+    lowestLevelRepeat = false;
 	newLabelAnimation();
 }
 
 function onDone(event){
-	//alert('done button clicked');
 	console.log('done button clicked');
-	if (validateContents() === true){ window.location = "patientfinished.html"; }
+	if (validateContents() === true){ 
+        finishTest();
+    }
 	else {
-		//console.log("=====START ROLLOVER PROCESS [" + labelOrder[instructionSizeLevel] + "] =====");
 		repeatTest();
 		reset();
 	}
@@ -96,26 +104,29 @@ function closeRepeatDone(event) {
 	//console.log("close repeat done button [" + labelOrder[instructionSizeLevel] + "]");
 	$('#repeatTest').fadeOut('slow', function(){ $('#repeatTest').hide();});
 	$('#mainTestBody').fadeIn('slow', function(){ $('#mainTestBody').show();});
-	newLabelAnimation();
+    
+    if (lowestLevelRepeat){
+        lowestLevelRepeat = false;
+    }
+    else {
+        newLabelAnimation();
+    }
 }
 
 function disableBtn(name, state){
 	var btn = $('#'+name);
 	
 	if (state === true){ 
-		//btn.unbind();
 		btn.attr('disabled', state);
 		document.getElementById(name).ontouchend = null;
 	}
 	else {
 		btn.removeAttr('disabled');
 		if (name === 'largerFontBtn') { 
-			//btn.bind(eventType, onLargerFontBtn); 
 			document.getElementById(name).ontouchend = onLargerFontBtn;
 			document.getElementById(name).onclick = onLargerFontBtn;
 		} 
 		else if (name === 'done'){
-			//btn.bind(eventType, onDone);
 			document.getElementById(name).ontouchend = onDone;
 			document.getElementById(name).onclick = onDone;
 		}
@@ -124,6 +135,18 @@ function disableBtn(name, state){
 			document.getElementById(name).onclick = onCancel;
 		}
 	}
+}
+
+function finishTest(){
+    var end = new Date();
+    console.log("end: " + end);
+    
+    var results = JSON.parse( localStorage.getItem('results') );
+    results['test']['time'] = end - start;
+    localStorage.setItem ('results', JSON.stringify(results) );
+    //console.log(results);
+    
+    window.location = "patientfinished.html"; 
 }
 
 //////////////////////////////////////////////
@@ -140,7 +163,6 @@ var descendingTime = function(a, b){
 
 var generateInstruction = function() {
 	var originalTimeslots = TIMESLOTS.slice(),
-		wordArray = new Array ("no", "one", "two", "three"),
 		selectedTimeslots = new Array(),
 		tabletArray = new Array(), 
 		numTimeslots = boundedRandomNumber(1, 2),
@@ -172,7 +194,7 @@ var generateInstruction = function() {
 		singular = tabletArray[i] === 1? "tablet" : "tablets";
 		
 		expectedResult[ selectedTimeslots[i] ] = tabletArray[i];
-		instructionString += wordArray[ tabletArray[i]] + " " 
+		instructionString += tabletArray[i] + " " 
 						  + singular + " at " + selectedTimeslots[i];
 		instructionString += i===0? and : "";
 	}
@@ -217,18 +239,18 @@ function makeItBig()
 		$('#instructionLabel').css("font-size", fontSize );
         $('.dropArea').css("font-size", fontSize); 
         $('.pillLabel').css("font-size", fontSize);
-		userLevel = fontSize;
-		localStorage.setItem('userLevel', userLevel);
+        
+		results['test']['userFont'] = fontSize;
+        localStorage.setItem ('results', JSON.stringify(results) );
 		
-	
 		//console.log ( "font size: " + labelOrder[instructionSizeLevel] + ", " +  $('#instructionLabel').css('font-size'));
 	}
 	else {
 		//console.log ("--MAX-- font size reached");
-		userLevel = "failed";
-		localStorage.setItem('userLevel', userLevel);
-		window.location = "patientfinished.html"; 
-		//console.log("GO TO NEXT PAGE!");
+		results['test']['userFont'] = "failed";
+        localStorage.setItem ('results', JSON.stringify(results) );
+		
+        finishTest();
 	}
 }
 
@@ -264,9 +286,8 @@ function repeatTest()
 		var docHeight = $(document).height();
 		$('#repeatTest').height(docHeight);
 		$('#repeatTest').fadeIn('fast', function(){ $('#repeatTest').show();});
-		//$('#repeatTest_done').bind('click', closeRepeatDone);
-		//$('#repeatTest_done').bind('touchend', closeRepeatDone);
 		document.getElementById('repeatTest_done').ontouchend = closeRepeatDone;
+        document.getElementById('repeatTest_done').onclick = closeRepeatDone;
 	}
 }
 

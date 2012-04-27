@@ -22,7 +22,7 @@
 		<br />
 		<button id="pharmacistBtn" name="pharmacistBtn" class="redBtn">Pharmacist access</button>
 		
-		<button data-role="none" id="cancel" class="pinkBtn cancelBtn"
+		<button data-role="none" id="cancel" class="whiteBtn cancelBtn"
 			onclick="window.location.href='index.html'" 
     		ontouchend="window.location.href='index.html'">Cancel</button>
 	</div></body>
@@ -34,16 +34,14 @@
         document.getElementById('pharmacistBtn').onclick = onContinue;
         
         function onContinue () {
-            console.log("ON CONTINUE");
             var t = setTimeout( "moveUrl()" , 300);
         }
         
         var moveUrl = function (){
-            console.log("MOVE URL");
             var url;
             var optionsSetting = JSON.parse(localStorage.getItem('optionsSetting') );
                         
-            url = optionsSetting['medPage']? 'medications.html' : 'advice.html';
+            url = optionsSetting['medPage']? 'history.html' : 'advice.html';
             window.location.href=url;
         }
     </script>

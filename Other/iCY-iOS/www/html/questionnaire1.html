@@ -7,11 +7,12 @@
     	<link rel="stylesheet" href="../style/common.css" />
         <style>
             #messageBox {
-                width: 70%;
-                height: 275px;
+                width: 60%;
+                height: 260px;
                 padding: 1%;
-                margin-left: 14%;
-                margin-top: 10%;
+                margin-left: 20%;
+                margin-top: 13%;
+                position: relative;
             }
             
             #modalMessage_text{
@@ -19,11 +20,29 @@
                 color: black;
                 text-align: center;
                 margin-bottom:2%;
+                z-index: 10000;
+            }
+            
+            #modalMessage_cancel {
+                height: 43px;
+                /*width: 20%;*/
             }
             
             #modalMessage_done {
                 height: 43px;
-                width: 20%;
+            }
+            
+            #modalMessage_done, #modalMessage_cancel, #modalMessage_ok {
+                position: absolute;
+                bottom: 7%;
+                z-index: 10001;
+                padding-left: 3%;
+                padding-right: 3%;
+            }
+            
+            legend {
+                font-weight: bold;
+                margin-bottom: -2%;
             }
         </style>
     	
@@ -36,7 +55,7 @@
          <script src="../javascript/jquery.mobile-1.0.1.min.js"></script></script-->
 		<link rel="stylesheet" href="../style/cleremed.min.css" />
 		<!--script src="../javascript/zepto.min.js"></script-->
-		<script src="../javascript/questionnaire.js"></script>
+		<script src="../javascript/questionnaire1.js"></script>
         
 	</head>
 	
@@ -46,40 +65,30 @@
         <div id="whiteSpace"></div>
         
 		<div data-role="content" id="mainSection" class="centreMargin">
-			<h2 class="center-wrapper titleSqueeze">Touch any box to check it.</h2>
-			
-			<!--h5 class="checkboxSqueeze">Do you use...</h5-->
+			<h2 class="center-wrapper titleSqueeze">Touch any box to check it</h2>
+
             <legend>Do you use...</legend>
 			<form>
                 <div data-role="fieldcontain" id="aidsUsed" class="checkboxSqueeze">
                     <fieldset data-role="controlgroup">
-                        <div id="glassesContainer">
-                            <input type="checkbox" name="glasses" id="glasses" class="custom" />
-                            <label for="glasses" data-iconpos="right" id="glassesLabel" value="glasses, contact lenses, bifocals, or reading glasses">Glasses, contact lenses, bifocals, or reading glasses</label>
-                            
-                            <div id="glassesnowContainer">
-                                <input type="checkbox" name="glassesnow" id="glassesnow" class="custom" />
-                                <label for="glassesnow" data-iconpos="right">Are you wearing them right now? </label>
-                            </div>
-                        </div>
                         
-                        <div id="magnifierContainer">
-                            <input type="checkbox" name="magnifier" id="magnifier" class="custom" />
-                            <label for="magnifier" data-iconpos="right" id="magnifierLabel" value="magnifier">A magnifier</label>
-                            
-                            <div id="magnifiernowContainer">
-                                <input type="checkbox" name="magnifiernow" id="magnifiernow" class="custom" />
-                                <label for="magnifiernow" data-iconpos="right">Are you using your magnifier right now? </label>
-                            </div>
-                        </div>
+                        <input type="checkbox" name="glasses" id="glasses" class="custom" />
+                        <label for="glasses" data-iconpos="right" id="glassesLabel" value="glasses, contact lenses, bifocals or reading glasses">Glasses, contact lenses, bifocals, or reading glasses</label>
+                        
+                        <input type="checkbox" name="magnifier" id="magnifier" class="custom" />
+                        <label for="magnifier" data-iconpos="right" id="magnifierLabel" value="magnifier">A magnifier</label>
+                        
                         
                         <input type="checkbox" name="largeprint" id="largeprint" class="custom" />
                         <label for="largeprint" data-iconpos="right">Large print materials</label>
                     </fieldset>
+                    
+                    <input type="checkbox" name="helpWithMed" id="helpWithMed" class="custom" />
+                    <label for="helpWithMed" data-iconpos="right">Does anyone help you take your medications?</label>
                 </div>
 			</form>
 			
-            <button data-role="none" id="cancel" class="pinkBtn cancelBtn"
+            <button data-role="none" id="cancel" class="whiteBtn cancelBtn"
                 onclick="window.location.href='index.html'" 
                 ontouchend="window.location.href='index.html'">Cancel</button>
             <button data-role="none" id="done" class="greenBtn doneBtn">Touch here when done</button>
@@ -89,8 +98,9 @@
         <div class="modalMessage">
             <div id="messageBox" class="modalMessage_box">
                 <div id="modalMessage_text"><br /></div>
-                <button id="modalMessage_cancel" data-role="none" class="pinkBtn">Cancel</button>
-                <button id="modalMessage_done" data-role="none" class="greenBtn">Continue</button>
+                <button id="modalMessage_done" data-role="none" class="greenBtn"></button>
+                <button id="modalMessage_cancel" data-role="none" class="pinkBtn"></button>
+                <button id="modalMessage_ok" data-role="none" class="greenBtn"></button>
             </div>
         </div>
 	</div></body>

@@ -7,29 +7,64 @@
         
         <script>
             var optionsSetting = JSON.parse(localStorage.getItem('optionsSetting'));
+            var prevResults = JSON.parse(localStorage.getItem('results'));
             
             window.localStorage.clear();
             
             if (optionsSetting == null){ optionsSetting = {}; }
+            if (prevResults == null){ 
+                prevResults = {}; 
+                prevResults['userID'] = 0;
+                console.log("PREV RESULTS DIDNT EXIST! (user: " + prevResults['userID'] + ")");
+            } 
             
-            // By default, show the Medications page
+            // By default, show the History page
             if (optionsSetting['medPage'] == null){ optionsSetting['medPage'] = true; }
-                                            
+
             console.log(optionsSetting);
             localStorage.setItem('optionsSetting', JSON.stringify(optionsSetting));
             
+            // ADVICE 
            	var adviceToUse = {};
-   			adviceToUse['standardLabel'] = false;
-	    	adviceToUse['min15pt'] = false;
-    		adviceToUse['min18pt'] = false;
-    		adviceToUse['followup'] = false;
-    		adviceToUse['compliancePackaging'] = false;
-    		adviceToUse['noTape'] = false;
-    		adviceToUse['discuss'] = false;
-    		//adviceToUse['customCaveat'] = false;
+            adviceToUse['ableReadStandard'] = false;
+            adviceToUse['notAbleReadStandard'] = false;
+            adviceToUse['notAbleReadLarge'] = false;
+
+            adviceToUse['compliancePackaging'] = false;
+            adviceToUse['regularLabelling'] = false;
+            adviceToUse['duplicate15pt'] = false;
+            adviceToUse['duplicate18pt'] = false;
+            adviceToUse['matchDuplicate'] = false;
             
-            console.log(JSON.stringify(adviceToUse) );
+            adviceToUse['noTape'] = true;
+            adviceToUse['numbers'] = true;
+            adviceToUse['simpleLang'] = true;
+            adviceToUse['noAllCaps'] = true;
+            
+            adviceToUse['difficultyReading'] = false;
+            adviceToUse['difficultyReadingType'];
+            adviceToUse['needAid'] = false;
+            adviceToUse['needAidType'];
+            adviceToUse['abilityAffected'] = false;
+            adviceToUse['abilityAffectedType']; 
+            
+            adviceToUse['complianceAids'] = false;
+            adviceToUse['protectFromWear'] = false;
+            adviceToUse['followUp'] = false;
+            adviceToUse['regularMonitoring'] = false;
+            adviceToUse['regularMonitoringType'];
+            adviceToUse['magnifyingGlass'] = false;
+            
+            console.log(adviceToUse);
+            //console.log(JSON.stringify(adviceToUse) );
             localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );
+            
+            // RESULTS TO SEND TO SERVER
+            var results = {};
+            results['datetime'] = new Date();
+            results['userID'] = prevResults['userID'];
+            console.log(results);
+            localStorage.setItem ('results', JSON.stringify(results) );
             
             document.ontouchmove = function(e){ e.preventDefault(); }
         </script>
@@ -47,7 +82,7 @@
 	<body class="center-wrapper">
 		<br /><h1>ClereMed</h1>
         
-		<h1 id="indexText">Welcome! This is a quick screen of your ability to read medication labels.</h1>
+		<h1 id="indexText">Welcome! This is a quick measure of your ability to read drug labels.</h1>
 		
 		<button id="indexNext" class="greenBtn indexBtn" ontouchend="window.location.href='questionnaire1.html'" onclick="window.location.href='questionnaire1.html'">Touch here to start -></button>
 	</body>

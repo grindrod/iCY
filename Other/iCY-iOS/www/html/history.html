@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="../style/lib/jquery.mobile-1.0.1.min.css" />
         <script src="../javascript/lib/jquery-1.6.4.min.js"></script>
         <script src="../javascript/lib/jquery.mobile-1.0.1.min.js"></script>
-        <script src="../javascript/medications.js"></script>
+        <script src="../javascript/history.js"></script>
         
         <!--link type="text/css" rel="stylesheet" href="../style/jquery.mobile-1.0.1.min.css" />
          <script src="../javascript/jquery.mobile-1.0.1.min.js"></script></script-->
@@ -22,8 +22,10 @@
             }
             
             #medicationInstructions{
-                margin-top: -3.25%;
-                margin-bottom: -1.75%;
+                /*font-weight: bold;
+                margin-top: 3.25%;*/
+                margin-top: -2%;
+                margin-bottom: -2%;
             }
             
             #checkboxSection{
@@ -35,28 +37,29 @@
 	<body>
         <div id="main" data-role="page">
             <div data-role="content">
-                <div id="checkboxPage"><h2>Medications</h2>
-                    <div id="medicationInstructions">The following medications and/or medical conditions could affect vision. Please discuss with patient.</div> 
+                <div id="checkboxPage"><h2>Patient history</h2>
+                    <div id="medicationInstructions">Select any conditions or drugs that may affect the patient's ability to read or understand labels.</div> 
                     
+                    <form>
                     <div id="checkboxSection">
                         <fieldset id="choices" class="ui-grid-a">
                             <div class="ui-block-a">
                                 <div data-role="fieldcontain">
                                     <fieldset data-role="controlgroup">
                                         
-                                        <input type="checkbox" name="Corticosteriods" id="Corticosteriods" class="custom" />
+                                        <input type="checkbox" name="corticosteriods" id="Corticosteriods" class="custom" />
                                         <label for="Corticosteriods">Corticosteriods</label>
                                         
-                                        <input type="checkbox" name="Anticholinergics" id="Anticholinergics" class="custom" />
+                                        <input type="checkbox" name="anticholinergics" id="Anticholinergics" class="custom" />
                                         <label for="Anticholinergics">Anticholinergics</label>
                                         
-                                        <input type="checkbox" name="Eyedrops" id="Eyedrops" class="custom" />
+                                        <input type="checkbox" name="eyedrops" id="Eyedrops" class="custom" />
                                         <label for="Eyedrops">Eye Drops</label>
                                         
-                                        <input type="checkbox" name="Diabetes" id="Diabetes" class="custom" />
+                                        <input type="checkbox" name="diabetes" id="Diabetes" class="custom" />
                                         <label for="Diabetes">Diabetes</label>
                                         
-                                        <input type="checkbox" name="Hypertension" id="Hypertension" class="custom" />
+                                        <input type="checkbox" name="hypertension" id="Hypertension" class="custom" />
                                         <label for="Hypertension">Hypertension</label>
                                         
                                     </fieldset>
@@ -66,18 +69,26 @@
                                 <div data-role="fieldcontain">
                                     <fieldset data-role="controlgroup">
                                         <div id="columnb">
-                                            <input type="checkbox" name="Glaucoma" id="Glaucoma" class="custom" />
+                                            <input type="checkbox" name="glaucoma" id="Glaucoma" class="custom" />
                                             <label for="Glaucoma">Glaucoma</label>
                                             
-                                            <input type="checkbox" name="Cataracts" id="Cataracts" class="custom" />
+                                            <input type="checkbox" name="cataracts" id="Cataracts" class="custom" />
                                             <label for="Cataracts">Cataracts</label>
+                                            
+                                            <input type="checkbox" name="macular degeneration" id="MacularDegeneration" class="custom" />
+                                            <label for="MacularDegeneration">Macular Degeneration</label>
+                                            
+                                            <input type="checkbox" name="cognitive impairment" id="CognitiveImpairment" class="custom" />
+                                            <label for="CognitiveImpairment">Cognitive impairment</label>
+                                            
                                         </div>
-                                        <a href="#addMedDialog" data-role="button" data-rel="dialog" data-icon="plus">Add Medications/Medical Condition</a>
+                                        <a href="#addMedDialog" data-role="button" data-rel="dialog" data-icon="plus">Add drugs/conditions</a>
                                     </fieldset>
                                 </div>
                             </div>
                         </fieldset>
                     </div>
+                    </form>
                 </div>
                 
                 <button data-role="none" id="done" class="greenBtn longBtn">Done</button>
@@ -85,7 +96,7 @@
                     onclick="window.location.href='advice.html'" 
                     ontouchend="window.location.href='advice.html'">Skip</button>
                 
-                <button data-role="none" id="cancel" class="pinkBtn cancelBtn"
+                <button data-role="none" id="cancel" class="whiteBtn cancelBtn"
                     onclick="window.location.href='index.html'" 
                     ontouchend="window.location.href='index.html'">Cancel</button>
             </div>
@@ -95,7 +106,7 @@
         <!--DIALOG-->
         <div data-role="page" id="addMedDialog" data-theme="d" data-position="inline">
             <div data-role="header">
-                <h1>Add Medication/Medical Condition</h1>
+                <h1>Add drugs/conditions</h1>
             </div>
 			
             <div data-role="content" class="center-wrapper">

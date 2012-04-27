@@ -4,22 +4,52 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" /> 
         <title>ClereMed</title>
         
-        <!--to change later-->
         <link rel="stylesheet" href="../style/lib/jquery.mobile-1.0.1.min.css" />
-        <script src="../javascript/lib/jquery-1.6.4.min.js"></script>
-        <script src="../javascript/lib/jquery.mobile-1.0.1.min.js"></script>
-        <script src="../javascript/advice.js"></script>
-        
         <link rel="stylesheet" href="../style/common.css" />
         
         <style>
-            #adviceBox {
+            body {
+                font-size: 15pt;
+            }
+            
+            #colouredRead {
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 1%;
+                text-align: center;
+                font-size: 18pt;
+                font-weight: bold;
+            }
+            
+            #userSection {
+                margin-left: 10%;
+                margin-bottom: 1%;
+            }
+            
+            .adviceBox {
                 border-style: solid;
                 border-color: #000000;
                 margin-left: 15%;
                 margin-right: 15%;
                 padding-left: 2%;
                 padding-right: 2%;
+                padding-top: 1%;
+                padding-bottom: 1%;
+                /*margin-bottom: 8%;*/
+                margin-bottom: 3%;
+            }
+            
+            /*#discussionHeader{*/
+            .adviceHeaders{
+                margin-left: 13%;
+                font-weight: bold;
+            }
+            
+            #discussionList{
+                position: relative;
+                z-index: 99;
+                /*height: 320px;*/
+                overflow-y: scroll;
             }
             
             .advice_9point {
@@ -70,11 +100,11 @@
                 padding-bottom: 1%;
             }
             
-            #advice_options {
+            /*#advice_options {
                 position: fixed;
                 margin-left: 40%;
                 bottom: 0;
-            }
+            }*/
             
             #fontOptionsBtn {
                 position: absolute;
@@ -100,6 +130,11 @@
                 opacity: 0.8;
                 display: none;
             }
+            
+            /*#cancel {
+                cursor: pointer; 
+                position: absolute;
+            }*/
             </style>
         
     </head>
@@ -108,10 +143,25 @@
         <div data-role="page" id="advicePage">
             <div data-role="content">
                 <div id="popupOverlay"></div>
-                <h1 align="center">Advice for Pharmacy Staff</h1>
-                <div id="adviceBox">
+                
+                <!--h1 align="center">Advice for Pharmacy Staff</h1>
+                <div id="userSection" class="advice_15point">User ID:</div>
+                <div id="adviceBox" class="advice_15point">
                     <h4><ul id="adviceList"></ul></h4>
-                </div>
+                </div-->
+                
+                <div id="userSection">User ID:</div>
+                
+                <div id="colouredRead"></div>
+                
+                <div id="labellingHeader" class="adviceHeaders">When labelling:</div>
+                <div id="labellingList" class="adviceBox"></div>
+                
+                <div id="discussHeader" class="adviceHeaders">Talk to the patient about:</div>
+                <div id="discussList" class="adviceBox"></div>
+                
+                <div id="needsHeader" class="adviceHeaders">Patient likely needs:</div>
+                <div id="needsList" class="adviceBox"></div>
                 
                 <!--POPUP OPTIONS-->
                 <div id="popupSlideWrapper_ios">
@@ -132,7 +182,7 @@
                             
                             <fieldset>
                                 <input type="checkbox" name="medPage" id="medPage" />
-                                <label for="medPage"><div class="advice_12point">Include Medications page?</div></label>
+                                <label for="medPage"><div class="advice_12point">Include patient history</div></label>
                             </fieldset>
                                 </form>
                         </div>
@@ -146,39 +196,9 @@
             </div>
         </div>
         
-        
-        
-        
-        
-        <!--PLAYBOOK OPTIONS-->
-		<div data-role="dialog" id="pharmacyOptions_playbook" data-theme="d" data-position="inline">
-            <div data-role="header"><h1>Pharmacy Options</h1></div>
-            
-            <div data-role="content" class="center-wrapper">
-                <legend>What is the smallest level font size printed at your pharmacy?</legend>
-                <fieldset data-role="controlgroup">
-                    <input type="radio" name="radio_dialog" id="9point_dialog" class="fontRadio" value="0" />
-                    <label for="9point_dialog"><div class="advice_9point">9pt font (this text is 9-point font)</div></label>
-                    
-                    <input type="radio" name="radio_dialog" id="12point_dialog" class="fontRadio" value="1" />
-                    <label for="12point_dialog"><div class="advice_12point">12pt font (this text is 12-point font)</div></label>
-                    
-                    <input type="radio" name="radio_dialog" id="15point_dialog" class="fontRadio" value="2" />
-                    <label for="15point_dialog"><div class="advice_15point">15pt font (this text is 15-point font)</div></label>
-                </fieldset>
-                
-                <div data-role="fieldcontain">
-                    <fieldset data-role="controlgroup">
-                        <input type="checkbox" name="medPage" id="medPage" />
-                        <label for="medPage"><div class="advice_12point">Include Medications page?</div></label>
-                    </fieldset>
-                </div>
-                
-                <button data-role="none" id="submitAdd" class="greenBtn modalDoneBtn" onclick="window.location.href='advice.html'">Done</button>
-                <button data-role="none" id="cancel" class="pinkBtn modalCancelBtn" onclick="window.location.href='advice.html'"
-                    data-rel="back">Cancel</button>
-            </div>
-        </div>
-	</body>
+        <script src="../javascript/lib/jquery-1.6.4.min.js"></script>
+        <script src="../javascript/lib/jquery.mobile-1.0.1.min.js"></script>
+        <script src="../javascript/advice.js"></script>
+    </body>
 	
 </htm>
