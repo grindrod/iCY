@@ -3,7 +3,7 @@
 ## Purpose
 The main purpose is to help pharmacists determine the vision capabilities of seniors. This app will show the pharmacists issues of concern, matters to discuss based on the result of the test and screening checkbox.
 
-## Page
+## Pages
 
 ### Index
 This page is starting page. 
