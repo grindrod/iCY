@@ -15,7 +15,7 @@ ADVICE['notAbleReadLarge'] = {type: "read",
 ADVICE['compliancePackaging'] = {type: "labelling", 
     string: "Compliance packaging recommended" };
 ADVICE['regularLabelling'] = {type: "labelling", string: "Use regular label on vial" };
-ADVICE['duplicate15pt'] = {type: "labellng", string: "Print duplicate paper label in 15-point font (Arial or Verdana)" };
+ADVICE['duplicate15pt'] = {type: "labelling", string: "Print duplicate paper label in 15-point font (Arial or Verdana)" };
 ADVICE['duplicate18pt'] = {type: "labelling", string: "Print duplicate paper label in 18-point font (Arial or Verdana)" } ;
 ADVICE['matchDuplicate'] = {type: "labelling", string: "Match duplicate label to vial with large-print numbers or colored stickers" };
 ADVICE['noTape'] = {type: "labelling", string: "Do NOT tape labels" };
@@ -96,16 +96,13 @@ var loadDefaultOptions = function() {
         medPage = optionsSetting['medPage'];
 
     //console.log(optionsSetting);
-    console.log("medPage: " + medPage);
+    //console.log("medPage: " + medPage);
     //console.log("currentLevel: " + currentLevel);
-    //alert('currentLevel: ' + currentLevel);
 
     if ( currentLevel === '0' ){ currentDefaultFont = '9point'; }
     else if (currentLevel === '1' ){ currentDefaultFont = '12point'; }
     else if (currentLevel === '2' ){ currentDefaultFont = '15point'; }
-    
     console.log ("currentDefaultFont: " + currentDefaultFont);
-    
     
     $('#' + currentDefaultFont + '_popup').prop("checked", true).checkboxradio("refresh");
     $('#medPage').prop("checked", medPage).checkboxradio("refresh");
@@ -122,22 +119,23 @@ var analyseResults = function() {
 	var userLevel = results['test']['userFont'];
 	console.log("userLevel: " + userLevel);
 	
-	if ( userLevel === "9pt" || userLevel === "12pt" ||
-        userLevel === "15pt" || userLevel === "18pt") {
+	if ( userLevel === "9pt" || userLevel === "12pt") {
         adviceToUse['ableReadStandard'] = true;
         adviceToUse['regularLabelling'] = true;
         
-        if (userLevel === "15pt") {
-            adviceToUse['notAbleReadStandard'] = true;
-            adviceToUse['duplicate15pt'] = true;
-            adviceToUse['matchDuplicate'] = true;
-        }
-        else if (userLevel === "18pt") {
-            adviceToUse['notAbleReadStandard'] = true;
-            adviceToUse['duplicate18pt'] = true;
-            adviceToUse['matchDuplicate'] = true;
-        }
-	} 
+    }
+    if (userLevel === "15pt") {
+        adviceToUse['regularLabelling'] = true;
+        adviceToUse['notAbleReadStandard'] = true;
+        adviceToUse['duplicate15pt'] = true;
+        adviceToUse['matchDuplicate'] = true;
+    }
+    else if (userLevel === "18pt") {
+        adviceToUse['regularLabelling'] = true;
+        adviceToUse['notAbleReadStandard'] = true;
+        adviceToUse['duplicate18pt'] = true;
+        adviceToUse['matchDuplicate'] = true;
+    }
 	else if (userLevel === "failed") {
         adviceToUse['noTape'] = false;
         adviceToUse['numbers'] = false;
@@ -170,7 +168,7 @@ var displayResults = function (adviceToUse){
 	var item;
     
     for (var i in adviceToUse){
-        console.log(ADVICE[i]);
+        //console.log(ADVICE[i]);
         if (ADVICE[i].type === "read" && adviceToUse[i]){
             $('#colouredRead').css('color', ADVICE[i].color);
             $('#colouredRead').append(ADVICE[i].string);
@@ -185,10 +183,7 @@ var displayResults = function (adviceToUse){
             if ((i === "difficultyReading"  || i === "needAid"  ||
                 i === "abilityAffected") && adviceToUse[i] &&
                 (typeof adviceToUse[i + 'Type'] !== "undefined") ){
-                console.log("NOT EMPTY! " + adviceToUse[i+'Type']);
-                
                 ADVICE[i].string = ADVICE[i].string.replace("[types]", adviceToUse[i+'Type']);
-                console.log(ADVICE[i].string);
             }
             
             item = '<li>' + ADVICE[i].string + '</li>';
@@ -198,10 +193,7 @@ var displayResults = function (adviceToUse){
         else if (ADVICE[i].type === "needs" && adviceToUse[i]){
             if (i === "regularMonitoring" && adviceToUse[i] &&
                 (typeof adviceToUse[i + 'Type'] !== "undefined") ){
-                console.log("NOT EMPTY! " + adviceToUse[i+'Type']);
-                
                 ADVICE[i].string = ADVICE[i].string.replace("[types]", "for " + adviceToUse[i+'Type']);
-                console.log(ADVICE[i].string);
             }
             
             item = '<li>' + ADVICE[i].string + '</li>';
@@ -234,7 +226,6 @@ $(document).ready(function() {
     localStorage.setItem ('results', JSON.stringify(results) );
                   
     document.getElementById('fontOptionsBtn').onclick = popOptions;
-    //document.ontouchmove = function(event){ event.preventDefault(); }
     
     // POPUP UI SETUP
     var popupHeight = parseInt($('#optionsForm').css('height'), 10);
