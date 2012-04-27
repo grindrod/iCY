@@ -27,8 +27,8 @@ var currentObj;
 var start;
 
 $(document).ready(function() {
-                  start = new Date();
-                  console.log("start: " + start);
+    start = new Date();
+    console.log("start: " + start);
 	$('#repeatTest').hide();
 	
 	document.getElementById('breakfast').addEventListener('DOMNodeInserted', onDropAreaChange, true);
@@ -73,20 +73,17 @@ function onCancel(event){
 }
 
 function onLargerFontBtn(event) {
-	//alert('largerFontBtn clicked');
 	console.log('largerFontBtn clicked');
     lowestLevelRepeat = false;
 	newLabelAnimation();
 }
 
 function onDone(event){
-	//alert('done button clicked');
 	console.log('done button clicked');
 	if (validateContents() === true){ 
         finishTest();
     }
 	else {
-		//console.log("=====START ROLLOVER PROCESS [" + labelOrder[instructionSizeLevel] + "] =====");
 		repeatTest();
 		reset();
 	}
@@ -120,19 +117,16 @@ function disableBtn(name, state){
 	var btn = $('#'+name);
 	
 	if (state === true){ 
-		//btn.unbind();
 		btn.attr('disabled', state);
 		document.getElementById(name).ontouchend = null;
 	}
 	else {
 		btn.removeAttr('disabled');
 		if (name === 'largerFontBtn') { 
-			//btn.bind(eventType, onLargerFontBtn); 
 			document.getElementById(name).ontouchend = onLargerFontBtn;
 			document.getElementById(name).onclick = onLargerFontBtn;
 		} 
 		else if (name === 'done'){
-			//btn.bind(eventType, onDone);
 			document.getElementById(name).ontouchend = onDone;
 			document.getElementById(name).onclick = onDone;
 		}
@@ -150,7 +144,7 @@ function finishTest(){
     var results = JSON.parse( localStorage.getItem('results') );
     results['test']['time'] = end - start;
     localStorage.setItem ('results', JSON.stringify(results) );
-    console.log(results);
+    //console.log(results);
     
     window.location = "patientfinished.html"; 
 }
@@ -292,8 +286,6 @@ function repeatTest()
 		var docHeight = $(document).height();
 		$('#repeatTest').height(docHeight);
 		$('#repeatTest').fadeIn('fast', function(){ $('#repeatTest').show();});
-		//$('#repeatTest_done').bind('click', closeRepeatDone);
-		//$('#repeatTest_done').bind('touchend', closeRepeatDone);
 		document.getElementById('repeatTest_done').ontouchend = closeRepeatDone;
         document.getElementById('repeatTest_done').onclick = closeRepeatDone;
 	}

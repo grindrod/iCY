@@ -82,9 +82,6 @@ var aidsCheck = function (aid){
         text = "Is the person who helps you here now? If yes, they can help you complete the test."
         showMessage(text, "okOnly", closeModalDialog, null);
     }
-    else {
-        console.log("wut? 0.o");
-    }
 }
 
 
@@ -167,6 +164,5 @@ function closeModalDialog(){
 }
 
 function noVisualAid(){
-    console.log("no visual aid!");
     window.location.href="index.html";
 }

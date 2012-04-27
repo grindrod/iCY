@@ -12,7 +12,7 @@ $(document).ready(function() {
 	//				MODAL DIALOG				//
 	//////////////////////////////////////////////
 	$("#submitAdd").live('click', function () {
-		console.log("submitAdd called!");
+		//console.log("submitAdd called!");
 		var med = $("#med", addMedDialog).val();
 	
 		if (med != ""){
@@ -40,7 +40,7 @@ function onDone() {
         prefixAll, 
         prefixSome;
     
-    console.log(formData);
+    //console.log(formData);
     
     for (var i in formData){
         current = formData[i];
@@ -78,7 +78,7 @@ function onDone() {
                     prefixSome = "";
                 }
                 else {
-                    prefixSome = adviceToUse['regularMonitoringType'] + " and ";
+                    prefixSome = adviceToUse['regularMonitoringType'] + ", ";
                 }
                 
                 adviceToUse['regularMonitoringType'] = prefixSome + current.name;
@@ -86,7 +86,7 @@ function onDone() {
         
     }
     
-    console.log(adviceToUse);
+    //console.log(adviceToUse);
     localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );
     
     results['history'] = new Array();

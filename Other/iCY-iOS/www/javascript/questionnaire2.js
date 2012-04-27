@@ -54,7 +54,7 @@ function onDone(e) {
     var checkBoxSerialized = $('input:checkbox').map(function() {
                                                      return { name: this.name, value: $(this).is(':checked') };
                                                      });
-    console.log(checkBoxSerialized);
+    //console.log(checkBoxSerialized);
     
     console.log (adviceToUse);
     localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );

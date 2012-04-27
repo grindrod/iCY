@@ -34,12 +34,10 @@
         document.getElementById('pharmacistBtn').onclick = onContinue;
         
         function onContinue () {
-            console.log("ON CONTINUE");
             var t = setTimeout( "moveUrl()" , 300);
         }
         
         var moveUrl = function (){
-            console.log("MOVE URL");
             var url;
             var optionsSetting = JSON.parse(localStorage.getItem('optionsSetting') );
                         
