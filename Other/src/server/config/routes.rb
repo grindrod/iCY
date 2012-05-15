@@ -1,7 +1,7 @@
 Server::Application.routes.draw do
   resources :data
 
-  get "home/index"
+  get "data/index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
