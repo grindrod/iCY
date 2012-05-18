@@ -1,5 +1,4 @@
 Server::Application.routes.draw do
-<<<<<<< HEAD
   
   get "sessions/login"
 
