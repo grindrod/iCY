@@ -1,0 +1,31 @@
+<h2>Users:</h2>
+
+<table>
+  <tr>
+    <th>Login</th>
+    <th>Email</th>
+    <th>Options</th>
+  </tr>
+<% num = 1 %>
+<% @users.each do |user| %>
+  <tr>
+  <% if num == 0 %>
+    <td style="width:30%;" class="alt"><%= user.login %></td>
+    <td style="width:50%;" class="alt"><%= user.email %></td>
+    <td class="alt"><%= link_to 'Delete', user, confirm: 'Are you sure?', method: :delete %></td>
+  <%else%>
+    <td style="width:30%;" class="orig"><%= user.login %></td>
+    <td style="width:50%;" class="orig"><%= user.email %></td>
+    <td class="orig"><%= link_to 'Delete', user, confirm: 'Are you sure?', method: :delete %></td>
+  <%end%>
+  </tr>
+  <% num = num + 1 %>
+  <% num = num.modulo 2%>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New user', new_user_path %><br />
+
+<%= link_to "Back", "/home"%>

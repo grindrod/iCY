@@ -1,8 +1,53 @@
 Server::Application.routes.draw do
+<<<<<<< HEAD
+  
+  get "sessions/login"
+
+  get "sessions/home"
+
+  get "sessions/profile"
+
+  get "sessions/setting"
+
+  resources :users
+  
+  get "users/signup"
+
+  get "users/login"
+
+  get "users/logout"
+
+  get "users/delete"
+
+  get "users/edit"
+
+  get "users/forgot_password"
+
+  get "home//Users/shannonbroekhoven/iCY/Other/src/server"
+
+  get "home/index"
+
+  #resources :data
+
+  #get "data/index"
+  
+  match "signup", :to => "users#new"
+  match "login", :to => "sessions#login"
+  match "logout", :to => "sessions#logout"
+  match "home", :to => "sessions#home"
+  match "login_attempt", :to => "sessions#login_attempt"
+  match "change_pass", :to => "users#change_password"
+  match "forgot_password", :to => "users#forgot_password"
+  match "send_password", :to => "users#send_password"
+  
+  
+  root :to => 'home#index'
+  
+  
+
   resources :records
 
-  root :to => 'records#index'
- 
+  #root :to => 'records#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

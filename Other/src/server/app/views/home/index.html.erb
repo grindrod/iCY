@@ -1,0 +1,9 @@
+<h1>Welcome to ClereMed!</h1>
+<p align ="center">
+
+<% if User.all.size== 0 %>
+<%= link_to "Click here to enter the site", new_user_path %>
+<%else %>
+<%= link_to "Click here to enter the site", "home"%>
+<%end%>
+
