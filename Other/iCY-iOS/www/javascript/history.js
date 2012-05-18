@@ -15,7 +15,7 @@ function onDone() {
     var current, 
         prefixAll, 
         prefixSome;
-    
+       
     //console.log(formData);
     
     for (var i in formData){
@@ -62,15 +62,21 @@ function onDone() {
         
     }
     
-    //console.log(adviceToUse);
+   // console.log(adviceToUse);
     localStorage.setItem ('adviceToUse', JSON.stringify(adviceToUse) );
     
     results['history'] = new Array();
     $('input:checkbox').map(function() {
                             results['history'].push({ name: this.name, value: $(this).is(':checked') } )});
+ 
     localStorage.setItem ('results', JSON.stringify(results) );
-    console.log(results);
     
+    $.ajax({
+  	type: 'POST',
+  	url: 'http://10.172.69.27:3000/records',
+  	data: results,
+  	dataType: 'json'
+	});
 	window.location.href='advice.html';
 }
 
@@ -90,7 +96,7 @@ function disableBtn(btn, state){
     
 	$btn.attr('disabled', state);
 	//$btn.addClass('btnDisabled');
-	
+
 	if (state === true){ 
 		$btn.unbind('toggle').unbind(eventType); 
 	}
@@ -118,7 +124,7 @@ function addCheckbox(name) {
 $(document).ready(function() {
 	disableBtn('done', true);
 	listenerForCheckbox();
-	
+
 	//////////////////////////////////////////////
 	//				MODAL DIALOG				//
 	//////////////////////////////////////////////
@@ -136,5 +142,5 @@ $(document).ready(function() {
 	$("#cancel").live('click', function () {
     	$('.ui-dialog').dialog('close');
 	});
-	
+
 });
