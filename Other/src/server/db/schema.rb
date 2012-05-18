@@ -11,7 +11,6 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20120517124708) do
 
   create_table "data", :force => true do |t|
@@ -26,7 +25,9 @@ ActiveRecord::Schema.define(:version => 20120517124708) do
     t.string   "salt"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-=======
+  end
+end
+
 ActiveRecord::Schema.define(:version => 20120517145828) do
 
   create_table "records", :force => true do |t|
@@ -58,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20120517145828) do
     t.string   "other5"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
->>>>>>> upstream/master
+
   end
 
 end
