@@ -1,0 +1,12 @@
+<h2>Log in</h2>
+<div class ="Sign_Form">
+	<%= form_tag("/login_attempt",{:controller => "sessions", :action => "login_attempt"}) do %>
+		Username or Email:<br />
+		<%= text_field_tag (:login_or_email)%><br />
+		Password:<br />
+		<%= password_field_tag (:login_password) %><br />
+		<%= submit_tag("Log in") %><br />
+		<%= link_to "Forgot my password", "/forgot_password" %>
+	<% end %>
+	
+</div>
