@@ -1,7 +1,8 @@
 Server::Application.routes.draw do
-  resources :data
+  resources :records
 
-  get "data/index"
+  root :to => 'records#index'
+ 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
