@@ -1,4 +1,5 @@
 Server::Application.routes.draw do
+<<<<<<< HEAD
   
   get "sessions/login"
 
@@ -26,9 +27,9 @@ Server::Application.routes.draw do
 
   get "home/index"
 
-  resources :data
+  #resources :data
 
-  get "data/index"
+  #get "data/index"
   
   match "signup", :to => "users#new"
   match "login", :to => "sessions#login"
@@ -43,6 +44,10 @@ Server::Application.routes.draw do
   root :to => 'home#index'
   
   
+
+  resources :records
+
+  #root :to => 'records#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
