@@ -3,7 +3,7 @@
 # builds and loads the app onto the blackberry
 
 
-cd $HOME/iCY/Other/Phonegap/BlackBerry/www
+cd $HOME/Factory/iCY/Other/Phonegap/BlackBerry/www
 ant playbook build
 
 if [ $? -eq 0 ]

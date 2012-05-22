@@ -74,29 +74,29 @@ class RecordsController < ApplicationController
     if(params[:history]['10'].nil?)
       @record.other2 = ""
     else       
-      if(params[:history]['9']['value'] == "true")
-        @record.other1 = params[:history]['9']['name'] end
+      if(params[:history]['10']['value'] == "true")
+        @record.other1 = params[:history]['10']['name'] end
     end
       
     if(params[:history]['11'].nil?)
       @record.other3 = ""
     else       
-      if(params[:history]['9']['value'] == "true")
-        @record.other1 = params[:history]['9']['name'] end
+      if(params[:history]['11']['value'] == "true")
+        @record.other1 = params[:history]['11']['name'] end
     end   
     
     if(params[:history]['12'].nil?)
       @record.other4 = ""
     else       
-      if(params[:history]['9']['value'] == "true")
-        @record.other1 = params[:history]['9']['name'] end
+      if(params[:history]['12']['value'] == "true")
+        @record.other1 = params[:history]['12']['name'] end
     end
       
     if(params[:history]['13'].nil?)
       @record.other5 = ""
     else       
-      if(params[:history]['9']['value'] == "true")
-        @record.other1 = params[:history]['9']['name'] end
+      if(params[:history]['13']['value'] == "true")
+        @record.other1 = params[:history]['13']['name'] end
     end
     @record.save
     render :nothing => true
