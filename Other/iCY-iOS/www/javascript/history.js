@@ -75,9 +75,10 @@ function onDone() {
   	type: 'POST',
   	url: 'http://10.172.69.27:3000/records',
   	data: results,
-  	dataType: 'json'
+  	complete: function() {
+		window.location.href='advice.html';
+  	}
 	});
-	window.location.href='advice.html';
 }
 
 // done button is only active if there is at least one checked checkbox
