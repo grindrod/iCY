@@ -1,26 +1,39 @@
 class RecordsController < ApplicationController
-  
+  require "csv"
   # GET /records
   # GET /records.json
   def index
-    @records = Record.all
-
+    @start_date = Date.parse(params[:start_date][:day] + "/" +
+                             params[:start_date][:month]+"/" +
+                             params[:start_date][:year]).beginning_of_day.to_time.to_i rescue nil
+    @end_date = Date.parse(params[:end_date][:day] + "/" +
+                           params[:end_date][:month]+"/" +
+                           params[:end_date][:year]).end_of_day.to_time.to_i rescue nil
+    opts = {:group => "id", :order => "created_at"}
+    opts[:conditions] = (@start_date.nil? ? "" : "created_at >= to_timestamp(#{@start_date})")
+    opts[:conditions] += ((@start_date.nil? || @end_date.nil?) ? "" : " and ")
+    opts[:conditions] += (@end_date.nil? ? "" : "created_at <= to_timestamp(#{@end_date})")
+    opts.delete_if {|k,v| v == ""}
+    @records = (Record.find(:all,opts))
+    @record ||= Record.new
+    return render @records if request.xhr?
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @records }
+      format.html
+      format.csv
     end
+  end
+  def search
+  end
+  
+  def export
+    @record = Record.new
   end
 
   # GET /records/1
   # GET /records/1.json
   def show
-    @record = Record.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @record }
-    end
   end
+  
 
   # GET /records/new
   # GET /records/new.json
@@ -129,4 +142,5 @@ class RecordsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 end

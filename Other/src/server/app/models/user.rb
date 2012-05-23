@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :uniqueness => true, :format => EMAIL_FORMAT
   validates :password, :confirmation => true
   validates_length_of :password, :in => 6..20, :on => :create
-
+  
   def encrypt_password
     if password.present?
       self.salt = BCrypt::Engine.generate_salt

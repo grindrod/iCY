@@ -1,0 +1,11 @@
+<h2>Generate a Report</h2>
+<div class ="Sign_Form">
+	<%= form_tag("/index",{:controller => "records", :action => "index"}) do %>
+		Start Date:<br />
+		<%= text_field_tag (:login_or_email)%><br />
+		Password:<br />
+		<%= password_field_tag (:login_password) %><br />
+		<%= submit_tag("Log in") %><br />
+	<% end %>
+	
+</div>

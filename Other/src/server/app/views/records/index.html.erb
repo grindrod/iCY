@@ -1,23 +1,18 @@
-<h1>Listing records</h1>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @records.each do |record| %>
-  <tr>
-  	<td><%= record.corticosteriods %></td>
-  	
-    <td><%= link_to 'Show', record %></td>
-    <td><%= link_to 'Edit', edit_record_path(record) %></td>
-    <td><%= link_to 'Destroy', record, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<% if !request.xhr? %>
+	<%= render :partial => 'export', :locals => {:record => @record,:start_date => @start_date, :end_date => @end_date} %>
 <% end %>
+
+<table id="search_results">
+	<thead>
+		<tr><th>ID</th><th>Time</th><th>Glasses</th><th>Magnifier</th>
+			<th>Large Print</th><th>Help With Medication</th><th>Prescription</th>
+			<th>Non-Prescription</th><th>Worn</th></th><th>Glossy</th><th>Font</th><th>Corticosteriods</th><th>Anticholinergics</th>
+			<th>Eyedrops</th><th>Diabetes</th><th>Hypertension</th><th>Glaucoma</th><th>Cataracts</th><th>Macular Degenration</th>
+			<th>Cognitive Impairment</th><th>Other1</th><th>Other2</th><th>Other3</th><th>Other4</th><th>Other5</th><th>Date</th>
+		</tr>
+	</thead>
+	<tbody>
+	<%= render @records %>
+	</tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Record', new_record_path %>

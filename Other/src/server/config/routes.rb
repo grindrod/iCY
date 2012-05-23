@@ -38,6 +38,8 @@ Server::Application.routes.draw do
   match "change_pass", :to => "users#change_password"
   match "forgot_password", :to => "users#forgot_password"
   match "send_password", :to => "users#send_password"
+  match "GenerateReport", :to => "records#index"
+  match "index", :to => "records#index"
   
   
   root :to => 'home#index'

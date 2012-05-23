@@ -1,0 +1,21 @@
+
+<%= form_for :record, :url => {:action => :index}, :remote => true,
+	:method => :get, :html => {:id => 'list_records'} do |fs| %>
+
+	<div class="group">
+		<%= label_tag :start_date_day, 'Start Date' %>
+		<% today = Date.today %>
+		<%= select_date (start_date || today - 1.year), :prefix => :start_date,
+			:start_year => 2011, :end_year => today.year %>
+		<br/>
+		<%= label_tag :end_date_day, 'End Date' %>
+		<%= select_date (end_date || today), :prefix => :end_date,
+			:start_year => 2011, :end_year => today.year %>
+	</div>
+
+	<div class="group">
+		<%= fs.submit 'Generate CSV Link' %><br/>
+		<% page_url = request.fullpath.gsub('?', '.csv?') %>
+		<%= link_to page_url, page_url %>
+	</div>
+<% end %>
