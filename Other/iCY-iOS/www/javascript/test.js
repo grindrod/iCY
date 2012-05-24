@@ -157,7 +157,7 @@ function finishTest(){
     console.log("end: " + end);
     
     var results = JSON.parse( localStorage.getItem('results') );
-    results['test']['time'] = end - start;
+    results['test']['time'] = (end - start);
     localStorage.setItem ('results', JSON.stringify(results) );
     //console.log(results);
     

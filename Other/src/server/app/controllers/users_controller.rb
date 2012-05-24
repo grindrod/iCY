@@ -1,9 +1,28 @@
 class UsersController < ApplicationController
-  before_filter :save_login_state, :only=>[:new, :create, :change_password]
-  before_filter :authenticate_user, :only => [:change_password, :destroy,:index]
-  before_filter :special_auth, :only => [:new]
+  before_filter :save_login_state, :only=>[:new, :create, :change_password, :update]
+  before_filter :authenticate_user, :only => [:change_password, :destroy,:index, :edit, :show, :update]
+  before_filter :special_auth, :only => [:new, :create]
   def new 
     @user = User.new
+  end
+  def show
+    @user = User.find(session[:user_id])
+  end
+  def edit
+    @user = User.find(session[:user_id])
+  end
+  def update
+    @user = User.find(session[:user_id])
+    if @user.update_attributes(params[:user])
+      flash[:notice] = "User successfully updated. "
+      redirect_to "/profile"
+    else
+      flash[:notice] = "User not updated, see below for details."
+      render "edit"
+    end
+  end
+  def profile
+    @user = User.find(session[:user_id])
   end
   def create
     @user = User.new(params[:user])
@@ -18,17 +37,23 @@ class UsersController < ApplicationController
       render "new"
     end
   end
-  def forgot_password
+  def forgot_password    
   end
-  def send_password
-    if request.post?
-      u = User.find_by_email(params[:email])
-      if u and u.send_new_password
-        flash[:notice] = "A new password has been sent by email."
-      else
-        flash[:notice] = "Couldn't send password"
-      end
-      redirect_to "/login"
+  def pass_help
+    @user = User.find_user(params[:login_or_email])
+    if !@user
+      flash[:notice] = "Sorry, user does not exist."
+      redirect_to "/forgot_password"
+    end
+  end
+  def forgot_pass_attempt
+    @user = User.authAns(params[:login],params[:answer])
+    if @user
+      session[:user_id] = @user.id
+      redirect_to "/change_pass"
+    else
+      flash[:notice] = "Answer is incorrect."
+      redirect_to "/forgot_password"
     end
   end
   def destroy

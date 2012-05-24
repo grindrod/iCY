@@ -1,0 +1,11 @@
+<% @page_title = "Forgotten Password"%>
+<h2>Forgotten Password</h2>
+<div class="Sign_Form">
+	<p>Question:</p>
+	<p> <%= @user.question %> </p>
+	<%= form_tag("/attempt",{:controller => "users", :action => "forgot_pass_attempt"}) do %>
+		<p>Answer: <br /><%=password_field_tag(:answer)%></p>
+		<p>Name:<br /><%= text_field_tag(:login, @user.login) %></p>
+		<%= submit_tag("Log in")%>
+	<% end %>
+</div>
