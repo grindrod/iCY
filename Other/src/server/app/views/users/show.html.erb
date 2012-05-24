@@ -1,0 +1,24 @@
+<h2>Profile</h2>
+<table class="profile">
+<tr>
+	<th colspan=2>My information:</th>
+</tr>
+<tr>
+	<td class="orig" style="width:25%;">Username:</td> 
+	<td class="orig"><%= @user.login %></td>
+</tr>
+<tr>
+	<td class="alt">Security Question:</td> 
+	<td class="alt"><%= @user.question %> </td>
+</tr>
+<tr>
+	<td class="orig">Email:</td> 
+	<td class="orig"><%= @user.email %> </td>
+</tr>
+<tr>
+	<td class="alt">User ID:</td> 
+	<td class="alt"><%= @user.id %></td>
+</tr>
+</table>
+<%= link_to 'Edit', edit_user_path(@user) %> <br />
+<%= link_to "Back", "/home"%>

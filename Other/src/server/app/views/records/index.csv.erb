@@ -1,0 +1,14 @@
+<%- headers = [ "ID", "Time Taken", "Glasses","Magnifier", "Large Print","Help With Medication","Prescription",
+				"Non-Prescription","Worn","Glossy","Font","Corticosteriods", "Anticholinergics","Eyedrops", "Diabetes","Hypertension",
+				"Glaucoma","Cataracts","Macular Degenration","Cognitive Impairment","Other1","Other2","Other3","Other4","Other5","Date"] -%>
+<%= CSV.generate_line headers %>
+
+<%- @records.each do |rec| -%>
+<%- row = [ rec.userID, rec.time, rec.glasses, rec.magnifier, rec.largeprint, rec.helpWithMed, rec.prescription, rec.nonprescription,
+			rec.worn, rec.glossy, rec.userFont, rec.corticosteriods, rec.anticholinergics, rec.eyedrops, rec.diabetes, rec.hypertension,
+			rec.glaucoma, rec.cataracts, rec.maculardegeneration, rec.cognitiveimpairment, rec.other1, rec.other2, rec.other3,
+			rec.other4, rec.other5, rec.datetime] -%>
+<%=   CSV.generate_line row %>
+<%- end -%>
+
+

@@ -3,7 +3,7 @@ html, body {
   height:100%;
 }
 p.top{
-  text-align: right;
+  text-align: center;
   font: 0.9em Georgia;
 }
 h1{
@@ -13,6 +13,9 @@ h1{
 }
 p{
   font: 1em Georgia;
+}
+p.notice{
+  color:red;
 }
 h2{  
   font:3em Georgia;
@@ -37,9 +40,29 @@ div.body{
   margin:0 auto;
   background-color:white;
 }
-
+div.otherBody{
+  padding:20px;
+  position:relative;
+  float:left;
+  border:1px solid black;
+  margin:0 auto;
+  background-color:white;
+}
 div.Sign_Form{
 	background-color:#FBEFFB;
+}
+table.top{
+  border:none;
+  width:100%;
+}
+tr.top{
+  border:none;
+}
+th.top{
+  padding:4px;
+  background-color: #BCF5A9;
+  width:25%;
+  border:none;
 }
 table, th, td{
   border:1px solid black;
@@ -58,4 +81,7 @@ td.orig{
 td.alt{
   padding:4px;
   background-color:#F7F8E0;
+}
+table.profile{
+  width:100%;
 }

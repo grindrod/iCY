@@ -73,7 +73,7 @@ function onDone() {
     
     $.ajax({
   	type: 'POST',
-  	url: 'http://10.172.69.27:3000/records',
+  	url: 'http://localhost:3000/records',
   	data: results,
   	complete: function() {
 		window.location.href='advice.html';
