@@ -37,9 +37,12 @@ Server::Application.routes.draw do
   match "login_attempt", :to => "sessions#login_attempt"
   match "change_pass", :to => "users#change_password"
   match "forgot_password", :to => "users#forgot_password"
-  match "send_password", :to => "users#send_password"
   match "GenerateReport", :to => "records#index"
   match "index", :to => "records#index"
+  match "pass_help", :to => "users#pass_help"
+  match "attempt", :to => "users#forgot_pass_attempt"
+  match "profile", :to => "users#show"
+  match "users/:id", :to => "users#update"
   
   
   root :to => 'home#index'

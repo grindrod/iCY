@@ -1,11 +1,21 @@
 <h2>Generate a Report</h2>
-<div class ="Sign_Form">
-	<%= form_tag("/index",{:controller => "records", :action => "index"}) do %>
-		Start Date:<br />
-		<%= text_field_tag (:login_or_email)%><br />
-		Password:<br />
-		<%= password_field_tag (:login_password) %><br />
-		<%= submit_tag("Log in") %><br />
-	<% end %>
-	
-</div>
+<%= form_for :record, :url => {:action => :index}, :remote => true,
+	:method => :get, :html => {:id => 'list_records'} do |fs| %>
+
+	<div class="group">
+		<%= label_tag :start_date_day, 'Start Date' %>
+		<% today = Date.today %>
+		<%= select_date (today - 1.year), :prefix => :start_date,
+			:start_year => 2011, :end_year => today.year %>
+		<br/>
+		<%= label_tag :end_date_day, 'End Date' %>
+		<%= select_date (today), :prefix => :end_date,
+			:start_year => 2011, :end_year => today.year %>
+	</div>
+
+	<div class="group">
+		<%= fs.submit 'Generate CSV Link' %><br/>
+		<% page_url = request.fullpath.gsub('?', '.csv?') %>
+		<%= link_to page_url, page_url %>
+	</div>
+<% end %>

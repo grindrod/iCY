@@ -1,18 +1,21 @@
 class RecordsController < ApplicationController
   require "csv"
+  layout "index2", :only => [:index]
+  before_filter :authenticate_user, :only => [:index]
   # GET /records
   # GET /records.json
   def index
+    
     @start_date = Date.parse(params[:start_date][:day] + "/" +
                              params[:start_date][:month]+"/" +
-                             params[:start_date][:year]).beginning_of_day.to_time.to_i rescue nil
+                             params[:start_date][:year]).beginning_of_day rescue nil
     @end_date = Date.parse(params[:end_date][:day] + "/" +
                            params[:end_date][:month]+"/" +
-                           params[:end_date][:year]).end_of_day.to_time.to_i rescue nil
+                           params[:end_date][:year]).end_of_day rescue nil
     opts = {:group => "id", :order => "created_at"}
-    opts[:conditions] = (@start_date.nil? ? "" : "created_at >= to_timestamp(#{@start_date})")
+    opts[:conditions] = (@start_date.nil? ? "" : "DATETIME(created_at) >= '#{@start_date.to_s(:db)}'")
     opts[:conditions] += ((@start_date.nil? || @end_date.nil?) ? "" : " and ")
-    opts[:conditions] += (@end_date.nil? ? "" : "created_at <= to_timestamp(#{@end_date})")
+    opts[:conditions] += (@end_date.nil? ? "" : "DATETIME(created_at) <= '#{@end_date.to_s(:db)}'")
     opts.delete_if {|k,v| v == ""}
     @records = (Record.find(:all,opts))
     @record ||= Record.new
@@ -27,6 +30,7 @@ class RecordsController < ApplicationController
   
   def export
     @record = Record.new
+    @num = 1
   end
 
   # GET /records/1
@@ -88,28 +92,28 @@ class RecordsController < ApplicationController
       @record.other2 = ""
     else       
       if(params[:history]['10']['value'] == "true")
-        @record.other1 = params[:history]['10']['name'] end
+        @record.other2 = params[:history]['10']['name'] end
     end
       
     if(params[:history]['11'].nil?)
       @record.other3 = ""
     else       
       if(params[:history]['11']['value'] == "true")
-        @record.other1 = params[:history]['11']['name'] end
+        @record.other3 = params[:history]['11']['name'] end
     end   
     
     if(params[:history]['12'].nil?)
       @record.other4 = ""
     else       
       if(params[:history]['12']['value'] == "true")
-        @record.other1 = params[:history]['12']['name'] end
+        @record.other4 = params[:history]['12']['name'] end
     end
       
     if(params[:history]['13'].nil?)
       @record.other5 = ""
     else       
       if(params[:history]['13']['value'] == "true")
-        @record.other1 = params[:history]['13']['name'] end
+        @record.other5 = params[:history]['13']['name'] end
     end
     @record.save
     render :nothing => true

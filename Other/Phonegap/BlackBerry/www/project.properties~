@@ -94,4 +94,4 @@ playbook.device.ip=10.172.69.117
 #   If you leave this field blank, then
 #   you cannot deploy to device
 #
-playbook.device.password=thisisapin
+playbook.device.password=qwerty
