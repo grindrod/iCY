@@ -8,10 +8,10 @@ class RecordsController < ApplicationController
     
     @start_date = Date.parse(params[:start_date][:day] + "/" +
                              params[:start_date][:month]+"/" +
-                             params[:start_date][:year]).beginning_of_day rescue nil
+                             params[:start_date][:year]).beginning_of_day.to_time.to_i rescue nil
     @end_date = Date.parse(params[:end_date][:day] + "/" +
                            params[:end_date][:month]+"/" +
-                           params[:end_date][:year]).end_of_day rescue nil
+                           params[:end_date][:year]).end_of_day.to_time.to_i rescue nil
     opts = {:order => "created_at"}
     opts[:conditions]  = (@start_date.nil? ? "" : "created_at >= to_timestamp(#{@start_date})")
     opts[:conditions] += ((@start_date.nil? || @end_date.nil?) ? "" : " and ")
