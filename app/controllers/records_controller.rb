@@ -13,9 +13,9 @@ class RecordsController < ApplicationController
                            params[:end_date][:month]+"/" +
                            params[:end_date][:year]).end_of_day rescue nil
     opts = {:order => "created_at"}
-    opts[:conditions] = (@start_date.nil? ? "" : "DATETIME(created_at) >= '#{@start_date.to_s(:db)}'")
+    opts[:conditions] = (@start_date.nil? ? "" : "TIMESTAMP(created_at) >= '#{@start_date.to_s(:db)}'")
     opts[:conditions] += ((@start_date.nil? || @end_date.nil?) ? "" : " and ")
-    opts[:conditions] += (@end_date.nil? ? "" : "DATETIME(created_at) <= '#{@end_date.to_s(:db)}'")
+    opts[:conditions] += (@end_date.nil? ? "" : "TIMESTAMP(created_at) <= '#{@end_date.to_s(:db)}'")
     opts.delete_if {|k,v| v == ""}
     @records = (Record.find(:all,opts))
     @records.group_by{|s| s.id}
