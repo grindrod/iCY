@@ -73,7 +73,7 @@ function onDone() {
     
     $.ajax({
   	type: 'POST',
-  	url: 'http://localhost:3000/records',
+  	url: 'http://morning-light-8582.herokuapp.com/records',
   	data: results,
   	complete: function() {
 		window.location.href='advice.html';

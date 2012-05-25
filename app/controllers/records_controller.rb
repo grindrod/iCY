@@ -12,12 +12,13 @@ class RecordsController < ApplicationController
     @end_date = Date.parse(params[:end_date][:day] + "/" +
                            params[:end_date][:month]+"/" +
                            params[:end_date][:year]).end_of_day rescue nil
-    opts = {:group => "id", :order => "created_at"}
+    opts = {:order => "created_at"}
     opts[:conditions] = (@start_date.nil? ? "" : "DATETIME(created_at) >= '#{@start_date.to_s(:db)}'")
     opts[:conditions] += ((@start_date.nil? || @end_date.nil?) ? "" : " and ")
     opts[:conditions] += (@end_date.nil? ? "" : "DATETIME(created_at) <= '#{@end_date.to_s(:db)}'")
     opts.delete_if {|k,v| v == ""}
     @records = (Record.find(:all,opts))
+    @records.group_by{|s| s.id}
     @record ||= Record.new
     return render @records if request.xhr?
     respond_to do |format|
