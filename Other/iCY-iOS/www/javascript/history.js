@@ -72,13 +72,14 @@ function onDone() {
     localStorage.setItem ('results', JSON.stringify(results) );
     
     $.ajax({
-  	type: 'POST',
+    type: 'POST',
   	url: 'http://morning-light-8582.herokuapp.com/records',
   	data: results,
-  	complete: function() {
+  	complete: function(jqXHR, textStatus) {
 		window.location.href='advice.html';
   	}
 	});
+    
 }
 
 // done button is only active if there is at least one checked checkbox
