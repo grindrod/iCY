@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32C2A1E71573E9D6001C2DA1 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32C2A1E61573E9D6001C2DA1 /* Entitlements.plist */; };
 		92D6D96F151292B0006AE9AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D6D96E151292B0006AE9AE /* Foundation.framework */; };
 		92D6D971151292B0006AE9AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D6D970151292B0006AE9AE /* UIKit.framework */; };
 		92D6D973151292B0006AE9AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D6D972151292B0006AE9AE /* CoreGraphics.framework */; };
@@ -37,6 +38,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32C2A1E51573E8EB001C2DA1 /* ClereMed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ClereMed.entitlements; sourceTree = "<group>"; };
+		32C2A1E61573E9D6001C2DA1 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		92D6D96A151292B0006AE9AE /* ClereMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClereMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D6D96E151292B0006AE9AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		92D6D970151292B0006AE9AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -106,6 +109,8 @@
 		92D6D95C151292B0006AE9AE = {
 			isa = PBXGroup;
 			children = (
+				32C2A1E51573E8EB001C2DA1 /* ClereMed.entitlements */,
+				32C2A1E61573E9D6001C2DA1 /* Entitlements.plist */,
 				92D6D9B715129439006AE9AE /* www */,
 				92D6D988151292B0006AE9AE /* iCY-iOS */,
 				92D6D96D151292B0006AE9AE /* Frameworks */,
@@ -294,6 +299,7 @@
 				92D6D9A9151292B1006AE9AE /* Capture.bundle in Resources */,
 				92D6D9AB151292B1006AE9AE /* PhoneGap.plist in Resources */,
 				92D6D9B815129439006AE9AE /* www in Resources */,
+				32C2A1E71573E9D6001C2DA1 /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +373,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -384,6 +390,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
@@ -458,6 +465,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = /Users/Shared/PhoneGap/Frameworks;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -486,6 +494,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = /Users/Shared/PhoneGap/Frameworks;

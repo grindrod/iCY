@@ -59,6 +59,7 @@ class RecordsController < ApplicationController
   # POST /records
   # POST /records.json
   def create
+    @records = Record.all
     @record = Record.new
     @record.datetime = params[:datetime]
     @record.corticosteriods = params[:history]['0']['value']
@@ -80,7 +81,17 @@ class RecordsController < ApplicationController
     @record.glossy = params[:questionnaire]['7']['value']
     @record.time = params[:test][:time]
     @record.userFont = params[:test][:userFont]
-    @record.userID = params[:userID]
+    done = true
+    id = params[:userid]
+    while done
+      rec = Record.find_record(id)
+      if rec
+        id += 1
+      else
+        done = false
+      end
+    end
+    @record.userID = id
     
     if(params[:history]['9'].nil?)
       @record.other1 = ""
