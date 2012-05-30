@@ -85,11 +85,11 @@ class RecordsController < ApplicationController
     done = true
     id = 1
     while done
-      rec = Record.find(id)
-      if rec
-        id += 1
-      else
+      rec = Record.first("userid = '#{id}'")
+      if rec.nil?
         done = false
+      else
+        id += 1
       end
     end
     @record.userID = id
