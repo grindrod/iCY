@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :save_login_state, :only=>[:new, :create, :change_password, :update]
-  before_filter :authenticate_user, :only => [:change_password, :destroy,:index, :edit, :show, :update]
+  before_filter :authenticate_user, :only => [:change_password, :destroy,:edit, :show, :update]
   before_filter :special_auth, :only => [:new, :create]
   def new 
     @user = User.new
