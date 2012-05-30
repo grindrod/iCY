@@ -83,16 +83,16 @@ class RecordsController < ApplicationController
     @record.time = params[:test][:time]
     @record.userFont = params[:test][:userFont]
     done = true
-    id = 1
+    currId = 1
     while done
-      rec = Record.first("userid = '#{id}'")
+      rec = Record.first(:userid => currId)
       if rec.nil?
         done = false
       else
-        id += 1
+        currId += 1
       end
     end
-    @record.userID = id
+    @record.userID = currId
     
     if(params[:history]['9'].nil?)
       @record.other1 = ""
