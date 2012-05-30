@@ -76,8 +76,8 @@ function onDone() {
   	  url: 'http://morning-light-8582.herokuapp.com/records',
   	  data: results,
   	  complete: function(jqXHR, textStatus) {
-		//window.location.href='advice.html';
-		console.log(jqXHR, textStatus);
+		window.location.href='advice.html';
+		//console.log(jqXHR, textStatus);
   	}
 	});
     
