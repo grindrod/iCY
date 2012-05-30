@@ -85,7 +85,7 @@ class RecordsController < ApplicationController
     done = true
     currId = 1
     while done
-      rec = Record.first(:id => currId)
+      rec = Record[currId]
       if rec.nil?
         done = false
       else
