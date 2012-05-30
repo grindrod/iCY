@@ -83,7 +83,7 @@ class RecordsController < ApplicationController
     @record.time = params[:test][:time]
     @record.userFont = params[:test][:userFont]
     #done = true
-    id = 5
+    id = params[:userid]
     id += 1
     #while done
     #  rec = Record.find_record(id)
