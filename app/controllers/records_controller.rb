@@ -61,7 +61,7 @@ class RecordsController < ApplicationController
   # POST /records.json
   def create
     @records = Record.all
-    @record = Record.new
+    @record = Record.new 
     @record.datetime = params[:datetime]
     @record.corticosteriods = params[:history]['0']['value']
     @record.anticholinergics = params[:history]['1']['value']
@@ -85,7 +85,7 @@ class RecordsController < ApplicationController
     done = true
     currId = 1
     while done
-      rec = Record.first(:userID => currId)
+      rec = Record.first(:id => currId)
       if rec.nil?
         done = false
       else
