@@ -83,7 +83,8 @@ class RecordsController < ApplicationController
     @record.time = params[:test][:time]
     @record.userFont = params[:test][:userFont]
     #done = true
-    #id = params[:userid]
+    id = params[:userid]
+    id = id + 5
     #while done
     #  rec = Record.find_record(id)
     #  if rec
@@ -93,7 +94,7 @@ class RecordsController < ApplicationController
     #  end
     #end
     #@record.userID = id
-    @record.userID = params[:userid]
+    @record.userID = id
     
     if(params[:history]['9'].nil?)
       @record.other1 = ""
