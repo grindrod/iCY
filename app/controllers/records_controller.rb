@@ -85,7 +85,7 @@ class RecordsController < ApplicationController
     done = true
     currId = 1
     while done
-      rec = Record.find_by_id (1)
+      rec = Record.find_by_userID (1)
       if rec.nil?
         currId = 1
         done = false
