@@ -29,7 +29,6 @@ end
 
 gem 'jquery-rails'
 
-gem "rack-cors", :require => "rack/cors"
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
