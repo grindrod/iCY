@@ -72,11 +72,12 @@ function onDone() {
     localStorage.setItem ('results', JSON.stringify(results) );
     
     $.ajax({
-    type: 'POST',
-  	url: 'http://morning-light-8582.herokuapp.com/records',
-  	data: results,
-  	complete: function(jqXHR, textStatus) {
-		window.location.href='advice.html';
+      type: 'POST',
+  	  url: 'http://morning-light-8582.herokuapp.com/records',
+  	  data: results,
+  	  complete: function(jqXHR, textStatus) {
+		//window.location.href='advice.html';
+		console.log(jqXHR, textStatus)
   	}
 	});
     
