@@ -82,17 +82,19 @@ class RecordsController < ApplicationController
     @record.glossy = params[:questionnaire]['7']['value']
     @record.time = params[:test][:time]
     @record.userFont = params[:test][:userFont]
-    done = true
-    currId = 1
-    while done
-      rec = Record[currId]
-      if rec.nil?
-        done = false
-      else
-        currId += 1
-      end
-    end
-    @record.userID = currId
+    #done = true
+    #currId = 1
+    #while done
+    #  rec = Record[currId]
+    #  if rec.nil?
+    #    done = false
+    #  else
+    #    currId += 1
+    #  end
+    #end
+    #@record.userID = currId
+    currID = Record.order(:userID).last.userID
+    @record.userID = currID + 1
     
     if(params[:history]['9'].nil?)
       @record.other1 = ""
