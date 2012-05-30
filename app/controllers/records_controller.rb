@@ -85,12 +85,13 @@ class RecordsController < ApplicationController
     done = true
     currId = 1
     while done
-      currId = 2
-      rec = Record.find_by_id (currId)
+      rec = Record.find_by_id (1)
       if rec.nil?
+        currId = 1
         done = false
       else
-        currId += 1
+        currId = 2
+        done = false
       end
     end
     @record.userID = currId
