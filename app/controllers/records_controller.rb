@@ -2,7 +2,6 @@ class RecordsController < ApplicationController
   require "csv"
   layout "index2", :only => [:index]
   before_filter :authenticate_user, :only => [:index]
-  protect_from_forgery :except => :create
   # GET /records
   # GET /records.json
   def index
