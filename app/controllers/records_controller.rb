@@ -83,16 +83,15 @@ class RecordsController < ApplicationController
     @record.time = params[:test][:time]
     @record.userFont = params[:test][:userFont]
     #done = true
-    id = params[:userid]
-    id += 1
-    #while done
-    #  rec = Record.find_record(id)
-    #  if rec
-    #    id += 1
-    #  else
-    #    done = false
-    #  end
-    #end
+    id = 1
+    while done
+      rec = Record.find_record(id)
+      if rec
+        id += 1
+      else
+        done = false
+      end
+    end
     @record.userID = id
     
     if(params[:history]['9'].nil?)
