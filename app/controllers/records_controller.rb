@@ -82,7 +82,7 @@ class RecordsController < ApplicationController
     @record.glossy = params[:questionnaire]['7']['value']
     @record.time = params[:test][:time]
     @record.userFont = params[:test][:userFont]
-    #done = true
+    done = true
     id = 1
     while done
       rec = Record.find_record(id)
