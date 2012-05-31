@@ -118,6 +118,8 @@
                         <arg file="${build.dir}" />
                         <arg value="-buildId" />
                         <arg value="${build.number}" />
+                        
+                        <arg value="-d" />
                     </exec>
                 </then>
                 <else>
@@ -127,6 +129,8 @@
                         <arg file="${build.dir}" />
                         <arg value="-buildId" />
                         <arg value="${build.number}" />
+                        
+                        <arg value="-d" />
                     </exec>
                 </else>
             </if>

@@ -10,6 +10,7 @@ body {
 	position:relative;
 	margin: 0px;
 	padding: 0px;
+	overflow-y: scroll;
 }
 .notes{
 	text-align:center;
