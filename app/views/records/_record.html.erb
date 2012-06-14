@@ -1,11 +1,11 @@
 <% if @num.nil?%>
 <% @num = 1 %>
 <% end %>
-
+<%@class="alt" %>
 <% if @num == 1 %>
 <tr>
-	<td class="orig"><%= record.userID %></td>
-	<td class="orig"><%= record.time.to_f / 1000%>s</td>
+	<td class=<%@class%>><%= record.userID %></td>
+	<td class="alt"><%= record.time.to_f / 1000%>s</td>
 	<td class="orig"><%= record.glasses %></td>
 	<td class="orig"><%= record.magnifier%></td>
 	<td class="orig"><%= record.largeprint %></td>
