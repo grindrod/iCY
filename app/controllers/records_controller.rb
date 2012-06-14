@@ -18,8 +18,8 @@ class RecordsController < ApplicationController
     opts[:conditions] += ((@start_date.nil? || @end_date.nil?) ? "" : " and ")
     opts[:conditions] += (@end_date.nil?   ? "" : "created_at <= to_timestamp(#{@end_date})")
     opts.delete_if {|k,v| v == ""}
-    @records = (Record.find(:all,opts))
-    @records.group_by{|s| s.id}.reverse
+    @records = Record.find(:all,opts, :order => "created_at DESC")
+    @records.group_by{|s| s.id}
     @record ||= Record.new
     return render @records if request.xhr?
     respond_to do |format|
