@@ -63,6 +63,7 @@ class RecordsController < ApplicationController
     @records = Record.all
     @record = Record.new 
     @record.datetime = params[:datetime]
+    @record.deviceID = params[:deviceID]
     @record.corticosteriods = params[:history]['0']['value']
     @record.anticholinergics = params[:history]['1']['value']
     @record.eyedrops = params[:history]['2']['value']

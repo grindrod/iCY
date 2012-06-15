@@ -16,7 +16,12 @@
                 prevResults = {}; 
                 prevResults['userID'] = 0;
             } 
-            
+            if (optionsSetting['deviceID'] == null){ 
+            	var S4 = function() {
+       				return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    			};
+            	optionsSetting['deviceID']= (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+            }
             // By default, show the History page
             if (optionsSetting['medPage'] == null){ optionsSetting['medPage'] = true; }
 
@@ -62,6 +67,7 @@
             var results = {};
             results['datetime'] = new Date();
             results['userID'] = prevResults['userID'];
+            results['deviceID'] = optionsSetting['deviceID'];
             console.log(results);
             localStorage.setItem ('results', JSON.stringify(results) );
             
