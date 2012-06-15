@@ -85,7 +85,7 @@ class RecordsController < ApplicationController
     done = true
     currId = 1
     while done
-      rec = Record.find_by_userID (currId)
+      rec = Record.find_by_userID(currId)
       if rec.nil?
         done = false
       else
@@ -93,8 +93,6 @@ class RecordsController < ApplicationController
       end
     end
     @record.userID = currId
-    #currID = Record.find_by_id(3)
-    #@record.userID = params[:userID]
     
     if(params[:history]['9'].nil?)
       @record.other1 = ""

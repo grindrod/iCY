@@ -28,7 +28,7 @@ gem 'pg'
 end
 
 gem 'jquery-rails'
-
+gem "uuidtools"
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
