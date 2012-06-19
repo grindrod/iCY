@@ -9,6 +9,9 @@ document.ontouchmove = function(e){ e.preventDefault(); }
 
 // collect, update advice, store data to be sent to the server
 function onDone() {
+	disableBtn('done', true );
+	disableBtn('skip', true );
+	disableBtn('cancel2', true );
     var formData = $('form').serializeArray();
     var adviceToUse = JSON.parse( localStorage.getItem('adviceToUse') );
     var results = JSON.parse( localStorage.getItem('results') );
@@ -76,8 +79,8 @@ function onDone() {
   	  url: 'http://morning-light-8582.herokuapp.com/records',
   	  data: results,
   	  complete: function(jqXHR, textStatus) {
-		//window.location.href='advice.html';
-		console.log(jqXHR, textStatus);
+		window.location.href='advice.html';
+		//console.log(jqXHR, textStatus);
   	}
 	});
 
@@ -111,7 +114,8 @@ function disableBtn(btn, state){
 
 // once the new item has been inputted, create checkbox
 function addCheckbox(name) {
-    var id = name.replace(/\s/g, '');
+    var id = name.replace(/"/g, "");
+    id = id.replace(/'/g, ""); 
     
    	var html = '<input type="checkbox" id="'+id+'" name="'+id+'" class="custom" checked="true" /> <label for="'+id+'">'+name+'</label>';
    
@@ -121,12 +125,16 @@ function addCheckbox(name) {
    	listenerForCheckbox();
 }
 
+function putFocus(){
+	setTimeout( "$('#med').focus()", 1500);
+}
 
 //////////////////////////////////////////////
 //				INITIALIZE                  //
 //////////////////////////////////////////////
 $(document).ready(function() {
 	disableBtn('done', true);
+	document.getElementById('addMedDialog').onclick = putFocus;
 	listenerForCheckbox();
 
 	//////////////////////////////////////////////

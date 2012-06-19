@@ -49,5 +49,14 @@
 	    <button data-role="none" id="done" class="greenBtn doneBtn">Done</button>
 	    
 	</div></body>
+	<script>
+        var t = setTimeout( "nextButtonFade()", 1500);
+        
+        document.ontouchmove = function(event){ event.preventDefault(); }
+        
+        function nextButtonFade(){
+            document.getElementById('done').onclick = onDone;
+        }
+    </script>
 	
 </htm>

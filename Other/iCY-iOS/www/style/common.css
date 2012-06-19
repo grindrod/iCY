@@ -260,8 +260,8 @@ body, html {
 
 /* gigantic button on index page */
 .indexBtn {
-    font-size: 30pt;
-    line-height: 150px;
+    font-size: 40pt;
+    line-height: 125px;
     font-weight: 700;
     width: 50%;
     position: fixed;
@@ -319,6 +319,7 @@ body, html {
 	height: 40px;
 	font-size: 18pt; 
     bottom: 2%;
+    z-index:2;
 }
 
 /* cancel button used in modal dialogs */

@@ -45,7 +45,15 @@
                 margin-bottom: -2%;
             }
         </style>
-    	
+    	<script>
+	        var t = setTimeout( "nextButtonFade()", 5000);
+	        
+	        document.ontouchmove = function(event){ event.preventDefault(); }
+	        
+	        function nextButtonFade(){
+	            document.getElementById('done').onclick = onDone;
+	        }
+	    </script>
     	<!--to change later-->
     	<link rel="stylesheet" href="../style/lib/jquery.mobile-1.0.1.min.css" />
 		<script src="../javascript/lib/jquery-1.6.4.min.js"></script>

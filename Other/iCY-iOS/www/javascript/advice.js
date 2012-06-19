@@ -99,9 +99,10 @@ function closeOptions() {
 var loadDefaultOptions = function() {
     var currentDefaultFont, 
         optionsSetting = JSON.parse(localStorage.getItem('optionsSetting') ),
+        guid = optionsSetting['deviceID'],
         currentLevel = optionsSetting['instructionSizeLevel'], 
         medPage = optionsSetting['medPage'];
-
+	guid = "Device ID: "+guid;
     //console.log(optionsSetting);
     //console.log("medPage: " + medPage);
     //console.log("currentLevel: " + currentLevel);
@@ -113,6 +114,7 @@ var loadDefaultOptions = function() {
     
     $('#' + currentDefaultFont + '_popup').prop("checked", true).checkboxradio("refresh");
     $('#medPage').prop("checked", medPage).checkboxradio("refresh");
+    document.getElementById("guid").innerHTML=guid;
 }
 
 
@@ -239,8 +241,9 @@ $(document).ready(function() {
     document.getElementById('fontOptionsBtn').onclick = popOptions;
     
     // POPUP UI SETUP
-    var popupHeight = parseInt($('#optionsForm').css('height'), 10);
-    popupHeight = popupHeight + popupHeight*0.05 + "px";
+    //var popupHeight = parseInt($('#optionsForm').css('height'), 10);
+    //popupHeight = popupHeight + popupHeight*0.05 + "px";
+    popupHeight = "400px";
     $('#popupSlideWrapper_ios').css('height', popupHeight);
                   
     var popupBottom = parseInt( $('#fontOptionsBtn').css('height') , 10);
@@ -271,7 +274,7 @@ $(document).ready(function() {
         }
     }
     //console.log(results);
-    
+    $('#advicePage').fadeIn('slow', function(){ $('#advicePage').show();})
     // POP-UP
     $("input").change( function() {
        updateOptions(this);
