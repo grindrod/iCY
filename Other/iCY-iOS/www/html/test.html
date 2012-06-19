@@ -59,7 +59,9 @@
             #labelButtonSection {
                 padding-left: 7%;
             }
-            
+            #repeatTest{
+            	display:none;
+            }
             #repeatTest_box {
                 width: 50%;
                 height: 20%;
@@ -97,9 +99,7 @@
                                 <div id="instructionLabel" class="border">Take two tablets at lunch.</div>
                             </div>
                         </td>
-                        <td id="labelButtonSection" align="right" width=30%>
-                            <button id="largerFontBtn" class="orangeBtn">Touch here if you cannot read label</button>
-                        </td>
+                        
                     </tr>
                 </table>
                 
@@ -135,7 +135,8 @@
             </div>
             
             <button id="cancel" class="whiteBtn cancelBtn">Cancel</button>
-            <button id="done" class="greenBtn doneBtn">Touch here when done</button>
+                <button id="largerFontBtn" class="orangeBtn largerBtn">I cannot read label</button>
+            <button id="done" class="greenBtn doneBtn test">Done</button>
         </div>
         
         <!--MODAL: REPEAT TEST-->

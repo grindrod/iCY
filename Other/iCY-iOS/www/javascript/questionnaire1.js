@@ -47,7 +47,6 @@ var aidsCheck = function (aid){
     console.log("aid: " + aid);
     if (aid === "glasses"){
         $('#modalMessage_cancel').addClass('glassesCheck');
-        //text = "Are you wearing them now?";
         text = "Are you wearing your glasses, contact lenses, bifocals or reading glasses?";
         showMessage(text, "yesNo", closeModalDialog, appExplain);
     }
@@ -103,7 +102,6 @@ function noVisualAid(){
 //          INITIALIZE          //
 //////////////////////////////////
 $(document).ready(function() {
-    document.ontouchmove = function(event){ event.preventDefault(); }
 	$('.modalMessage').hide();
     $('#modalMessage_cancel').hide();
     $('#modalMessage_done').hide();

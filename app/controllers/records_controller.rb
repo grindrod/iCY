@@ -2,6 +2,7 @@ class RecordsController < ApplicationController
   require "csv"
   layout "index2", :only => [:index]
   before_filter :authenticate_user, :only => [:index]
+  protect_from_forgery :except => :create
   # GET /records
   # GET /records.json
   def index
@@ -17,7 +18,7 @@ class RecordsController < ApplicationController
     opts[:conditions] += ((@start_date.nil? || @end_date.nil?) ? "" : " and ")
     opts[:conditions] += (@end_date.nil?   ? "" : "created_at <= to_timestamp(#{@end_date})")
     opts.delete_if {|k,v| v == ""}
-    @records = (Record.find(:all,opts))
+    @records = Record.find(:all,opts, :order => "created_at DESC")
     @records.group_by{|s| s.id}
     @record ||= Record.new
     return render @records if request.xhr?
@@ -60,8 +61,9 @@ class RecordsController < ApplicationController
   # POST /records.json
   def create
     @records = Record.all
-    @record = Record.new
+    @record = Record.new 
     @record.datetime = params[:datetime]
+    @record.deviceID = params[:deviceID]
     @record.corticosteriods = params[:history]['0']['value']
     @record.anticholinergics = params[:history]['1']['value']
     @record.eyedrops = params[:history]['2']['value']
@@ -82,16 +84,16 @@ class RecordsController < ApplicationController
     @record.time = params[:test][:time]
     @record.userFont = params[:test][:userFont]
     done = true
-    id = params[:userid]
+    currId = 1
     while done
-      rec = Record.find_record(id)
-      if rec
-        id += 1
-      else
+      rec = Record.find_by_userID(currId)
+      if rec.nil?
         done = false
+      else
+        currId += 1
       end
     end
-    @record.userID = id
+    @record.userID = currId
     
     if(params[:history]['9'].nil?)
       @record.other1 = ""

@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
     headers['Access-Control-Allow-Origin'] = '*'
     headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
     headers['Access-Control-Max-Age'] = "1728000"
+    headers['Access-Control-Allow-Headers'] = "Content-Type" #this changed
   end
 
   def cors_preflight_check
@@ -19,7 +20,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-def special_auth
+  def special_auth
     if session[:user_id]
       @current_user = User.find session[:user_id]
       return true
