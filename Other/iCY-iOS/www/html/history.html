@@ -4,12 +4,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" /> 
         <title>ClereMed</title>
         <link rel="stylesheet" href="../style/common.css" />
-        
+        <script>
+	        var t = setTimeout( "nextButtonFade()", 2000);
+	        
+	        document.ontouchmove = function(event){ event.preventDefault(); }
+	        
+	        function nextButtonFade(){
+	        	$('#skip').bind('touchend click', function() {
+                    window.location.href='advice.html';
+                });
+	        }
+	    </script>
         <link rel="stylesheet" href="../style/lib/jquery.mobile-1.0.1.min.css" />
         <script src="../javascript/lib/jquery-1.6.4.min.js"></script>
         <script src="../javascript/lib/jquery.mobile-1.0.1.min.js"></script>
         <script src="../javascript/history.js"></script>
-        
         <style>
             #checkboxPage {
                 text-align: left;
@@ -34,8 +43,8 @@
 	<body>
         <div id="main" data-role="page">
             <div data-role="content">
-                <div id="checkboxPage"><h2>Patient history</h2>
-                    <div id="medicationInstructions">Select any conditions or drugs that may affect the patient's ability to read or understand labels.</div> 
+                <div id="checkboxPage" style="margin-bottom:5em;"><h2>Patient history</h2>
+                    <div id="medicationInstructions">Select any conditions or drugs that may affect the patient's ability to read or understand labels. Use three fingers to scroll if necessary.</div> 
                     
                     <form>
                     <div id="checkboxSection">
@@ -79,7 +88,7 @@
                                             <label for="CognitiveImpairment">Cognitive impairment</label>
                                             
                                         </div>
-                                        <a href="#addMedDialog" data-role="button" data-rel="dialog" data-icon="plus">Add drugs/conditions</a>
+                                        <a href="#addMedDialog" id="addMedDialog" data-role="button" data-rel="dialog" data-icon="plus" >Add drugs/conditions</a>
                                     </fieldset>
                                 </div>
                             </div>
@@ -88,22 +97,20 @@
                     </form>
                 </div>
                 
-                <button data-role="none" id="done" class="greenBtn longBtn">Done</button>
-                <button data-role="none" id="cancel" class="pinkBtn longBtn" 	
-                    onclick="window.location.href='advice.html'" 
-                    ontouchend="window.location.href='advice.html'">Skip</button>
+                <button data-role="none" id="done" class="greenBtn longBtn" style="left:15%;">Done</button>
+                <button data-role="none" id="skip" class="pinkBtn longBtn" style="left:58%;">Skip</button>
                 
-                <button data-role="none" id="cancel" class="whiteBtn cancelBtn"
+                <button data-role="none" id="cancel2" class="whiteBtn cancelBtn"
                     onclick="window.location.href='index.html'" 
                     ontouchend="window.location.href='index.html'">Cancel</button>
             </div>
         </div>
         
-        
         <!--DIALOG-->
-        <div data-role="page" id="addMedDialog" data-theme="d" data-position="inline">
+        <div data-role="page" id="addMedDialog" data-theme="d" data-position="inline" z-index="1" >
             <div data-role="header">
                 <h1>Add drugs/conditions</h1>
+                <p id="test"></p>
             </div>
 
             <div data-role="content" class="center-wrapper">
@@ -113,8 +120,10 @@
                 <button data-role="none" id="cancel" class="pinkBtn modalCancelBtn"
                     data-rel="back">Cancel</button>
             </div>
+           
         </div>
         
 	</body>
 
-</htm>
+
+</html>

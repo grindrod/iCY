@@ -1,65 +1,40 @@
 <% if @num.nil?%>
 <% @num = 1 %>
 <% end %>
-
 <% if @num == 1 %>
-<tr>
-	<td class="orig"><%= record.userID %></td>
-	<td class="orig"><%= record.time.to_f / 1000%>s</td>
-	<td class="orig"><%= record.glasses %></td>
-	<td class="orig"><%= record.magnifier%></td>
-	<td class="orig"><%= record.largeprint %></td>
-	<td class="orig"><%= record.helpWithMed%></td>
-	<td class="orig"><%= record.prescription %></td>
-	<td class="orig"><%= record.nonprescription %></td>
-	<td class="orig"><%= record.worn %></td>
-	<td class="orig"><%= record.glossy %></td>
-	<td class="orig"><%= record.userFont %></td>
-	<td class="orig"><%= record.corticosteriods %></td>
-	<td class="orig"><%= record.anticholinergics %></td>
-	<td class="orig"><%= record.eyedrops %></td>
-	<td class="orig"><%= record.diabetes %></td>
-	<td class="orig"><%= record.hypertension %></td>
-	<td class="orig"><%= record.glaucoma %></td>
-	<td class="orig"><%= record.cataracts %></td>
-	<td class="orig"><%= record.maculardegeneration %></td>
-	<td class="orig"><%= record.cognitiveimpairment %></td>
-	<td class="orig"><%= record.other1 %></td>
-	<td class="orig"><%= record.other2 %></td>
-	<td class="orig"><%= record.other3 %></td>
-	<td class="orig"><%= record.other4 %></td>
-	<td class="orig"><%= record.other5 %></td>
-	<td class="orig"><%= record.datetime %></td>
-</tr>
+<% type = "orig" %>
 <%else %>
-<tr>
-	<td class="alt"><%= record.userID %></td>
-	<td class="alt"><%= record.time.to_f / 1000%>s</td>
-	<td class="alt"><%= record.glasses %></td>
-	<td class="alt"><%= record.magnifier%></td>
-	<td class="alt"><%= record.largeprint %></td>
-	<td class="alt"><%= record.helpWithMed%></td>
-	<td class="alt"><%= record.prescription %></td>
-	<td class="alt"><%= record.nonprescription %></td>
-	<td class="alt"><%= record.worn %></td>
-	<td class="alt"><%= record.glossy %></td>
-	<td class="alt"><%= record.userFont %></td>
-	<td class="alt"><%= record.corticosteriods %></td>
-	<td class="alt"><%= record.anticholinergics %></td>
-	<td class="alt"><%= record.eyedrops %></td>
-	<td class="alt"><%= record.diabetes %></td>
-	<td class="alt"><%= record.hypertension %></td>
-	<td class="alt"><%= record.glaucoma %></td>
-	<td class="alt"><%= record.cataracts %></td>
-	<td class="alt"><%= record.maculardegeneration %></td>
-	<td class="alt"><%= record.cognitiveimpairment %></td>
-	<td class="alt"><%= record.other1 %></td>
-	<td class="alt"><%= record.other2 %></td>
-	<td class="alt"><%= record.other3 %></td>
-	<td class="alt"><%= record.other4 %></td>
-	<td class="alt"><%= record.other5 %></td>
-	<td class="alt"><%= record.datetime %></td>
-</tr>
+<% type = "alt" %>
 <%end%>
+<tr>
+	<td class=<%=type%>><%= record.userID %></td>
+	<td class=<%=type%>><%= record.deviceID %> </td>
+	<td class=<%=type%>><%= record.time.to_f / 1000%>s</td>
+	<td class=<%=type%>><%= record.glasses %></td>
+	<td class=<%=type%>><%= record.magnifier%></td>
+	<td class=<%=type%>><%= record.largeprint %></td>
+	<td class=<%=type%>><%= record.helpWithMed%></td>
+	<td class=<%=type%>><%= record.prescription %></td>
+	<td class=<%=type%>><%= record.nonprescription %></td>
+	<td class=<%=type%>><%= record.worn %></td>
+	<td class=<%=type%>><%= record.glossy %></td>
+	<td class=<%=type%>><%= record.userFont %></td>
+	<td class=<%=type%>><%= record.corticosteriods %></td>
+	<td class=<%=type%>><%= record.anticholinergics %></td>
+	<td class=<%=type%>><%= record.eyedrops %></td>
+	<td class=<%=type%>><%= record.diabetes %></td>
+	<td class=<%=type%>><%= record.hypertension %></td>
+	<td class=<%=type%>><%= record.glaucoma %></td>
+	<td class=<%=type%>><%= record.cataracts %></td>
+	<td class=<%=type%>><%= record.maculardegeneration %></td>
+	<td class=<%=type%>><%= record.cognitiveimpairment %></td>
+	<td class=<%=type%>><%= record.other1 %></td>
+	<td class=<%=type%>><%= record.other2 %></td>
+	<td class=<%=type%>><%= record.other3 %></td>
+	<td class=<%=type%>><%= record.other4 %></td>
+	<td class=<%=type%>><%= record.other5 %></td>
+	<td class=<%=type%>><%= record.datetime %></td>
+</tr>
+
 <% @num += 1%>
 <% @num = @num.modulo 2 %>

@@ -46,8 +46,17 @@
     	<button data-role="none" id="cancel" class="whiteBtn cancelBtn"
 			onclick="window.location.href='index.html'" 
     		ontouchend="window.location.href='index.html'">Cancel</button>
-	    <button data-role="none" id="done" class="greenBtn doneBtn">Touch here when done</button>
+	    <button data-role="none" id="done" class="greenBtn doneBtn">Done</button>
 	    
 	</div></body>
+	<script>
+        var t = setTimeout( "nextButtonFade()", 1500);
+        
+        document.ontouchmove = function(event){ event.preventDefault(); }
+        
+        function nextButtonFade(){
+            document.getElementById('done').onclick = onDone;
+        }
+    </script>
 	
 </htm>

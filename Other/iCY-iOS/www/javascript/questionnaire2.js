@@ -61,8 +61,10 @@ function onDone(e) {
 //          INITIALIZE          //
 //////////////////////////////////
 $(document).ready(function() {
-    document.ontouchmove = function(event){ event.preventDefault(); }
-    document.getElementById('done').onclick = onDone;
+	
+	
+	
+    
                   
     //Centering questionnaire pages
     if($(document).height() >= 748){

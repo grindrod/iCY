@@ -32,14 +32,13 @@ $(document).ready(function() {
     start = new Date();
     console.log("start: " + start);
 	$('#repeatTest').hide();
-	
 	document.getElementById('breakfast').addEventListener('DOMNodeInserted', onDropAreaChange, true);
 	document.getElementById('lunch').addEventListener('DOMNodeInserted', onDropAreaChange, true);
 	document.getElementById('dinner').addEventListener('DOMNodeInserted', onDropAreaChange, true);
 	document.getElementById('bedtime').addEventListener('DOMNodeInserted', onDropAreaChange, true);
     
     document.getElementById('tableOfTablets').addEventListener('DOMNodeInserted', onDropAreaChange, true);
-                  
+    
     disableBtn('cancel', false);
     disableBtn('largerFontBtn', false);
     disableBtn('done', true);
@@ -153,14 +152,13 @@ function disableBtn(name, state){
 // end of test touches
 // store required data to send to server into results object
 function finishTest(){
+	disableBtn('done', true);
     var end = new Date();
     console.log("end: " + end);
     
     var results = JSON.parse( localStorage.getItem('results') );
     results['test']['time'] = (end - start);
     localStorage.setItem ('results', JSON.stringify(results) );
-    //console.log(results);
-    
     window.location = "patientfinished.html"; 
 }
 

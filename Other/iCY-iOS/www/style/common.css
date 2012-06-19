@@ -203,20 +203,20 @@ body, html {
 	padding:15px 76px;
 	text-decoration:none;
 	text-shadow:1px 1px 0px #fa4949;
-	width: 75%;
+	width: 60%;
 	position: fixed;
-	margin-left: 12.5%;
-	margin-right: 12.5%;
+	margin-left: 38%;
+    bottom:2%;
 }.redBtn:hover {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff0000), color-stop(1, #f79e9e) );
 	background:-moz-linear-gradient( center top, #ff0000 5%, #f79e9e 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0000', endColorstr='#f79e9e');
 	background-color:#ff0000;
-	width: 75%;
+	width: 60%;
 }.redBtn:active {
 	position:relative;
 	top:1px;
-	width: 75%;
+	width: 60%;
 }
 
 .greenBtn:disabled, .pinkBtn:disabled {
@@ -260,8 +260,8 @@ body, html {
 
 /* gigantic button on index page */
 .indexBtn {
-    font-size: 30pt;
-    line-height: 150px;
+    font-size: 40pt;
+    line-height: 125px;
     font-weight: 700;
     width: 50%;
     position: fixed;
@@ -298,16 +298,28 @@ body, html {
     font-size: 25pt;
     font-weight: 700;
 }
+.test{
+    width:40%;
+}
+
+/* "I cannot read label" button */
+.largerBtn{
+    position: fixed;
+    bottom: 2%;
+    height:10%;
+    left: 6em;
+    width:auto;
+    font-size:25pt;
+}
 
 /* dimensions for long button used in history */
 .longBtn {
-	width: 94%;
+    position: fixed;
+	width: 40%;
 	height: 40px;
-	margin-top: 7px;
-	margin-bottom: 7px;
 	font-size: 18pt; 
-	margin-left: 3%;
-	margin-right: 3%;
+    bottom: 2%;
+    z-index:2;
 }
 
 /* cancel button used in modal dialogs */

@@ -14,7 +14,7 @@
 	</div>
 
 	<div class="group">
-		<%= fs.submit 'Generate CSV Link' %><br/>
+		<%= image_submit_tag("button (3).png") %><br/>
 		<% page_url = request.fullpath.gsub('?', '.csv?') %>
 		<%= link_to page_url, page_url %>
 	</div>
