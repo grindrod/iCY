@@ -130,7 +130,15 @@ class RecordsController < ApplicationController
         @record.other5 = params[:history]['13']['name'] end
     end
     @record.save
-    render :nothing => true
+
+    respond_to do |format|
+      if @record.save
+        format.html { redirect_to @record, notice: 'Record was created successfully.' }
+        format.json { render json: @record.userID }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @record.errors, status: :unprocessable_entity }
+    end
   end
 
   # PUT /records/1
