@@ -79,15 +79,13 @@ function onDone() {
   	  url: 'http://morning-light-8582.herokuapp.com/records',
   	  data: results,
       success: function( data, textStatus, jqXHR ) {
-        console.log(data);
+        results['userID'] = data;
+        localStorage.setItem( 'results', JSON.stringify(results) );
       },
   	  complete: function(jqXHR, textStatus) {
-		console.log(jqXHR, textStatus);
-		//window.location.href='advice.html';
-  	}
-	});
-
-    
+		    window.location.href='advice.html';
+  	  }
+	  });
 }
 
 // done button is only active if there is at least one checked checkbox
