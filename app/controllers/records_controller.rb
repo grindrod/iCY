@@ -133,8 +133,8 @@ class RecordsController < ApplicationController
 
     respond_to do |format|
       if @record.save
-        format.html { redirect_to @record, notice: 'Record was created successfully.' }
         format.json { render json: @record.userID }
+        format.html { redirect_to @record, notice: 'Record was created successfully.' }
       else
         format.html { render action: "edit" }
         format.json { render json: @record.errors, status: :unprocessable_entity }
