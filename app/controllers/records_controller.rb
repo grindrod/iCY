@@ -94,7 +94,9 @@ class RecordsController < ApplicationController
     #  end
     #end
     #@record.userID = currId
-    
+
+    @record.userID = (Record.maximum(:userID) || 0  ) + 1
+
     if(params[:history]['9'].nil?)
       @record.other1 = ""
     else 
