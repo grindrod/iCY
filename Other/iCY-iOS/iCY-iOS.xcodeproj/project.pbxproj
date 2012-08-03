@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF032D2F15CC1C8A009E7169 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BF032D2E15CC1C8A009E7169 /* Default.png */; };
+		BF032D3215CC1C9C009E7169 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF032D3115CC1C9C009E7169 /* Default@2x.png */; };
+		BF032D3415CC1DD1009E7169 /* pills57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = BF032D3315CC1DD1009E7169 /* pills57x57.png */; };
+		BF032D3615CC1DD7009E7169 /* pills114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = BF032D3515CC1DD7009E7169 /* pills114x114.png */; };
 		BFD2DE2815ADD0B6009E1938 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD2DE2715ADD0B6009E1938 /* Foundation.framework */; };
 		BFD2DE2A15ADD0B6009E1938 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD2DE2915ADD0B6009E1938 /* UIKit.framework */; };
 		BFD2DE2C15ADD0B6009E1938 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD2DE2B15ADD0B6009E1938 /* CoreGraphics.framework */; };
@@ -41,6 +45,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF032D2E15CC1C8A009E7169 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		BF032D3115CC1C9C009E7169 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BF032D3315CC1DD1009E7169 /* pills57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pills57x57.png; sourceTree = "<group>"; };
+		BF032D3515CC1DD7009E7169 /* pills114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pills114x114.png; sourceTree = "<group>"; };
 		BFD2DE2315ADD0B6009E1938 /* iCY-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iCY-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD2DE2715ADD0B6009E1938 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BFD2DE2915ADD0B6009E1938 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -117,6 +125,10 @@
 		BFD2DE1515ADD0B6009E1938 = {
 			isa = PBXGroup;
 			children = (
+				BF032D3515CC1DD7009E7169 /* pills114x114.png */,
+				BF032D3315CC1DD1009E7169 /* pills57x57.png */,
+				BF032D3115CC1C9C009E7169 /* Default@2x.png */,
+				BF032D2E15CC1C8A009E7169 /* Default.png */,
 				BFD2DE7E15ADD106009E1938 /* www */,
 				BFD2DE4115ADD0B6009E1938 /* iCY-iOS */,
 				BFD2DE2615ADD0B6009E1938 /* Frameworks */,
@@ -333,6 +345,10 @@
 				BFD2DE6C15ADD0B7009E1938 /* Cordova.plist in Resources */,
 				BFD2DE7515ADD0B7009E1938 /* MainViewController.xib in Resources */,
 				BFD2DE7F15ADD106009E1938 /* www in Resources */,
+				BF032D2F15CC1C8A009E7169 /* Default.png in Resources */,
+				BF032D3215CC1C9C009E7169 /* Default@2x.png in Resources */,
+				BF032D3415CC1DD1009E7169 /* pills57x57.png in Resources */,
+				BF032D3615CC1DD7009E7169 /* pills114x114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

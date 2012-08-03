@@ -9,17 +9,20 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>icon.png</string>
+	<string>pills57x57.png</string>
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>icon.png</string>
-				<string>icon@2x.png</string>
+				<string>pills57x57.png</string>
+				<string>pills114x114.png</string>
 				<string>icon-72.png</string>
 				<string>icon-72@2x.png</string>
+				<string>Default.png</string>
+				<string>Default@2x.png</string>
+				<string>Default@2x.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<false/>
