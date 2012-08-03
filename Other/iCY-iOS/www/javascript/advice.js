@@ -234,7 +234,7 @@ $(document).ready(function() {
     var results = JSON.parse( localStorage.getItem('results') );
                   
     //ONLY FOR PILOT APP, TO BE REMOVED IN FINAL VERSION
-    results['userID'] = results['userID'] + 1;
+    results['userID'];
     document.getElementById('userSection').innerHTML = "User ID: " + zeroPad(results['userID'], 5);
     localStorage.setItem ('results', JSON.stringify(results) );
                   
