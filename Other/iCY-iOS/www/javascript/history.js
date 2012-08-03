@@ -76,8 +76,7 @@ function onDone() {
     
     $.ajax({
       type: 'POST',
-//  	  url: 'http://morning-light-8582.herokuapp.com/records',
-      url: 'http://0.0.0.0:3000',
+  	  url: 'http://morning-light-8582.herokuapp.com/records',
   	  data: results,
       success: function( data, textStatus, jqXHR ) {
         console.log(data);

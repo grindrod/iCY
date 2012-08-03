@@ -138,6 +138,7 @@ class RecordsController < ApplicationController
       else
         format.html { render action: "edit" }
         format.json { render json: @record.errors, status: :unprocessable_entity }
+      end
     end
   end
 
