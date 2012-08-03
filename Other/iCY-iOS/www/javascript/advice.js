@@ -38,7 +38,7 @@ ADVICE['abilityAffectedType'] = {type: "none" };
 ADVICE['complianceAids'] = {type: "needs", string: "Compliance aids (e.g., dosing calendars, diaries, charts, dose reminders)" };
 ADVICE['protectFromWear'] = {type: "needs", string: "To protect labels from wear (e.g., using a daily or weekly pill box)" };
 ADVICE['followUp'] = {type: "needs", string: "Follow-up with a physician for further assessment" };
-ADVICE['regularMonitoring'] = {type: "needs", string: "Regular monitoring by a physician or vision specialist [types]" };
+ADVICE['regularMonitoring'] = {type: "needs", string: "Regular monitoring by a physician or vision specialist." };
 ADVICE['regularMonitoringType'] = {type: "none" };
 ADVICE['magnifyingGlass'] = {type: "needs", string: "A magnifying glass to read prescription/non-prescription labels." };
 
@@ -191,18 +191,18 @@ var displayResults = function (adviceToUse){
         }
         
         else if (ADVICE[i].type === "discuss" && adviceToUse[i]){
-            if ((i === "difficultyReading"  || i === "needAid"  ||
+           if ((i === "difficultyReading"  || i === "needAid"  ||
                 i === "abilityAffected") && adviceToUse[i] &&
                 (typeof adviceToUse[i + 'Type'] !== "undefined") ){
-                ADVICE[i].string = ADVICE[i].string.replace("[types]", adviceToUse[i+'Type']);
-            }
+               ADVICE[i].string = ADVICE[i].string.replace("[types]", adviceToUse[i+'Type']);
+           }
             
             item = '<li>' + ADVICE[i].string + '</li>';
             $('#discussList').append(item);
         }
         
         else if (ADVICE[i].type === "needs" && adviceToUse[i]){
-            if (i === "regularMonitoring" && adviceToUse[i] &&
+           if (i === "regularMonitoring" && adviceToUse[i] &&
                 (typeof adviceToUse[i + 'Type'] !== "undefined") ){
                 ADVICE[i].string = ADVICE[i].string.replace("[types]", "for " + adviceToUse[i+'Type']);
             }
