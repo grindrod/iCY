@@ -60,7 +60,7 @@ class RecordsController < ApplicationController
   # POST /records
   # POST /records.json
   def create
-    @records = Record.all
+    #@records = Record.all
     @record = Record.new 
     @record.datetime = params[:datetime]
     @record.deviceID = params[:deviceID]
@@ -85,15 +85,15 @@ class RecordsController < ApplicationController
     @record.userFont = params[:test][:userFont]
     done = true
     currId = 1
-    while done
-      rec = Record.find_by_userID(currId)
-      if rec.nil?
-        done = false
-      else
-        currId += 1
-      end
-    end
-    @record.userID = currId
+    #while done
+    #  rec = Record.find_by_userID(currId)
+    #  if rec.nil?
+    #    done = false
+    #  else
+    #    currId += 1
+    #  end
+    #end
+    #@record.userID = currId
     
     if(params[:history]['9'].nil?)
       @record.other1 = ""
