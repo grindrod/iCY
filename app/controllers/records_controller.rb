@@ -83,19 +83,6 @@ class RecordsController < ApplicationController
     @record.glossy = params[:questionnaire]['7']['value']
     @record.time = params[:test][:time]
     @record.userFont = params[:test][:userFont]
-    done = true
-    currId = 1
-    #while done
-    #  rec = Record.find_by_userID(currId)
-    #  if rec.nil?
-    #    done = false
-    #  else
-    #    currId += 1
-    #  end
-    #end
-    #@record.userID = currId
-
-    @record.userID = (Record.maximum(:userID) || 0  ) + 1
 
     if(params[:history]['9'].nil?)
       @record.other1 = ""
@@ -135,7 +122,7 @@ class RecordsController < ApplicationController
 
     respond_to do |format|
       if @record.save
-        format.json { render json: @record.userID }
+        format.json { render json: @record.id }
         format.html { redirect_to @record, notice: 'Record was created successfully.' }
       else
         format.html { render action: "edit" }
