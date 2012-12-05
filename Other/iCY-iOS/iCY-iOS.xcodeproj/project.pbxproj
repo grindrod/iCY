@@ -49,7 +49,7 @@
 		BF032D3115CC1C9C009E7169 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BF032D3315CC1DD1009E7169 /* pills57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pills57x57.png; sourceTree = "<group>"; };
 		BF032D3515CC1DD7009E7169 /* pills114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pills114x114.png; sourceTree = "<group>"; };
-		BFD2DE2315ADD0B6009E1938 /* iCY-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iCY-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFD2DE2315ADD0B6009E1938 /* ClereMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClereMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD2DE2715ADD0B6009E1938 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BFD2DE2915ADD0B6009E1938 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BFD2DE2B15ADD0B6009E1938 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -139,7 +139,7 @@
 		BFD2DE2415ADD0B6009E1938 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BFD2DE2315ADD0B6009E1938 /* iCY-iOS.app */,
+				BFD2DE2315ADD0B6009E1938 /* ClereMed.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -278,9 +278,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BFD2DE2215ADD0B6009E1938 /* iCY-iOS */ = {
+		BFD2DE2215ADD0B6009E1938 /* ClereMed */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BFD2DE7B15ADD0B7009E1938 /* Build configuration list for PBXNativeTarget "iCY-iOS" */;
+			buildConfigurationList = BFD2DE7B15ADD0B7009E1938 /* Build configuration list for PBXNativeTarget "ClereMed" */;
 			buildPhases = (
 				BFD2DE1C15ADD0B6009E1938 /* Sources */,
 				BFD2DE1D15ADD0B6009E1938 /* Frameworks */,
@@ -293,9 +293,9 @@
 			);
 			dependencies = (
 			);
-			name = "iCY-iOS";
+			name = ClereMed;
 			productName = "iCY-iOS";
-			productReference = BFD2DE2315ADD0B6009E1938 /* iCY-iOS.app */;
+			productReference = BFD2DE2315ADD0B6009E1938 /* ClereMed.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -321,7 +321,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BFD2DE2215ADD0B6009E1938 /* iCY-iOS */,
+				BFD2DE2215ADD0B6009E1938 /* ClereMed */,
 			);
 		};
 /* End PBXProject section */
@@ -442,8 +442,8 @@
 					armv6,
 					"$(ARCHS_STANDARD_32_BIT)",
 				);
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rob Drimmie (LKSHPZ6HU3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rob Drimmie (LKSHPZ6HU3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -458,9 +458,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
-				PROVISIONING_PROFILE = "3DB016EA-FF8B-4519-9595-BA756D43BE34";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3DB016EA-FF8B-4519-9595-BA756D43BE34";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -473,8 +474,8 @@
 					armv6,
 					"$(ARCHS_STANDARD_32_BIT)",
 				);
-				CODE_SIGN_IDENTITY = "iPhone Distribution: The Miscellanean";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: The Miscellanean";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_THUMB_SUPPORT = NO;
@@ -482,9 +483,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
-				PROVISIONING_PROFILE = "4B32404B-8D35-4EFA-B509-AF79BC247836";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4B32404B-8D35-4EFA-B509-AF79BC247836";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -495,6 +497,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_ENTITLEMENTS = "iCY-iOS/iCY-iOS.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rob Drimmie (7T62CTRCVJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = /Users/Shared/Cordova/Frameworks;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -516,7 +520,9 @@
 					"-weak-lSystem",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -526,6 +532,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_ENTITLEMENTS = "iCY-iOS/iCY-iOS.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rob Drimmie (7T62CTRCVJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Communitech Hub";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = /Users/Shared/Cordova/Frameworks;
@@ -547,7 +555,9 @@
 					"-weak-lSystem",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9C437EC4-539A-425F-A2AD-4AD240FEA6E5";
+				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -565,7 +575,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BFD2DE7B15ADD0B7009E1938 /* Build configuration list for PBXNativeTarget "iCY-iOS" */ = {
+		BFD2DE7B15ADD0B7009E1938 /* Build configuration list for PBXNativeTarget "ClereMed" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BFD2DE7C15ADD0B7009E1938 /* Debug */,

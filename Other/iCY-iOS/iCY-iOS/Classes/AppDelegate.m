@@ -108,7 +108,10 @@
         [[UIApplication sharedApplication] setStatusBarOrientation:newOrient];
     }
     
-    [self.window addSubview:self.viewController.view];
+    //[self.window addSubview:self.viewController.view];
+    // Hack to fix proper orientation when fixed to landscape.
+    // https://groups.google.com/forum/?fromgroups=#!topic/phonegap/KJmvRIajsm8
+    self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     
     return YES;
