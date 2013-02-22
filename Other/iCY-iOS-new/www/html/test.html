@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="apple-touch-fullscreen" content="yes" />
+        <meta name="viewport" 
+        content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <title>ClereMed</title>
+        <link rel="stylesheet" type="text/css" href="../style/common.css" />
+        
+        <script type="text/javascript" src="../javascript/head.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../style/drag.css" />
+        
+        <!--Temporarily using zepto for document.ready() since it's similar to jquery-->
+        <script src="../javascript/lib/zepto.min.js"></script>
+        <script type="text/javascript" src="../javascript/test.js"></script>
+        
+        <style>
+            #mainTestBody {
+                display: table;
+                height: 88%;
+            }
+            
+            #testSection  {
+                position: relative;
+                display: table-cell;
+                vertical-align: middle;
+            }
+            
+            #topInstruction{
+                font-size: 18pt;
+                font-weight: bold;
+                text-align: center;
+                margin-left: 8%;
+                margin-right: 8%;
+                margin-bottom: 0.5%;
+                margin-top: 0.5%;
+            }
+            
+            #labelButtonArea {
+                height: 150px;
+                width: 800px;
+                /*border-spacing: 10px;*/
+                /*padding: 10px;*/
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: -1%;
+                margin-top: -0.25%;
+            }
+            
+            #labelWrapper {
+                background-color: transparent;
+                overflow: hidden;
+                height: 100%;
+                width: 100%;
+                display: table;
+            }
+            
+            #labelButtonSection {
+                padding-left: 7%;
+            }
+            #repeatTest{
+            	display:none;
+            }
+            #repeatTest_box {
+                width: 50%;
+                height: 20%;
+                margin-left: 24%;
+                margin-top: 20%;
+                position: relative;
+            }
+            
+            #repeatTest_message {
+                font-size: 3em;
+                color: red;
+                text-align: center;
+            }
+            
+            #repeatTest_done {
+                margin: 1%;
+                height: 40%;
+                width: 20%;
+                position: absolute;
+                bottom: 15%;
+                margin-left: 40%;
+            }
+            </style>
+    </head>
+    
+    <body>
+        <div id="mainTestBody">
+            <div id="testSection">
+                <div id="topInstruction">Read the drug label and drag the tablets to the correct boxes.</div>
+                
+                <table id="labelButtonArea" border="0px">
+                    <tr>
+                        <td id="labelSection" align="center">
+                            <div id="labelWrapper">
+                                <div id="instructionLabel" class="border">Take two tablets at lunch.</div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                </table>
+                
+                <table id="tableOfTablets" align="center" border="0px" width="800px">
+                    <tr>
+                        <td id="pill1Container" class="pillOrigin"><div id="pill1" class="touchBox"><div class="pillLabel">Tablet</div></div></td>
+                        <td id="pill2Container" class="pillOrigin"><div id="pill2" class="touchBox"><div class="pillLabel">Tablet</div></div></td>
+                        <td id="pill3Container" class="pillOrigin"><div id="pill3" class="touchBox"><div class="pillLabel">Tablet</div></div></td>
+                        <td id="pill4Container" class="pillOrigin"><div id="pill4" class="touchBox"><div class="pillLabel">Tablet</div></div></td>
+                        <td id="pill5Container" class="pillOrigin"><div id="pill5" class="touchBox"><div class="pillLabel">Tablet</div></div></td>
+                        <td id="pill6Container" class="pillOrigin"><div id="pill6" class="touchBox"><div class="pillLabel">Tablet</div></div></td>
+                    </tr>
+                </table>
+                
+                <div id="boxAroundTimeBoxes">
+                    <table id="tableOfTimeslots" align="center" border="0px" height="175px">
+                        <tr>
+                            <td class="alignTimeBox"><div id="breakfast" data-row1="drop1row1" data-row2="drop1row2" class="dropArea"><b>Breakfast</b><table>
+                                <tr id="drop1row1"></tr><tr id="drop1row2"></tr></table></div>
+                            </td>
+                            <td class="alignTimeBox"><div id="lunch" data-row1="drop2row1" data-row2="drop2row2" class="dropArea"><b>Lunch</b><table>
+                                <tr id="drop2row1"></tr><tr id="drop2row2"></tr></table></div>
+                            </td>
+                            <td class="alignTimeBox"><div id="dinner" data-row1="drop3row1" data-row2="drop3row2" class="dropArea" ><b>Dinner</b><table>
+                                <tr id="drop3row1"></tr><tr id="drop3row2"></tr></table></div>
+                            </td>
+                            <td ><div id="bedtime" data-row1="drop4row1" data-row2="drop4row2"class="dropArea"><b>Bedtime</b><table>
+                                <tr id="drop4row1"></tr><tr id="drop4row2"></tr></table></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <button id="largerFontBtn" class="orangeBtn largerBtn">I cannot read label</button>
+            </div>
+            
+            <button id="cancel" class="whiteBtn cancelBtn">Cancel</button>
+            <button id="done" class="greenBtn doneBtn test">Done</button>
+        </div>
+        
+        <!--MODAL: REPEAT TEST-->
+        <div id="repeatTest" class="modalMessage" >
+            <div id="repeatTest_box" class="modalMessage_box">
+                <div id="repeatTest_message">Please repeat the test.</div>
+                <button id="repeatTest_done" class="greenBtn">OK</button>
+            </div>
+        </div>
+        
+	</body>
+</html>
