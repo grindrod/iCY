@@ -213,11 +213,11 @@ body, html {
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0000', endColorstr='#f79e9e');
 	background-color:#ff0000;
 	width: 60%;
-}.redBtn:active {
+}/*.redBtn:active {
 	position:relative;
 	top:1px;
 	width: 60%;
-}
+}*/
 
 .greenBtn:disabled, .pinkBtn:disabled {
     color: #777777;
@@ -264,10 +264,11 @@ body, html {
     line-height: 125px;
     font-weight: 700;
     width: 50%;
-    position: fixed;
-    margin-right: 25%;
+    position: realitive; /*change*/
+    /*margin-right: 75%;*/
     margin-left: 25%;
-    margin-top: 45%;
+    margin-top: 35%;
+    margin-bottom: 10%;
 }
 
 /* cancel button on every page */
