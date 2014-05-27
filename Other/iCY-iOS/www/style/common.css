@@ -1,3 +1,7 @@
+.body {
+	height: 768px;
+	width: 1024px;
+}
 .center-wrapper{
 	text-align: center;
 }
@@ -260,15 +264,14 @@ body, html {
 
 /* gigantic button on index page */
 .indexBtn {
-    font-size: 40pt;
-    line-height: 125px;
+    position: fixed;
+    bottom: 2%;
+    right: 1%;
+    width: 60%;
+    height: 10%;
+    font-size: 25pt;
     font-weight: 700;
-    width: 50%;
-    position: realitive; /*change*/
-    /*margin-right: 75%;*/
-    margin-left: 25%;
-    margin-top: 35%;
-    margin-bottom: 10%;
+    
 }
 
 /* cancel button on every page */
