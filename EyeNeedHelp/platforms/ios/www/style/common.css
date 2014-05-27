@@ -1,7 +1,3 @@
-.body {
-	height: 768px;
-	width: 1024px;
-}
 .center-wrapper{
 	text-align: center;
 }
@@ -217,11 +213,11 @@ body, html {
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0000', endColorstr='#f79e9e');
 	background-color:#ff0000;
 	width: 60%;
-}/*.redBtn:active {
+}.redBtn:active {
 	position:relative;
 	top:1px;
 	width: 60%;
-}*/
+}
 
 .greenBtn:disabled, .pinkBtn:disabled {
     color: #777777;
@@ -264,14 +260,14 @@ body, html {
 
 /* gigantic button on index page */
 .indexBtn {
-    position: fixed;
-    bottom: 2%;
-    right: 1%;
-    width: 60%;
-    height: 10%;
-    font-size: 25pt;
+    font-size: 40pt;
+    line-height: 125px;
     font-weight: 700;
-    
+    width: 50%;
+    position: fixed;
+    margin-right: 25%;
+    margin-left: 25%;
+    margin-top: 45%;
 }
 
 /* cancel button on every page */

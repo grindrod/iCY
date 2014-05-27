@@ -1,0 +1,138 @@
+@charset "utf-8";
+/* CSS Document */
+/* CSS ELEMENTS INVOLVED WITH DRAGGING */
+
+body,td,th {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color:#555;
+}
+body {
+	position:relative;
+	margin: 0px;
+	padding: 0px;
+}
+.notes{
+	text-align:center;
+	padding:5px;
+	font-size:14px;
+	font-weight:bold;
+}
+h1{
+	margin:5px 0;
+}
+
+#pill1, #pill2, #pill3, #pill4, #pill5, #pill6 {
+	cursor: move;
+	position:relative;
+	z-index:50;
+	border-width: .2em; 
+	border-style: solid; 
+	border-color: #000; 
+    display: table;
+}
+
+.pillLabel {
+	position: relative;
+	/*top: 35%;*/
+    display: table-cell;
+    vertical-align: middle;
+    color: black;
+}
+
+.droppedBox
+{
+	/*background-color: green;*/
+    background: rgb(252,234,187); /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(252,234,187,1) 17%, rgba(252,205,77,1) 43%, rgba(248,181,0,1) 81%, rgba(251,223,147,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(17%,rgba(252,234,187,1)), color-stop(43%,rgba(252,205,77,1)), color-stop(81%,rgba(248,181,0,1)), color-stop(100%,rgba(251,223,147,1))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(252,234,187,1) 17%,rgba(252,205,77,1) 43%,rgba(248,181,0,1) 81%,rgba(251,223,147,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  rgba(252,234,187,1) 17%,rgba(252,205,77,1) 43%,rgba(248,181,0,1) 81%,rgba(251,223,147,1) 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  rgba(252,234,187,1) 17%,rgba(252,205,77,1) 43%,rgba(248,181,0,1) 81%,rgba(251,223,147,1) 100%); /* IE10+ */
+    background: radial-gradient(center, ellipse cover,  rgba(252,234,187,1) 17%,rgba(252,205,77,1) 43%,rgba(248,181,0,1) 81%,rgba(251,223,147,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    
+	border-width: .2em; 
+	border-style: solid; 
+	border-color: #000;
+    
+	font-weight: bold;
+	font-size: 14px;
+	color: #FFF;
+	opacity: .75;
+	filter: alpha(opacity = 75);
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	/*border-radius:10px;*/
+	border-radius:50%;
+	text-align: center;   
+}
+
+.touchBox {
+	width: 100px;
+	height:100px;
+	margin: 10px;
+    background: rgb(254,252,234); /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(254,252,234,1) 22%, rgba(241,218,54,1) 80%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(22%,rgba(254,252,234,1)), color-stop(80%,rgba(241,218,54,1))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(254,252,234,1) 22%,rgba(241,218,54,1) 80%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  rgba(254,252,234,1) 22%,rgba(241,218,54,1) 80%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  rgba(254,252,234,1) 22%,rgba(241,218,54,1) 80%); /* IE10+ */
+    background: radial-gradient(center, ellipse cover,  rgba(254,252,234,1) 22%,rgba(241,218,54,1) 80%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', endColorstr='#f1da36',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    -webkit-box-shadow: 1px 0px 15px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    1px 0px 15px rgba(50, 50, 50, 0.75);
+    box-shadow:         1px 0px 15px rgba(50, 50, 50, 0.75);
+	font-weight: bold;
+	font-size: 14px;
+	color: #FFF;
+	opacity: .75;
+	filter: alpha(opacity = 75);
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	/*border-radius:10px;*/
+	border-radius: 50%;
+	text-align: center;
+}
+
+.largetouchbox b, .dropArea b{
+	line-height: 40px;
+}
+.largetouchbox span{
+	display:block;
+	text-align:center;
+	font-size: 10px;
+	line-height:40px;
+}
+.dropArea{
+	position:relative;
+	width:125px;
+	height:125px;
+	background:#eee;
+	border:#504A4B solid 3px;
+	text-align:center;
+}
+
+.dhover{
+	border:#f66 dotted 3px;
+}
+
+#tableOfTablets td {
+	width: 16.667%; 
+	height: 130px;
+}
+
+.alignTimeBox
+{
+	align: center;
+	width: 200px;
+}
+
+#boxAroundTimeBoxes
+{
+	margin-left: 200px;
+	margin-right: 200px;
+	border-style: dashed;
+	border-color: #000000;
+	border-spacing: 30px;
+}
